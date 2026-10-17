@@ -4,12 +4,14 @@
   "main": "./Source.js",
   "compatibility_date": "2026-10-18",
   "workers_dev": true,
-  "observability": { "enabled": true },
+  "observability": {
+    "enabled": true
+  },
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "alpha-stage6-test",
-      "database_id": "affb19ba-4d34-49ea-b0ee-3cec68766534"
+      "database_name": "alpha",
+      "database_id": "840410f9-835b-4f9d-b3f5-a2ffda7024b7"
     }
   ]
 }
