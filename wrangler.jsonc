@@ -10,5 +10,12 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "alpha-stage6-test",
+      "database_id": "affb19ba-4d34-49ea-b0ee-3cec68766534"
+    }
+  ]
 }
