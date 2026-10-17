@@ -847,7 +847,7 @@ const Router = {
 					headers: { "Content-Type": "application/json; charset=utf-8" },
 				});
 			}
-			const { password } = await readJsonBody(request);
+			const { password, remember } = await readJsonBody(request);
 			const cleanPassword = (password || "").trim();
 			const hashedInput = await DbService.sha256(cleanPassword);
 			const storedHash = await DbService.getPanelPassword(env.DB, true);
@@ -866,7 +866,7 @@ const Router = {
 				return new Response(JSON.stringify({ success: true }), {
 					headers: {
 						"Content-Type": "application/json; charset=utf-8",
-						"Set-Cookie": "panel_session=" + hashedInput + "; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=31536000",
+						"Set-Cookie": "panel_session=" + hashedInput + "; Path=/; HttpOnly; Secure; SameSite=Lax" + (remember === false ? "" : "; Max-Age=31536000"),
 					},
 				});
 			} else {
@@ -4753,134 +4753,448 @@ const HTML_TEMPLATES = {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ورود به پــنــل مدیریت</title>
+	<title>Alpha | ورود به پنل مدیریت</title>
 	${COMMON_HEAD}
+	<style>
+		:root { --h: 265; --a1: hsl(var(--h) 95% 62%); --a2: hsl(calc(var(--h) + 60) 95% 60%); --a3: hsl(calc(var(--h) - 75) 95% 55%); --glow: hsla(var(--h), 95%, 60%, .55); }
+		html, body { font-family: 'Vazirmatn', sans-serif; }
+		body.alpha { min-height: 100vh; margin: 0; overflow-x: hidden; color: #e9ecff; background: #03030c; }
+		html:not(.dark) body.alpha { color: #1b1f3b; background: #eef0fb; }
+		.sky { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+			background:
+				radial-gradient(900px 520px at 50% 18%, hsla(var(--h),90%,45%,.28), transparent 65%),
+				radial-gradient(700px 500px at 8% 70%, hsla(calc(var(--h) + 60),90%,50%,.22), transparent 60%),
+				radial-gradient(700px 500px at 95% 80%, hsla(calc(var(--h) - 75),90%,50%,.20), transparent 60%),
+				linear-gradient(180deg, #05051a 0%, #090824 45%, #04030d 100%); }
+		html:not(.dark) .sky { background:
+				radial-gradient(900px 520px at 50% 18%, hsla(var(--h),90%,70%,.35), transparent 65%),
+				radial-gradient(700px 500px at 8% 70%, hsla(calc(var(--h) + 60),90%,75%,.30), transparent 60%),
+				radial-gradient(700px 500px at 95% 80%, hsla(calc(var(--h) - 75),90%,75%,.30), transparent 60%),
+				linear-gradient(180deg, #f6f7ff 0%, #eceefe 100%); }
+		#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+		html:not(.dark) #stars { opacity: .25; }
+		.wrap { position: relative; z-index: 3; max-width: 1240px; margin: 0 auto; padding: 18px 18px 28px; }
+		.glass { background: linear-gradient(160deg, rgba(30,34,80,.55), rgba(10,12,35,.70)); border: 1px solid rgba(140,150,255,.22); border-radius: 18px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
+		html:not(.dark) .glass { background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(240,242,255,.75)); border-color: rgba(90,100,200,.18); box-shadow: 0 10px 30px rgba(60,70,160,.12); }
+		.neon { position: relative; }
+		.neon::before { content: ""; position: absolute; inset: -1.5px; border-radius: inherit; padding: 1.5px; background: linear-gradient(135deg, var(--a3), var(--a1), var(--a2)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+		.neon { box-shadow: 0 0 24px var(--glow), 0 10px 40px rgba(0,0,0,.45); }
+		html:not(.dark) .neon { box-shadow: 0 0 18px hsla(var(--h),95%,60%,.25); }
+		.muted { color: rgba(220,225,255,.65); } html:not(.dark) .muted { color: #5a6085; }
+		.grid3 { display: grid; grid-template-columns: 270px minmax(0,1fr) 270px; gap: 22px; align-items: start; margin-top: 8px; }
+		@media (max-width: 1080px) { .grid3 { grid-template-columns: 1fr; } .side { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 16px; } .center { order: -1; } .tilt { transform: none !important; } }
+		.side { display: flex; flex-direction: column; gap: 16px; }
+		.card { padding: 16px 18px; }
+		.title { font-weight: 800; font-size: 15px; }
+		.sw { width: 26px; height: 26px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+		.sw:hover { transform: scale(1.15); } .sw.on { border-color: #fff; box-shadow: 0 0 14px currentColor; transform: scale(1.12); }
+		input[type=range].hue { -webkit-appearance: none; appearance: none; width: 100%; height: 30px; border-radius: 999px; background: linear-gradient(90deg, hsl(0 95% 60%), hsl(60 95% 60%), hsl(120 95% 55%), hsl(180 95% 55%), hsl(240 95% 62%), hsl(300 95% 60%), hsl(360 95% 60%)); outline: none; margin-top: 14px; box-shadow: 0 0 16px var(--glow); }
+		input[type=range].hue::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 3px solid var(--a1); cursor: pointer; }
+		input[type=range].hue::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid var(--a1); cursor: pointer; }
+		.seg { display: flex; gap: 8px; margin-top: 12px; }
+		.seg button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; border: 1px solid rgba(140,150,255,.2); background: rgba(255,255,255,.03); color: inherit; transition: .2s; }
+		.seg button.on { background: linear-gradient(135deg, hsla(var(--h),95%,55%,.35), hsla(calc(var(--h) - 75),95%,55%,.25)); border-color: var(--a1); box-shadow: 0 0 14px var(--glow); }
+		.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+		.brand { display: flex; align-items: center; gap: 10px; direction: ltr; }
+		.brand b { font-size: 22px; letter-spacing: 1px; background: linear-gradient(90deg, var(--a3), var(--a1)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+		.pill { display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px; font-weight: 700; font-size: 14px; }
+		.pill button { opacity: .55; transition: .2s; color: inherit; } .pill button.on { opacity: 1; color: var(--a3); }
+		.tgl { width: 58px; height: 30px; border-radius: 999px; position: relative; cursor: pointer; }
+		.tgl i { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px var(--glow); transition: .3s; }
+		html:not(.dark) .tgl i { right: 32px; background: #ffc83d; }
+		.hero { text-align: center; }
+		.logoA { width: 96px; height: 96px; margin: 0 auto; filter: drop-shadow(0 0 18px var(--glow)); }
+		.word { font-size: clamp(48px, 9vw, 92px); font-weight: 900; letter-spacing: 4px; line-height: 1; direction: ltr; background: linear-gradient(90deg, var(--a3), #fff 30%, var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 22px var(--glow)); margin-top: 4px; }
+		html:not(.dark) .word { background: linear-gradient(90deg, var(--a3), var(--a1) 55%, var(--a2)); -webkit-background-clip: text; background-clip: text; }
+		.sub { letter-spacing: 8px; font-size: 11px; font-weight: 700; direction: ltr; margin-top: 6px; }
+		.stepcard { padding: 22px 24px; border-radius: 22px; margin-top: 16px; transition: opacity .35s, filter .35s, transform .35s; }
+		.stepcard.locked { opacity: .45; filter: grayscale(.4); pointer-events: none; }
+		.steps { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin-bottom: 18px; }
+		.st { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 120px; font-size: 13px; font-weight: 700; cursor: default; }
+		.st span { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; border: 2px solid rgba(160,170,255,.35); }
+		.st.on span { border-color: var(--a3); background: linear-gradient(135deg, var(--a3), var(--a1)); color: #fff; box-shadow: 0 0 16px var(--glow); }
+		.st.done span { border-color: #34d399; color: #34d399; } .st.done { cursor: pointer; }
+		.line { flex: 1; max-width: 140px; height: 2px; margin-top: 19px; background: linear-gradient(90deg, rgba(160,170,255,.2), var(--a1), rgba(160,170,255,.2)); }
+		.field { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 16px; border: 1px solid rgba(140,150,255,.28); background: rgba(5,8,25,.45); }
+		html:not(.dark) .field { background: rgba(255,255,255,.7); }
+		.field:focus-within { border-color: var(--a3); box-shadow: 0 0 0 3px hsla(calc(var(--h) - 75),95%,55%,.18), 0 0 18px var(--glow); }
+		.ico { width: 46px; height: 46px; flex: none; border-radius: 12px; display: grid; place-items: center; color: var(--a3); background: rgba(120,130,255,.10); }
+		.field label { font-size: 13px; font-weight: 700; display: block; margin-bottom: 6px; }
+		.field input { width: 100%; padding: 9px 12px; border-radius: 10px; font-size: 15px; background: rgba(0,0,0,.25); color: inherit; border: 1px solid rgba(140,150,255,.22); outline: none; direction: ltr; text-align: left; }
+		html:not(.dark) .field input { background: #fff; }
+		.eye { color: inherit; opacity: .75; padding: 6px; } .eye:hover { opacity: 1; }
+		.btn { width: 100%; margin-top: 16px; padding: 12px; border-radius: 16px; color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 14px; background: linear-gradient(90deg, var(--a3), var(--a1) 55%, var(--a2)); box-shadow: 0 0 22px var(--glow); transition: transform .15s, filter .2s; }
+		.btn:hover { filter: brightness(1.1); transform: translateY(-1px); } .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+		.btn .ar { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,.18); }
+		[dir=ltr] .btn .ar svg, [dir=ltr] .flip { transform: scaleX(-1); }
+		.btn small { display: block; font-weight: 500; font-size: 12px; opacity: .9; }
+		.row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-top: 14px; font-size: 13px; }
+		.link { color: var(--a3); font-weight: 700; } .link:hover { text-decoration: underline; }
+		.chk { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+		.chk input { width: 18px; height: 18px; accent-color: hsl(var(--h) 95% 62%); }
+		.feat { display: flex; align-items: center; gap: 14px; padding: 12px 4px; }
+		.feat + .feat { border-top: 1px solid rgba(140,150,255,.12); }
+		.ring { width: 54px; height: 54px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--a1); box-shadow: 0 0 14px var(--glow), inset 0 0 12px var(--glow); color: var(--a3); }
+		.tilt { transform: perspective(900px) rotateY(-8deg) rotateZ(-4deg); }
+		.tilt2 { transform: perspective(900px) rotateY(8deg) rotateZ(-6deg); }
+		.sig { font-family: 'Brush Script MT', 'Segoe Script', cursive; font-size: 46px; line-height: 1; direction: ltr; text-align: center; }
+		.banner { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 20px; margin-top: 22px; flex-wrap: wrap; }
+		.tgicon { width: 56px; height: 56px; flex: none; border-radius: 50%; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #2aa3ff, #1d6bff); box-shadow: 0 0 22px rgba(42,163,255,.6); }
+		.join { margin-inline-start: auto; padding: 10px 20px; border-radius: 999px; font-weight: 800; color: #fff; background: linear-gradient(90deg, #2563eb, var(--a1)); box-shadow: 0 0 16px var(--glow); display: flex; align-items: center; gap: 8px; }
+		.foot { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 14px 18px; border-radius: 18px; margin-top: 14px; }
+		.foot > a { display: flex; align-items: center; gap: 12px; padding: 4px 10px; }
+		.foot > a + a { border-inline-start: 1px solid rgba(140,150,255,.2); }
+		@media (max-width: 560px) { .foot { grid-template-columns: 1fr; } .foot > a + a { border: 0; border-top: 1px solid rgba(140,150,255,.2); padding-top: 12px; margin-top: 8px; } .steps .st { width: 90px; } }
+		.rainbow { display: flex; align-items: center; gap: 12px; margin: 18px auto 0; max-width: 620px; }
+		.rainbow .bar { flex: 1; height: 16px; border-radius: 999px; background: linear-gradient(90deg, #2b6bff, #8b3dff, #ff2fb0, #ff3b3b, #ff9a1f, #ffe11f, #4dff6a, #22e6ff); box-shadow: 0 0 18px rgba(140,90,255,.6); cursor: pointer; }
+		.rainbow button { opacity: .7; color: inherit; } .rainbow button:hover { opacity: 1; }
+		.credits { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; font-size: 12px; }
+		.credits a { padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(140,150,255,.2); opacity: .75; } .credits a:hover { opacity: 1; }
+		.modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,10,.65); backdrop-filter: blur(4px); }
+		.modal.show { display: flex; }
+		.ghost { padding: 11px; border-radius: 14px; font-weight: 700; border: 1px solid rgba(255,90,90,.6); color: #ff7b7b; }
+		@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+		html:not(.gfx-off) .floaty { animation: floaty 5s ease-in-out infinite; }
+		@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+		.shake { animation: shake .35s ease 2; }
+		body.alpha *, body.alpha *::before, body.alpha *::after { box-sizing: border-box; }
+		:where(body.alpha a) { color: inherit; text-decoration: none; }
+		:where(body.alpha button) { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+		.top, .grid3 { direction: ltr; }
+		[dir=rtl] .grid3 > *, [dir=rtl] .top > * { direction: rtl; }
+		.sw { width: 24px !important; height: 24px !important; }
+		.hidden { display: none !important; }
+	</style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-amoled-bg dark:text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 gap-6">
-	<div class="w-full max-w-md bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-md shadow-xl p-6 relative z-10">
-		<div id="login-section">
-			<h2 class="text-xl font-bold mb-6 text-center text-blue-600 dark:text-blue-400">ورود به پـنـل مدیریت</h2>
-			<form onsubmit="handleLogin(event)" class="space-y-4">
-				<div>
-					<label class="block text-sm font-medium mb-1.5">رمز عبور</label>
-					<input type="password" id="password" class="w-full px-3 py-2 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm text-center font-mono" required>
-				</div>
-				<button type="submit" id="submit-btn" class="w-full py-2.5 bg-transparent border-2 border-green-600 text-green-700 hover:bg-green-900/20 hover:text-green-800 dark:border-green-500 dark:text-green-500 dark:hover:bg-green-900/40 dark:hover:text-green-400 font-medium rounded-md text-sm transition font-bold">ورود</button>
-			</form>
-			<div class="mt-4 text-center">
-				<button onclick="toggleRecovery(true)" class="text-xs text-blue-500 hover:text-blue-600 transition font-medium">بازیابی رمز پـنـل</button>
+<body class="alpha">
+	<div class="sky"></div>
+	<canvas id="stars"></canvas>
+	<div class="wrap">
+		<header class="top">
+			<div class="brand">
+				<svg width="44" height="44" viewBox="0 0 100 100"><defs><linearGradient id="gA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><circle cx="50" cy="50" r="47" fill="rgba(20,22,60,.6)" stroke="url(#gA)" stroke-width="3"/><path d="M50 18 L80 80 H64 L50 50 L36 80 H20 Z" fill="url(#gA)"/></svg>
+				<div><b>ALPHA</b><div class="muted" style="font-size:12px">Fast • Secure • Stable</div></div>
 			</div>
-		</div>
-		<div id="recovery-section" class="hidden">
-			<h2 class="text-xl font-bold mb-4 text-center text-orange-600 dark:text-orange-400">بازیابی رمز پـنـل</h2>
-			<div class="mb-5 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800/50 rounded-md text-xs leading-relaxed text-orange-800 dark:text-orange-300">
-				برای احراز هویت و اثبات مالکیت پـنـل، از طریق دکمه زیر وارد کلودفلر شوید و توکن دریافتی را کپی کرده و در کادر زیر وارد کنید.
-				<a href="https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22%3A%22workers_scripts%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22workers_kv_storage%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22d1%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22account_settings%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22workers_subdomain%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22account_analytics%22%2C%22type%22%3A%22read%22%7D%5D&accountId=*&zoneId=all&name=Zeus-Deployer-Token" target="_blank" class="mt-3 w-full flex items-center justify-center gap-2 py-2 bg-transparent border-2 border-green-600 text-green-700 hover:bg-green-900/20 hover:text-green-800 dark:border-green-500 dark:text-green-500 dark:hover:bg-green-900/40 dark:hover:text-green-400 rounded-md font-bold transition shadow-md">
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-					دریافت توکن
+			<div style="display:flex;gap:12px;align-items:center">
+				<div class="pill glass" dir="ltr">
+					<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+					<button type="button" data-lang="fa">FA</button><span class="muted">|</span><button type="button" data-lang="en">EN</button>
+				</div>
+				<button type="button" class="tgl glass" id="theme-toggle" aria-label="theme"><i></i></button>
+			</div>
+		</header>
+
+		<div class="grid3">
+			<aside class="side">
+				<div class="glass card">
+					<div class="title" data-i18n="color">رنگ تم</div>
+					<div class="muted" style="font-size:12px;margin-top:4px" data-i18n="colorSub">رنگ مورد نظر خود را انتخاب کنید</div>
+					<div id="swatches" style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap" dir="ltr"></div>
+					<input type="range" class="hue" id="hue" min="0" max="359" value="265" aria-label="hue">
+				</div>
+				<div class="glass card">
+					<div class="title" data-i18n="mode">حالت نمایش</div>
+					<div class="seg">
+						<button type="button" data-mode="light"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="light">روشن</span></button>
+						<button type="button" data-mode="dark"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><span data-i18n="dark">تاریک</span></button>
+					</div>
+				</div>
+				<div class="glass card">
+					<div class="title">Language / زبان</div>
+					<div class="seg">
+						<button type="button" data-lang="fa"><span class="fi fi-ir" style="border-radius:3px"></span>فارسی</button>
+						<button type="button" data-lang="en"><span class="fi fi-us" style="border-radius:3px"></span>English</button>
+					</div>
+				</div>
+				<div class="glass neon card tilt floaty" style="display:flex;align-items:center;gap:16px;border-radius:22px">
+					<div class="ring" style="width:64px;height:64px;border-radius:16px"><svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 00-2.9-.1zM12 15l-3-3a22 22 0 012-3.9A12.9 12.9 0 0122 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 01-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></div>
+					<div style="font-size:22px;font-weight:800;line-height:1.5"><div data-i18n="faster">سریع‌تر</div><div data-i18n="safer">امن‌تر</div><div data-i18n="better">بهتر</div></div>
+				</div>
+			</aside>
+
+			<main class="center">
+				<div class="hero">
+					<svg class="logoA floaty" viewBox="0 0 100 100"><defs><linearGradient id="gB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".5" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#gB)"/><path d="M50 6 L50 52 L30 94 H6 Z" fill="rgba(255,255,255,.18)"/></svg>
+					<div class="word">ALPHA</div>
+					<div class="sub muted">NEXT GENERATION PANEL</div>
+					<div style="font-size:20px;font-weight:700;margin-top:12px" data-i18n="welcome">به پنل مدیریت آلفا خوش آمدید</div>
+					<div class="muted" style="font-size:14px" data-i18n="welcomeSub">Welcome to Alpha Panel</div>
+				</div>
+
+				<section class="glass neon stepcard" id="card1">
+					<div class="steps">
+						<div class="st on" id="st1a"><span>1</span><div data-i18n="s1">ورود</div></div>
+						<div class="line"></div>
+						<div class="st" id="st2a"><span>2</span><div data-i18n="s2">رمز عبور</div></div>
+					</div>
+					<form id="form-user" autocomplete="on">
+						<div class="field">
+							<div class="ico"><svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M3 21c0-4.4 4-7 9-7s9 2.6 9 7z"/></svg></div>
+							<div style="flex:1">
+								<label for="username" data-i18n="userLbl">نام کاربری خود را وارد کنید</label>
+								<input id="username" name="username" autocomplete="username" placeholder="Username" maxlength="64" required>
+							</div>
+						</div>
+						<button type="submit" class="btn"><span class="ar"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></span><span style="text-align:start"><span data-i18n="next">ادامه</span><small>Next</small></span></button>
+					</form>
+				</section>
+
+				<section class="glass neon stepcard locked" id="card2">
+					<div class="steps">
+						<div class="st" id="st1b"><span>1</span><div data-i18n="s1">ورود</div></div>
+						<div class="line"></div>
+						<div class="st on" id="st2b"><span>2</span><div data-i18n="s2">رمز عبور</div></div>
+					</div>
+					<div style="text-align:center;margin:-6px 0 14px"><div style="font-weight:800" data-i18n="s2Title">مرحله دوم: رمز عبور</div><div class="muted" style="font-size:12px" id="hello" data-i18n="s2Sub">رمز عبور خود را وارد کنید</div></div>
+					<form id="form-pass">
+						<input type="text" id="username-mirror" name="username" autocomplete="username" class="hidden" tabindex="-1" aria-hidden="true">
+						<div class="field">
+							<div class="ico"><svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17 9V7A5 5 0 007 7v2a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2v-9a2 2 0 00-2-2zM9 7a3 3 0 016 0v2H9zm4 9.7V18h-2v-1.3a2 2 0 112 0z"/></svg></div>
+							<div style="flex:1">
+								<label for="password" data-i18n="passLbl">رمز عبور پنل را وارد کنید</label>
+								<input type="password" id="password" name="password" autocomplete="current-password" placeholder="Password" required>
+							</div>
+							<button type="button" class="eye" id="eye" aria-label="show password"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+						</div>
+						<button type="submit" id="submit-btn" class="btn"><span class="ar"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></span><span style="text-align:start"><span id="login-label" data-i18n="login">ورود به پنل</span><small>Login</small></span></button>
+						<div class="row">
+							<label class="chk"><input type="checkbox" id="remember" checked><span><span data-i18n="remember">مرا به خاطر بسپار</span><br><span class="muted" style="font-size:12px">Remember me</span></span></label>
+							<button type="button" class="link" id="forgot" style="text-align:end"><span data-i18n="forgot">رمز عبور را فراموش کرده‌اید؟</span><br><span style="font-size:12px;font-weight:500">Forgot password?</span></button>
+						</div>
+					</form>
+				</section>
+			</main>
+
+			<aside class="side">
+				<a href="#card1" id="admin-card" class="glass neon card tilt2 floaty" style="display:flex;align-items:center;gap:14px;border-radius:22px">
+					<div class="ring"><svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M2 20c0-4 3.6-6 8-6 1 0 2 .1 2.9.4A6 6 0 0012 20z"/><path d="M18 13l.6 1.3 1.4.2-1 1 .3 1.4-1.3-.7-1.3.7.3-1.4-1-1 1.4-.2z"/></svg></div>
+					<div style="flex:1"><div class="title" style="font-size:17px" data-i18n="admin">مدیریت پنل</div><div class="muted" style="font-size:13px">Admin Panel</div></div>
+					<svg class="flip" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M15 18l-6-6 6-6"/></svg>
 				</a>
-			</div>
-			<form onsubmit="handleRecovery(event)" class="space-y-4">
-				<div>
-					<input type="password" id="api-token" placeholder="توکن را وارد کنید" class="w-full px-3 py-2 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-xs text-center font-mono" required>
+				<div class="glass neon card" style="border-radius:22px">
+					<div class="feat"><div class="ring"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><div><div class="title" data-i18n="sec">امنیت بالا</div><div class="muted" style="font-size:13px">High Security</div></div></div>
+					<div class="feat"><div class="ring"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><div><div class="title" data-i18n="fast">عملکرد سریع</div><div class="muted" style="font-size:13px">Fast Performance</div></div></div>
+					<div class="feat"><div class="ring"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 18H7a5 5 0 11.9-9.9A6 6 0 0119 9a4.5 4.5 0 01-1 9z"/><path d="M10 13.5l1.5 1.5 3-3"/></svg></div><div><div class="title" data-i18n="stable">پایداری</div><div class="muted" style="font-size:13px">Stable Uptime</div></div></div>
 				</div>
-				<div class="flex gap-2 pt-2">
-					<button type="button" onclick="toggleRecovery(false)" class="w-1/3 py-2.5 bg-transparent border-2 border-red-700 text-red-700 hover:bg-red-900/20 hover:text-red-800 dark:border-red-700 dark:text-red-500 dark:hover:bg-red-900/40 dark:hover:text-red-400 font-bold rounded-md text-sm transition shadow-sm">انصراف</button>
-					<button type="submit" id="recover-btn" class="w-2/3 py-2.5 bg-transparent border-2 border-green-600 text-green-700 hover:bg-green-900/20 hover:text-green-800 dark:border-green-500 dark:text-green-500 dark:hover:bg-green-900/40 dark:hover:text-green-400 font-medium rounded-md text-sm transition font-bold">بازیابی رمز پـنـل</button>
+				<div class="glass card tilt2 floaty" style="border-radius:22px;padding:26px 18px;box-shadow:0 0 26px rgba(255,190,40,.45);border-color:rgba(255,200,60,.6)">
+					<div class="sig">Alpha<br>&nbsp;&nbsp;Panel</div>
+				</div>
+			</aside>
+		</div>
+
+		<div style="max-width:740px;margin:0 auto">
+			<a class="glass neon banner" href="https://t.me/Mehtif" target="_blank" rel="noopener">
+				<div class="tgicon"><svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M21.9 4.3l-3.2 15c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg></div>
+				<div><div style="font-weight:800" data-i18n="tgJoin">برای عضویت در کانال تلگرام کلیک کنید</div><div class="muted" style="font-size:13px">Join our Telegram Channel</div></div>
+				<span class="join"><span data-i18n="join">عضویت</span><svg class="flip" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></span>
+			</a>
+			<div class="glass foot" dir="ltr">
+				<a href="https://t.me/V2rayTun0" target="_blank" rel="noopener"><div class="ring" style="width:44px;height:44px"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M3 21c0-4.4 4-7 9-7s9 2.6 9 7z"/></svg></div><div><div class="muted" style="font-size:12px">Created by</div><div style="font-weight:700">@V2rayTun0</div></div></a>
+				<a href="https://t.me/Mehtif" target="_blank" rel="noopener"><div class="tgicon" style="width:44px;height:44px"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.9 4.3l-3.2 15c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg></div><div style="flex:1"><div class="muted" style="font-size:12px">Telegram Channel</div><div style="font-weight:700">@Mehtif</div></div><svg width="26" height="26" fill="#c7d2ff" viewBox="0 0 24 24"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 11H5z"/></svg></a>
+			</div>
+			<div class="rainbow" dir="ltr">
+				<button type="button" id="prev-color" aria-label="previous color"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+				<div class="bar" id="bar" title="Theme color"></div>
+				<button type="button" id="next-color" aria-label="next color"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+			</div>
+			<div class="credits">
+				<a href="https://github.com/panel-zeus/Z-E-U-S" target="_blank" rel="noopener">GitHub</a>
+				<a href="https://t.me/PANEL_ZEUS" target="_blank" rel="noopener">PANEL_ZEUS@</a>
+				<a href="https://t.me/ZEUS_PANEL_BOT" target="_blank" rel="noopener" data-i18n="freePanel">ساخت رایگان پنل</a>
+				<a href="https://donatonion.ir-netlify.workers.dev" target="_blank" rel="noopener" data-i18n="donate">دونیت</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="recovery-modal">
+		<div class="glass neon" style="width:100%;max-width:440px;padding:22px;border-radius:22px">
+			<div class="title" style="font-size:18px;text-align:center;color:#ffa94d" data-i18n="recTitle">بازیابی رمز پنل</div>
+			<p class="muted" style="font-size:13px;line-height:1.9;margin:12px 0" data-i18n="recText">برای اثبات مالکیت پنل، از دکمه زیر وارد کلودفلر شوید، توکن را بسازید و در کادر زیر وارد کنید.</p>
+			<a href="https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22%3A%22workers_scripts%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22workers_kv_storage%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22d1%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22account_settings%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22workers_subdomain%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22account_analytics%22%2C%22type%22%3A%22read%22%7D%5D&accountId=*&zoneId=all&name=Zeus-Deployer-Token" target="_blank" rel="noopener" class="btn" style="margin-top:0;background:linear-gradient(90deg,#f6821f,#fbad41)"><span data-i18n="getToken">دریافت توکن از کلودفلر</span></a>
+			<form id="form-rec" style="margin-top:14px">
+				<div class="field" style="padding:8px"><input type="password" id="api-token" placeholder="Cloudflare API Token" required style="text-align:center"></div>
+				<div style="display:flex;gap:10px;margin-top:14px">
+					<button type="button" class="ghost" id="rec-cancel" style="width:35%" data-i18n="cancel">انصراف</button>
+					<button type="submit" class="btn" id="recover-btn" style="margin-top:0;flex:1"><span data-i18n="recBtn">بازیابی رمز</span></button>
 				</div>
 			</form>
 		</div>
 	</div>
-	<div class="flex flex-col gap-4 relative z-10 w-full max-w-md">
-		<div class="flex flex-wrap items-center gap-3 sm:gap-4 justify-center">
-			<a href="https://github.com/panel-zeus/Z-E-U-S" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-gray-700 dark:text-zinc-300 hover:text-black dark:hover:text-white group">
-				<svg class="w-5 h-5 group-hover:scale-110 transition" viewBox="0 0 24 24" fill="currentColor">
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
-				</svg>
-				گیت‌هاب
-			</a>
-			<a href="https://t.me/PANEL_ZEUS" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-gray-700 dark:text-zinc-300 hover:text-sky-500 dark:hover:text-sky-400 group">
-				<svg class="w-5 h-5 text-sky-500 group-hover:scale-110 transition" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.94-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.37.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/>
-				</svg>
-				PANEL_ZEUS@
-			</a>
-		</div>
-		<div class="flex flex-wrap items-center gap-3 sm:gap-4 justify-center">
-			<a href="https://t.me/ZEUS_PANEL_BOT" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 group">
-				<svg class="w-5 h-5 text-amber-500 dark:text-amber-400 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-				</svg>
-				ساخت رایگان پـنـل
-			</a>
-			<a href="https://donatonion.ir-netlify.workers.dev" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-red-600 dark:text-red-400 hover:text-red-500 dark:hover:text-red-300 group">
-				<svg class="w-5 h-5 text-red-500 dark:text-red-400 group-hover:scale-110 transition" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 9.24 3 10.91 3.81 12 5.08 13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-				</svg>
-				دونیت
-			</a>
-		</div>
-	</div>
+
 	${COMMON_TOAST_HTML}
 	<script>
 		${COMMON_TOAST_JS}
-		async function handleLogin(event) {
-			event.preventDefault();
-			const password = document.getElementById('password').value.trim();
-			const btn = document.getElementById('submit-btn');
-			btn.disabled = true;
-			try {
-				const res = await fetch('/api/login', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ password })
-				});
-				const data = await res.json();
-				if (res.ok && data.success) {
-					window.location.reload();
-				} else {
-					alert(data.error || '❌ رمز عبور اشتباه است');
-				}
-			} catch (err) {
-				alert('خطا در ارتباط با سرور');
-			} finally {
-				btn.disabled = false;
+		(function () {
+			var root = document.documentElement;
+			var T = {
+				fa: { color: 'رنگ تم', colorSub: 'رنگ مورد نظر خود را انتخاب کنید', mode: 'حالت نمایش', light: 'روشن', dark: 'تاریک', faster: 'سریع‌تر', safer: 'امن‌تر', better: 'بهتر', welcome: 'به پنل مدیریت آلفا خوش آمدید', welcomeSub: 'Welcome to Alpha Panel', s1: 'ورود', s2: 'رمز عبور', userLbl: 'نام کاربری خود را وارد کنید', next: 'ادامه', s2Title: 'مرحله دوم: رمز عبور', s2Sub: 'رمز عبور خود را وارد کنید', passLbl: 'رمز عبور پنل را وارد کنید', login: 'ورود به پنل', remember: 'مرا به خاطر بسپار', forgot: 'رمز عبور را فراموش کرده‌اید؟', admin: 'مدیریت پنل', sec: 'امنیت بالا', fast: 'عملکرد سریع', stable: 'پایداری', tgJoin: 'برای عضویت در کانال تلگرام کلیک کنید', join: 'عضویت', freePanel: 'ساخت رایگان پنل', donate: 'دونیت', recTitle: 'بازیابی رمز پنل', recText: 'برای اثبات مالکیت پنل، از دکمه زیر وارد کلودفلر شوید، توکن را بسازید و در کادر زیر وارد کنید.', getToken: 'دریافت توکن از کلودفلر', cancel: 'انصراف', recBtn: 'بازیابی رمز', checking: 'در حال بررسی...', loggingIn: 'در حال ورود...', hello: 'سلام {u}، رمز عبور خود را وارد کنید', needUser: '⚠️ نام کاربری را وارد کنید', needPass: '⚠️ رمز عبور را وارد کنید', wrong: '❌ رمز عبور اشتباه است', net: 'خطا در ارتباط با سرور', ok: '✅ ورود موفق', recOk: '✅ رمز عبور حذف شد. در حال انتقال به تنظیمات اولیه...', recErr: 'خطا در تایید اطلاعات', title: 'Alpha | ورود به پنل مدیریت' },
+				en: { color: 'Theme Color', colorSub: 'Pick your favorite color', mode: 'Display Mode', light: 'Light', dark: 'Dark', faster: 'Faster', safer: 'Safer', better: 'Better', welcome: 'Welcome to Alpha Panel', welcomeSub: 'Next generation management panel', s1: 'Sign in', s2: 'Password', userLbl: 'Enter your username', next: 'Next', s2Title: 'Step 2: Password', s2Sub: 'Enter your password', passLbl: 'Enter the panel password', login: 'Login to panel', remember: 'Remember me', forgot: 'Forgot password?', admin: 'Admin Panel', sec: 'High Security', fast: 'Fast Performance', stable: 'Stable Uptime', tgJoin: 'Click to join our Telegram channel', join: 'Join', freePanel: 'Build a free panel', donate: 'Donate', recTitle: 'Recover panel password', recText: 'To prove ownership, open Cloudflare with the button below, create the token and paste it here.', getToken: 'Get token from Cloudflare', cancel: 'Cancel', recBtn: 'Recover', checking: 'Checking...', loggingIn: 'Signing in...', hello: 'Hi {u}, enter your password', needUser: '⚠️ Please enter a username', needPass: '⚠️ Please enter the password', wrong: '❌ Wrong password', net: '❌ Server connection error', ok: '✅ Signed in', recOk: '✅ Password removed. Redirecting to initial setup...', recErr: 'Verification failed', title: 'Alpha | Panel Login' }
+			};
+			var lang = localStorage.getItem('alpha-lang') || 'fa';
+			function t(k) { return (T[lang] && T[lang][k]) || T.fa[k] || k; }
+			function enErr(msg) {
+				if (lang !== 'en' || !msg) return msg;
+				var n = msg.match(/[0-9]+/);
+				if (msg.indexOf('اشتباه') > -1) return '❌ Wrong password' + (n ? ' (attempts left: ' + n[0] + ')' : '');
+				if (msg.indexOf('مسدود') > -1) return '❌ Too many attempts. Try again in ' + (n ? n[0] : 'a few') + ' minutes.';
+				return msg;
 			}
-		}
-		function toggleRecovery(show) {
-			document.getElementById('login-section').classList.toggle('hidden', show);
-			document.getElementById('recovery-section').classList.toggle('hidden', !show);
-		}
-		async function handleRecovery(event) {
-			event.preventDefault();
-			const apiToken = document.getElementById('api-token').value;
-			const btn = document.getElementById('recover-btn');
-			btn.disabled = true;
-			btn.innerText = 'در حال بررسی...';
-			try {
-				const res = await fetch('/api/recover', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ api_token: apiToken })
-				});
-				const data = await res.json();
-				if (res.ok && data.success) {
-					alert('✅ رمز عبور با موفقیت حذف شد. در حال انتقال به صفحه تنظیمات اولیه...');
-					setTimeout(() => {
-						window.location.reload();
-					}, 1500);
-				} else {
-					alert('❌ ' + (data.error || 'خطا در تایید اطلاعات'));
-				}
-			} catch (err) {
-				alert('خطا در ارتباط با سرور');
-			} finally {
-				btn.disabled = false;
-				btn.innerText = 'بازیابی رمز پـنـل';
+			function applyLang(l) {
+				lang = T[l] ? l : 'fa';
+				localStorage.setItem('alpha-lang', lang);
+				root.lang = lang; root.dir = lang === 'fa' ? 'rtl' : 'ltr';
+				document.title = t('title');
+				document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
+				document.querySelectorAll('[data-lang]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
+				updateHello();
 			}
-		}
+			document.querySelectorAll('[data-lang]').forEach(function (b) { b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); }); });
+
+			function applyMode(m) {
+				if (m === 'light') root.classList.remove('dark'); else root.classList.add('dark');
+				localStorage.setItem('color-theme', m);
+				document.querySelectorAll('[data-mode]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-mode') === m); });
+			}
+			document.querySelectorAll('[data-mode]').forEach(function (b) { b.addEventListener('click', function () { applyMode(b.getAttribute('data-mode')); }); });
+			document.getElementById('theme-toggle').addEventListener('click', function () { applyMode(root.classList.contains('dark') ? 'light' : 'dark'); });
+
+			var PRESETS = [200, 240, 290, 0, 30, 95, 150];
+			var hueInput = document.getElementById('hue');
+			var sw = document.getElementById('swatches');
+			PRESETS.forEach(function (h) {
+				var b = document.createElement('button');
+				b.type = 'button'; b.className = 'sw'; b.setAttribute('data-h', h);
+				b.style.background = 'hsl(' + h + ' 95% 55%)'; b.style.color = 'hsl(' + h + ' 95% 55%)';
+				b.setAttribute('aria-label', 'color ' + h);
+				b.addEventListener('click', function () { applyHue(h); });
+				sw.appendChild(b);
+			});
+			function applyHue(h) {
+				h = ((parseInt(h, 10) || 0) % 360 + 360) % 360;
+				root.style.setProperty('--h', h);
+				hueInput.value = h;
+				localStorage.setItem('alpha-hue', h);
+				sw.querySelectorAll('.sw').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-h') === h); });
+			}
+			hueInput.addEventListener('input', function () { applyHue(hueInput.value); });
+			function stepHue(dir) {
+				var cur = parseInt(hueInput.value, 10), idx = 0, best = 999;
+				PRESETS.forEach(function (p, i) { var d = Math.abs(p - cur); if (d < best) { best = d; idx = i; } });
+				applyHue(PRESETS[(idx + dir + PRESETS.length) % PRESETS.length]);
+			}
+			document.getElementById('prev-color').addEventListener('click', function () { stepHue(-1); });
+			document.getElementById('next-color').addEventListener('click', function () { stepHue(1); });
+			document.getElementById('bar').addEventListener('click', function (e) {
+				var r = this.getBoundingClientRect();
+				var stops = [220, 265, 320, 0, 30, 55, 125, 185];
+				var i = Math.min(stops.length - 1, Math.floor((e.clientX - r.left) / r.width * stops.length));
+				applyHue(stops[i]);
+			});
+
+			var userEl = document.getElementById('username');
+			var passEl = document.getElementById('password');
+			var card1 = document.getElementById('card1'), card2 = document.getElementById('card2');
+			var rememberEl = document.getElementById('remember');
+			function updateHello() {
+				var u = userEl.value.trim();
+				var el = document.getElementById('hello');
+				if (!card2.classList.contains('locked') && u) el.textContent = t('hello').replace('{u}', u);
+				else el.textContent = t('s2Sub');
+			}
+			function goStep(n) {
+				var two = n === 2;
+				card2.classList.toggle('locked', !two);
+				card1.classList.toggle('locked', two);
+				['st1a', 'st1b'].forEach(function (id) {
+					var s = document.getElementById(id);
+					s.classList.toggle('done', two); s.classList.toggle('on', !two);
+					s.querySelector('span').innerHTML = two ? '&#10003;' : '1';
+				});
+				['st2a', 'st2b'].forEach(function (id) { document.getElementById(id).classList.toggle('on', two); });
+				updateHello();
+				if (two) { document.getElementById('username-mirror').value = userEl.value.trim(); setTimeout(function () { passEl.focus(); card2.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 120); }
+				else setTimeout(function () { userEl.focus(); }, 120);
+			}
+			['st1a', 'st1b'].forEach(function (id) { document.getElementById(id).addEventListener('click', function () { if (this.classList.contains('done')) goStep(1); }); });
+			document.getElementById('admin-card').addEventListener('click', function (e) { e.preventDefault(); goStep(userEl.value.trim() ? 2 : 1); });
+			document.getElementById('form-user').addEventListener('submit', function (e) {
+				e.preventDefault();
+				if (!userEl.value.trim()) { alert(t('needUser')); card1.classList.add('shake'); setTimeout(function () { card1.classList.remove('shake'); }, 800); return; }
+				goStep(2);
+			});
+			document.getElementById('eye').addEventListener('click', function () {
+				passEl.type = passEl.type === 'password' ? 'text' : 'password';
+				this.style.color = passEl.type === 'text' ? 'var(--a3)' : '';
+				passEl.focus();
+			});
+
+			document.getElementById('form-pass').addEventListener('submit', async function (e) {
+				e.preventDefault();
+				var password = passEl.value.trim();
+				if (!password) { alert(t('needPass')); return; }
+				var btn = document.getElementById('submit-btn'), lbl = document.getElementById('login-label');
+				btn.disabled = true; lbl.textContent = t('loggingIn');
+				try {
+					var res = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: password, remember: rememberEl.checked }) });
+					var data = {}; try { data = await res.json(); } catch (x) {}
+					if (res.ok && data.success) {
+						if (rememberEl.checked) localStorage.setItem('alpha-user', userEl.value.trim()); else localStorage.removeItem('alpha-user');
+						showToast(t('ok'), 'success');
+						setTimeout(function () { window.location.reload(); }, 400);
+						return;
+					}
+					var em = enErr(data.error) || t('wrong'); alert(em.indexOf('❌') === 0 ? em : '❌ ' + em);
+					card2.classList.add('shake'); setTimeout(function () { card2.classList.remove('shake'); }, 800);
+					passEl.select();
+				} catch (err) {
+					alert(t('net'));
+				}
+				btn.disabled = false; lbl.textContent = t('login');
+			});
+
+			var modal = document.getElementById('recovery-modal');
+			function toggleRecovery(show) { modal.classList.toggle('show', show); if (show) setTimeout(function () { document.getElementById('api-token').focus(); }, 50); }
+			window.toggleRecovery = toggleRecovery;
+			document.getElementById('forgot').addEventListener('click', function () { toggleRecovery(true); });
+			document.getElementById('rec-cancel').addEventListener('click', function () { toggleRecovery(false); });
+			modal.addEventListener('click', function (e) { if (e.target === modal) toggleRecovery(false); });
+			document.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggleRecovery(false); });
+			document.getElementById('form-rec').addEventListener('submit', async function (e) {
+				e.preventDefault();
+				var btn = document.getElementById('recover-btn');
+				btn.disabled = true; btn.textContent = t('checking');
+				try {
+					var res = await fetch('/api/recover', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ api_token: document.getElementById('api-token').value.trim() }) });
+					var data = {}; try { data = await res.json(); } catch (x) {}
+					if (res.ok && data.success) {
+						alert(t('recOk'));
+						setTimeout(function () { window.location.reload(); }, 1500);
+					} else {
+						alert('❌ ' + (data.error || t('recErr')));
+					}
+				} catch (err) { alert(t('net')); }
+				btn.disabled = false; btn.textContent = t('recBtn');
+			});
+
+			var savedUser = localStorage.getItem('alpha-user');
+			if (savedUser) userEl.value = savedUser;
+			applyHue(localStorage.getItem('alpha-hue') || 265);
+			applyMode(root.classList.contains('dark') ? 'dark' : 'light');
+			applyLang(lang);
+			if (savedUser) goStep(2); else userEl.focus();
+
+			var cv = document.getElementById('stars'), ctx = cv.getContext('2d'), stars = [];
+			function size() { cv.width = innerWidth; cv.height = innerHeight; stars = []; var n = Math.min(220, Math.floor(innerWidth * innerHeight / 7000)); for (var i = 0; i < n; i++) stars.push({ x: Math.random() * cv.width, y: Math.random() * cv.height, r: Math.random() * 1.4 + .2, p: Math.random() * 6.28, s: Math.random() * .02 + .005 }); }
+			function draw() {
+				ctx.clearRect(0, 0, cv.width, cv.height);
+				for (var i = 0; i < stars.length; i++) { var s = stars[i]; s.p += s.s; ctx.globalAlpha = .35 + Math.sin(s.p) * .35 + .3; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill(); }
+				if (!root.classList.contains('gfx-off') && !document.hidden) requestAnimationFrame(draw);
+			}
+			size(); draw();
+			addEventListener('resize', function () { size(); if (root.classList.contains('gfx-off')) draw(); });
+			document.addEventListener('visibilitychange', function () { if (!document.hidden && !root.classList.contains('gfx-off')) draw(); });
+		})();
 	</script>
-	${COMMON_WAVES_SCRIPT}
 </body>
 </html>`,
 	panel: `
