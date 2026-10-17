@@ -1,0 +1,14 @@
+{
+  "name": "alpha-cloudflare-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check Source.js",
+    "dev": "wrangler dev",
+    "deploy:dry": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.102.0"
+  }
+}
