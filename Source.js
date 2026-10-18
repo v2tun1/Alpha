@@ -7293,7 +7293,7 @@ ${COMMON_TOAST_HTML}
 		}
 		async function createDirectUser(btn) {
 			if (window.isQuickCreateLocked) {
-				showToast('⏳ لطفاً ۵ ثانیه صبر کنید...', 'error');
+				showToast('⏳ ساخت کاربر قبلی هنوز تمام نشده؛ کمی صبر کنید...', 'error');
 				return;
 			}
 			window.isQuickCreateLocked = true;
@@ -7357,7 +7357,7 @@ ${COMMON_TOAST_HTML}
 		}
 		async function quickCreateUser(btn) {
 			if (window.isQuickCreateLocked) {
-				showToast('⏳ لطفاً ۵ ثانیه صبر کنید...', 'error');
+				showToast('⏳ ساخت کاربر قبلی هنوز تمام نشده؛ کمی صبر کنید...', 'error');
 				return;
 			}
 			window.isQuickCreateLocked = true;
@@ -7859,21 +7859,13 @@ async function executeRocketCreate() {
 						cache = { gb: u.used_gb, req: u.used_req, onlineHistory: [] };
 					}
 					
-					if (u.used_gb < cache.gb && (cache.gb - u.used_gb) < 2.0) {
-						u.used_gb = cache.gb;
-					} else {
-						cache.gb = u.used_gb;
-					}
-					
-					if (u.used_req < cache.req && (cache.req - u.used_req) < 20000) {
-						u.used_req = cache.req;
-					} else {
-						cache.req = u.used_req;
-					}
-					
+					/* Dashboard data must mirror the API response exactly.
+					   Do not keep stale "smoothed" values after usage/reset changes. */
+					cache.gb = u.used_gb;
+					cache.req = u.used_req;
 					cache.onlineHistory = cache.onlineHistory.filter(h => nowMs - h.time <= 10000);
 					cache.onlineHistory.push({ time: nowMs, count: u.online_count || 0 });
-					u.online_count = Math.max(...cache.onlineHistory.map(h => h.count));
+					u.online_count = u.online_count || 0;
 					
 					window.smoothCache[u.username] = cache;
 				});
@@ -7894,8 +7886,8 @@ async function executeRocketCreate() {
 				const d1ReadsEl = document.getElementById('stat-d1-reads');
 				if (d1ReadsEl) d1ReadsEl.innerText = d1Reads >= 1000000 ? (d1Reads / 1000000).toFixed(2) + 'M' : (d1Reads >= 1000 ? (d1Reads / 1000).toFixed(1) + 'k' : d1Reads);
 				const rawCfRequests = data.cfRequestsToday || 0;
-				window.maxCfRequestsToday = Math.max(window.maxCfRequestsToday || 0, rawCfRequests);
-				const cfRequests = window.maxCfRequestsToday;
+				window.maxCfRequestsToday = rawCfRequests;
+				const cfRequests = rawCfRequests;
 				
 				const reqCard = document.getElementById('card-cf-requests');
 				const warningBtn = document.getElementById('cf-warning-btn');
@@ -7919,8 +7911,8 @@ async function executeRocketCreate() {
 					}
 				}
 				const rawCfTotal = data.cfRequestsTotal || 0;
-				window.maxCfTotal = Math.max(window.maxCfTotal || 0, rawCfTotal);
-				const cfTotal = window.maxCfTotal;
+				window.maxCfTotal = rawCfTotal;
+				const cfTotal = rawCfTotal;
 				
 				document.getElementById('stat-cf-requests').innerText = cfRequests >= 1000 ? (cfRequests / 1000).toFixed(1) + 'k' : cfRequests;
 				document.getElementById('stat-cf-total').innerText = cfTotal >= 1000000 ? (cfTotal / 1000000).toFixed(2) + 'M' : (cfTotal >= 1000 ? (cfTotal / 1000).toFixed(1) + 'k' : cfTotal);
@@ -11307,18 +11299,42 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		.al-bar b { display: block; height: 100%; width: 0; border-radius: 9px; background: linear-gradient(90deg, var(--a3), var(--a1)); transition: width .6s; }
 		body { padding-right: 278px !important; }
 		body > main { max-width: 1360px !important; padding: 22px 18px 40px !important; }
-		/* compact rail on narrow screens, still fixed & always visible */
+		/* ---------- collapse / expand ---------- */
+		html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+		#alpha-side { transition: transform .32s cubic-bezier(.4,0,.2,1); }
+		#alpha-side .al-logo .al-tg { width: 30px; height: 30px; border-radius: 10px; border: 1px solid var(--edge); background: rgba(140,150,255,.08); color: inherit; display: grid; place-items: center; cursor: pointer; flex: none; }
+		#alpha-side .al-logo .al-tg svg { width: 16px; height: 16px; }
+		#alpha-side .al-logo .al-home { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+		#al-fab { position: fixed; top: 12px; right: 12px; z-index: 60; height: 46px; padding: 0 14px 0 12px; border-radius: 15px; display: none; align-items: center; gap: 8px; cursor: pointer; border: 1px solid var(--edge); font: inherit; font-weight: 900; letter-spacing: 2px; font-size: 15px; color: inherit; }
+		#al-fab b { background: linear-gradient(90deg, var(--a3), var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+		#al-fab svg.ar { width: 15px; height: 15px; opacity: .7; }
+		body.al-closed #alpha-side { transform: translateX(calc(100% + 30px)); }
+		body.al-closed #al-fab { display: inline-flex; }
+		body.al-closed { padding-right: 0 !important; }
+		body.al-closed > main { padding-top: 72px !important; }
+		body { transition: padding-right .32s; }
+		/* phone rail: fixed, narrow, visible like the reference */
 		@media (max-width: 1023px) {
-			#alpha-side { top: 8px; bottom: 8px; right: 8px; width: 62px; padding: 12px 7px; border-radius: 18px; align-items: center; }
-			#alpha-side .al-logo { padding: 0 0 10px; justify-content: center; }
-			#alpha-side .al-logo b, #alpha-side .al-ver, .al-prof .t, .al-quota, .al-nav span, .al-nav .al-badge { display: none !important; }
-			.al-prof { padding: 0; border: 0; background: none; justify-content: center; margin-bottom: 2px; }
-			.al-av { width: 36px; height: 36px; }
-			.al-sec { font-size: 0; padding: 0; height: 1px; width: 60%; margin: 7px auto; background: var(--edge); opacity: 1; }
-			.al-nav { justify-content: center; padding: 11px 0; width: 46px; border-radius: 13px; }
+			#alpha-side { top: 8px; bottom: 8px; right: 8px; width: 82px; z-index: 95; padding: 14px 8px; border-radius: 20px; align-items: center; transform: none !important; }
+			#alpha-side .al-logo { padding: 0 0 12px; justify-content: center; }
+			#alpha-side .al-logo .al-home { display: flex; }
+			#alpha-side .al-logo .al-home b { display: none; }
+			#alpha-side .al-logo .al-home svg { width: 38px; height: 38px; }
+			#alpha-side .al-logo .al-ver, #alpha-side .al-logo .al-tg { display: none !important; }
+			.al-prof { width: 54px; height: 54px; padding: 0; border: 0; background: linear-gradient(135deg, var(--a3), var(--a1)); justify-content: center; margin: 0 0 8px; border-radius: 16px; }
+			.al-av { width: 42px; height: 42px; background: rgba(255,255,255,.2); border-radius: 13px; }
+			.al-prof .t { display: none !important; }
+			.al-sec { font-size: 0; padding: 0; height: 1px; width: 58%; margin: 9px auto; background: var(--edge); opacity: 1; }
+			.al-nav { justify-content: center; padding: 12px 0; width: 56px; border-radius: 15px; }
+			.al-nav span, .al-nav .al-badge { display: none !important; }
+			.al-nav svg { width: 24px; height: 24px; }
 			.al-nav.on { box-shadow: 0 0 0 1px var(--a3), 0 0 16px var(--glow); background: hsla(var(--h),95%,55%,.28); }
-			body { padding-right: 76px !important; }
-			body > main { padding-left: 10px !important; padding-right: 10px !important; }
+			.al-quota { display: none !important; }
+			body { padding-right: 98px !important; }
+			body > main { padding-left: 10px !important; padding-right: 10px !important; padding-top: 22px !important; }
+			#al-fab, #al-side-mask { display: none !important; }
+			body.al-closed { padding-right: 0 !important; }
+			body.al-closed > main { padding-top: 72px !important; }
 		}
 		/* views */
 		body.al-v-dash > main > *:not(#alpha-dash):not(script) { display: none !important; }
@@ -11465,7 +11481,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var side = document.createElement('aside');
 		side.id = 'alpha-side'; side.className = 'al-glass';
 		side.innerHTML =
-			'<div class="al-logo"><div style="display:flex;align-items:center;gap:10px"><svg width="32" height="32" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span></div>' +
+			'<div class="al-logo"><div class="al-home" data-a="toggle" title="جمع کردن منو"><svg width="32" height="32" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span><button type="button" class="al-tg" data-a="toggle" title="جمع کردن منو"><svg fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>' +
 			'<div class="al-prof" title="ادمین"><div class="al-av">A</div><div class="t"><b>ادمین</b><span><i class="al-live"></i>مدیر کل پنل</span></div></div>' +
 			'<div class="al-sec">اصلی</div>' + nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران', '', 'al-nb-users') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
@@ -11474,8 +11490,18 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			'<div class="al-sec">حساب</div>' + nav('logout', 'out', 'خروج', 'danger') +
 			'<div class="al-quota"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>سهمیه روزانه</span><span id="al-q-pct" dir="ltr">0%</span></div><div class="al-bar"><b id="al-q-bar"></b></div><div class="al-mu" id="al-q-txt">۰ از ۱۰۰k · ریست ۳:۳۰ بامداد</div></div>';
 		document.body.appendChild(side);
+		var fab = document.createElement('button'); fab.type = 'button'; fab.id = 'al-fab'; fab.className = 'al-glass'; fab.title = 'باز کردن منو';
+		fab.innerHTML = '<svg class="ar" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><b>ALPHA</b><svg width="24" height="24" viewBox="0 0 100 100"><defs><linearGradient id="alF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alF)"/></svg>';
+		document.body.appendChild(fab);
+		var smask = document.createElement('div'); smask.id = 'al-side-mask'; document.body.appendChild(smask);
+		var SIDE_KEY = 'alpha-side-closed';
+		function setSide(closed) { document.body.classList.toggle('al-closed', closed); try { localStorage.setItem(SIDE_KEY, closed ? '1' : '0'); } catch (e) {} }
+		A.toggle = function () { setSide(!document.body.classList.contains('al-closed')); };
+		fab.addEventListener('click', function () { setSide(false); });
+		smask.addEventListener('click', function () { setSide(true); });
+		(function () { var v = null; try { v = localStorage.getItem(SIDE_KEY); } catch (e) {} setSide(v === '1'); })();
 		function setActive(k) { side.querySelectorAll('.al-nav').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-a') === k); }); }
-		side.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
+		side.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (!b) return; var k = b.getAttribute('data-a'); if (A[k]) A[k](e); if (window.innerWidth < 1024 && ['toggle', 'theme', 'color', 'logout'].indexOf(k) < 0) setSide(true); });
 		var ver = $('panel-version');
 		function syncVer() { var v = $('al-ver'); if (v && ver) v.textContent = ver.textContent.trim(); }
 		syncVer(); if (ver) new MutationObserver(syncVer).observe(ver, { childList: true, characterData: true, subtree: true });
@@ -11546,14 +11572,14 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var LABEL = { online: 'آنلاین', idle: 'فعال (آفلاین)', expired: 'منقضی', disabled: 'غیرفعال' };
 		var FILTER = { online: 'online', idle: 'active', expired: 'expired', disabled: 'inactive' };
 		var AVC = ['#6366f1', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
-		function stateOf(u, now) { if (u.is_active !== 1) return 'disabled'; if (isExpired(u, now)) return 'expired'; return u.is_online === 1 ? 'online' : 'idle'; }
+			function stateOf(u, now) { if (u.is_active !== 1) return 'disabled'; if (isExpired(u, now)) return 'expired'; return Number(u.online_count || 0) > 0 ? 'online' : 'idle'; }
 		var last = '';
 		function render() {
 			var users = window.allUsers || [];
 			var now = window.lastServerTime || Date.now();
 			var c = { online: 0, idle: 0, expired: 0, disabled: 0 }, n = { all: users.length, active: 0, online: 0, offline: 0, expired: 0, inactive: 0 };
 			users.forEach(function (u) {
-				var on = u.is_online === 1, act = u.is_active === 1, ex = isExpired(u, now);
+					var on = Number(u.online_count || 0) > 0, act = u.is_active === 1, ex = isExpired(u, now);
 				if (on) n.online++; else n.offline++;
 				if (!act) n.inactive++;
 				if (act && !ex) n.active++;
