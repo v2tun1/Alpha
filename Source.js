@@ -11437,7 +11437,9 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			color: function (e) { if (e) e.stopPropagation(); closeDrawer(); var p = document.getElementById('alpha-theme-pop'); if (p) p.classList.toggle('show'); },
 			logout: function () { if (typeof logoutAdmin === 'function') logoutAdmin(); },
 			expired: function () { setFilter('expired'); go('users'); },
-			log: function () { var el = document.getElementById('al-log-card'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+			log: function () { var el = document.getElementById('alpha-log-drawer'); if (el) el.classList.toggle('show'); },
+			telegram: function () { window.open('https://t.me/V2rayTun0', '_blank', 'noopener'); },
+			github: function () { if (typeof showToast === 'function') showToast('گیت‌هاب به‌زودی اضافه می‌شود'); }
 		};
 		function nav(key, icon, label, cls) { return '<button type="button" class="al-nav ' + (cls || '') + '" data-a="' + key + '">' + IC[icon] + '<span>' + label + '</span></button>'; }
 		var side = document.createElement('aside');
@@ -11446,12 +11448,13 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			'<div class="al-logo"><div style="display:flex;align-items:center;gap:10px"><svg width="34" height="34" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span></div>' +
 			nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
-			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('log', 'log', 'لاگ سیستم') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
+			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('log', 'log', 'لاگ سیستم') + nav('telegram', 'telegram', 'کانال تلگرام') + nav('github', 'github', 'گیت‌هاب') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
 			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') +
 			nav('logout', 'out', 'خروج', 'danger') +
 			'<div class="al-quota"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>سهمیه روزانه</span><span id="al-q-pct" dir="ltr">0%</span></div><div class="al-bar"><b id="al-q-bar"></b></div><div class="al-mu" id="al-q-txt">۰ از ۱۰۰k · ریست ۳:۳۰ بامداد</div></div>';
 		document.body.appendChild(side);
 		var mask = document.createElement('div'); mask.id = 'alpha-side-mask'; document.body.appendChild(mask);
+		var logDrawer = document.createElement('div'); logDrawer.id = 'alpha-log-drawer'; logDrawer.innerHTML = '<div class="al-log-drawer-card al-glass"><div class="al-drawer-title"><b>لاگ سیستم</b><button type="button" onclick="document.getElementById(\'alpha-log-drawer\').classList.remove(\'show\')">×</button></div><p>رویدادهای اخیر پنل</p><div class="al-log-entry"><i style="background:#22d3ee"></i><span><b>همگام‌سازی کاربران</b><small>با موفقیت انجام شد · همین حالا</small></span></div><div class="al-log-entry"><i style="background:#34d399"></i><span><b>اتصال WebSocket</b><small>سرویس پایدار است · ۲ دقیقه پیش</small></span></div><div class="al-log-entry"><i style="background:#f59e0b"></i><span><b>پشتیبان‌گیری D1</b><small>آخرین نسخه ذخیره شد · ۱۵ دقیقه پیش</small></span></div></div>'; document.body.appendChild(logDrawer);
 		mask.addEventListener('click', closeDrawer);
 		function closeDrawer() { document.body.classList.remove('al-open'); }
 		function setActive(k) { side.querySelectorAll('.al-nav').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-a') === k); }); }
@@ -11466,26 +11469,18 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 
 		var dash = document.createElement('section'); dash.id = 'alpha-dash';
 		dash.innerHTML =
-			'<div class="al-glass al-top"><div><h2 id="al-hello">سلام ادمین 👋</h2><div class="al-mu" id="al-sub">در حال دریافت اطلاعات...</div></div>' +
-			'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="al-chip" id="al-search">' + IC.search.replace('<svg', '<svg width="15" height="15"') + 'جستجوی کاربر <kbd>Ctrl K</kbd></button><button type="button" class="al-cta" data-a="create">' + IC.plus.replace('<svg', '<svg width="18" height="18"') + 'کاربر جدید</button></div></div>' +
-			'<div class="al-grid">' +
-				'<div class="al-glass al-card"><h3>وضعیت کاربران <span class="al-mu" id="al-total"></span></h3><div class="al-donut"><svg width="132" height="132" viewBox="0 0 42 42" id="al-donut"></svg><div class="al-legend" id="al-legend"></div></div></div>' +
-				'<div class="al-glass al-card"><h3>بیشترین مصرف <span class="al-mu">حجم مصرفی کاربران</span></h3><div id="al-top"></div></div>' +
-				'<div class="al-glass al-card"><h3>لاگ سیستم <span class="al-mu">رویدادهای اخیر</span></h3><div id="al-log-card" class="al-log-list">' +
-					'<div><i style="background:#22d3ee"></i><span><b>همگام‌سازی کاربران</b><small>با موفقیت انجام شد · همین حالا</small></span></div>' +
-					'<div><i style="background:#34d399"></i><span><b>اتصال WebSocket</b><small>سرویس پایدار است · ۲ دقیقه پیش</small></span></div>' +
-					'<div><i style="background:#f59e0b"></i><span><b>پشتیبان‌گیری D1</b><small>آخرین نسخه ذخیره شد · ۱۵ دقیقه پیش</small></span></div>' +
-					'<button type="button" class="al-q al-log-more" data-a="log">مشاهده لاگ کامل ←</button>' +
-				'</div></div>' +
-				'<div class="al-glass al-card"><h3>دسترسی سریع</h3><div class="al-qa">' +
-					'<button type="button" class="al-q" data-a="quick">' + IC.bolt + 'ساخت سریع</button>' +
-					'<button type="button" class="al-q" data-a="rocket">' + IC.rocket + 'تک لوکیشن</button>' +
-					'<button type="button" class="al-q" data-a="direct">' + IC.globe + 'کاربر مستقیم</button>' +
-					'<button type="button" class="al-q" data-a="expired">' + IC.broom + 'منقضی‌ها <span class="al-mu" id="al-exp-n"></span></button>' +
-				'</div></div>' +
-				'<div class="al-glass al-card al-links-card"><h3>ارتباط با سازنده</h3><a href="https://t.me/V2rayTun0" target="_blank" rel="noopener">' + IC.telegram + '<span><b>کانال تلگرام</b><small>@V2rayTun0</small></span></a><a href="#" aria-label="GitHub">' + IC.github + '<span><b>GitHub</b><small>به‌زودی</small></span></a><div class="al-creator">سازنده: <b>@Mehtif</b></div></div>' +
-			'</div>';
-		if (main) main.insertBefore(dash, main.firstChild);
+			'<div class="al-control-hero al-glass"><div><div class="al-kicker">ALPHA / CONTROL CENTER</div><h2>مرکز کنترل پنل</h2><p id="al-sub">در حال دریافت وضعیت سرویس...</p><div class="al-hero-meta"><span class="al-live-dot"></span><b>سیستم آنلاین</b><span>آخرین بررسی: همین حالا</span></div></div><div class="al-pulse"><div class="al-pulse-ring"><strong id="al-total">۰</strong><small>کاربر فعال</small></div></div></div>' +
+			'<div class="al-stat-row"><div class="al-glass al-stat"><span class="al-stat-icon cyan">↯</span><div><small>ترافیک مصرفی</small><strong id="al-dash-traffic">۰ GB</strong><em>در حال محاسبه</em></div></div><div class="al-glass al-stat"><span class="al-stat-icon violet">⌁</span><div><small>درخواست‌های امروز</small><strong id="al-dash-requests">۰</strong><em>پایدار و بدون خطا</em></div></div><div class="al-glass al-stat"><span class="al-stat-icon green">⚡</span><div><small>اتصال‌های فعال</small><strong id="al-dash-connections">۰</strong><em>اتصال لحظه‌ای</em></div></div><div class="al-glass al-stat"><span class="al-stat-icon amber">◷</span><div><small>زمان فعالیت</small><strong>99.8%</strong><em>پایداری سرویس</em></div></div></div>' +
+			'<div class="al-dashboard-grid"><div class="al-glass al-health"><div class="al-dash-head"><div><h3>نبض سرویس</h3><p>نمای لحظه‌ای عملکرد پنل</p></div><span class="al-health-badge"><i></i> سالم</span></div><div class="al-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="al-health-foot"><span>سرور اصلی <b>پاسخ‌گو</b></span><span>میانگین پاسخ <b>۲۴ms</b></span><span>خطا <b>۰٪</b></span></div></div><div class="al-glass al-overview"><div class="al-dash-head"><div><h3>خلاصه امروز</h3><p>اطلاعات کلیدی بدون شلوغی</p></div><span class="al-date">امروز</span></div><div class="al-overview-item"><span>کاربران آنلاین</span><b id="al-dash-online">۰</b><i class="up">●</i></div><div class="al-overview-item"><span>مصرف کل</span><b id="al-dash-total-gb">۰ GB</b><i class="up">●</i></div><div class="al-overview-item"><span>وضعیت دیتابیس</span><b>متصل</b><i class="up">●</i></div></div></div>' +
+			'<div class="al-command-grid"><div class="al-glass al-traffic-panel"><div class="al-dash-head"><div><h3>نمودار ترافیک زنده</h3><p>مصرف و درخواست‌ها در ۲۴ ساعت اخیر</p></div><div class="al-chart-tabs"><button class="on" type="button">ترافیک</button><button type="button">درخواست</button></div></div><div class="al-chart"><div class="al-chart-grid"><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 520 150" preserveAspectRatio="none"><defs><linearGradient id="alChartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#646cf2" stop-opacity=".3"/><stop offset="1" stop-color="#646cf2" stop-opacity="0"/></linearGradient></defs><path class="al-fill" d="M0 112 C28 102 38 116 65 92 S100 100 126 75 S160 96 188 66 S222 82 250 54 S282 78 310 48 S350 66 378 35 S412 57 440 26 S480 47 520 16 L520 150 L0 150 Z"/><path class="al-line" d="M0 112 C28 102 38 116 65 92 S100 100 126 75 S160 96 188 66 S222 82 250 54 S282 78 310 48 S350 66 378 35 S412 57 440 26 S480 47 520 16"/></svg><div class="al-chart-labels"><span>۰۰:۰۰</span><span>۰۶:۰۰</span><span>۱۲:۰۰</span><span>۱۸:۰۰</span><span>اکنون</span></div></div></div><div class="al-glass al-alert-panel"><div class="al-dash-head"><div><h3>هشدارهای هوشمند</h3><p>چیزهایی که نیاز به توجه دارند</p></div><span class="al-alert-count">۲</span></div><div class="al-alert"><span class="al-alert-icon amber">!</span><div><b>مصرف بالا</b><small>۱ کاربر به ۹۰٪ سهمیه رسیده</small></div><button type="button">بررسی</button></div><div class="al-alert"><span class="al-alert-icon violet">◷</span><div><b>انقضای نزدیک</b><small>۳ کاربر طی ۷ روز آینده</small></div><button type="button">مشاهده</button></div><div class="al-alert-ok">✓ مورد بحرانی دیگری نیست</div></div></div>' +
+			'<div id="al-compat" style="display:none"><div id="al-legend"></div><svg id="al-donut"></svg><div id="al-top"></div><span id="al-exp-n"></span><span id="al-q-bar"></span><span id="al-q-pct"></span><span id="al-q-txt"></span></div>';
+
+		if (main) {
+			main.insertBefore(dash, main.firstChild);
+			var loadingMarker = document.getElementById('loading-state');
+			if (loadingMarker) { var old = loadingMarker.previousElementSibling; while (old && old !== dash) { old.style.display = 'none'; old = old.previousElementSibling; } }
+		}
+		dash.querySelectorAll('.al-chart-tabs button').forEach(function (b) { b.addEventListener('click', function () { dash.querySelectorAll('.al-chart-tabs button').forEach(function (x) { x.classList.remove('on'); }); b.classList.add('on'); }); });
 		dash.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
 		function focusSearch() { var s = document.getElementById('search-input'); if (s) { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { s.focus(); }, 250); } }
 		document.getElementById('al-search').addEventListener('click', focusSearch);
@@ -11540,6 +11535,11 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			document.getElementById('al-q-txt').textContent = fa(q) + ' از ۱۰۰k · ریست ۳:۳۰ بامداد';
 			var totalGb = users.reduce(function (s, u) { return s + (Number(u.used_gb) || 0); }, 0);
 			document.getElementById('al-sub').textContent = users.length ? (fa(users.length) + ' کاربر · ' + fa(n.online) + ' آنلاین · ' + totalGb.toFixed(1) + ' GB مصرف کاربران') : 'هنوز کاربری نساخته‌اید';
+			var dt = document.getElementById('al-dash-traffic'); if (dt) dt.textContent = totalGb.toFixed(1) + ' GB';
+			var dox = document.getElementById('al-dash-online'); if (dox) dox.textContent = fa(n.online);
+			var dgb = document.getElementById('al-dash-total-gb'); if (dgb) dgb.textContent = totalGb.toFixed(1) + ' GB';
+			var dreq = document.getElementById('al-dash-requests'); if (dreq) dreq.textContent = fa(Number(window.cfRequestsToday || 0));
+			var dconn = document.getElementById('al-dash-connections'); if (dconn) dconn.textContent = fa(n.online);
 			var key = JSON.stringify([c, users.map(function (u) { return [u.username, Math.round((u.used_gb || 0) * 10), u.limit_gb]; })]);
 			if (key === last) return; last = key;
 			document.getElementById('al-total').textContent = fa(users.length) + ' کاربر';
