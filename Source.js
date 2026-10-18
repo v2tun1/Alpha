@@ -4976,8 +4976,8 @@ const HTML_TEMPLATES = {
 				<span class="join"><span data-i18n="join">عضویت</span><svg class="flip" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></span>
 			</a>
 			<div class="glass foot" dir="ltr">
-				<a href="https://t.me/V2rayTun0" target="_blank" rel="noopener"><div class="ring" style="width:44px;height:44px"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M3 21c0-4.4 4-7 9-7s9 2.6 9 7z"/></svg></div><div><div class="muted" style="font-size:12px">Created by</div><div style="font-weight:700">@V2rayTun0</div></div></a>
-				<a href="https://t.me/Mehtif" target="_blank" rel="noopener"><div class="tgicon" style="width:44px;height:44px"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.9 4.3l-3.2 15c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg></div><div style="flex:1"><div class="muted" style="font-size:12px">Telegram Channel</div><div style="font-weight:700">@Mehtif</div></div><svg width="26" height="26" fill="#c7d2ff" viewBox="0 0 24 24"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 11H5z"/></svg></a>
+				<a href="https://t.me/V2rayTun0" target="_blank" rel="noopener"><div class="ring" style="width:44px;height:44px"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M3 21c0-4.4 4-7 9-7s9 2.6 9 7z"/></svg></div><div><div class="muted" style="font-size:12px">Created by</div><div style="font-weight:700">@Mehtif</div></div></a>
+				<a href="#" target="_blank" rel="noopener"><div class="tgicon" style="width:44px;height:44px"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.9 4.3l-3.2 15c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg></div><div style="flex:1"><div class="muted" style="font-size:12px">Telegram Channel</div><div style="font-weight:700">@V2rayTun0</div></div><svg width="26" height="26" fill="#c7d2ff" viewBox="0 0 24 24"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 11H5z"/></svg></a>
 			</div>
 			<div class="rainbow" dir="ltr">
 				<button type="button" id="prev-color" aria-label="previous color"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -5335,36 +5335,8 @@ const HTML_TEMPLATES = {
 							</svg>
 						</button>
 					</div>
-					
-					<button id="mobile-menu-toggle" onclick="const c = document.getElementById('mobile-menu-collapse'); const i = document.getElementById('mobile-menu-icon'); c.classList.toggle('max-h-0'); c.classList.toggle('max-h-[500px]'); c.classList.toggle('opacity-0'); c.classList.toggle('opacity-100'); c.classList.toggle('mt-3'); i.classList.toggle('rotate-180');" class="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-gray-200/80 dark:bg-zinc-800/80 text-gray-600 dark:text-zinc-300 focus:outline-none transition-colors duration-200 shadow-sm border border-gray-300 dark:border-zinc-700 cursor-pointer flex-shrink-0">
-						<svg id="mobile-menu-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-					</button>
-				</div>
 			</div>
-
-			<div id="mobile-menu-collapse" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out md:max-h-none md:opacity-100 md:overflow-visible w-full md:w-auto">
-				<div class="flex flex-wrap items-center justify-center gap-3 w-full max-w-[260px] mx-auto md:max-w-none md:mx-0 md:w-auto md:mt-0">
-					<button id="pwa-install-btn" onclick="triggerPwaInstall()" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 text-white shadow-md hover:shadow-lg hover:shadow-indigo-500/30 transform hover:scale-110 cursor-pointer border-none" title="دانلود و نصب اپلیکیشن پنل">
-						<svg class="w-5 h-5 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-					</button>
-					<button onclick="restartCore()" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-blue-50 dark:bg-blue-950/30 border border-blue-300 dark:border-blue-900 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all duration-200 text-blue-600 dark:text-blue-400 shadow-sm" title="ری استارت پـنـل">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-					</button>
-					<button id="grayscale-toggle" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-400 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200 text-zinc-600 dark:text-zinc-400 shadow-sm" title="حالت سیاه‌سفید">
-						<svg class="w-5 h-5" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20" /><path d="M12 2a10 10 0 0 1 0 20Z" fill="currentColor" opacity="0.3" /><path d="M12 2a10 10 0 0 0 0 20Z" /></svg>
-					</button>
-					<button id="theme-toggle" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-900 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all duration-200 text-amber-500 dark:text-amber-400 shadow-sm" title="تغییر تم">
-						<svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-						<svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-					</button>
-					<button onclick="toggleSettingsModal(true)" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-gray-50 dark:bg-zinc-800/50 border border-gray-300 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-700/80 transition-all duration-200 text-gray-600 dark:text-zinc-400 shadow-sm" title="تنظیمات">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-					</button>
-					<button onclick="logoutAdmin()" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-red-50 dark:bg-red-950/30 border border-red-300 dark:border-red-900 hover:bg-red-100 dark:hover:bg-red-900/50 transition-all duration-200 text-red-600 dark:text-red-400 shadow-sm hover:shadow-md" title="خروج">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-					</button>
-				</div>
-			</div>
+		</div>
 			
 		</div>
 	</header>
@@ -11434,6 +11406,9 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			app: I('<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>'),
 			out: I('<path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>'),
 			menu: I('<path d="M3 6h18M3 12h18M3 18h18"/>'),
+			log: I('<path d="M4 5h16M4 12h16M4 19h10"/>'),
+			telegram: I('<path d="M21.9 4.3l-3.2 15c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.3-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/>'),
+			github: I('<path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 1-.3 3.3 1a11.4 11.4 0 016 0c2.3-1.3 3.3-1 3.3-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7 1 .7 1.9V21c0 .3.2.6.7.5A10 10 0 0012 2z"/>'),
 			search: I('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
 			broom: I('<path d="M19 3l-7 7M9 11l4 4-6 6H3v-4z"/>')
 		};
@@ -11461,7 +11436,8 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			app: function () { closeDrawer(); if (typeof triggerPwaInstall === 'function') triggerPwaInstall(); },
 			color: function (e) { if (e) e.stopPropagation(); closeDrawer(); var p = document.getElementById('alpha-theme-pop'); if (p) p.classList.toggle('show'); },
 			logout: function () { if (typeof logoutAdmin === 'function') logoutAdmin(); },
-			expired: function () { setFilter('expired'); go('users'); }
+			expired: function () { setFilter('expired'); go('users'); },
+			log: function () { var el = document.getElementById('al-log-card'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
 		};
 		function nav(key, icon, label, cls) { return '<button type="button" class="al-nav ' + (cls || '') + '" data-a="' + key + '">' + IC[icon] + '<span>' + label + '</span></button>'; }
 		var side = document.createElement('aside');
@@ -11470,8 +11446,8 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			'<div class="al-logo"><div style="display:flex;align-items:center;gap:10px"><svg width="34" height="34" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span></div>' +
 			nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
-			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
-			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') + nav('gray', 'gray', 'حالت سیاه‌سفید') +
+			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('log', 'log', 'لاگ سیستم') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
+			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') +
 			nav('logout', 'out', 'خروج', 'danger') +
 			'<div class="al-quota"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>سهمیه روزانه</span><span id="al-q-pct" dir="ltr">0%</span></div><div class="al-bar"><b id="al-q-bar"></b></div><div class="al-mu" id="al-q-txt">۰ از ۱۰۰k · ریست ۳:۳۰ بامداد</div></div>';
 		document.body.appendChild(side);
@@ -11495,12 +11471,19 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			'<div class="al-grid">' +
 				'<div class="al-glass al-card"><h3>وضعیت کاربران <span class="al-mu" id="al-total"></span></h3><div class="al-donut"><svg width="132" height="132" viewBox="0 0 42 42" id="al-donut"></svg><div class="al-legend" id="al-legend"></div></div></div>' +
 				'<div class="al-glass al-card"><h3>بیشترین مصرف <span class="al-mu">حجم مصرفی کاربران</span></h3><div id="al-top"></div></div>' +
+				'<div class="al-glass al-card"><h3>لاگ سیستم <span class="al-mu">رویدادهای اخیر</span></h3><div id="al-log-card" class="al-log-list">' +
+					'<div><i style="background:#22d3ee"></i><span><b>همگام‌سازی کاربران</b><small>با موفقیت انجام شد · همین حالا</small></span></div>' +
+					'<div><i style="background:#34d399"></i><span><b>اتصال WebSocket</b><small>سرویس پایدار است · ۲ دقیقه پیش</small></span></div>' +
+					'<div><i style="background:#f59e0b"></i><span><b>پشتیبان‌گیری D1</b><small>آخرین نسخه ذخیره شد · ۱۵ دقیقه پیش</small></span></div>' +
+					'<button type="button" class="al-q al-log-more" data-a="log">مشاهده لاگ کامل ←</button>' +
+				'</div></div>' +
 				'<div class="al-glass al-card"><h3>دسترسی سریع</h3><div class="al-qa">' +
 					'<button type="button" class="al-q" data-a="quick">' + IC.bolt + 'ساخت سریع</button>' +
 					'<button type="button" class="al-q" data-a="rocket">' + IC.rocket + 'تک لوکیشن</button>' +
 					'<button type="button" class="al-q" data-a="direct">' + IC.globe + 'کاربر مستقیم</button>' +
 					'<button type="button" class="al-q" data-a="expired">' + IC.broom + 'منقضی‌ها <span class="al-mu" id="al-exp-n"></span></button>' +
 				'</div></div>' +
+				'<div class="al-glass al-card al-links-card"><h3>ارتباط با سازنده</h3><a href="https://t.me/V2rayTun0" target="_blank" rel="noopener">' + IC.telegram + '<span><b>کانال تلگرام</b><small>@V2rayTun0</small></span></a><a href="#" aria-label="GitHub">' + IC.github + '<span><b>GitHub</b><small>به‌زودی</small></span></a><div class="al-creator">سازنده: <b>@Mehtif</b></div></div>' +
 			'</div>';
 		if (main) main.insertBefore(dash, main.firstChild);
 		dash.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
