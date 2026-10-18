@@ -11277,7 +11277,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		#al-old-stats, #alpha-theme-btn { display: none !important; }
 		#alpha-theme-pop { left: 18px !important; bottom: 18px !important; z-index: 120 !important; }
 		/* ---------- sidebar (same on phone & desktop, always visible) ---------- */
-		#alpha-side { position: fixed; top: 14px; bottom: 14px; right: 14px; width: 250px; z-index: 50; padding: 16px 12px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
+		#alpha-side { position: fixed; top: 14px; bottom: 14px; left: 14px; right: auto; width: 250px; z-index: 50; padding: 16px 12px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
 		#alpha-side::-webkit-scrollbar { display: none; }
 		#alpha-side .al-logo { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 2px 8px 14px; }
 		#alpha-side .al-logo b { font-size: 23px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, var(--a3), var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -11297,7 +11297,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		.al-quota { margin-top: auto; padding: 12px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); }
 		.al-bar { height: 8px; border-radius: 9px; background: rgba(140,150,255,.15); overflow: hidden; margin: 8px 0 6px; }
 		.al-bar b { display: block; height: 100%; width: 0; border-radius: 9px; background: linear-gradient(90deg, var(--a3), var(--a1)); transition: width .6s; }
-		body { padding-right: 278px !important; }
+		body { padding-left: 278px !important; padding-right: 0 !important; }
 		body > main { max-width: 1360px !important; padding: 22px 18px 40px !important; }
 		/* ---------- collapse / expand ---------- */
 		html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -11308,12 +11308,12 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		#al-fab { position: fixed; top: 12px; right: 12px; z-index: 60; height: 46px; padding: 0 14px 0 12px; border-radius: 15px; display: none; align-items: center; gap: 8px; cursor: pointer; border: 1px solid var(--edge); font: inherit; font-weight: 900; letter-spacing: 2px; font-size: 15px; color: inherit; }
 		#al-fab b { background: linear-gradient(90deg, var(--a3), var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 		#al-fab svg.ar { width: 15px; height: 15px; opacity: .7; }
-		#alpha-rail-toggle { position: fixed; top: 50%; right: 266px; transform: translateY(-50%); z-index: 110; width: 32px; height: 58px; padding: 0; border: 0; border-radius: 13px 0 0 13px; display: grid; place-items: center; cursor: pointer; color: #fff; background: linear-gradient(145deg, var(--a1), var(--a3)); box-shadow: -4px 5px 0 rgba(55,35,130,.35), 0 0 18px var(--glow); transition: right .28s ease, transform .2s ease, filter .2s ease; }
+		#alpha-rail-toggle { position: fixed; top: 50%; left: 266px; transform: translateY(-50%); z-index: 110; width: 32px; height: 58px; padding: 0; border: 0; border-radius: 0 13px 13px 0; display: grid; place-items: center; cursor: pointer; color: #fff; background: linear-gradient(145deg, var(--a1), var(--a3)); box-shadow: 4px 5px 0 rgba(55,35,130,.35), 0 0 18px var(--glow); transition: left .28s ease, transform .2s ease, filter .2s ease; }
 		#alpha-rail-toggle:hover { filter: brightness(1.12); transform: translateY(-50%) translateX(-2px); }
 		#alpha-rail-toggle:active { box-shadow: -1px 2px 0 rgba(55,35,130,.35), 0 0 12px var(--glow); transform: translateY(-48%); }
 		#alpha-rail-toggle svg { width: 21px; height: 21px; filter: drop-shadow(1px 2px 0 rgba(30,20,80,.45)); }
-		body.al-closed #alpha-rail-toggle { right: 98px; }
-		@media (max-width: 1023px) { #alpha-rail-toggle { right: 90px; width: 28px; height: 52px; } body.al-closed #alpha-rail-toggle { right: 90px; } }
+		body.al-closed #alpha-rail-toggle { left: 90px; }
+		@media (max-width: 1023px) { #alpha-rail-toggle { left: 82px; width: 28px; height: 52px; } body.al-closed #alpha-rail-toggle { left: 82px; } }
 		body.al-closed #alpha-side { transform: translateX(calc(100% + 30px)); }
 		body.al-closed #al-fab { display: inline-flex; }
 		body.al-closed { padding-right: 0 !important; }
@@ -11419,7 +11419,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		/* Final rail behavior: collapsing the rail must never resize or hide the panel. */
 		#alpha-side { transform: none !important; width: 250px !important; transition: width .28s ease, padding .28s ease; }
 		body { padding-right: 278px !important; transition: padding-right .28s ease; }
-		body.al-closed { padding-right: 110px !important; }
+		body.al-closed { padding-left: 110px !important; padding-right: 0 !important; }
 		body.al-closed #alpha-side { width: 82px !important; padding-left: 8px; padding-right: 8px; align-items: center; }
 		body.al-closed #alpha-side .al-logo { padding-left: 0; padding-right: 0; justify-content: center; }
 		body.al-closed #alpha-side .al-logo .al-home b,
@@ -11434,19 +11434,23 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		body.al-closed > main { max-width: none !important; }
 		@media (max-width: 1023px) {
 			/* phone reference: slim fixed icon rail, never a 250px drawer */
-			#alpha-side { top: 8px; bottom: 8px; right: 8px; width: 82px !important; padding: 14px 8px; transform: none !important; }
+			#alpha-side { top: 8px; bottom: 8px; left: 8px; right: auto; width: 250px !important; padding: 14px 12px; transform: none !important; }
 			#alpha-side .al-logo { padding: 0 0 12px; justify-content: center; }
-			#alpha-side .al-logo .al-home b, #alpha-side .al-logo .al-ver,
-			#alpha-side .al-logo .al-tg, #alpha-side .al-prof .t,
-			#alpha-side .al-nav span, #alpha-side .al-nav .al-badge,
-			#alpha-side .al-quota { display: none !important; }
-			#alpha-side .al-prof { width: 54px; height: 54px; padding: 0; justify-content: center; margin: 0 0 8px; }
-			#alpha-side .al-nav { width: 56px; justify-content: center; padding: 12px 0; }
-			#alpha-side .al-sec { font-size: 0; padding: 0; height: 1px; width: 58%; margin: 9px auto; background: var(--edge); opacity: 1; }
-			#alpha-side .al-nav svg { width: 24px; height: 24px; }
-			body, body.al-closed { padding-right: 98px !important; }
-			body > main, body.al-closed > main { width: calc(100% - 98px) !important; max-width: none !important; margin: 0 !important; padding: 22px 10px 40px !important; box-sizing: border-box; }
-			#alpha-rail-toggle { right: 88px !important; width: 24px; height: 44px; }
+			body, body.al-closed { padding-left: 278px !important; padding-right: 0 !important; }
+			body > main, body.al-closed > main { width: calc(100% - 278px) !important; max-width: none !important; margin: 0 !important; padding: 22px 10px 40px !important; box-sizing: border-box; }
+			#alpha-rail-toggle { left: 250px !important; width: 24px; height: 44px; }
+			body.al-closed { padding-left: 110px !important; }
+			body.al-closed > main { width: calc(100% - 110px) !important; }
+			body.al-closed #alpha-side { width: 82px !important; padding-left: 8px; padding-right: 8px; align-items: center; }
+			body.al-closed #alpha-side .al-logo .al-home b,
+			body.al-closed #alpha-side .al-logo .al-ver,
+			body.al-closed #alpha-side .al-prof .t,
+			body.al-closed #alpha-side .al-nav span,
+			body.al-closed #alpha-side .al-nav .al-badge,
+			body.al-closed #alpha-side .al-quota { display: none !important; }
+			body.al-closed #alpha-side .al-prof { width: 54px; height: 54px; padding: 0; justify-content: center; }
+			body.al-closed #alpha-side .al-nav { width: 56px; justify-content: center; padding-left: 0; padding-right: 0; }
+			body.al-closed #alpha-side .al-sec { font-size: 0; padding: 0; height: 1px; width: 58%; margin: 9px auto; }
 			#al-fab { display: none !important; }
 		}
 	</style>
