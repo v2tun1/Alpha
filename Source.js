@@ -4245,9 +4245,6 @@ const COMMON_HEAD = `
 		} else {
 			document.documentElement.classList.add('dark');
 		}
-		if (localStorage.getItem('grayscale-theme') === 'true') {
-			document.documentElement.classList.add('grayscale-active');
-		}
 		try { localStorage.removeItem('proxy_flag_cache'); } catch(e) {}
 	</script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -5213,9 +5210,6 @@ const HTML_TEMPLATES = {
 			line-height: 1;
 			vertical-align: -0.05em;
 		}
-		html.grayscale-active {
-			filter: grayscale(100%);
-		}
 		input[type="checkbox"] {
 			accent-color: #16a34a;
 		}
@@ -5317,59 +5311,9 @@ const HTML_TEMPLATES = {
 </head>
 <body class="bg-gray-100 dark:bg-amoled-bg text-gray-900 dark:text-zinc-100 min-h-screen transition-colors duration-200">
 	<canvas id="waves" class="bg-canvas"></canvas>
-	<header class="border-b border-gray-200 dark:border-amoled-border bg-gray-50/95 dark:bg-amoled-card/95 px-4 py-3 md:py-4 relative z-10 md:sticky md:top-0 md:z-40 backdrop-blur-md">
-		<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
-			
-			<div class="flex flex-row justify-between items-center w-full md:w-auto gap-2">
-				<h1 class="text-lg font-bold flex items-center gap-2 flex-shrink-0" dir="ltr">
-					ALPHA
-					<span id="panel-version" class="text-xs px-2 py-0.5 font-semibold bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400 rounded-full"></span>
-				</h1>
-				
-				<div class="flex items-center gap-2">
-					<div class="flex items-center gap-2 sm:gap-3 bg-gray-100 dark:bg-zinc-800/60 px-3 py-1.5 rounded-full border border-gray-200 dark:border-amoled-border/80 shadow-sm flex-shrink-0" dir="ltr">
-						<button type="button" onclick="navigator.clipboard.writeText(window.location.origin + '/panel').then(() => showToast('✅ آدرس پنل با موفقیت کپی شد!'))" class="text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300 transition-all transform hover:scale-125 duration-200 flex-shrink-0 cursor-pointer" title="کپی آدرس پنل">
-							<svg class="w-[22px] h-[22px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-								<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-							</svg>
-						</button>
-					</div>
-					
-					<button id="mobile-menu-toggle" onclick="const c = document.getElementById('mobile-menu-collapse'); const i = document.getElementById('mobile-menu-icon'); c.classList.toggle('max-h-0'); c.classList.toggle('max-h-[500px]'); c.classList.toggle('opacity-0'); c.classList.toggle('opacity-100'); c.classList.toggle('mt-3'); i.classList.toggle('rotate-180');" class="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-gray-200/80 dark:bg-zinc-800/80 text-gray-600 dark:text-zinc-300 focus:outline-none transition-colors duration-200 shadow-sm border border-gray-300 dark:border-zinc-700 cursor-pointer flex-shrink-0">
-						<svg id="mobile-menu-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-					</button>
-				</div>
-			</div>
-
-			<div id="mobile-menu-collapse" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out md:max-h-none md:opacity-100 md:overflow-visible w-full md:w-auto">
-				<div class="flex flex-wrap items-center justify-center gap-3 w-full max-w-[260px] mx-auto md:max-w-none md:mx-0 md:w-auto md:mt-0">
-					<button id="pwa-install-btn" onclick="triggerPwaInstall()" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 text-white shadow-md hover:shadow-lg hover:shadow-indigo-500/30 transform hover:scale-110 cursor-pointer border-none" title="دانلود و نصب اپلیکیشن پنل">
-						<svg class="w-5 h-5 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-					</button>
-					<button onclick="restartCore()" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-blue-50 dark:bg-blue-950/30 border border-blue-300 dark:border-blue-900 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all duration-200 text-blue-600 dark:text-blue-400 shadow-sm" title="ری استارت پـنـل">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-					</button>
-					<button id="grayscale-toggle" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-400 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200 text-zinc-600 dark:text-zinc-400 shadow-sm" title="حالت سیاه‌سفید">
-						<svg class="w-5 h-5" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20" /><path d="M12 2a10 10 0 0 1 0 20Z" fill="currentColor" opacity="0.3" /><path d="M12 2a10 10 0 0 0 0 20Z" /></svg>
-					</button>
-					<button id="theme-toggle" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-900 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all duration-200 text-amber-500 dark:text-amber-400 shadow-sm" title="تغییر تم">
-						<svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-						<svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-					</button>
-					<button onclick="toggleSettingsModal(true)" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-gray-50 dark:bg-zinc-800/50 border border-gray-300 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-700/80 transition-all duration-200 text-gray-600 dark:text-zinc-400 shadow-sm" title="تنظیمات">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-					</button>
-					<button onclick="logoutAdmin()" class="w-9 h-9 rounded-full inline-flex items-center justify-center bg-red-50 dark:bg-red-950/30 border border-red-300 dark:border-red-900 hover:bg-red-100 dark:hover:bg-red-900/50 transition-all duration-200 text-red-600 dark:text-red-400 shadow-sm hover:shadow-md" title="خروج">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-					</button>
-				</div>
-			</div>
-			
-		</div>
-	</header>
+	<div id="al-hidden-stubs" style="display:none" aria-hidden="true"><span id="panel-version"></span><button type="button" id="theme-toggle"></button></div>
 	<main class="max-w-6xl mx-auto px-4 py-8 pb-56 md:pb-32 relative z-10">
-<div class="bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-300 dark:border-amoled-border rounded-xl mb-6 shadow-sm flex flex-col overflow-hidden">
+<div id="al-old-stats" class="bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-300 dark:border-amoled-border rounded-xl mb-6 shadow-sm flex flex-col overflow-hidden">
 	<button onclick="const w = document.getElementById('stats-accordion-wrapper'); const i = document.getElementById('stats-accordion-icon'); w.classList.toggle('max-h-0'); w.classList.toggle('opacity-0'); w.classList.toggle('max-h-[500px]'); w.classList.toggle('opacity-100'); i.classList.toggle('rotate-180'); localStorage.setItem('zeus_stats_hidden', w.classList.contains('max-h-0'));" class="w-full flex items-center justify-between text-xs font-bold cursor-pointer outline-none focus:outline-none focus:ring-0 [-webkit-tap-highlight-color:transparent] px-4 py-2 hover:bg-gray-100/50 dark:hover:bg-zinc-800/30 transition-all duration-300 relative z-20">
 		<div class="flex items-center gap-2">
 			<div class="p-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-500 rounded-md">
@@ -7810,18 +7754,6 @@ async function executeRocketCreate() {
 			} catch (e) {}
 		});
 		
-		const grayscaleToggleBtn = document.getElementById('grayscale-toggle');
-		if (grayscaleToggleBtn) {
-			grayscaleToggleBtn.addEventListener('click', () => {
-				if (document.documentElement.classList.contains('grayscale-active')) {
-					document.documentElement.classList.remove('grayscale-active');
-					localStorage.setItem('grayscale-theme', 'false');
-				} else {
-					document.documentElement.classList.add('grayscale-active');
-					localStorage.setItem('grayscale-theme', 'true');
-				}
-			});
-		}
 		async function handleCoreAction(actionType, token = null) {
 			window.pendingCoreAction = actionType;
 			const isUpdate = actionType === 'update';
@@ -11345,79 +11277,125 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		}
 	})();
 	</script>
-	<!-- ALPHA LAYOUT -->
+	<!-- ALPHA LAYOUT v2: fixed sidebar (mobile + desktop), new dashboard -->
 	<style id="alpha-layout">
-		.al-glass { background: linear-gradient(160deg, rgba(24,28,68,.95), rgba(10,12,34,.97)); border: 1px solid var(--edge); border-radius: 20px; box-shadow: 0 10px 34px rgba(0,0,0,.35), 0 0 22px hsla(var(--h),95%,60%,.08);  color: #e9ecff; }
+		.al-glass { background: linear-gradient(160deg, rgba(24,28,68,.95), rgba(10,12,34,.97)); border: 1px solid var(--edge); border-radius: 20px; box-shadow: 0 10px 34px rgba(0,0,0,.35), 0 0 22px hsla(var(--h),95%,60%,.08); color: #e9ecff; }
 		html:not(.dark) .al-glass { background: rgba(255,255,255,.96); color: #1b1f3b; box-shadow: 0 10px 26px hsla(var(--h),60%,50%,.12); }
 		.al-mu { opacity: .62; font-size: 12px; }
-		#alpha-side { position: fixed; top: 16px; bottom: 16px; right: 16px; width: 244px; z-index: 45; padding: 18px 14px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
-		#alpha-side .al-logo { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 6px 16px; }
-		#alpha-side .al-logo b { font-size: 24px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, var(--a3), var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+		#al-old-stats, #alpha-theme-btn { display: none !important; }
+		#alpha-theme-pop { left: 18px !important; bottom: 18px !important; z-index: 120 !important; }
+		/* ---------- sidebar (same on phone & desktop, always visible) ---------- */
+		#alpha-side { position: fixed; top: 14px; bottom: 14px; right: 14px; width: 250px; z-index: 50; padding: 16px 12px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
+		#alpha-side::-webkit-scrollbar { display: none; }
+		#alpha-side .al-logo { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 2px 8px 14px; }
+		#alpha-side .al-logo b { font-size: 23px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, var(--a3), var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 		#alpha-side .al-ver { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: hsla(var(--h),90%,55%,.18); color: hsl(calc(var(--h) - 75) 95% 65%); direction: ltr; }
-		.al-sec { font-size: 11px; opacity: .45; padding: 12px 12px 4px; font-weight: 700; }
-		.al-nav { display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; border-radius: 14px; font-size: 14px; font-weight: 700; color: inherit; background: none; border: 0; cursor: pointer; text-align: right; opacity: .78; transition: .2s; }
+		.al-prof { display: flex; align-items: center; gap: 10px; padding: 10px; margin-bottom: 6px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); }
+		.al-av { width: 38px; height: 38px; border-radius: 12px; flex: none; display: grid; place-items: center; font-weight: 900; color: #fff; background: linear-gradient(135deg, var(--a3), var(--a1)); box-shadow: 0 0 14px var(--glow); }
+		.al-prof .t { min-width: 0; } .al-prof .t b { display: block; font-size: 13.5px; } .al-prof .t span { font-size: 11px; opacity: .6; display: flex; align-items: center; gap: 5px; }
+		.al-live { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: alPulse 1.6s infinite; }
+		@keyframes alPulse { 50% { opacity: .35; } }
+		.al-sec { font-size: 11px; opacity: .45; padding: 12px 12px 4px; font-weight: 700; white-space: nowrap; }
+		.al-nav { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; border-radius: 13px; font-size: 13.5px; font-weight: 700; color: inherit; background: none; border: 0; cursor: pointer; text-align: right; opacity: .78; transition: .2s; white-space: nowrap; }
 		.al-nav svg { width: 20px; height: 20px; flex: none; }
-		.al-nav:hover { opacity: 1; background: rgba(140,150,255,.08); }
+		.al-nav:hover { opacity: 1; background: rgba(140,150,255,.09); }
 		.al-nav.on { opacity: 1; background: linear-gradient(270deg, hsla(var(--h),95%,55%,.35), transparent); box-shadow: inset -3px 0 0 var(--a3), 0 0 18px hsla(var(--h),95%,60%,.15); }
 		.al-nav.danger { color: #ff7b7b; }
+		.al-nav .al-badge { margin-right: auto; font-size: 10.5px; padding: 1px 7px; border-radius: 999px; background: hsla(var(--h),90%,55%,.22); }
 		.al-quota { margin-top: auto; padding: 12px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); }
 		.al-bar { height: 8px; border-radius: 9px; background: rgba(140,150,255,.15); overflow: hidden; margin: 8px 0 6px; }
 		.al-bar b { display: block; height: 100%; width: 0; border-radius: 9px; background: linear-gradient(90deg, var(--a3), var(--a1)); transition: width .6s; }
-		#alpha-dash { display: flex; flex-direction: column; gap: 18px; margin-bottom: 22px; }
-		.al-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 16px 20px; }
-		.al-top h2 { font-size: 20px; font-weight: 900; }
-		.al-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--edge); font-size: 12.5px; font-weight: 700; cursor: pointer; background: rgba(255,255,255,.03); color: inherit; transition: .2s; white-space: nowrap; }
+		body { padding-right: 278px !important; }
+		body > main { max-width: 1360px !important; padding: 22px 18px 40px !important; }
+		/* compact rail on narrow screens, still fixed & always visible */
+		@media (max-width: 1023px) {
+			#alpha-side { top: 8px; bottom: 8px; right: 8px; width: 62px; padding: 12px 7px; border-radius: 18px; align-items: center; }
+			#alpha-side .al-logo { padding: 0 0 10px; justify-content: center; }
+			#alpha-side .al-logo b, #alpha-side .al-ver, .al-prof .t, .al-quota, .al-nav span, .al-nav .al-badge { display: none !important; }
+			.al-prof { padding: 0; border: 0; background: none; justify-content: center; margin-bottom: 2px; }
+			.al-av { width: 36px; height: 36px; }
+			.al-sec { font-size: 0; padding: 0; height: 1px; width: 60%; margin: 7px auto; background: var(--edge); opacity: 1; }
+			.al-nav { justify-content: center; padding: 11px 0; width: 46px; border-radius: 13px; }
+			.al-nav.on { box-shadow: 0 0 0 1px var(--a3), 0 0 16px var(--glow); background: hsla(var(--h),95%,55%,.28); }
+			body { padding-right: 76px !important; }
+			body > main { padding-left: 10px !important; padding-right: 10px !important; }
+		}
+		/* views */
+		body.al-v-dash > main > *:not(#alpha-dash):not(script) { display: none !important; }
+		body.al-v-users #alpha-dash { display: none !important; }
+		/* ---------- dashboard ---------- */
+		#alpha-dash { display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px; box-shadow: none !important; }
+		.al-hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 24px; }
+		.al-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(500px 200px at 15% 0%, hsla(var(--h),95%,60%,.28), transparent 70%), radial-gradient(400px 200px at 95% 120%, hsla(calc(var(--h) + 60),95%,60%,.18), transparent 70%); pointer-events: none; }
+		.al-hero > * { position: relative; }
+		.al-hero h2 { font-size: 22px; font-weight: 900; margin: 4px 0 2px; }
+		.al-date { font-size: 12px; font-weight: 700; opacity: .7; display: flex; gap: 8px; align-items: center; }
+		.al-date .clk { direction: ltr; padding: 1px 8px; border-radius: 8px; background: hsla(var(--h),90%,55%,.18); font-variant-numeric: tabular-nums; }
+		.al-chip { display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border-radius: 13px; border: 1px solid var(--edge); font-size: 12.5px; font-weight: 700; cursor: pointer; background: rgba(255,255,255,.04); color: inherit; transition: .2s; white-space: nowrap; }
 		.al-chip:hover { border-color: var(--a3); }
 		.al-chip.on { background: linear-gradient(90deg, var(--a3), var(--a1)); border-color: transparent; color: #fff; box-shadow: 0 0 14px var(--glow); }
 		.al-chip kbd { font-family: inherit; font-size: 10px; padding: 1px 6px; border-radius: 6px; background: rgba(140,150,255,.18); direction: ltr; }
-		.al-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 14px; font-weight: 800; color: #fff; border: 0; cursor: pointer; background: linear-gradient(90deg, var(--a3), var(--a1) 55%, var(--a2)); box-shadow: 0 0 18px var(--glow); }
+		.al-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 13px; font-weight: 800; color: #fff; border: 0; cursor: pointer; background: linear-gradient(90deg, var(--a3), var(--a1) 55%, var(--a2)); box-shadow: 0 0 18px var(--glow); }
 		.al-cta:hover { filter: brightness(1.12); }
-		.al-grid { display: grid; grid-template-columns: 1.25fr 1.5fr 1fr; gap: 18px; }
-		@media (max-width: 1280px) { .al-grid { grid-template-columns: 1fr 1fr; } .al-grid > :nth-child(2) { grid-column: 1 / -1; order: 3; } }
-		@media (max-width: 720px) { .al-grid { grid-template-columns: 1fr; } }
-		.al-card { padding: 18px; }
-		.al-card h3 { font-size: 15px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+		.al-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+		.al-kpi { position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; gap: 10px; cursor: pointer; transition: .2s; }
+		.al-kpi:hover { transform: translateY(-2px); border-color: var(--c); }
+		.al-kpi::after { content: ""; position: absolute; left: -30px; bottom: -30px; width: 110px; height: 110px; border-radius: 50%; background: var(--c); opacity: .13; filter: blur(22px); }
+		.al-kpi .hd { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; font-weight: 700; opacity: .8; }
+		.al-kpi .ic { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); }
+		.al-kpi .ic svg { width: 19px; height: 19px; }
+		.al-kpi .val { font-size: 26px; font-weight: 900; line-height: 1; direction: ltr; text-align: right; }
+		.al-kpi .sub { font-size: 11.5px; opacity: .65; display: flex; align-items: center; gap: 5px; }
+		.al-g3 { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 16px; }
+		.al-g2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; }
+		@media (max-width: 1280px) { .al-g3 { grid-template-columns: 1fr 1fr; } .al-g3 > :last-child { grid-column: 1 / -1; } }
+		@media (max-width: 900px) { .al-kpis { grid-template-columns: 1fr 1fr; } .al-g3, .al-g2 { grid-template-columns: 1fr; } .al-g3 > :last-child { grid-column: auto; } }
+		@media (max-width: 420px) { .al-kpis { gap: 10px; } .al-kpi { padding: 12px; } .al-kpi .val { font-size: 21px; } .al-hero { padding: 18px; } .al-hero h2 { font-size: 19px; } }
+		.al-card { padding: 18px; min-width: 0; }
+		.al-card h3 { font-size: 14.5px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 14px; }
+		.al-card h3 .lnk { font-size: 11.5px; font-weight: 700; opacity: .7; cursor: pointer; background: none; border: 0; color: inherit; }
+		.al-card h3 .lnk:hover { opacity: 1; color: hsl(calc(var(--h) - 75) 95% 65%); }
 		.al-donut { display: flex; align-items: center; gap: 18px; }
-		.al-legend { display: flex; flex-direction: column; gap: 9px; font-size: 13px; flex: 1; }
-		.al-legend div { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+		.al-legend { display: flex; flex-direction: column; gap: 9px; font-size: 13px; flex: 1; min-width: 0; }
+		.al-legend div { display: flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap; padding: 3px 6px; border-radius: 9px; }
+		.al-legend div:hover { background: rgba(140,150,255,.08); }
 		.al-legend i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
 		.al-legend b { margin-right: auto; font-weight: 800; }
-		.al-urow { display: grid; grid-template-columns: 96px 1fr 92px; align-items: center; gap: 10px; font-size: 12.5px; padding: 6px 0; }
-		.al-urow .n { font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-		.al-urow .v { text-align: left; direction: ltr; opacity: .75; font-size: 12px; }
-		.al-urow .al-bar { margin: 0; height: 10px; }
-		.al-empty { opacity: .55; font-size: 13px; text-align: center; padding: 26px 0; }
+		.al-stack { display: flex; height: 8px; border-radius: 9px; overflow: hidden; background: rgba(140,150,255,.15); margin-top: 16px; }
+		.al-stack i { display: block; height: 100%; transition: width .6s; }
+		.al-res { display: flex; flex-direction: column; gap: 14px; }
+		.al-ring { display: flex; align-items: center; gap: 14px; }
+		.al-ring .t b { font-size: 18px; font-weight: 900; direction: ltr; display: inline-block; }
+		.al-meter .row { display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 700; }
+		.al-meter .row span:last-child { direction: ltr; opacity: .75; }
 		.al-qa { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-		.al-q { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 14px 8px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: inherit; cursor: pointer; font-size: 12.5px; font-weight: 700; text-align: center; transition: .2s; min-height: 84px; }
+		.al-q { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 14px 8px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: inherit; cursor: pointer; font-size: 12.5px; font-weight: 700; text-align: center; transition: .2s; min-height: 86px; }
 		.al-q:hover { border-color: var(--a3); box-shadow: 0 0 16px var(--glow); transform: translateY(-2px); }
-		.al-q svg { width: 24px; height: 24px; color: hsl(calc(var(--h) - 75) 95% 62%); }
+		.al-q svg { width: 23px; height: 23px; color: hsl(calc(var(--h) - 75) 95% 62%); }
+		.al-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; color: inherit; } .al-tbl td, .al-tbl th { color: inherit; }
+		.al-tbl th { text-align: right; font-weight: 700; opacity: .55; font-size: 11px; padding: 0 6px 8px; }
+		.al-tbl td { padding: 8px 6px; border-top: 1px solid rgba(140,150,255,.1); vertical-align: middle; }
+		.al-tbl tr[data-u] { cursor: pointer; } .al-tbl tr[data-u]:hover td { background: rgba(140,150,255,.06); }
+		.al-tbl .rk { width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; font-weight: 900; font-size: 11.5px; background: rgba(140,150,255,.14); }
+		.al-tbl .n { font-weight: 800; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+		.al-tbl .v { direction: ltr; text-align: left; opacity: .8; white-space: nowrap; }
+		.al-tbl .al-bar { margin: 0; min-width: 60px; }
+		.al-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 6px; vertical-align: middle; }
+		.al-list { display: flex; flex-direction: column; gap: 8px; }
+		.al-li { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 13px; border: 1px solid rgba(140,150,255,.12); cursor: pointer; transition: .2s; }
+		.al-li:hover { border-color: var(--a3); }
+		.al-li .av { width: 32px; height: 32px; border-radius: 10px; flex: none; display: grid; place-items: center; font-weight: 900; font-size: 13px; color: #fff; }
+		.al-li .t { min-width: 0; flex: 1; } .al-li .t b { display: block; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .al-li .t span { font-size: 11px; opacity: .6; }
+		.al-tag { font-size: 10.5px; font-weight: 800; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+		.al-empty { opacity: .55; font-size: 13px; text-align: center; padding: 26px 0; }
 		#alpha-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
-		#alpha-dash { box-shadow: none !important; }
-		.al-legend div { white-space: nowrap; }
-		#alpha-bnav { display: none; }
-		#alpha-side-mask { display: none; }
-		@media (min-width: 1024px) {
-			body { padding-right: 276px; }
-			body > header { display: none !important; }
-			body > main { max-width: 1320px !important; }
-			#alpha-theme-btn { display: none; }
-		}
-		@media (max-width: 1023px) {
-			#alpha-side { transform: translateX(120%); transition: transform .3s; top: 0; bottom: 0; right: 0; border-radius: 20px 0 0 20px; z-index: 95; }
-			body.al-open #alpha-side { transform: none; }
-			body.al-open #alpha-side-mask { display: block; position: fixed; inset: 0; z-index: 94; background: rgba(0,0,10,.55); }
-			#alpha-bnav { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 60; padding: 6px; border-radius: 20px; }
-			#alpha-bnav button { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10.5px; font-weight: 700; padding: 6px 2px; border-radius: 14px; color: inherit; background: none; border: 0; cursor: pointer; }
-			#alpha-bnav button svg { width: 21px; height: 21px; }
-			#alpha-bnav button.mid { color: #fff; background: linear-gradient(135deg, var(--a3), var(--a1)); box-shadow: 0 0 16px var(--glow); }
-			body > main { padding-bottom: 120px !important; }
-			#alpha-theme-btn { bottom: 92px !important; }
-			#alpha-theme-pop { bottom: 148px !important; }
-		}
+		#alpha-chips .al-chip { border-radius: 999px; padding: 7px 14px; }
 	</style>
 	<script>
 	(function () {
 		var root = document.documentElement;
+		try { localStorage.removeItem('grayscale-theme'); } catch (e) {}
+		root.classList.remove('grayscale-active');
 		function I(d) { return '<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">' + d + '</svg>'; }
 		var IC = {
 			dash: I('<rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/>'),
@@ -11430,89 +11408,123 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			restart: I('<path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.5 9a9 9 0 0114.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0020.5 15"/>'),
 			moon: I('<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>'),
 			palette: I('<circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 000 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4A5.6 5.6 0 0022 9.8C22 5.5 17.5 2 12 2z"/>'),
-			gray: I('<circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 010 18z" fill="currentColor"/>'),
 			app: I('<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>'),
+			copy: I('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>'),
 			out: I('<path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>'),
-			menu: I('<path d="M3 6h18M3 12h18M3 18h18"/>'),
 			search: I('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
-			broom: I('<path d="M19 3l-7 7M9 11l4 4-6 6H3v-4z"/>')
+			broom: I('<path d="M19 3l-7 7M9 11l4 4-6 6H3v-4z"/>'),
+			wifi: I('<path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M2 9a15 15 0 0120 0"/><circle cx="12" cy="19.5" r="1"/>'),
+			cloud: I('<path d="M7 18a4.5 4.5 0 01-.9-8.9A6 6 0 0117.7 8 4.5 4.5 0 0118 17H7z"/>'),
+			alert: I('<path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0zM12 9v4M12 17h.01"/>'),
+			clock: I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')
 		};
+		function $(id) { return document.getElementById(id); }
 		function clickSel(sel) { var b = document.querySelector(sel); if (b) b.click(); return !!b; }
-		function call(fn) { return function () { try { if (typeof window[fn] === 'function') window[fn].apply(null, [].slice.call(arguments, 1)); } catch (e) {} }; }
+		function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]; }); }
+		function fa(n) { try { return Number(n).toLocaleString('fa-IR'); } catch (e) { return String(n); } }
 		var main = document.querySelector('body > main');
-		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
-		function go(where) {
-			closeDrawer();
-			var t = where === 'users' ? (document.getElementById('alpha-chips') || usersAnchor) : document.getElementById('alpha-dash');
-			if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			setActive(where);
+		var VIEW_KEY = 'alpha-view';
+		function setView(v) {
+			document.body.classList.toggle('al-v-dash', v === 'dash');
+			document.body.classList.toggle('al-v-users', v === 'users');
+			try { localStorage.setItem(VIEW_KEY, v); } catch (e) {}
+			setActive(v); window.scrollTo({ top: 0, behavior: 'smooth' });
+		}
+		function focusSearch(q) {
+			setView('users');
+			var s = $('search-input'); if (!s) return;
+			if (typeof q === 'string') { s.value = q; if (typeof filterAndRenderUsers === 'function') filterAndRenderUsers(); }
+			setTimeout(function () { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); s.focus(); }, 200);
+		}
+		function copyPanel() {
+			var u = window.location.origin + '/panel';
+			var done = function () { if (typeof showToast === 'function') showToast('✅ آدرس پنل با موفقیت کپی شد!'); };
+			try { navigator.clipboard.writeText(u).then(done); } catch (e) {}
 		}
 		var A = {
-			dash: function () { go('dash'); },
-			users: function () { go('users'); },
-			create: function () { closeDrawer(); if (typeof openCreateModal === 'function') openCreateModal(); },
-			quick: function () { closeDrawer(); clickSel('main button[onclick^="quickCreateUser"]'); },
-			rocket: function () { closeDrawer(); clickSel('main button[onclick^="openRocketModal"]'); },
-			direct: function () { closeDrawer(); clickSel('main button[onclick^="createDirectUser"]'); },
-			settings: function () { closeDrawer(); if (typeof toggleSettingsModal === 'function') toggleSettingsModal(true); },
-			restart: function () { closeDrawer(); if (typeof restartCore === 'function') restartCore(); },
+			dash: function () { setView('dash'); },
+			users: function () { setView('users'); },
+			create: function () { if (typeof openCreateModal === 'function') openCreateModal(); },
+			quick: function () { clickSel('main button[onclick^="quickCreateUser"]'); },
+			rocket: function () { clickSel('main button[onclick^="openRocketModal"]'); },
+			direct: function () { clickSel('main button[onclick^="createDirectUser"]'); },
+			settings: function () { if (typeof toggleSettingsModal === 'function') toggleSettingsModal(true); },
+			restart: function () { if (typeof restartCore === 'function') restartCore(); },
 			theme: function () { clickSel('#theme-toggle'); },
-			gray: function () { clickSel('#grayscale-toggle'); },
-			app: function () { closeDrawer(); if (typeof triggerPwaInstall === 'function') triggerPwaInstall(); },
-			color: function (e) { if (e) e.stopPropagation(); closeDrawer(); var p = document.getElementById('alpha-theme-pop'); if (p) p.classList.toggle('show'); },
+			app: function () { if (typeof triggerPwaInstall === 'function') triggerPwaInstall(); },
+			copy: copyPanel,
+			color: function (e) { if (e) e.stopPropagation(); var p = $('alpha-theme-pop'); if (p) p.classList.toggle('show'); },
 			logout: function () { if (typeof logoutAdmin === 'function') logoutAdmin(); },
-			expired: function () { setFilter('expired'); go('users'); }
+			expired: function () { setFilter('expired'); setView('users'); },
+			online: function () { setFilter('online'); setView('users'); },
+			all: function () { setFilter('all'); setView('users'); }
 		};
-		function nav(key, icon, label, cls) { return '<button type="button" class="al-nav ' + (cls || '') + '" data-a="' + key + '">' + IC[icon] + '<span>' + label + '</span></button>'; }
+		function nav(key, icon, label, cls, badge) { return '<button type="button" class="al-nav ' + (cls || '') + '" data-a="' + key + '" title="' + label + '">' + IC[icon] + '<span>' + label + '</span>' + (badge ? '<i class="al-badge" id="' + badge + '"></i>' : '') + '</button>'; }
+
+		/* sidebar */
 		var side = document.createElement('aside');
 		side.id = 'alpha-side'; side.className = 'al-glass';
 		side.innerHTML =
-			'<div class="al-logo"><div style="display:flex;align-items:center;gap:10px"><svg width="34" height="34" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span></div>' +
-			nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران') +
+			'<div class="al-logo"><div style="display:flex;align-items:center;gap:10px"><svg width="32" height="32" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span></div>' +
+			'<div class="al-prof" title="ادمین"><div class="al-av">A</div><div class="t"><b>ادمین</b><span><i class="al-live"></i>مدیر کل پنل</span></div></div>' +
+			'<div class="al-sec">اصلی</div>' + nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران', '', 'al-nb-users') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
-			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
-			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') + nav('gray', 'gray', 'حالت سیاه‌سفید') +
-			nav('logout', 'out', 'خروج', 'danger') +
+			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('copy', 'copy', 'کپی آدرس پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
+			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') +
+			'<div class="al-sec">حساب</div>' + nav('logout', 'out', 'خروج', 'danger') +
 			'<div class="al-quota"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>سهمیه روزانه</span><span id="al-q-pct" dir="ltr">0%</span></div><div class="al-bar"><b id="al-q-bar"></b></div><div class="al-mu" id="al-q-txt">۰ از ۱۰۰k · ریست ۳:۳۰ بامداد</div></div>';
 		document.body.appendChild(side);
-		var mask = document.createElement('div'); mask.id = 'alpha-side-mask'; document.body.appendChild(mask);
-		mask.addEventListener('click', closeDrawer);
-		function closeDrawer() { document.body.classList.remove('al-open'); }
 		function setActive(k) { side.querySelectorAll('.al-nav').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-a') === k); }); }
 		side.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
-		var bnav = document.createElement('nav'); bnav.id = 'alpha-bnav'; bnav.className = 'al-glass';
-		bnav.innerHTML = '<button type="button" data-a="dash">' + IC.dash + 'داشبورد</button><button type="button" data-a="users">' + IC.users + 'کاربران</button><button type="button" class="mid" data-a="create">' + IC.plus + 'کاربر جدید</button><button type="button" data-a="settings">' + IC.gear + 'تنظیمات</button><button type="button" data-a="menu">' + IC.menu + 'منو</button>';
-		document.body.appendChild(bnav);
-		bnav.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (!b) return; var k = b.getAttribute('data-a'); if (k === 'menu') { document.body.classList.add('al-open'); return; } if (A[k]) A[k](e); });
-		var ver = document.getElementById('panel-version');
-		function syncVer() { var v = document.getElementById('al-ver'); if (v && ver) v.textContent = ver.textContent.trim(); }
+		var ver = $('panel-version');
+		function syncVer() { var v = $('al-ver'); if (v && ver) v.textContent = ver.textContent.trim(); }
 		syncVer(); if (ver) new MutationObserver(syncVer).observe(ver, { childList: true, characterData: true, subtree: true });
 
+		/* dashboard */
+		function kpi(a, c, icon, label, id, subId) { return '<div class="al-glass al-kpi" data-a="' + a + '" style="--c:' + c + '"><div class="hd"><span>' + label + '</span><span class="ic">' + IC[icon] + '</span></div><div class="val" id="' + id + '">0</div><div class="sub" id="' + subId + '"></div></div>'; }
 		var dash = document.createElement('section'); dash.id = 'alpha-dash';
 		dash.innerHTML =
-			'<div class="al-glass al-top"><div><h2 id="al-hello">سلام ادمین 👋</h2><div class="al-mu" id="al-sub">در حال دریافت اطلاعات...</div></div>' +
+			'<div class="al-glass al-hero"><div><div class="al-date"><span id="al-date"></span><span class="clk" id="al-clock"></span></div><h2 id="al-hello">سلام ادمین 👋</h2><div class="al-mu" id="al-sub">در حال دریافت اطلاعات...</div></div>' +
 			'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="al-chip" id="al-search">' + IC.search.replace('<svg', '<svg width="15" height="15"') + 'جستجوی کاربر <kbd>Ctrl K</kbd></button><button type="button" class="al-cta" data-a="create">' + IC.plus.replace('<svg', '<svg width="18" height="18"') + 'کاربر جدید</button></div></div>' +
-			'<div class="al-grid">' +
-				'<div class="al-glass al-card"><h3>وضعیت کاربران <span class="al-mu" id="al-total"></span></h3><div class="al-donut"><svg width="132" height="132" viewBox="0 0 42 42" id="al-donut"></svg><div class="al-legend" id="al-legend"></div></div></div>' +
-				'<div class="al-glass al-card"><h3>بیشترین مصرف <span class="al-mu">حجم مصرفی کاربران</span></h3><div id="al-top"></div></div>' +
+			'<div class="al-kpis">' +
+				kpi('all', '#818cf8', 'users', 'کل کاربران', 'al-k-users', 'al-k-users-s') +
+				kpi('online', '#22d3ee', 'wifi', 'آنلاین الان', 'al-k-online', 'al-k-online-s') +
+				kpi('users', '#a78bfa', 'cloud', 'ترافیک سرور', 'al-k-traffic', 'al-k-traffic-s') +
+				kpi('expired', '#f59e0b', 'alert', 'منقضی / غیرفعال', 'al-k-exp', 'al-k-exp-s') +
+			'</div>' +
+			'<div class="al-g3">' +
+				'<div class="al-glass al-card"><h3>وضعیت کاربران <button type="button" class="lnk" data-a="users">مشاهده همه ←</button></h3><div class="al-donut"><svg width="130" height="130" viewBox="0 0 42 42" id="al-donut"></svg><div class="al-legend" id="al-legend"></div></div><div class="al-stack" id="al-stack"></div></div>' +
+				'<div class="al-glass al-card"><h3>منابع کلودفلر <span class="al-mu">ریست ۳:۳۰ بامداد</span></h3><div class="al-res">' +
+					'<div class="al-ring"><svg width="74" height="74" viewBox="0 0 42 42" id="al-cf-ring"></svg><div class="t"><div class="al-mu">ریکوئست‌های امروز</div><b id="al-cf-val">0</b> <span class="al-mu">/ 100k</span><div class="al-mu" id="al-cf-tot"></div></div></div>' +
+					'<div class="al-meter"><div class="row"><span>D1 · نوشتن</span><span id="al-d1w-t">0 / 100k</span></div><div class="al-bar"><b id="al-d1w"></b></div></div>' +
+					'<div class="al-meter"><div class="row"><span>D1 · خواندن</span><span id="al-d1r-t">0 / 5M</span></div><div class="al-bar"><b id="al-d1r"></b></div></div>' +
+				'</div></div>' +
 				'<div class="al-glass al-card"><h3>دسترسی سریع</h3><div class="al-qa">' +
 					'<button type="button" class="al-q" data-a="quick">' + IC.bolt + 'ساخت سریع</button>' +
 					'<button type="button" class="al-q" data-a="rocket">' + IC.rocket + 'تک لوکیشن</button>' +
 					'<button type="button" class="al-q" data-a="direct">' + IC.globe + 'کاربر مستقیم</button>' +
 					'<button type="button" class="al-q" data-a="expired">' + IC.broom + 'منقضی‌ها <span class="al-mu" id="al-exp-n"></span></button>' +
 				'</div></div>' +
+			'</div>' +
+			'<div class="al-g2">' +
+				'<div class="al-glass al-card"><h3>بیشترین مصرف <span class="al-mu">۶ کاربر برتر</span></h3><div id="al-top"></div></div>' +
+				'<div class="al-glass al-card"><h3>نیاز به توجه <span class="al-mu">رو به اتمام</span></h3><div class="al-list" id="al-warn"></div><h3 style="margin:18px 0 12px">آخرین کاربران</h3><div class="al-list" id="al-recent"></div></div>' +
 			'</div>';
 		if (main) main.insertBefore(dash, main.firstChild);
-		dash.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
-		function focusSearch() { var s = document.getElementById('search-input'); if (s) { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { s.focus(); }, 250); } }
-		document.getElementById('al-search').addEventListener('click', focusSearch);
+		dash.addEventListener('click', function (e) {
+			var u = e.target.closest('[data-u]'); if (u) { focusSearch(u.getAttribute('data-u')); return; }
+			var lf = e.target.closest('[data-lf]'); if (lf) { setFilter(lf.getAttribute('data-lf')); setView('users'); return; }
+			var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e);
+		});
+		$('al-search').addEventListener('click', function () { focusSearch(); });
 		document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); focusSearch(); } });
 
-		var fs = document.getElementById('filter-status');
+		/* filter chips on users page */
+		var fs = $('filter-status');
 		var chips = document.createElement('div'); chips.id = 'alpha-chips';
 		var CH = [['all', 'همه'], ['active', '✅ فعال'], ['online', '⚡ آنلاین'], ['offline', '💤 آفلاین'], ['expired', '⏳ منقضی / تمام‌شده'], ['inactive', '❌ غیرفعال']];
 		chips.innerHTML = CH.map(function (c) { return '<button type="button" class="al-chip" data-f="' + c[0] + '">' + c[1] + ' <span data-n="' + c[0] + '"></span></button>'; }).join('');
-		var sInput = document.getElementById('search-input');
+		var sInput = $('search-input');
 		var bar = (function () { if (!sInput || !fs) return null; var n = sInput; while (n && n.parentElement && !n.contains(fs)) n = n.parentElement; return n; })();
 		if (bar && bar.parentElement) bar.parentElement.insertBefore(chips, bar);
 		function setFilter(v) { if (!fs) return; fs.value = v; if (typeof filterAndRenderUsers === 'function') filterAndRenderUsers(); paintChips(); }
@@ -11521,20 +11533,20 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		if (fs) fs.addEventListener('change', paintChips);
 		paintChips();
 
-		function fa(n) { try { return Number(n).toLocaleString('fa-IR'); } catch (e) { return String(n); } }
-		function isExpired(u, now) {
-			if (u.limit_gb && u.used_gb >= u.limit_gb) return true;
-			if (u.expiry_days) {
-				var start = null;
-				if (u.start_on_first_connect === 1) start = u.first_connection_time ? Number(u.first_connection_time) : null;
-				else if (u.created_at) start = new Date(u.created_at).getTime();
-				if (start && now > start + u.expiry_days * 864e5) return true;
-			}
-			return false;
-		}
+		/* data helpers */
+		function pDate(v) { if (!v) return null; if (typeof v === 'number') return v; var s = String(v); if (/^[0-9]+$/.test(s)) return Number(s); if (s.indexOf('T') < 0) s = s.replace(' ', 'T'); if (!/[zZ]|[+-][0-9]{2}:?[0-9]{2}$/.test(s)) s += 'Z'; var t = Date.parse(s); return isNaN(t) ? null : t; }
+		function startOf(u) { return u.start_on_first_connect === 1 ? (u.first_connection_time ? Number(u.first_connection_time) : null) : pDate(u.created_at); }
+		function daysLeft(u, now) { if (!u.expiry_days) return null; var s = startOf(u); if (!s) return null; return (s + u.expiry_days * 864e5 - now) / 864e5; }
+		function isExpired(u, now) { if (u.limit_gb && u.used_gb >= u.limit_gb) return true; var d = daysLeft(u, now); return d !== null && d <= 0; }
+		function ago(t, now) { var m = Math.max(0, Math.round((now - t) / 6e4)); if (m < 1) return 'همین الان'; if (m < 60) return fa(m) + ' دقیقه پیش'; var h = Math.round(m / 60); if (h < 24) return fa(h) + ' ساعت پیش'; return fa(Math.round(h / 24)) + ' روز پیش'; }
+		function txt(id) { var el = $(id); return el ? el.textContent.trim() : ''; }
+		function num(s) { var n = parseFloat(String(s).replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
+		function ring(pct, color) { pct = Math.max(0, Math.min(100, pct)); return '<circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(140,150,255,.15)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="' + color + '" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="' + pct + ' ' + (100 - pct) + '" stroke-dashoffset="25" style="transition:stroke-dasharray .6s;filter:drop-shadow(0 0 2px ' + color + ')"/><text x="21" y="23.5" text-anchor="middle" font-size="7.5" font-weight="900" fill="currentColor">' + Math.round(pct) + '%</text>'; }
 		var COLORS = { online: '#22d3ee', idle: '#34d399', expired: '#f59e0b', disabled: '#f43f5e' };
 		var LABEL = { online: 'آنلاین', idle: 'فعال (آفلاین)', expired: 'منقضی', disabled: 'غیرفعال' };
 		var FILTER = { online: 'online', idle: 'active', expired: 'expired', disabled: 'inactive' };
+		var AVC = ['#6366f1', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+		function stateOf(u, now) { if (u.is_active !== 1) return 'disabled'; if (isExpired(u, now)) return 'expired'; return u.is_online === 1 ? 'online' : 'idle'; }
 		var last = '';
 		function render() {
 			var users = window.allUsers || [];
@@ -11546,41 +11558,75 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 				if (!act) n.inactive++;
 				if (act && !ex) n.active++;
 				if (ex || !act) n.expired++;
-				if (!act) c.disabled++; else if (ex) c.expired++; else if (on) c.online++; else c.idle++;
+				c[stateOf(u, now)]++;
 			});
 			Object.keys(n).forEach(function (k) { var el = chips.querySelector('[data-n="' + k + '"]'); if (el) el.textContent = fa(n[k]); });
-			var en = document.getElementById('al-exp-n'); if (en) en.textContent = '(' + fa(n.expired) + ')';
-			var q = Number(window.maxCfRequestsToday || 0), pct = Math.min(100, q / 1000);
-			document.getElementById('al-q-bar').style.width = pct + '%';
-			document.getElementById('al-q-bar').style.background = pct >= 90 ? 'linear-gradient(90deg,#f97316,#ef4444)' : '';
-			document.getElementById('al-q-pct').textContent = Math.round(pct) + '%';
-			document.getElementById('al-q-txt').textContent = fa(q) + ' از ۱۰۰k · ریست ۳:۳۰ بامداد';
+			var nb = $('al-nb-users'); if (nb) nb.textContent = fa(users.length);
+			$('al-exp-n').textContent = '(' + fa(n.expired) + ')';
+			/* quotas */
+			var q = Number(window.maxCfRequestsToday || num(txt('stat-cf-requests')) || 0), pct = Math.min(100, q / 1000);
+			$('al-q-bar').style.width = pct + '%';
+			$('al-q-bar').style.background = pct >= 90 ? 'linear-gradient(90deg,#f97316,#ef4444)' : '';
+			$('al-q-pct').textContent = Math.round(pct) + '%';
+			$('al-q-txt').textContent = fa(q) + ' از ۱۰۰k · ریست ۳:۳۰ بامداد';
+			$('al-cf-ring').innerHTML = ring(pct, pct >= 90 ? '#ef4444' : pct >= 70 ? '#f59e0b' : '#22d3ee');
+			$('al-cf-val').textContent = q.toLocaleString('en-US');
+			$('al-cf-tot').textContent = 'مجموع کل: ' + (txt('stat-cf-total') || '0');
+			var dw = num(txt('stat-d1-writes')), dr = num(txt('stat-d1-reads'));
+			$('al-d1w').style.width = Math.min(100, dw / 1000) + '%'; $('al-d1w-t').textContent = (txt('stat-d1-writes') || '0') + ' / 100k';
+			$('al-d1r').style.width = Math.min(100, dr / 50000) + '%'; $('al-d1r-t').textContent = (txt('stat-d1-reads') || '0') + ' / 5M';
+			/* KPIs */
 			var totalGb = users.reduce(function (s, u) { return s + (Number(u.used_gb) || 0); }, 0);
-			document.getElementById('al-sub').textContent = users.length ? (fa(users.length) + ' کاربر · ' + fa(n.online) + ' آنلاین · ' + totalGb.toFixed(1) + ' GB مصرف کاربران') : 'هنوز کاربری نساخته‌اید';
-			var key = JSON.stringify([c, users.map(function (u) { return [u.username, Math.round((u.used_gb || 0) * 10), u.limit_gb]; })]);
+			$('al-k-users').textContent = fa(users.length);
+			$('al-k-users-s').textContent = fa(n.active) + ' کاربر فعال';
+			$('al-k-online').textContent = fa(n.online);
+			$('al-k-online-s').innerHTML = '<i class="al-live"></i>' + fa(num(txt('stat-active-users'))) + ' اتصال فعال';
+			$('al-k-traffic').textContent = txt('stat-total-usage') || '0 GB';
+			$('al-k-traffic-s').textContent = 'مصرف کاربران: ' + totalGb.toFixed(1) + ' GB';
+			$('al-k-exp').textContent = fa(n.expired);
+			$('al-k-exp-s').textContent = fa(c.expired) + ' منقضی · ' + fa(c.disabled) + ' غیرفعال';
+			$('al-sub').textContent = users.length ? (fa(users.length) + ' کاربر · ' + fa(n.online) + ' آنلاین · ' + totalGb.toFixed(1) + ' GB مصرف کاربران') : 'هنوز کاربری نساخته‌اید';
+			var key = JSON.stringify([c, Math.floor(now / 6e4), users.map(function (u) { return [u.username, Math.round((u.used_gb || 0) * 10), u.limit_gb, u.is_online, u.is_active]; })]);
 			if (key === last) return; last = key;
-			document.getElementById('al-total').textContent = fa(users.length) + ' کاربر';
-			var svg = '<circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(140,150,255,.15)" stroke-width="5"/>', off = 25, tot = users.length;
-			if (tot) Object.keys(c).forEach(function (k) { if (!c[k]) return; var p = c[k] / tot * 100; svg += '<circle cx="21" cy="21" r="15.9" fill="none" stroke="' + COLORS[k] + '" stroke-width="5" stroke-dasharray="' + p + ' ' + (100 - p) + '" stroke-dashoffset="' + off + '" style="filter:drop-shadow(0 0 2px ' + COLORS[k] + ')"/>'; off -= p; });
+			/* donut + stacked bar */
+			var svg = '<circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(140,150,255,.15)" stroke-width="5"/>', off = 25, tot = users.length, stack = '';
+			if (tot) Object.keys(c).forEach(function (k) { if (!c[k]) return; var p = c[k] / tot * 100; svg += '<circle cx="21" cy="21" r="15.9" fill="none" stroke="' + COLORS[k] + '" stroke-width="5" stroke-dasharray="' + p + ' ' + (100 - p) + '" stroke-dashoffset="' + off + '" style="filter:drop-shadow(0 0 2px ' + COLORS[k] + ')"/>'; off -= p; stack += '<i style="width:' + p + '%;background:' + COLORS[k] + '"></i>'; });
 			svg += '<text x="21" y="20" text-anchor="middle" font-size="8" font-weight="900" fill="currentColor">' + fa(tot) + '</text><text x="21" y="27" text-anchor="middle" font-size="3.6" fill="currentColor" opacity=".6">کاربر</text>';
-			document.getElementById('al-donut').innerHTML = svg;
-			document.getElementById('al-legend').innerHTML = Object.keys(c).map(function (k) { return '<div data-lf="' + FILTER[k] + '"><i style="background:' + COLORS[k] + ';box-shadow:0 0 8px ' + COLORS[k] + '"></i>' + LABEL[k] + '<b>' + fa(c[k]) + '</b></div>'; }).join('');
-			var top = users.slice().sort(function (a, b) { return (b.used_gb || 0) - (a.used_gb || 0); }).slice(0, 6);
-			var maxGb = Math.max.apply(null, top.map(function (u) { return u.limit_gb || u.used_gb || 0; }).concat([1]));
-			document.getElementById('al-top').innerHTML = top.length ? top.map(function (u) {
+			$('al-donut').innerHTML = svg; $('al-stack').innerHTML = stack;
+			$('al-legend').innerHTML = Object.keys(c).map(function (k) { var p = tot ? Math.round(c[k] / tot * 100) : 0; return '<div data-lf="' + FILTER[k] + '"><i style="background:' + COLORS[k] + ';box-shadow:0 0 8px ' + COLORS[k] + '"></i>' + LABEL[k] + '<b>' + fa(c[k]) + ' <span class="al-mu">(' + fa(p) + '٪)</span></b></div>'; }).join('');
+			/* top usage table */
+			var top = users.filter(function (u) { return (Number(u.used_gb) || 0) > 0; }).sort(function (a, b) { return (b.used_gb || 0) - (a.used_gb || 0); }).slice(0, 6);
+			var maxGb = Math.max.apply(null, top.map(function (u) { return Number(u.used_gb) || 0; }).concat([0.001]));
+			$('al-top').innerHTML = top.length ? '<table class="al-tbl"><thead><tr><th>#</th><th>کاربر</th><th style="width:40%">مصرف</th><th style="text-align:left">حجم</th></tr></thead><tbody>' + top.map(function (u, i) {
 				var used = Number(u.used_gb) || 0, lim = Number(u.limit_gb) || 0;
 				var w = lim ? Math.min(100, used / lim * 100) : Math.min(100, used / maxGb * 100);
 				var bg = lim && w >= 90 ? 'linear-gradient(90deg,#f97316,#ef4444)' : '';
-				var esc = String(u.username || '').replace(/[&<>"]/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]; });
-				return '<div class="al-urow"><span class="n">' + esc + '</span><div class="al-bar"><b style="width:' + w + '%;' + (bg ? 'background:' + bg : '') + '"></b></div><span class="v">' + used.toFixed(1) + ' / ' + (lim ? lim + ' GB' : '∞') + '</span></div>';
-			}).join('') : '<div class="al-empty">هنوز مصرفی ثبت نشده</div>';
+				return '<tr data-u="' + esc(u.username) + '"><td><span class="rk">' + fa(i + 1) + '</span></td><td class="n"><i class="al-dot" style="background:' + COLORS[stateOf(u, now)] + '"></i>' + esc(u.username) + '</td><td><div class="al-bar"><b style="width:' + w + '%;' + (bg ? 'background:' + bg : '') + '"></b></div></td><td class="v">' + used.toFixed(2) + ' / ' + (lim ? lim + ' GB' : '∞') + '</td></tr>';
+			}).join('') + '</tbody></table>' : '<div class="al-empty">هنوز مصرفی ثبت نشده</div>';
+			/* needs attention */
+			var warn = [];
+			users.forEach(function (u) {
+				if (u.is_active !== 1 || isExpired(u, now)) return;
+				var d = daysLeft(u, now), used = Number(u.used_gb) || 0, lim = Number(u.limit_gb) || 0, p = lim ? used / lim * 100 : 0;
+				if (d !== null && d <= 3) warn.push({ u: u, s: 100 - d * 10, tag: d < 1 ? 'کمتر از ۱ روز' : fa(Math.ceil(d)) + ' روز مانده', col: '#f59e0b' });
+				else if (p >= 80) warn.push({ u: u, s: p, tag: fa(Math.round(p)) + '٪ مصرف شده', col: '#ef4444' });
+			});
+			warn.sort(function (a, b) { return b.s - a.s; });
+			$('al-warn').innerHTML = warn.length ? warn.slice(0, 4).map(function (w) { return '<div class="al-li" data-u="' + esc(w.u.username) + '"><div class="av" style="background:' + w.col + '">' + IC.clock.replace('<svg', '<svg width="16" height="16"') + '</div><div class="t"><b>' + esc(w.u.username) + '</b><span>' + (w.u.limit_gb ? (Number(w.u.used_gb) || 0).toFixed(1) + ' از ' + w.u.limit_gb + ' GB' : 'حجم نامحدود') + '</span></div><span class="al-tag" style="color:' + w.col + ';background:' + w.col + '22">' + w.tag + '</span></div>'; }).join('') : '<div class="al-empty" style="padding:14px 0">همه چیز مرتبه ✓</div>';
+			/* recent users */
+			var rec = users.filter(function (u) { return pDate(u.created_at); }).sort(function (a, b) { return pDate(b.created_at) - pDate(a.created_at); }).slice(0, 4);
+			$('al-recent').innerHTML = rec.length ? rec.map(function (u, i) { var st = stateOf(u, now); return '<div class="al-li" data-u="' + esc(u.username) + '"><div class="av" style="background:' + AVC[i % AVC.length] + '">' + esc(String(u.username || '?').charAt(0).toUpperCase()) + '</div><div class="t"><b>' + esc(u.username) + '</b><span>' + ago(pDate(u.created_at), Date.now()) + '</span></div><span class="al-tag" style="color:' + COLORS[st] + ';background:' + COLORS[st] + '22">' + LABEL[st] + '</span></div>'; }).join('') : '<div class="al-empty" style="padding:14px 0">کاربری ساخته نشده</div>';
 		}
-		document.getElementById('al-legend').addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
 		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
-		var h = new Date().getHours(); document.getElementById('al-hello').textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
-		if ('IntersectionObserver' in window && usersAnchor) {
-			new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) setActive('users'); else if (x.boundingClientRect.top > 0) setActive('dash'); }); }, { rootMargin: '-40% 0px -55% 0px' }).observe(chips.parentElement ? chips : usersAnchor);
+		function tick() {
+			var d = new Date(), h = d.getHours();
+			$('al-hello').textContent = (h < 5 ? 'شب بخیر' : h < 12 ? 'صبح بخیر' : h < 17 ? 'روز بخیر' : h < 21 ? 'عصر بخیر' : 'شب بخیر') + ' ادمین 👋';
+			try { $('al-date').textContent = d.toLocaleDateString('fa-IR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) {}
+			$('al-clock').textContent = ('0' + h).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
 		}
+		tick(); setInterval(tick, 15000);
+		var v0 = 'dash'; try { v0 = localStorage.getItem(VIEW_KEY) === 'users' ? 'users' : 'dash'; } catch (e) {}
+		setView(v0);
 	})();
 	</script>
 </body>
