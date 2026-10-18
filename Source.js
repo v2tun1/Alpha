@@ -11330,11 +11330,15 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			.al-nav svg { width: 24px; height: 24px; }
 			.al-nav.on { box-shadow: 0 0 0 1px var(--a3), 0 0 16px var(--glow); background: hsla(var(--h),95%,55%,.28); }
 			.al-quota { display: none !important; }
-			body { padding-right: 98px !important; }
-			body > main { padding-left: 10px !important; padding-right: 10px !important; padding-top: 22px !important; }
+			body { padding-right: 98px !important; overflow-x: hidden; }
+			body > main { width: calc(100% - 98px) !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 10px !important; padding-right: 10px !important; padding-top: 22px !important; box-sizing: border-box; }
+			#users-table-container { max-width: 100%; overflow-x: auto !important; overscroll-behavior-x: contain; }
+			#users-table-container table { min-width: 720px; }
+			#alpha-chips { max-width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; scrollbar-width: thin; }
+			#alpha-chips .al-chip { flex: 0 0 auto; }
 			#al-fab, #al-side-mask { display: none !important; }
 			body.al-closed { padding-right: 0 !important; }
-			body.al-closed > main { padding-top: 72px !important; }
+			body.al-closed > main { width: 100% !important; padding-top: 72px !important; }
 		}
 		/* views */
 		body.al-v-dash > main > *:not(#alpha-dash):not(script) { display: none !important; }
