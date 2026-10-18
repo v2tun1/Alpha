@@ -11410,6 +11410,29 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		.al-empty { opacity: .55; font-size: 13px; text-align: center; padding: 26px 0; }
 		#alpha-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
 		#alpha-chips .al-chip { border-radius: 999px; padding: 7px 14px; }
+		/* Final rail behavior: collapsing the rail must never resize or hide the panel. */
+		#alpha-side { transform: none !important; width: 250px !important; transition: width .28s ease, padding .28s ease; }
+		body { padding-right: 278px !important; transition: padding-right .28s ease; }
+		body.al-closed { padding-right: 110px !important; }
+		body.al-closed #alpha-side { width: 82px !important; padding-left: 8px; padding-right: 8px; align-items: center; }
+		body.al-closed #alpha-side .al-logo { padding-left: 0; padding-right: 0; justify-content: center; }
+		body.al-closed #alpha-side .al-logo .al-home b,
+		body.al-closed #alpha-side .al-logo .al-ver,
+		body.al-closed #alpha-side .al-prof .t,
+		body.al-closed #alpha-side .al-nav span,
+		body.al-closed #alpha-side .al-nav .al-badge,
+		body.al-closed #alpha-side .al-quota { display: none !important; }
+		body.al-closed #alpha-side .al-prof { width: 54px; height: 54px; padding: 0; justify-content: center; }
+		body.al-closed #alpha-side .al-nav { width: 56px; justify-content: center; padding-left: 0; padding-right: 0; }
+		body.al-closed #alpha-side .al-sec { font-size: 0; padding: 0; height: 1px; width: 58%; margin: 9px auto; background: var(--edge); opacity: 1; }
+		body.al-closed > main { max-width: none !important; }
+		@media (max-width: 1023px) {
+			#alpha-side { top: 8px; bottom: 8px; right: 8px; }
+			body > main { width: calc(100% - 278px) !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; padding-top: 22px !important; }
+			body.al-closed > main { width: calc(100% - 110px) !important; padding-top: 22px !important; }
+			body.al-closed #alpha-side .al-logo .al-tg { display: grid !important; }
+			body.al-closed #alpha-side .al-logo .al-home svg { width: 38px; height: 38px; }
+		}
 	</style>
 	<script>
 	(function () {
@@ -11487,7 +11510,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		side.innerHTML =
 			'<div class="al-logo"><div class="al-home" data-a="toggle" title="جمع کردن منو"><svg width="32" height="32" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span><button type="button" class="al-tg" data-a="toggle" title="جمع کردن منو"><svg fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>' +
 			'<div class="al-prof" title="ادمین"><div class="al-av">A</div><div class="t"><b>ادمین</b><span><i class="al-live"></i>مدیر کل پنل</span></div></div>' +
-			'<div class="al-sec">اصلی</div>' + nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران', '', 'al-nb-users') +
+			'<div class="al-sec">اصلی</div>' + nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کانفیگ‌ها', '', 'al-nb-users') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
 			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('copy', 'copy', 'کپی آدرس پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
 			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') +
