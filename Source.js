@@ -11308,6 +11308,12 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		#al-fab { position: fixed; top: 12px; right: 12px; z-index: 60; height: 46px; padding: 0 14px 0 12px; border-radius: 15px; display: none; align-items: center; gap: 8px; cursor: pointer; border: 1px solid var(--edge); font: inherit; font-weight: 900; letter-spacing: 2px; font-size: 15px; color: inherit; }
 		#al-fab b { background: linear-gradient(90deg, var(--a3), var(--a1) 60%, var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 		#al-fab svg.ar { width: 15px; height: 15px; opacity: .7; }
+		#alpha-rail-toggle { position: fixed; top: 50%; right: 266px; transform: translateY(-50%); z-index: 110; width: 32px; height: 58px; padding: 0; border: 0; border-radius: 13px 0 0 13px; display: grid; place-items: center; cursor: pointer; color: #fff; background: linear-gradient(145deg, var(--a1), var(--a3)); box-shadow: -4px 5px 0 rgba(55,35,130,.35), 0 0 18px var(--glow); transition: right .28s ease, transform .2s ease, filter .2s ease; }
+		#alpha-rail-toggle:hover { filter: brightness(1.12); transform: translateY(-50%) translateX(-2px); }
+		#alpha-rail-toggle:active { box-shadow: -1px 2px 0 rgba(55,35,130,.35), 0 0 12px var(--glow); transform: translateY(-48%); }
+		#alpha-rail-toggle svg { width: 21px; height: 21px; filter: drop-shadow(1px 2px 0 rgba(30,20,80,.45)); }
+		body.al-closed #alpha-rail-toggle { right: 98px; }
+		@media (max-width: 1023px) { #alpha-rail-toggle { right: 90px; width: 28px; height: 52px; } body.al-closed #alpha-rail-toggle { right: 90px; } }
 		body.al-closed #alpha-side { transform: translateX(calc(100% + 30px)); }
 		body.al-closed #al-fab { display: inline-flex; }
 		body.al-closed { padding-right: 0 !important; }
@@ -11427,11 +11433,21 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		body.al-closed #alpha-side .al-sec { font-size: 0; padding: 0; height: 1px; width: 58%; margin: 9px auto; background: var(--edge); opacity: 1; }
 		body.al-closed > main { max-width: none !important; }
 		@media (max-width: 1023px) {
-			#alpha-side { top: 8px; bottom: 8px; right: 8px; }
-			body > main { width: calc(100% - 278px) !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; padding-top: 22px !important; }
-			body.al-closed > main { width: calc(100% - 110px) !important; padding-top: 22px !important; }
-			body.al-closed #alpha-side .al-logo .al-tg { display: grid !important; }
-			body.al-closed #alpha-side .al-logo .al-home svg { width: 38px; height: 38px; }
+			/* phone reference: slim fixed icon rail, never a 250px drawer */
+			#alpha-side { top: 8px; bottom: 8px; right: 8px; width: 82px !important; padding: 14px 8px; transform: none !important; }
+			#alpha-side .al-logo { padding: 0 0 12px; justify-content: center; }
+			#alpha-side .al-logo .al-home b, #alpha-side .al-logo .al-ver,
+			#alpha-side .al-logo .al-tg, #alpha-side .al-prof .t,
+			#alpha-side .al-nav span, #alpha-side .al-nav .al-badge,
+			#alpha-side .al-quota { display: none !important; }
+			#alpha-side .al-prof { width: 54px; height: 54px; padding: 0; justify-content: center; margin: 0 0 8px; }
+			#alpha-side .al-nav { width: 56px; justify-content: center; padding: 12px 0; }
+			#alpha-side .al-sec { font-size: 0; padding: 0; height: 1px; width: 58%; margin: 9px auto; background: var(--edge); opacity: 1; }
+			#alpha-side .al-nav svg { width: 24px; height: 24px; }
+			body, body.al-closed { padding-right: 98px !important; }
+			body > main, body.al-closed > main { width: calc(100% - 98px) !important; max-width: none !important; margin: 0 !important; padding: 22px 10px 40px !important; box-sizing: border-box; }
+			#alpha-rail-toggle { right: 88px !important; width: 24px; height: 44px; }
+			#al-fab { display: none !important; }
 		}
 	</style>
 	<script>
@@ -11509,7 +11525,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		side.id = 'alpha-side'; side.className = 'al-glass';
 		side.innerHTML =
 			'<div class="al-logo"><div class="al-home" data-a="toggle" title="جمع کردن منو"><svg width="32" height="32" viewBox="0 0 100 100"><defs><linearGradient id="alS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alS)"/></svg><b>ALPHA</b></div><span class="al-ver" id="al-ver"></span><button type="button" class="al-tg" data-a="toggle" title="جمع کردن منو"><svg fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>' +
-			'<div class="al-prof" title="ادمین"><div class="al-av">A</div><div class="t"><b>ادمین</b><span><i class="al-live"></i>مدیر کل پنل</span></div></div>' +
+			'<div class="al-prof" title="ادمین"><div class="al-av" aria-hidden="true">A</div><div class="t"><b>ادمین</b><span><i class="al-live"></i>مدیر کل پنل</span></div></div>' +
 			'<div class="al-sec">اصلی</div>' + nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کانفیگ‌ها', '', 'al-nb-users') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
 			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('copy', 'copy', 'کپی آدرس پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
@@ -11517,6 +11533,10 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			'<div class="al-sec">حساب</div>' + nav('logout', 'out', 'خروج', 'danger') +
 			'<div class="al-quota"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>سهمیه روزانه</span><span id="al-q-pct" dir="ltr">0%</span></div><div class="al-bar"><b id="al-q-bar"></b></div><div class="al-mu" id="al-q-txt">۰ از ۱۰۰k · ریست ۳:۳۰ بامداد</div></div>';
 		document.body.appendChild(side);
+		var railToggle = document.createElement('button');
+		railToggle.type = 'button'; railToggle.id = 'alpha-rail-toggle'; railToggle.title = 'باز و بسته کردن نوار کناری'; railToggle.setAttribute('aria-label', 'باز و بسته کردن نوار کناری');
+		railToggle.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.5 5.5L8 12l6.5 6.5"/><path d="M19 5.5L12.5 12 19 18.5"/></svg>';
+		document.body.appendChild(railToggle);
 		var fab = document.createElement('button'); fab.type = 'button'; fab.id = 'al-fab'; fab.className = 'al-glass'; fab.title = 'باز کردن منو';
 		fab.innerHTML = '<svg class="ar" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><b>ALPHA</b><svg width="24" height="24" viewBox="0 0 100 100"><defs><linearGradient id="alF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--a3)"/><stop offset=".55" stop-color="var(--a1)"/><stop offset="1" stop-color="var(--a2)"/></linearGradient></defs><path d="M50 6 L94 94 H70 L50 52 L30 94 H6 Z" fill="url(#alF)"/></svg>';
 		document.body.appendChild(fab);
@@ -11525,6 +11545,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		function setSide(closed) { document.body.classList.toggle('al-closed', closed); try { localStorage.setItem(SIDE_KEY, closed ? '1' : '0'); } catch (e) {} }
 		A.toggle = function () { setSide(!document.body.classList.contains('al-closed')); };
 		fab.addEventListener('click', function () { setSide(false); });
+		railToggle.addEventListener('click', function () { setSide(!document.body.classList.contains('al-closed')); });
 		smask.addEventListener('click', function () { setSide(true); });
 		(function () { var v = null; try { v = localStorage.getItem(SIDE_KEY); } catch (e) {} setSide(v === '1'); })();
 		function setActive(k) { side.querySelectorAll('.al-nav').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-a') === k); }); }
