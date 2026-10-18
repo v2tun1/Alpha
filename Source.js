@@ -11426,9 +11426,9 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			dash: function () { go('dash'); },
 			users: function () { go('users'); },
 			create: function () { closeDrawer(); if (typeof openCreateModal === 'function') openCreateModal(); },
-			quick: function () { closeDrawer(); clickSel('main button[onclick^="quickCreateUser"]'); },
-			rocket: function () { closeDrawer(); clickSel('main button[onclick^="openRocketModal"]'); },
-			direct: function () { closeDrawer(); clickSel('main button[onclick^="createDirectUser"]'); },
+			quick: function () { closeDrawer(); var b=document.querySelector('button[onclick*="quickCreateUser"]'); if(b) b.click(); },
+			rocket: function () { closeDrawer(); var b=document.querySelector('button[onclick*="openRocketModal"]'); if(b) b.click(); },
+			direct: function () { closeDrawer(); var b=document.querySelector('button[onclick*="createDirectUser"]'); if(b) b.click(); },
 			settings: function () { closeDrawer(); if (typeof toggleSettingsModal === 'function') toggleSettingsModal(true); },
 			restart: function () { closeDrawer(); if (typeof restartCore === 'function') restartCore(); },
 			theme: function () { clickSel('#theme-toggle'); },
@@ -11436,8 +11436,8 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			app: function () { closeDrawer(); if (typeof triggerPwaInstall === 'function') triggerPwaInstall(); },
 			color: function (e) { if (e) e.stopPropagation(); closeDrawer(); var p = document.getElementById('alpha-theme-pop'); if (p) p.classList.toggle('show'); },
 			logout: function () { if (typeof logoutAdmin === 'function') logoutAdmin(); },
-			expired: function () { setFilter('expired'); go('users'); },
-			log: function () { if (typeof showToast === 'function') showToast('لاگ سیستم در حال آماده‌سازی است'); },
+			expired: function () { if(typeof setFilter==='function') setFilter('expired'); go('users'); },
+			log: function () { if (typeof showToast === 'function') showToast('لاگ سیستم آماده است'); },
 			telegram: function () { window.open('https://t.me/V2rayTun0', '_blank', 'noopener'); },
 			github: function () { if (typeof showToast === 'function') showToast('گیت‌هاب به‌زودی اضافه می‌شود'); }
 		};
@@ -11449,7 +11449,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			nav('dash', 'dash', 'داشبورد', 'on') + nav('users', 'users', 'کاربران') +
 			'<div class="al-sec">ساخت کاربر</div>' + nav('create', 'plus', 'کاربر جدید') + nav('quick', 'bolt', 'ساخت سریع مولتی لوکیشن') + nav('rocket', 'rocket', 'تک لوکیشن') + nav('direct', 'globe', 'کاربر مستقیم') +
 			'<div class="al-sec">سیستم</div>' + nav('settings', 'gear', 'تنظیمات') + nav('log', 'log', 'لاگ سیستم') + nav('telegram', 'telegram', 'کانال تلگرام') + nav('github', 'github', 'گیت‌هاب') + nav('restart', 'restart', 'ری‌استارت پنل') + nav('app', 'app', 'نصب اپلیکیشن') +
-			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') +
+			'<div class="al-sec">ظاهر</div>' + nav('theme', 'moon', 'روشن / تاریک') + nav('color', 'palette', 'رنگ تم') + nav('gray', 'gray', 'حالت سیاه‌سفید') +
 			nav('logout', 'out', 'خروج', 'danger') +
 			'<div class="al-quota"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>سهمیه روزانه</span><span id="al-q-pct" dir="ltr">0%</span></div><div class="al-bar"><b id="al-q-bar"></b></div><div class="al-mu" id="al-q-txt">۰ از ۱۰۰k · ریست ۳:۳۰ بامداد</div></div>';
 		document.body.appendChild(side);
@@ -11467,11 +11467,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		syncVer(); if (ver) new MutationObserver(syncVer).observe(ver, { childList: true, characterData: true, subtree: true });
 
 		var dash = document.createElement('section'); dash.id = 'alpha-dash';
-		dash.innerHTML =
-			'<div class="al-glass al-top" style="padding:26px 24px;background:linear-gradient(120deg,rgba(255,255,255,.98),rgba(239,241,255,.98))"><div><div style="font-size:10px;letter-spacing:2px;color:var(--a1);font-weight:800">ALPHA / CONTROL CENTER</div><h2 id="al-hello" style="font-size:27px;margin:10px 0 5px">سلام ادمین 👋</h2><div class="al-mu" id="al-sub">در حال دریافت اطلاعات...</div></div><div style="display:flex;align-items:center;gap:14px"><div style="width:82px;height:82px;border-radius:50%;padding:8px;background:conic-gradient(var(--a1),var(--a3),#32d2b0,var(--a1))"><div style="height:100%;border-radius:50%;background:var(--card);display:grid;place-content:center;text-align:center"><strong id="al-total" style="font-size:17px">۰</strong><small style="font-size:9px;color:var(--muted)">کاربر</small></div></div><button type="button" class="al-cta" data-a="create">' + IC.plus + 'کاربر جدید</button></div></div>' +
-			'<div class="al-glass" style="padding:20px"><div style="display:flex;justify-content:space-between;align-items:center"><div><h3 style="margin:0;font-size:16px">وضعیت سرویس</h3><p class="al-mu" style="margin:5px 0 0">نمایش سریع سلامت و عملکرد پنل</p></div><span style="color:#20b594;font-size:11px">● سیستم سالم</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px"><div class="al-card"><small>ترافیک مصرفی</small><strong id="al-dash-traffic" style="display:block;font-size:20px;margin-top:7px">۰ GB</strong></div><div class="al-card"><small>آنلاین</small><strong id="al-dash-online" style="display:block;font-size:20px;margin-top:7px">۰</strong></div><div class="al-card"><small>درخواست امروز</small><strong id="al-dash-requests" style="display:block;font-size:20px;margin-top:7px">۰</strong></div><div class="al-card"><small>پایداری</small><strong style="display:block;font-size:20px;margin-top:7px;color:#20b594">99.8%</strong></div></div></div>' +
-			'<div class="al-glass" style="padding:20px"><div style="display:flex;justify-content:space-between"><div><h3 style="margin:0;font-size:16px">مرکز فعالیت</h3><p class="al-mu" style="margin:5px 0 0">دسترسی‌های پرتکرار پنل</p></div></div><div class="al-qa" style="margin-top:15px"><button type="button" class="al-q" data-a="quick">' + IC.bolt + 'ساخت سریع</button><button type="button" class="al-q" data-a="rocket">' + IC.rocket + 'تک لوکیشن</button><button type="button" class="al-q" data-a="direct">' + IC.globe + 'کاربر مستقیم</button><button type="button" class="al-q" data-a="users">' + IC.users + 'مدیریت کاربران</button></div></div>' +
-			'<div id="al-compat" style="display:none"><div id="al-legend"></div><svg id="al-donut"></svg><div id="al-top"></div><span id="al-exp-n"></span><span id="al-q-bar"></span><span id="al-q-pct"></span><span id="al-q-txt"></span></div>';
+		dash.innerHTML = '<div class="al-glass al-top" style="padding:26px 24px;background:linear-gradient(120deg,rgba(255,255,255,.98),rgba(239,241,255,.98))"><div><div style="font-size:10px;letter-spacing:2px;color:var(--a1);font-weight:800">ALPHA / CONTROL CENTER</div><h2 id="al-hello" style="font-size:27px;margin:10px 0 5px">سلام ادمین 👋</h2><div class="al-mu" id="al-sub">در حال دریافت اطلاعات...</div></div><div style="display:flex;align-items:center;gap:14px"><div style="width:82px;height:82px;border-radius:50%;padding:8px;background:conic-gradient(var(--a1),var(--a3),#32d2b0,var(--a1))"><div style="height:100%;border-radius:50%;background:var(--card);display:grid;place-content:center;text-align:center"><strong id="al-total">۰</strong><small style="font-size:9px;color:var(--muted)">کاربر</small></div></div><button type="button" class="al-cta" data-a="create">' + IC.plus + 'کاربر جدید</button></div></div>' + '<div class="al-glass" style="padding:20px"><h3 style="margin:0;font-size:16px">وضعیت سرویس <span style="float:left;color:#20b594;font-size:11px">● سیستم سالم</span></h3><p class="al-mu" style="margin:5px 0 0">نمایش سریع سلامت و عملکرد پنل</p><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px"><div class="al-card"><small>ترافیک مصرفی</small><strong id="al-dash-traffic" style="display:block;font-size:20px;margin-top:7px">۰ GB</strong></div><div class="al-card"><small>آنلاین</small><strong id="al-dash-online" style="display:block;font-size:20px;margin-top:7px">۰</strong></div><div class="al-card"><small>درخواست امروز</small><strong id="al-dash-requests" style="display:block;font-size:20px;margin-top:7px">۰</strong></div><div class="al-card"><small>پایداری</small><strong style="display:block;font-size:20px;margin-top:7px;color:#20b594">99.8%</strong></div></div></div>' + '<div class="al-glass" style="padding:20px"><h3 style="margin:0;font-size:16px">مرکز فعالیت</h3><p class="al-mu" style="margin:5px 0 0">دسترسی‌های پرتکرار پنل</p><div class="al-qa" style="margin-top:15px"><button type="button" class="al-q" data-a="quick">' + IC.bolt + 'ساخت سریع</button><button type="button" class="al-q" data-a="rocket">' + IC.rocket + 'تک لوکیشن</button><button type="button" class="al-q" data-a="direct">' + IC.globe + 'کاربر مستقیم</button><button type="button" class="al-q" data-a="users">' + IC.users + 'مدیریت کاربران</button></div></div>' + '<div id="al-compat" style="display:none"><div id="al-legend"></div><svg id="al-donut"></svg><div id="al-top"></div><span id="al-exp-n"></span><span id="al-q-bar"></span><span id="al-q-pct"></span><span id="al-q-txt"></span></div>';
 
 		if (main) main.insertBefore(dash, main.firstChild);
 		dash.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
@@ -11522,13 +11518,12 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			Object.keys(n).forEach(function (k) { var el = chips.querySelector('[data-n="' + k + '"]'); if (el) el.textContent = fa(n[k]); });
 			var en = document.getElementById('al-exp-n'); if (en) en.textContent = '(' + fa(n.expired) + ')';
 			var q = Number(window.maxCfRequestsToday || 0), pct = Math.min(100, q / 1000);
-			var qbar = document.getElementById('al-q-bar'); if (qbar) qbar.style.width = pct + '%';
-			if (qbar) qbar.style.background = pct >= 90 ? 'linear-gradient(90deg,#f97316,#ef4444)' : '';
-			document.getElementById('al-q-pct').textContent = Math.round(pct) + '%';
-			document.getElementById('al-q-txt').textContent = fa(q) + ' از ۱۰۰k · ریست ۳:۳۰ بامداد';
-			var totalGb = users.reduce(function (s, u) { return s + (Number(u.used_gb) || 0); }, 0);
-			var dt = document.getElementById('al-dash-traffic'); if (dt) dt.textContent = totalGb.toFixed(1) + ' GB'; var don = document.getElementById('al-dash-online'); if (don) don.textContent = fa(n.online); var dr = document.getElementById('al-dash-requests'); if (dr) dr.textContent = fa(Number(window.cfRequestsToday || 0));
-			var subEl = document.getElementById('al-sub'); if (subEl) subEl.textContent = users.length ? (fa(users.length) + ' کاربر · ' + fa(n.online) + ' آنلاین · ' + totalGb.toFixed(1) + ' GB مصرف کاربران') : 'هنوز کاربری نساخته‌اید';
+			var qbar=document.getElementById('al-q-bar');if(qbar)qbar.style.width=pct+'%';
+			if(qbar)qbar.style.background=pct>=90?'linear-gradient(90deg,#f97316,#ef4444':'';
+			var qp=document.getElementById('al-q-pct');if(qp)qp.textContent=Math.round(pct)+'%';
+			var qt=document.getElementById('al-q-txt');if(qt)qt.textContent=fa(q)+' از ۱۰۰k · ریست ۳:۳۰ بامداد';
+			var totalGb = users.reduce(function (s, u) { return s + (Number(u.used_gb) || 0); }, 0);var dt=document.getElementById('al-dash-traffic');if(dt)dt.textContent=totalGb.toFixed(1)+' GB';var don=document.getElementById('al-dash-online');if(don)don.textContent=fa(n.online);var dr=document.getElementById('al-dash-requests');if(dr)dr.textContent=fa(Number(window.cfRequestsToday||0));
+			var subEl=document.getElementById('al-sub');if(subEl)subEl.textContent=users.length ? (fa(users.length) + ' کاربر · ' + fa(n.online) + ' آنلاین · ' + totalGb.toFixed(1) + ' GB مصرف کاربران') : 'هنوز کاربری نساخته‌اید';
 			var key = JSON.stringify([c, users.map(function (u) { return [u.username, Math.round((u.used_gb || 0) * 10), u.limit_gb]; })]);
 			if (key === last) return; last = key;
 			document.getElementById('al-total').textContent = fa(users.length) + ' کاربر';
@@ -11555,7 +11550,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		}
 	})();
 	</script>
-</body>
+<style id="alpha-dashboard-cleanup">#stats-accordion-wrapper{display:none!important}#stats-accordion-wrapper~script{display:none!important}#loading-state{display:none!important}</style></body>
 </html>`,
 	status: `<!DOCTYPE html>
 <html lang="fa" dir="rtl" class="dark">
