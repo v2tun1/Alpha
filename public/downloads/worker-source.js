@@ -11552,6 +11552,61 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
         body.alpha-view-users #alpha-bnav button[data-a="users"]{color:#10285d !important;background:rgba(71,105,239,.08) !important;}
         html.dark body.alpha-view-users #alpha-bnav button[data-a="users"]{color:#70f0d0 !important;background:rgba(0,210,255,.10) !important;}
 
+        /* FINAL USERS SCREEN: old dashboard is not part of this route. */
+        body.alpha-view-users #alpha-dash,
+        body.alpha-view-users #alpha-users-hero,
+        body.alpha-view-users .al-hero,
+        body.alpha-view-users .al-middle,
+        body.alpha-view-users .al-bottom-grid { display:none !important; }
+        body.alpha-view-users { background:linear-gradient(135deg,#f8faff 0%,#f4f0ff 58%,#fff5fb 100%) !important; }
+        html.dark body.alpha-view-users { background:linear-gradient(135deg,#0b1730,#151936 58%,#24152a) !important; }
+        body.alpha-view-users main { max-width:100% !important; padding:0 28px 132px !important; }
+        body.alpha-view-users main > .bg-gray-50\/70 { display:block !important; background:transparent !important; border:0 !important; box-shadow:none !important; margin:0 !important; }
+        body.alpha-view-users #stats-accordion-wrapper { display:block !important; max-height:none !important; opacity:1 !important; }
+        body.alpha-view-users #stats-accordion-wrapper > div { display:grid !important; grid-template-columns:repeat(4,1fr) !important; gap:14px !important; padding:0 !important; border:0 !important; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div { min-height:154px !important; border-radius:24px !important; background:rgba(255,255,255,.92) !important; border:1px solid #e0e7fb !important; box-shadow:0 10px 28px rgba(74,96,163,.10) !important; }
+        html.dark body.alpha-view-users #stats-accordion-wrapper > div > div { background:rgba(15,29,53,.95) !important; border-color:#294264 !important; }
+        body.alpha-view-users #alpha-chips { margin:18px 0 17px !important; padding:17px 18px !important; min-height:105px !important; display:flex !important; align-content:center !important; justify-content:center !important; gap:12px !important; background:rgba(255,255,255,.94) !important; border:1px solid #e1e7f7 !important; border-radius:25px !important; box-shadow:0 10px 28px rgba(74,96,163,.10) !important; }
+        body.alpha-view-users #alpha-chips .al-chip { min-height:43px !important; padding:0 24px !important; border-radius:999px !important; background:transparent !important; border:1px solid #e0e6f4 !important; color:#172b56 !important; font-size:15px !important; font-weight:800 !important; }
+        body.alpha-view-users #alpha-chips .al-chip.on { color:#fff !important; background:linear-gradient(100deg,#b52bf0,#ff477f) !important; border-color:transparent !important; box-shadow:0 8px 20px rgba(226,47,205,.25) !important; }
+        html.dark body.alpha-view-users #alpha-chips .al-chip { color:#e8f0ff !important; border-color:#304663 !important; }
+        body.alpha-view-users main > .mb-5.flex.flex-col { margin:0 0 17px !important; padding:15px !important; border-radius:24px !important; background:rgba(255,255,255,.94) !important; border:1px solid #e1e7f7 !important; box-shadow:0 10px 28px rgba(74,96,163,.10) !important; }
+        html.dark body.alpha-view-users main > .mb-5.flex.flex-col { background:rgba(15,29,53,.95) !important; border-color:#294264 !important; }
+        body.alpha-view-users #search-input { height:61px !important; border-radius:19px !important; background:#f5f7fd !important; border-color:#e1e7f7 !important; font-size:17px !important; padding-right:45px !important; }
+        html.dark body.alpha-view-users #search-input { background:#0a1830 !important; border-color:#294264 !important; }
+        body.alpha-view-users main > .mb-5.flex.flex-col > .flex.items-center.gap-2 { margin-top:14px !important; }
+        body.alpha-view-users #filter-status, body.alpha-view-users #sort-users { height:50px !important; border-radius:17px !important; background:transparent !important; border-color:#e1e7f7 !important; font-size:15px !important; }
+        body.alpha-view-users main > .flex.items-center.justify-between.mb-4 { margin:0 0 12px !important; padding:0 12px !important; align-items:center !important; }
+        body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2 { font-size:30px !important; font-weight:950 !important; color:#112c62 !important; }
+        html.dark body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2 { color:#eff7ff !important; }
+        body.alpha-view-users main > .flex.items-center.justify-between.mb-4 > div { gap:18px !important; direction:rtl !important; }
+        body.alpha-view-users main > .flex.items-center.justify-between.mb-4 > div button { width:59px !important; height:59px !important; padding:11px !important; border-radius:50% !important; box-shadow:0 0 20px currentColor !important; }
+        body.alpha-view-users #users-table-container { border-radius:24px !important; background:rgba(255,247,248,.75) !important; border:2px dashed #ec9aa5 !important; box-shadow:none !important; padding:28px !important; min-height:300px !important; }
+        html.dark body.alpha-view-users #users-table-container { background:rgba(46,20,32,.55) !important; border-color:#b45b72 !important; }
+        body.alpha-view-users #users-table-container:has(tbody:empty) { display:none !important; }
+        #alpha-empty-users { min-height:300px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#cc3c42; font-size:24px; font-weight:900; line-height:2; border:2px dashed #ec9aa5; border-radius:24px; background:rgba(255,247,248,.75); margin-bottom:16px; }
+        #alpha-empty-users .empty-icons { font-size:38px; letter-spacing:20px; color:#28a7b2; margin-top:15px; }
+        @media (max-width:1199px){
+          body.alpha-view-users{padding-right:0 !important;}
+          body.alpha-view-users > header{display:block !important; zoom:1 !important;}
+          body.alpha-view-users > main{zoom:1 !important;}
+          body.alpha-view-users #alpha-side{display:none !important;}
+          body.alpha-view-users #alpha-bnav{display:grid !important; grid-template-columns:repeat(5,1fr) !important; position:fixed !important; left:28px !important; right:28px !important; bottom:18px !important; z-index:60 !important; padding:7px !important; border-radius:24px !important; background:rgba(255,255,255,.94) !important; border:1px solid #e1e7f7 !important; box-shadow:0 10px 30px rgba(74,96,163,.15) !important;}
+          body.alpha-view-users #alpha-bnav button{display:flex !important; flex-direction:column !important; align-items:center !important; gap:4px !important; font-size:13px !important; font-weight:800 !important; padding:8px 2px !important; border-radius:18px !important; color:#172b56 !important;}
+          body.alpha-view-users #alpha-bnav button svg{width:27px !important;height:27px !important;}
+          body.alpha-view-users #alpha-bnav button.mid{color:#fff !important; background:linear-gradient(135deg,#16d6c0,#4268f4) !important; box-shadow:0 0 20px rgba(31,180,220,.35) !important;}
+        }
+        @media (max-width:699px){
+          body.alpha-view-users main{padding:0 18px 126px !important;}
+          body.alpha-view-users #stats-accordion-wrapper > div{grid-template-columns:1fr 1fr !important;}
+          body.alpha-view-users #stats-accordion-wrapper > div > div{min-height:130px !important;}
+          body.alpha-view-users #alpha-chips{min-height:185px !important; padding:16px 28px !important; gap:10px !important;}
+          body.alpha-view-users #alpha-chips .al-chip{padding:0 17px !important; font-size:14px !important;}
+          body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2{font-size:29px !important;}
+          body.alpha-view-users main > .flex.items-center.justify-between.mb-4 > div button{width:54px !important;height:54px !important;}
+          #alpha-empty-users{font-size:21px;}
+        }
+
 	</style>
 	<script>
 	(function () {
@@ -11753,6 +11808,21 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
 		var h = new Date().getHours(); var hello=document.getElementById('al-hello'); if(hello) hello.textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
 		go('users');
+        (function mountEmptyUsers(){
+            function sync(){
+                var isUsers=document.body.classList.contains('alpha-view-users');
+                var empty=window.allUsers && window.allUsers.length===0;
+                var old=document.getElementById('alpha-empty-users');
+                if(!isUsers || !empty){ if(old) old.remove(); return; }
+                if(old) return;
+                var h=document.querySelector('main > .flex.items-center.justify-between.mb-4');
+                if(!h) return;
+                var box=document.createElement('div'); box.id='alpha-empty-users';
+                box.innerHTML='کاربری وجود ندارد. برای ساخت کاربر روی<br>دکمه‌های <span class="empty-icons">＋ ⚡ 🚀 ◎</span><br>برای ایجاد سریع استفاده کنید.';
+                h.insertAdjacentElement('afterend',box);
+            }
+            setInterval(sync,700); setTimeout(sync,300);
+        })();
         (function bindReferenceStats(){
             function paint(){
                 if(!document.body.classList.contains('alpha-view-users') || !window.allUsers) return;
