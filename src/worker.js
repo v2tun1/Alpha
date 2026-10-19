@@ -11302,6 +11302,62 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		.al-legend div { white-space: nowrap; }
 		#alpha-bnav { display: none; }
 		#alpha-side-mask { display: none; }
+		/* ALPHA live dashboard refresh */
+		:root { --dash-bg:#031226; --dash-panel:rgba(5,29,58,.88); --dash-edge:rgba(0,207,255,.48); }
+		body { background: radial-gradient(ellipse at 8% 0%,rgba(0,212,255,.12),transparent 36%), radial-gradient(ellipse at 100% 45%,rgba(101,45,255,.13),transparent 34%), #020d1d !important; }
+		.al-glass { background:linear-gradient(145deg,rgba(4,37,69,.94),rgba(3,17,39,.96)) !important; border:1px solid var(--dash-edge) !important; box-shadow:0 8px 28px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.035),0 0 20px rgba(0,190,255,.08) !important; color:#e8f6ff !important; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+		html:not(.dark) .al-glass { background:linear-gradient(145deg,rgba(4,37,69,.96),rgba(3,17,39,.98)) !important; color:#e8f6ff !important; }
+		#alpha-dash { gap:16px; margin-bottom:18px; }
+		.al-hero { min-height:145px; padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:18px; position:relative; overflow:hidden; }
+		.al-hero:after { content:""; position:absolute; inset:auto -3% -45px -3%; height:100px; background:radial-gradient(ellipse,rgba(0,235,255,.2),transparent 70%); pointer-events:none; }
+		.al-brand { display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+		.al-brand-mark { width:76px; height:76px; display:grid; place-items:center; color:#00f5bb; filter:drop-shadow(0 0 16px rgba(0,255,200,.5)); font-size:68px; font-weight:1000; line-height:1; }
+		.al-brand-title { font-size:30px; font-weight:1000; letter-spacing:3px; color:#f3fbff; }
+		.al-brand-sub { margin-top:5px; color:#b8d6ed; font-size:14px; }
+		.al-service { text-align:center; min-width:125px; position:relative; z-index:1; }
+		.al-live { display:inline-flex; align-items:center; justify-content:center; gap:9px; margin-top:12px; padding:9px 17px; border-radius:999px; color:#a8ffe7; border:1px solid rgba(0,255,190,.28); background:rgba(0,220,160,.12); font-weight:800; }
+		.al-live i { width:9px;height:9px;border-radius:50%;background:#00f5a0;box-shadow:0 0 12px #00f5a0; }
+		.al-stat-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+		.al-stat { padding:17px 18px; min-height:150px; position:relative; overflow:hidden; }
+		.al-stat:after { content:""; position:absolute; width:90px;height:90px;left:-22px;bottom:-36px;border-radius:50%;background:var(--stat-glow,rgba(0,220,255,.12));filter:blur(20px); }
+		.al-stat-top { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+		.al-stat-icon { width:46px;height:46px;display:grid;place-items:center;border-radius:50%;color:var(--stat-color,#18d9ff);background:color-mix(in srgb,var(--stat-color,#18d9ff) 18%,transparent);box-shadow:0 0 20px color-mix(in srgb,var(--stat-color,#18d9ff) 24%,transparent); }
+		.al-stat-icon svg { width:25px;height:25px; }
+		.al-stat-label { font-size:13px;color:#d5e9fa; }
+		.al-stat-value { font-size:29px;font-weight:900;direction:ltr;text-align:right;margin-top:8px;letter-spacing:.2px; }
+		.al-stat-foot { font-size:11px;color:#9bbbd4;margin-top:4px; }
+		.al-progress { height:8px;background:rgba(180,220,255,.12);border-radius:99px;overflow:hidden;margin-top:10px; }
+		.al-progress b { display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#00efa7,#00d7ff);box-shadow:0 0 12px rgba(0,255,190,.35); }
+		.al-middle { display:grid;grid-template-columns:minmax(0,1.35fr) minmax(290px,1fr);gap:16px; }
+		.al-chart-card,.al-quick-card,.al-recent-card,.al-system-card,.al-server-card { padding:18px 20px;min-width:0; }
+		.al-panel-title { display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:17px;font-weight:900;margin-bottom:14px; }
+		.al-chart-wrap { width:100%;min-height:200px; }
+		#al-traffic-chart { width:100%;height:auto;display:block;overflow:visible; }
+		.al-chart-note { font-size:11px;color:#9bbbd4;margin-top:8px; }
+		.al-quick-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+		.al-q { min-height:94px;border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--q-color,#00e6ad) 20%,rgba(2,20,44,.8)),rgba(4,20,46,.8));border-color:color-mix(in srgb,var(--q-color,#00e6ad) 55%,transparent); }
+		.al-q svg { width:30px;height:30px;color:var(--q-color,#00e6ad); }
+		.al-recent-card { overflow:hidden; }
+		.al-table-wrap { overflow-x:auto; }
+		.al-recent-table { width:100%;border-collapse:collapse;min-width:500px;font-size:12px; }
+		.al-recent-table th,.al-recent-table td { text-align:right;padding:12px 9px;border-bottom:1px solid rgba(95,174,225,.17);white-space:nowrap; }
+		.al-recent-table th { color:#8db8d6;font-weight:700; }
+		.al-recent-table td { color:#e3f4ff; }
+		.al-status-pill { display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:4px 9px;background:rgba(0,220,150,.1);color:#6fffd2; }
+		.al-status-pill i { width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor; }
+		.al-bottom-grid { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+		.al-system-row { display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid rgba(95,174,225,.15);font-size:12px; }
+		.al-system-row:last-child { border-bottom:0; }
+		.al-system-value { direction:ltr;font-weight:800;color:#7dffcf; }
+		.al-server-host { direction:ltr;text-align:left;word-break:break-word;font-size:15px;font-weight:800; }
+		#alpha-chips { scroll-margin-top:18px; }
+		body.alpha-view-dash main > :not(#alpha-dash) { display:none !important; }
+		body.alpha-view-users #alpha-dash { display:none !important; }
+				body.alpha-view-users #alpha-chips { display:flex; }
+		#alpha-bnav button.active { color:#52f5d0; background:rgba(0,210,255,.1); }
+		@media(max-width:900px) { .al-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.al-middle,.al-bottom-grid {grid-template-columns:1fr;} .al-hero{padding:17px}.al-brand-mark{width:55px;height:55px;font-size:52px}.al-brand-title{font-size:25px}.al-service{min-width:100px}.al-stat{min-height:130px}.al-stat-value{font-size:25px} }
+		@media(max-width:480px) { #alpha-dash{gap:12px}.al-hero{align-items:flex-start;padding:15px 13px}.al-brand{gap:8px}.al-brand-mark{width:39px;height:42px;font-size:40px}.al-brand-title{font-size:20px;letter-spacing:2px}.al-brand-sub{font-size:11px}.al-service{min-width:82px;font-size:11px}.al-live{padding:7px 9px;font-size:12px}.al-stat-grid{gap:9px}.al-stat{padding:13px;min-height:122px}.al-stat-label{font-size:11px}.al-stat-value{font-size:23px}.al-stat-icon{width:38px;height:38px}.al-chart-card,.al-quick-card,.al-recent-card,.al-system-card,.al-server-card{padding:14px}.al-panel-title{font-size:15px}.al-q{min-height:84px;font-size:12px} }
+
 		@media (min-width: 1024px) {
 			body { padding-right: 276px; }
 			body > header { display: none !important; }
@@ -11346,18 +11402,16 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		function clickSel(sel) { var b = document.querySelector(sel); if (b) b.click(); return !!b; }
 		function call(fn) { return function () { try { if (typeof window[fn] === 'function') window[fn].apply(null, [].slice.call(arguments, 1)); } catch (e) {} }; }
 		var main = document.querySelector('body > main');
-		// Replace the legacy dashboard stats panel with the new Alpha glass dashboard.
-		// Keep its inner stat elements in the DOM because existing logic may still read them.
-		var legacyStats = document.getElementById('stats-accordion-wrapper');
-		if (legacyStats && legacyStats.parentElement) {
-			legacyStats.parentElement.style.display = 'none';
-		}
 		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
 		function go(where) {
 			closeDrawer();
-			var t = where === 'users' ? (document.getElementById('alpha-chips') || usersAnchor) : document.getElementById('alpha-dash');
-			if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			setActive(where);
+			var isUsers = where === 'users';
+			document.body.classList.toggle('alpha-view-users', isUsers);
+			document.body.classList.toggle('alpha-view-dash', !isUsers);
+			var t = isUsers ? (document.getElementById('alpha-chips') || usersAnchor) : document.getElementById('alpha-dash');
+			if (t) { window.scrollTo({top:0,behavior:'smooth'}); }
+			setActive(isUsers ? 'users' : 'dash');
+			bnav.querySelectorAll('button[data-a]').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-a') === (isUsers ? 'users' : 'dash')); });
 		}
 		var A = {
 			dash: function () { go('dash'); },
@@ -11402,22 +11456,28 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 
 		var dash = document.createElement('section'); dash.id = 'alpha-dash';
 		dash.innerHTML =
-			'<div class="al-glass al-top"><div><h2 id="al-hello">سلام ادمین 👋</h2><div class="al-mu" id="al-sub">در حال دریافت اطلاعات...</div></div>' +
-			'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="al-chip" id="al-search">' + IC.search.replace('<svg', '<svg width="15" height="15"') + 'جستجوی کاربر <kbd>Ctrl K</kbd></button><button type="button" class="al-cta" data-a="create">' + IC.plus.replace('<svg', '<svg width="18" height="18"') + 'کاربر جدید</button></div></div>' +
-			'<div class="al-grid">' +
-				'<div class="al-glass al-card"><h3>وضعیت کاربران <span class="al-mu" id="al-total"></span></h3><div class="al-donut"><svg width="132" height="132" viewBox="0 0 42 42" id="al-donut"></svg><div class="al-legend" id="al-legend"></div></div></div>' +
-				'<div class="al-glass al-card"><h3>بیشترین مصرف <span class="al-mu">حجم مصرفی کاربران</span></h3><div id="al-top"></div></div>' +
-				'<div class="al-glass al-card"><h3>دسترسی سریع</h3><div class="al-qa">' +
-					'<button type="button" class="al-q" data-a="quick">' + IC.bolt + 'ساخت سریع</button>' +
-					'<button type="button" class="al-q" data-a="rocket">' + IC.rocket + 'تک لوکیشن</button>' +
-					'<button type="button" class="al-q" data-a="direct">' + IC.globe + 'کاربر مستقیم</button>' +
-					'<button type="button" class="al-q" data-a="expired">' + IC.broom + 'منقضی‌ها <span class="al-mu" id="al-exp-n"></span></button>' +
-				'</div></div>' +
-			'</div>';
+			'<div class="al-glass al-hero"><div class="al-brand"><div class="al-brand-mark">Λ</div><div><div class="al-brand-title">ALPHA</div><div class="al-brand-sub">به پنل مدیریت Alpha خوش آمدید</div><div class="al-mu">نمای زنده وضعیت کاربران و مصرف</div></div></div><div class="al-service"><div style="font-weight:800">وضعیت سرویس</div><div class="al-live"><i></i><span>فعال</span></div></div></div>' +
+			'<div class="al-stat-grid">' +
+			'<div class="al-glass al-stat" style="--stat-color:#a78bfa;--stat-glow:rgba(124,58,237,.2)"><div class="al-stat-top"><span class="al-stat-icon">' + IC.users + '</span><span class="al-stat-label">کل کاربران</span></div><div class="al-stat-value" id="al-stat-total">—</div><div class="al-stat-foot">تعداد حساب‌های ثبت‌شده</div></div>' +
+			'<div class="al-glass al-stat" style="--stat-color:#00efb2;--stat-glow:rgba(0,239,178,.18)"><div class="al-stat-top"><span class="al-stat-icon">' + IC.users + '</span><span class="al-stat-label">کاربران آنلاین</span></div><div class="al-stat-value" id="al-stat-online">—</div><div class="al-stat-foot" id="al-online-foot">وضعیت اتصال فعلی</div></div>' +
+			'<div class="al-glass al-stat" style="--stat-color:#19d7ff;--stat-glow:rgba(25,215,255,.18)"><div class="al-stat-top"><span class="al-stat-icon">' + IC.users + '</span><span class="al-stat-label">کاربران غیرفعال</span></div><div class="al-stat-value" id="al-stat-disabled">—</div><div class="al-stat-foot" id="al-disabled-foot">حساب‌های غیرفعال</div></div>' +
+			'<div class="al-glass al-stat" style="--stat-color:#ffd34d;--stat-glow:rgba(255,211,77,.2)"><div class="al-stat-top"><span class="al-stat-icon">' + IC.broom + '</span><span class="al-stat-label">مصرف ترافیک</span></div><div class="al-stat-value" id="al-stat-traffic">—</div><div class="al-progress"><b id="al-traffic-progress" style="width:0%"></b></div><div class="al-stat-foot" id="al-traffic-foot">مجموع مصرف ثبت‌شده کاربران</div></div>' +
+			'</div>' +
+			'<div class="al-middle"><div class="al-glass al-chart-card"><div class="al-panel-title"><span>نمودار مصرف ترافیک</span><span class="al-mu">۷ روز اخیر</span></div><div class="al-chart-wrap"><svg id="al-traffic-chart" viewBox="0 0 600 230" role="img" aria-label="نمودار مصرف ثبت شده در هفت روز اخیر"></svg></div><div class="al-chart-note" id="al-chart-note">تاریخچه واقعی از زمان فعال‌شدن این داشبورد ذخیره می‌شود.</div></div>' +
+			'<div class="al-glass al-quick-card"><div class="al-panel-title"><span>دسترسی سریع</span><span style="color:#00e8d0">ϟ</span></div><div class="al-quick-grid">' +
+			'<button type="button" class="al-q" style="--q-color:#00efb2" data-a="create">' + IC.plus + 'ساخت کاربر</button>' +
+			'<button type="button" class="al-q" style="--q-color:#a78bfa" data-a="quick">' + IC.bolt + 'ساخت سریع</button>' +
+			'<button type="button" class="al-q" style="--q-color:#ffd34d" data-a="direct">' + IC.users + 'کاربر مستقیم</button>' +
+			'<button type="button" class="al-q" style="--q-color:#19d7ff" data-a="users">' + IC.globe + 'مدیریت کاربران</button>' +
+			'</div></div></div>' +
+			'<div class="al-glass al-recent-card"><div class="al-panel-title"><span>کاربران اخیر</span><button type="button" class="al-chip" data-a="users">مشاهده همه ←</button></div><div class="al-table-wrap"><table class="al-recent-table"><thead><tr><th>نام کاربری</th><th>تاریخ ساخت</th><th>وضعیت</th><th>حجم مصرف</th></tr></thead><tbody id="al-recent-users"><tr><td colspan="4" class="al-empty">در حال دریافت اطلاعات…</td></tr></tbody></table></div></div>' +
+			'<div class="al-bottom-grid"><div class="al-glass al-system-card"><div class="al-panel-title"><span>وضعیت سیستم</span><span style="color:#00efb2">◈</span></div><div class="al-system-row"><span>درخواست‌های امروز پنل</span><span class="al-system-value" id="al-requests-today">—</span></div><div class="al-system-row"><span>تعداد کاربران فعال</span><span class="al-system-value" id="al-active-users">—</span></div><div class="al-system-row"><span>وضعیت داده خطا</span><span class="al-system-value" style="color:#a9c5da">از سمت سرور ارائه نشده</span></div></div>' +
+			'<div class="al-glass al-server-card"><div class="al-panel-title"><span>سرور فعال</span><span style="color:#19d7ff">◎</span></div><div class="al-system-row"><span>میزبان پنل</span><span class="al-server-host" id="al-server-host">—</span></div><div class="al-system-row"><span>دسترسی داشبورد</span><span class="al-system-value" id="al-server-status">فعال</span></div><div class="al-system-row"><span>آخرین بروزرسانی</span><span id="al-last-update" style="color:#9bbbd4">—</span></div></div></div>';
 		if (main) main.insertBefore(dash, main.firstChild);
+		document.body.classList.add('alpha-view-dash');
 		dash.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
 		function focusSearch() { var s = document.getElementById('search-input'); if (s) { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { s.focus(); }, 250); } }
-		document.getElementById('al-search').addEventListener('click', focusSearch);
+		var searchBtn = document.getElementById('al-search'); if (searchBtn) searchBtn.addEventListener('click', focusSearch);
 		document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); focusSearch(); } });
 
 		var fs = document.getElementById('filter-status');
@@ -11447,7 +11507,29 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var COLORS = { online: '#22d3ee', idle: '#34d399', expired: '#f59e0b', disabled: '#f43f5e' };
 		var LABEL = { online: 'آنلاین', idle: 'فعال (آفلاین)', expired: 'منقضی', disabled: 'غیرفعال' };
 		var FILTER = { online: 'online', idle: 'active', expired: 'expired', disabled: 'inactive' };
-		var last = '';
+		function escHtml(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function(ch){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]; }); }
+		function fmtDate(v) { if (!v) return '—'; var d = new Date(v); if (!isFinite(d.getTime())) return '—'; try { return d.toLocaleDateString('fa-IR',{month:'2-digit',day:'2-digit'}); } catch(e) { return d.toLocaleDateString(); } }
+		function drawTrafficHistory(totalGb) {
+			var svg = document.getElementById('al-traffic-chart'); if (!svg) return;
+			var key = 'alpha_dashboard_traffic_history_v1', rows = [];
+			try { rows = JSON.parse(localStorage.getItem(key) || '[]'); if (!Array.isArray(rows)) rows = []; } catch(e) { rows = []; }
+			var day = new Date(); day.setHours(0,0,0,0); var dayKey = day.toISOString().slice(0,10);
+			var today = rows.find(function(r){return r.day === dayKey;});
+			if (today) today.total = Number(totalGb.toFixed(3)); else rows.push({day:dayKey,total:Number(totalGb.toFixed(3))});
+			rows = rows.filter(function(r){ return r.day && isFinite(Number(r.total)); }).sort(function(a,b){return a.day.localeCompare(b.day);}).slice(-7);
+			try { localStorage.setItem(key, JSON.stringify(rows)); } catch(e) {}
+			var labels = [], vals = [];
+			for (var i=6;i>=0;i--) { var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()-i); var k=d.toISOString().slice(0,10); var r=rows.find(function(x){return x.day===k;}); labels.push({key:k,label:d.toLocaleDateString('fa-IR',{weekday:'short'})}); vals.push(r ? Number(r.total) : null); }
+			var known = vals.filter(function(v){return v !== null;}); var max = Math.max.apply(null,known.concat([1])); var points=[];
+			for (var j=0;j<7;j++){ var x=42+j*86; var v=vals[j]; var y=v===null?184:184-(v/max)*132; points.push({x:x,y:y,v:v}); }
+			var grid=''; for(var gy=0;gy<4;gy++){var yy=28+gy*52;grid+='<line x1="42" y1="'+yy+'" x2="558" y2="'+yy+'" stroke="rgba(110,190,240,.15)" stroke-width="1"/>';}
+			var segments=[]; for(var p=0;p<points.length;p++){if(points[p].v!==null)segments.push((segments.length?'L':'M')+points[p].x+' '+points[p].y);else if(segments.length)segments.push('');}
+			var path=''; var active=[]; points.forEach(function(pt){if(pt.v===null){if(active.length){path+='M'+active.map(function(a){return a.x+' '+a.y;}).join(' L');active=[];}}else active.push(pt);}); if(active.length) path+='M'+active.map(function(a){return a.x+' '+a.y;}).join(' L');
+			var dots=points.map(function(pt){return pt.v===null?'':'<circle cx="'+pt.x+'" cy="'+pt.y+'" r="4" fill="#08e9d0" stroke="#061b35" stroke-width="2"><title>'+pt.v.toFixed(2)+' GB</title></circle>';}).join('');
+			var xlabels=labels.map(function(l,i){return '<text x="'+points[i].x+'" y="211" text-anchor="middle" font-size="11" fill="#a9c7df">'+escHtml(l.label)+'</text>';}).join('');
+			svg.innerHTML='<defs><linearGradient id="al-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00eeb0" stop-opacity=".25"/><stop offset="100%" stop-color="#00cfff" stop-opacity="0"/></linearGradient><filter id="al-chart-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+grid+(known.length>1?'<path d="'+path+' L'+points.filter(function(p){return p.v!==null;}).slice(-1)[0].x+' 184 L'+points.filter(function(p){return p.v!==null;})[0].x+' 184 Z" fill="url(#al-chart-fill)"/>':'')+'<path d="'+path+'" fill="none" stroke="#00e7d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#al-chart-glow)"/>'+dots+xlabels;
+			var note=document.getElementById('al-chart-note'); if(note) note.textContent=known.length<2?'تاریخچه واقعی از امروز ذخیره می‌شود؛ برای نمایش روند هفت‌روزه، داشبورد باید در روزهای آینده بازدید شود.':'مقادیر نشان‌دهنده مجموع مصرف ثبت‌شده کاربران در هر روز هستند؛ تاریخچه از زمان فعال‌سازی این داشبورد جمع‌آوری شده است.';
+		}
 		function render() {
 			var users = window.allUsers || [];
 			var now = window.lastServerTime || Date.now();
@@ -11463,36 +11545,35 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			Object.keys(n).forEach(function (k) { var el = chips.querySelector('[data-n="' + k + '"]'); if (el) el.textContent = fa(n[k]); });
 			var en = document.getElementById('al-exp-n'); if (en) en.textContent = '(' + fa(n.expired) + ')';
 			var q = Number(window.maxCfRequestsToday || 0), pct = Math.min(100, q / 1000);
-			document.getElementById('al-q-bar').style.width = pct + '%';
-			document.getElementById('al-q-bar').style.background = pct >= 90 ? 'linear-gradient(90deg,#f97316,#ef4444)' : '';
-			document.getElementById('al-q-pct').textContent = Math.round(pct) + '%';
-			document.getElementById('al-q-txt').textContent = fa(q) + ' از ۱۰۰k · ریست ۳:۳۰ بامداد';
-			var totalGb = users.reduce(function (s, u) { return s + (Number(u.used_gb) || 0); }, 0);
-			document.getElementById('al-sub').textContent = users.length ? (fa(users.length) + ' کاربر · ' + fa(n.online) + ' آنلاین · ' + totalGb.toFixed(1) + ' GB مصرف کاربران') : 'هنوز کاربری نساخته‌اید';
-			var key = JSON.stringify([c, users.map(function (u) { return [u.username, Math.round((u.used_gb || 0) * 10), u.limit_gb]; })]);
-			if (key === last) return; last = key;
-			document.getElementById('al-total').textContent = fa(users.length) + ' کاربر';
-			var svg = '<circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(140,150,255,.15)" stroke-width="5"/>', off = 25, tot = users.length;
-			if (tot) Object.keys(c).forEach(function (k) { if (!c[k]) return; var p = c[k] / tot * 100; svg += '<circle cx="21" cy="21" r="15.9" fill="none" stroke="' + COLORS[k] + '" stroke-width="5" stroke-dasharray="' + p + ' ' + (100 - p) + '" stroke-dashoffset="' + off + '" style="filter:drop-shadow(0 0 2px ' + COLORS[k] + ')"/>'; off -= p; });
-			svg += '<text x="21" y="20" text-anchor="middle" font-size="8" font-weight="900" fill="currentColor">' + fa(tot) + '</text><text x="21" y="27" text-anchor="middle" font-size="3.6" fill="currentColor" opacity=".6">کاربر</text>';
-			document.getElementById('al-donut').innerHTML = svg;
-			document.getElementById('al-legend').innerHTML = Object.keys(c).map(function (k) { return '<div data-lf="' + FILTER[k] + '"><i style="background:' + COLORS[k] + ';box-shadow:0 0 8px ' + COLORS[k] + '"></i>' + LABEL[k] + '<b>' + fa(c[k]) + '</b></div>'; }).join('');
-			var top = users.slice().sort(function (a, b) { return (b.used_gb || 0) - (a.used_gb || 0); }).slice(0, 6);
-			var maxGb = Math.max.apply(null, top.map(function (u) { return u.limit_gb || u.used_gb || 0; }).concat([1]));
-			document.getElementById('al-top').innerHTML = top.length ? top.map(function (u) {
-				var used = Number(u.used_gb) || 0, lim = Number(u.limit_gb) || 0;
-				var w = lim ? Math.min(100, used / lim * 100) : Math.min(100, used / maxGb * 100);
-				var bg = lim && w >= 90 ? 'linear-gradient(90deg,#f97316,#ef4444)' : '';
-				var esc = String(u.username || '').replace(/[&<>"]/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]; });
-				return '<div class="al-urow"><span class="n">' + esc + '</span><div class="al-bar"><b style="width:' + w + '%;' + (bg ? 'background:' + bg : '') + '"></b></div><span class="v">' + used.toFixed(1) + ' / ' + (lim ? lim + ' GB' : '∞') + '</span></div>';
-			}).join('') : '<div class="al-empty">هنوز مصرفی ثبت نشده</div>';
+			var qbar=document.getElementById('al-q-bar'); if(qbar){qbar.style.width=pct+'%';qbar.style.background=pct>=90?'linear-gradient(90deg,#f97316,#ef4444)':'';}
+			var qp=document.getElementById('al-q-pct'); if(qp) qp.textContent=Math.round(pct)+'%';
+			var qt=document.getElementById('al-q-txt'); if(qt) qt.textContent=fa(q)+' درخواست ثبت‌شده امروز';
+			var totalGb = users.reduce(function (sum, u) { return sum + (Number(u.used_gb) || 0); }, 0);
+			var totalLimit = users.reduce(function (sum,u){return sum+(Number(u.limit_gb)||0);},0);
+			var put=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+			put('al-sub',users.length ? (fa(users.length)+' کاربر · '+fa(n.online)+' آنلاین · '+totalGb.toFixed(2)+' GB مصرف ثبت‌شده') : 'هنوز کاربری نساخته‌اید');
+			put('al-total',fa(users.length)+' کاربر');
+			put('al-stat-total',fa(users.length)); put('al-stat-online',fa(n.online)); put('al-stat-disabled',fa(n.inactive));
+			put('al-online-foot',fa(n.active)+' حساب فعال و معتبر'); put('al-disabled-foot',fa(n.inactive)+' حساب غیرفعال');
+			put('al-stat-traffic',totalGb.toFixed(2)+' GB');
+			var trafficPct=totalLimit>0?Math.min(100,totalGb/totalLimit*100):0; var tp=document.getElementById('al-traffic-progress');if(tp)tp.style.width=trafficPct+'%';
+			put('al-traffic-foot',totalLimit>0?(totalGb.toFixed(2)+' از '+totalLimit.toFixed(2)+' GB سهمیه ثبت‌شده'):'برای کاربران سهمیه حجمی ثبت نشده');
+			put('al-active-users',fa(n.active)); put('al-requests-today',fa(q)); put('al-server-host',location.host || 'میزبان فعلی');
+			put('al-last-update',new Date().toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}));
+			var recent=document.getElementById('al-recent-users');
+			if(recent){var recentUsers=users.slice().sort(function(a,b){return (new Date(b.created_at||0).getTime()||0)-(new Date(a.created_at||0).getTime()||0);}).slice(0,5);
+				recent.innerHTML=recentUsers.length?recentUsers.map(function(u){var active=u.is_active===1&&!isExpired(u,now), online=u.is_online===1;var status=online?'آنلاین':active?'فعال':'غیرفعال / منقضی';var color=online?'#00efb2':active?'#19d7ff':'#ff6687';var used=Number(u.used_gb)||0,lim=Number(u.limit_gb)||0;return '<tr><td>'+escHtml(u.username||u.uuid||'بدون نام')+'</td><td>'+escHtml(fmtDate(u.created_at))+'</td><td><span class="al-status-pill" style="color:'+color+'"><i></i>'+status+'</span></td><td dir="ltr">'+used.toFixed(2)+' / '+(lim?lim+' GB':'∞')+'</td></tr>';}).join(''):'<tr><td colspan="4" class="al-empty">هنوز کاربری ثبت نشده است.</td></tr>';}
+			drawTrafficHistory(totalGb);
+			// Keep legacy filter statistics in sync with the real user dataset.
+			var svg=document.getElementById('al-donut'); if(svg){var off=25,tot=users.length,chart='<circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(140,150,255,.15)" stroke-width="5"/>';if(tot)Object.keys(c).forEach(function(k){if(!c[k])return;var p=c[k]/tot*100;chart+='<circle cx="21" cy="21" r="15.9" fill="none" stroke="'+COLORS[k]+'" stroke-width="5" stroke-dasharray="'+p+' '+(100-p)+'" stroke-dashoffset="'+off+'"/>';off-=p;});svg.innerHTML=chart;}
+			var legend=document.getElementById('al-legend');if(legend)legend.innerHTML=Object.keys(c).map(function(k){return '<div data-lf="'+FILTER[k]+'"><i style="background:'+COLORS[k]+'"></i>'+LABEL[k]+'<b>'+fa(c[k])+'</b></div>';}).join('');
+			var top=document.getElementById('al-top');if(top){var topUsers=users.slice().sort(function(a,b){return(Number(b.used_gb)||0)-(Number(a.used_gb)||0);}).slice(0,6);top.innerHTML=topUsers.length?topUsers.map(function(u){var used=Number(u.used_gb)||0,lim=Number(u.limit_gb)||0,w=lim?Math.min(100,used/lim*100):0;return '<div class="al-urow"><span class="n">'+escHtml(u.username||'بدون نام')+'</span><div class="al-bar"><b style="width:'+w+'%"></b></div><span class="v">'+used.toFixed(1)+' / '+(lim?lim+' GB':'∞')+'</span></div>';}).join(''):'<div class="al-empty">هنوز مصرفی ثبت نشده</div>';}
 		}
-		document.getElementById('al-legend').addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
+		var legacyLegend = document.getElementById('al-legend'); if (legacyLegend) legacyLegend.addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
 		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
-		var h = new Date().getHours(); document.getElementById('al-hello').textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
-		if ('IntersectionObserver' in window && usersAnchor) {
-			new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) setActive('users'); else if (x.boundingClientRect.top > 0) setActive('dash'); }); }, { rootMargin: '-40% 0px -55% 0px' }).observe(chips.parentElement ? chips : usersAnchor);
-		}
+		var h = new Date().getHours(); var hello=document.getElementById('al-hello'); if(hello) hello.textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
+		go('dash');
+
 	})();
 	</script>
 </body>
