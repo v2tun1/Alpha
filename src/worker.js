@@ -11358,6 +11358,66 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		@media(max-width:900px) { .al-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.al-middle,.al-bottom-grid {grid-template-columns:1fr;} .al-hero{padding:17px}.al-brand-mark{width:55px;height:55px;font-size:52px}.al-brand-title{font-size:25px}.al-service{min-width:100px}.al-stat{min-height:130px}.al-stat-value{font-size:25px} }
 		@media(max-width:480px) { #alpha-dash{gap:12px}.al-hero{align-items:flex-start;padding:15px 13px}.al-brand{gap:8px}.al-brand-mark{width:39px;height:42px;font-size:40px}.al-brand-title{font-size:20px;letter-spacing:2px}.al-brand-sub{font-size:11px}.al-service{min-width:82px;font-size:11px}.al-live{padding:7px 9px;font-size:12px}.al-stat-grid{gap:9px}.al-stat{padding:13px;min-height:122px}.al-stat-label{font-size:11px}.al-stat-value{font-size:23px}.al-stat-icon{width:38px;height:38px}.al-chart-card,.al-quick-card,.al-recent-card,.al-system-card,.al-server-card{padding:14px}.al-panel-title{font-size:15px}.al-q{min-height:84px;font-size:12px} }
 
+
+        /* Dashboard theme integration: follow the panel's active light/dark theme and accent hue. */
+        :root {
+            --dash-panel-bg: rgba(255,255,255,.94);
+            --dash-panel-bg-2: rgba(248,250,255,.98);
+            --dash-text: #20243a;
+            --dash-muted: #70778b;
+            --dash-edge: rgba(105,120,165,.22);
+            --dash-line: rgba(105,120,165,.18);
+            --dash-page-glow: transparent;
+        }
+        html.dark {
+            --dash-panel-bg: rgba(15,22,42,.94);
+            --dash-panel-bg-2: rgba(9,15,31,.97);
+            --dash-text: #edf2ff;
+            --dash-muted: #aab5cc;
+            --dash-edge: hsla(var(--h),55%,62%,.28);
+            --dash-line: rgba(150,175,220,.16);
+            --dash-page-glow: transparent;
+        }
+        body {
+            background: var(--bg, inherit) !important;
+            color: var(--text, var(--dash-text));
+        }
+        .al-glass,
+        html:not(.dark) .al-glass {
+            background: linear-gradient(160deg,var(--dash-panel-bg),var(--dash-panel-bg-2)) !important;
+            border: 1px solid var(--dash-edge) !important;
+            box-shadow: 0 8px 24px rgba(40,55,95,.09), inset 0 1px 0 rgba(255,255,255,.35) !important;
+            color: var(--dash-text) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        html.dark .al-glass {
+            box-shadow: 0 8px 26px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+        .al-brand-title { color: var(--dash-text) !important; }
+        .al-brand-sub,.al-stat-foot,.al-chart-note { color: var(--dash-muted) !important; }
+        .al-stat-label { color: var(--dash-text) !important; }
+        .al-stat-value { color: var(--dash-text) !important; }
+        .al-progress { background: color-mix(in srgb,var(--dash-muted) 15%,transparent) !important; }
+        .al-progress b { background: linear-gradient(90deg,var(--a3),var(--a1)) !important; box-shadow: none !important; }
+        .al-hero:after { background: radial-gradient(ellipse,color-mix(in srgb,var(--a1) 12%,transparent),transparent 70%) !important; }
+        .al-live { color: var(--dash-text) !important; border-color: color-mix(in srgb,var(--a1) 32%,transparent) !important; background: color-mix(in srgb,var(--a1) 10%,transparent) !important; }
+        .al-live i { background: #22c983; box-shadow: 0 0 8px rgba(34,201,131,.35) !important; }
+        .al-q { background: color-mix(in srgb,var(--q-color,var(--a1)) 7%,var(--dash-panel-bg-2)) !important; border-color: color-mix(in srgb,var(--q-color,var(--a1)) 34%,var(--dash-edge)) !important; color: var(--dash-text) !important; }
+        .al-q:hover { border-color: var(--a1) !important; box-shadow: 0 5px 18px color-mix(in srgb,var(--a1) 13%,transparent) !important; }
+        .al-q svg { color: var(--q-color,var(--a1)) !important; }
+        .al-recent-table th { color: var(--dash-muted) !important; }
+        .al-recent-table td { color: var(--dash-text) !important; }
+        .al-recent-table th,.al-recent-table td,.al-system-row { border-color: var(--dash-line) !important; }
+        .al-status-pill { background: rgba(34,201,131,.10) !important; color: #199b70 !important; }
+        html.dark .al-status-pill { color: #66e8b8 !important; }
+        .al-system-value { color: var(--a1) !important; }
+        .al-chart-gridline { stroke: var(--dash-line) !important; }
+        #alpha-bnav { background: linear-gradient(160deg,var(--dash-panel-bg),var(--dash-panel-bg-2)) !important; border: 1px solid var(--dash-edge) !important; box-shadow: 0 8px 24px rgba(40,55,95,.12) !important; }
+        #alpha-bnav button.active { color: var(--a1) !important; background: color-mix(in srgb,var(--a1) 10%,transparent) !important; }
+        #alpha-bnav button.mid { color: #fff !important; background: linear-gradient(135deg,var(--a3),var(--a1)) !important; }
+        html.dark #alpha-bnav { box-shadow: 0 8px 26px rgba(0,0,0,.28) !important; }
+
 		@media (min-width: 1024px) {
 			body { padding-right: 276px; }
 			body > header { display: none !important; }
