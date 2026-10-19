@@ -11353,6 +11353,8 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		#alpha-chips { scroll-margin-top:18px; }
 		body.alpha-view-dash main > :not(#alpha-dash) { display:none !important; }
 		body.alpha-view-users #alpha-dash { display:none !important; }
+        #alpha-users-hero { display:none; }
+        body.alpha-view-users #alpha-users-hero { display:flex; }
 				body.alpha-view-users #alpha-chips { display:flex; }
 		#alpha-bnav button.active { color:#52f5d0; background:rgba(0,210,255,.1); }
 		@media(max-width:900px) { .al-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.al-middle,.al-bottom-grid {grid-template-columns:1fr;} .al-hero{padding:17px}.al-brand-mark{width:55px;height:55px;font-size:52px}.al-brand-title{font-size:25px}.al-service{min-width:100px}.al-stat{min-height:130px}.al-stat-value{font-size:25px} }
@@ -11436,6 +11438,49 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			#alpha-theme-btn { bottom: 92px !important; }
 			#alpha-theme-pop { bottom: 148px !important; }
 		}
+
+        /* USERS REFERENCE SCREEN: complete responsive restyle, preserving existing actions and data hooks. */
+        body.alpha-view-users { --users-bg:#f7f9ff; --users-card:rgba(255,255,255,.92); --users-text:#10285d; --users-muted:#7f91b4; --users-line:#e2e9fb; --users-shadow:0 10px 28px rgba(71,96,163,.10); background:linear-gradient(135deg,#f8fbff 0%,#f4f0ff 55%,#fff7fb 100%) !important; }
+        html.dark body.alpha-view-users { --users-bg:#071226; --users-card:rgba(15,29,53,.94); --users-text:#eff7ff; --users-muted:#a6b8d5; --users-line:#294264; --users-shadow:0 12px 32px rgba(0,0,0,.25); background:radial-gradient(circle at 10% 0%,#112e4a,transparent 35%),#071226 !important; }
+        body.alpha-view-users main { max-width:1320px !important; }
+        body.alpha-view-users #alpha-users-hero { display:flex; align-items:center; justify-content:space-between; min-height:145px; padding:24px 32px; margin:0 0 18px; border-radius:24px; background:linear-gradient(105deg,#a9c6ff 0%,#f1edff 46%,#fff5fa 100%); border:1px solid #dfe2fa; box-shadow:var(--users-shadow); overflow:hidden; position:relative; }
+        html.dark body.alpha-view-users #alpha-users-hero { background:linear-gradient(105deg,#123d68,#1a234d 48%,#3d1c45); border-color:#32527a; }
+        #alpha-users-hero:before { content:'♧'; font-size:110px; line-height:1; color:rgba(61,103,236,.32); position:absolute; left:42px; bottom:-24px; transform:rotate(-10deg); }
+        #alpha-users-hero h1 { margin:0; color:var(--users-text); font-size:30px; font-weight:900; }
+        #alpha-users-hero p { margin:8px 0 0; color:var(--users-muted); font-size:15px; }
+        #alpha-users-hero .hero-icon { width:58px;height:58px;border-radius:17px;display:grid;place-items:center;color:#e11db5;background:rgba(255,255,255,.60); border:1px solid rgba(232,58,190,.2); }
+        body.alpha-view-users main > .bg-gray-50\/70 { background:transparent !important; border:0 !important; box-shadow:none !important; margin-bottom:16px !important; }
+        body.alpha-view-users #stats-accordion-wrapper { max-height:500px !important; opacity:1 !important; overflow:visible !important; }
+        body.alpha-view-users #stats-accordion-wrapper > div { border:0 !important; padding:0 !important; gap:14px !important; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div { min-height:150px !important; border-radius:21px !important; background:var(--users-card) !important; border:1px solid var(--users-line) !important; box-shadow:var(--users-shadow) !important; padding:18px !important; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div:nth-child(1) { --card-accent:#3778ef; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div:nth-child(2) { --card-accent:#17bd7d; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div:nth-child(3) { --card-accent:#e9388f; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div:nth-child(4) { --card-accent:#e7a12c; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div:after { content:''; display:block; height:7px; width:54px; border-radius:99px; background:linear-gradient(90deg,var(--card-accent),transparent); margin-top:15px; }
+        body.alpha-view-users #stats-accordion-wrapper .text-lg { color:var(--card-accent) !important; font-size:27px !important; }
+        body.alpha-view-users #stats-accordion-wrapper span { color:var(--users-muted); }
+        body.alpha-view-users #stats-accordion-wrapper .text-xs { color:var(--users-text) !important; }
+        body.alpha-view-users #stats-accordion-wrapper > div > div > .absolute { opacity:.35; }
+        body.alpha-view-users #stats-accordion-wrapper > button { display:none !important; }
+        body.alpha-view-users #alpha-chips { order:initial; background:var(--users-card); border:1px solid var(--users-line); border-radius:20px; box-shadow:var(--users-shadow); padding:10px 12px; margin:12px 0 !important; justify-content:flex-start; }
+        body.alpha-view-users #alpha-chips .al-chip { background:transparent !important; border:1px solid var(--users-line); color:var(--users-text); box-shadow:none; font-size:13px; min-height:39px; }
+        body.alpha-view-users #alpha-chips .al-chip.on { background:linear-gradient(100deg,#be26ef,#ff477d) !important; color:#fff !important; border-color:transparent; box-shadow:0 8px 18px rgba(222,50,214,.25); }
+        body.alpha-view-users main > .mb-5.flex.flex-col { margin:0 0 15px !important; padding:9px !important; border-radius:18px !important; background:var(--users-card) !important; border:1px solid var(--users-line) !important; box-shadow:var(--users-shadow) !important; }
+        body.alpha-view-users #search-input { height:48px !important; border-radius:15px !important; background:#f5f7fd !important; color:var(--users-text) !important; border-color:var(--users-line) !important; font-size:14px !important; }
+        html.dark body.alpha-view-users #search-input { background:#0a1830 !important; }
+        body.alpha-view-users #filter-status, body.alpha-view-users #sort-users { height:42px !important; border-radius:13px !important; background:transparent !important; color:var(--users-text) !important; border-color:var(--users-line) !important; }
+        body.alpha-view-users main > .flex.items-center.justify-between.mb-4 { margin:0 0 9px !important; padding:0 5px !important; }
+        body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2 { color:var(--users-text) !important; font-size:23px !important; }
+        body.alpha-view-users #users-table-container { border-radius:22px; background:var(--users-card); border:1px solid var(--users-line); box-shadow:var(--users-shadow); padding:0 14px 16px; }
+        body.alpha-view-users #users-table-container table { border-spacing:0 5px !important; }
+        body.alpha-view-users #users-table-container thead th { background:transparent !important; border-color:var(--users-line) !important; color:var(--users-text) !important; padding-top:19px !important; padding-bottom:14px !important; }
+        body.alpha-view-users #users-table-container tbody td { background:transparent !important; border-color:var(--users-line) !important; color:var(--users-text) !important; padding-top:15px !important; padding-bottom:15px !important; }
+        body.alpha-view-users #users-table-container tbody tr:hover td { background:rgba(114,152,255,.06) !important; }
+        body.alpha-view-users #users-table-container .bg-green-50, body.alpha-view-users #users-table-container .bg-blue-50 { border-radius:99px !important; }
+        @media(min-width:700px){ body.alpha-view-users #stats-accordion-wrapper > div { grid-template-columns:repeat(4,minmax(0,1fr)) !important; display:grid !important; } }
+        @media(max-width:699px){ body.alpha-view-users #alpha-users-hero{min-height:128px;padding:20px 18px}.alpha-view-users #alpha-users-hero h1{font-size:24px}.alpha-view-users #alpha-users-hero p{font-size:12px}.alpha-view-users #alpha-users-hero:before{left:6px;font-size:80px} body.alpha-view-users #stats-accordion-wrapper > div{display:grid !important;grid-template-columns:1fr 1fr !important;gap:10px !important} body.alpha-view-users #stats-accordion-wrapper > div > div{min-height:125px !important;padding:13px !important} body.alpha-view-users #stats-accordion-wrapper .text-lg{font-size:22px !important} body.alpha-view-users #users-table-container{overflow-x:auto} }
+
 	</style>
 	<script>
 	(function () {
@@ -11535,6 +11580,9 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			'<div class="al-bottom-grid"><div class="al-glass al-system-card"><div class="al-panel-title"><span>وضعیت سیستم</span><span style="color:#00efb2">◈</span></div><div class="al-system-row"><span>درخواست‌های امروز پنل</span><span class="al-system-value" id="al-requests-today">—</span></div><div class="al-system-row"><span>تعداد کاربران فعال</span><span class="al-system-value" id="al-active-users">—</span></div><div class="al-system-row"><span>وضعیت داده خطا</span><span class="al-system-value" style="color:#a9c5da">از سمت سرور ارائه نشده</span></div></div>' +
 			'<div class="al-glass al-server-card"><div class="al-panel-title"><span>سرور فعال</span><span style="color:#19d7ff">◎</span></div><div class="al-system-row"><span>میزبان پنل</span><span class="al-server-host" id="al-server-host">—</span></div><div class="al-system-row"><span>دسترسی داشبورد</span><span class="al-system-value" id="al-server-status">فعال</span></div><div class="al-system-row"><span>آخرین بروزرسانی</span><span id="al-last-update" style="color:#9bbbd4">—</span></div></div></div>';
 		if (main) main.insertBefore(dash, main.firstChild);
+        var usersHero = document.createElement('section'); usersHero.id = 'alpha-users-hero'; usersHero.dir = 'rtl';
+        usersHero.innerHTML = '<div><h1>مدیریت کاربران</h1><p>مشاهده، مدیریت و کنترل کاربران سرویس</p></div><div class="hero-icon">'+IC.users+'</div>';
+        if (main) main.insertBefore(usersHero, main.children[1] || null);
 		document.body.classList.add('alpha-view-dash');
 		dash.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && A[b.getAttribute('data-a')]) A[b.getAttribute('data-a')](e); });
 		function focusSearch() { var s = document.getElementById('search-input'); if (s) { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { s.focus(); }, 250); } }
