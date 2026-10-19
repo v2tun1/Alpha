@@ -11346,6 +11346,12 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		function clickSel(sel) { var b = document.querySelector(sel); if (b) b.click(); return !!b; }
 		function call(fn) { return function () { try { if (typeof window[fn] === 'function') window[fn].apply(null, [].slice.call(arguments, 1)); } catch (e) {} }; }
 		var main = document.querySelector('body > main');
+		// Replace the legacy dashboard stats panel with the new Alpha glass dashboard.
+		// Keep its inner stat elements in the DOM because existing logic may still read them.
+		var legacyStats = document.getElementById('stats-accordion-wrapper');
+		if (legacyStats && legacyStats.parentElement) {
+			legacyStats.parentElement.style.display = 'none';
+		}
 		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
 		function go(where) {
 			closeDrawer();
