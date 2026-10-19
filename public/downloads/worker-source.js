@@ -5503,7 +5503,8 @@ const HTML_TEMPLATES = {
 		<style>
 		/* Final users-page cleanup: use only the redesigned filter bar (remove legacy duplicate chips). */
 		#alpha-chips{display:none!important}
-		body.alpha-view-users #alpha-chips{display:none!important}
+		body.alpha-view-users #alpha-chips{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
+		.user-filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.2em;font-size:.72em;opacity:.72;font-weight:800;margin-inline-start:.1rem}
 		.user-filter-chip{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:40px;padding:.55rem .85rem;border:1px solid #dbe4f5;border-radius:9999px;background:linear-gradient(145deg,#fff,#f7f9ff);color:#334155;font-size:12px;font-weight:750;white-space:nowrap;transition:all .18s ease;box-shadow:0 2px 7px rgba(71,85,105,.04)}
 		[aria-label="فیلتر کاربران"]{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:9px;margin-bottom:14px}
 		.user-filter-chip svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
@@ -11357,7 +11358,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		.al-q { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 14px 8px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: inherit; cursor: pointer; font-size: 12.5px; font-weight: 700; text-align: center; transition: .2s; min-height: 84px; }
 		.al-q:hover { border-color: var(--a3); box-shadow: 0 0 16px var(--glow); transform: translateY(-2px); }
 		.al-q svg { width: 24px; height: 24px; color: hsl(calc(var(--h) - 75) 95% 62%); }
-		#alpha-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+		#alpha-chips{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;border:0!important}
 		#alpha-dash { box-shadow: none !important; }
 		.al-legend div { white-space: nowrap; }
 		#alpha-bnav { display: none; }
@@ -11413,7 +11414,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		#alpha-chips { scroll-margin-top:18px; }
 		body.alpha-view-dash main > :not(#alpha-dash) { display:none !important; }
 		body.alpha-view-users #alpha-dash { display:none !important; }
-				body.alpha-view-users #alpha-chips { display:flex; }
+				body.alpha-view-users #alpha-chips{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
 		#alpha-bnav button.active { color:#52f5d0; background:rgba(0,210,255,.1); }
 		@media(max-width:900px) { .al-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.al-middle,.al-bottom-grid {grid-template-columns:1fr;} .al-hero{padding:17px}.al-brand-mark{width:55px;height:55px;font-size:52px}.al-brand-title{font-size:25px}.al-service{min-width:100px}.al-stat{min-height:130px}.al-stat-value{font-size:25px} }
 		@media(max-width:480px) { #alpha-dash{gap:12px}.al-hero{align-items:flex-start;padding:15px 13px}.al-brand{gap:8px}.al-brand-mark{width:39px;height:42px;font-size:40px}.al-brand-title{font-size:20px;letter-spacing:2px}.al-brand-sub{font-size:11px}.al-service{min-width:82px;font-size:11px}.al-live{padding:7px 9px;font-size:12px}.al-stat-grid{gap:9px}.al-stat{padding:13px;min-height:122px}.al-stat-label{font-size:11px}.al-stat-value{font-size:23px}.al-stat-icon{width:38px;height:38px}.al-chart-card,.al-quick-card,.al-recent-card,.al-system-card,.al-server-card{padding:14px}.al-panel-title{font-size:15px}.al-q{min-height:84px;font-size:12px} }
@@ -11521,6 +11522,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		};
 		function clickSel(sel) { var b = document.querySelector(sel); if (b) b.click(); return !!b; }
 		function call(fn) { return function () { try { if (typeof window[fn] === 'function') window[fn].apply(null, [].slice.call(arguments, 1)); } catch (e) {} }; }
+		try { document.querySelectorAll('#alpha-chips').forEach(function(el){ el.remove(); }); } catch(e) {}
 		var main = document.querySelector('body > main');
 		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
 		function go(where) {
@@ -11528,7 +11530,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			var isUsers = where === 'users';
 			document.body.classList.toggle('alpha-view-users', isUsers);
 			document.body.classList.toggle('alpha-view-dash', !isUsers);
-			var t = isUsers ? (document.getElementById('alpha-chips') || usersAnchor) : document.getElementById('alpha-dash');
+			var t = isUsers ? (document.querySelector('[aria-label=\"فیلتر کاربران\"]') || usersAnchor) : document.getElementById('alpha-dash');
 			if (t) { window.scrollTo({top:0,behavior:'smooth'}); }
 			setActive(isUsers ? 'users' : 'dash');
 			bnav.querySelectorAll('button[data-a]').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-a') === (isUsers ? 'users' : 'dash')); });
