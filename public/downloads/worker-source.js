@@ -2773,12 +2773,9 @@ async function handlevIees(env, storedData = null, ctx = null, request = null) {
 			reqUUID = user.uuid;
 			if (request) {
 				const reqUrl = new URL(request.url);
-				const userPathId = (user.uuid || "").split("-")[4] || "default";
-				const allowedPaths = [
-					"/stream/PANEL_ALPHA/" + userPathId,
-					"/stream/PANEL_ZEUS/" + userPathId
-				];
-				if (!allowedPaths.some((path) => reqUrl.pathname.startsWith(path))) {
+				const expectedPath = "/stream/PANEL_ALPHA/" + ((user.uuid || "").split("-")[4] || "default");
+				const legacyExpectedPath = "/stream/PANEL_ZEUS/" + ((user.uuid || "").split("-")[4] || "default");
+				if (!reqUrl.pathname.startsWith(expectedPath) && !reqUrl.pathname.startsWith(legacyExpectedPath)) {
 					serverSock.close();
 					return;
 				}
