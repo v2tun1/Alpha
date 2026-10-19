@@ -5473,79 +5473,31 @@ const HTML_TEMPLATES = {
 		<div id="loading-state" class="text-center py-12">
 			<span class="text-gray-500 dark:text-gray-400">در حال بارگذاری کاربران...</span>
 		</div>
-		<div class="mb-5 rounded-2xl border border-indigo-100 dark:border-amoled-border bg-white/90 dark:bg-amoled-card/90 p-3 sm:p-4 shadow-[0_8px_28px_rgba(99,102,241,0.08)]">
-			<div class="mb-3 flex flex-wrap items-center gap-2" role="group" aria-label="فیلتر کاربران">
-				<button type="button" data-user-filter="all" onclick="setUserFilter('all',this)" class="user-filter-chip is-selected"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM20 8v6M23 11h-6"/></svg><span>همه کاربران</span></button>
-				<button type="button" data-user-filter="active" onclick="setUserFilter('active',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/></svg><span>فعال</span></button>
-				<button type="button" data-user-filter="online" onclick="setUserFilter('online',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg><span>آنلاین</span></button>
-				<button type="button" data-user-filter="offline" onclick="setUserFilter('offline',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20M8.5 8.5a5 5 0 0 0 7 7M5 5a11 11 0 0 0-3 7M19 12a11 11 0 0 0-1-4M9 16.5a6 6 0 0 0 6 0"/></svg><span>آفلاین</span></button>
-				<button type="button" data-user-filter="expired" onclick="setUserFilter('expired',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>منقضی‌شده</span></button>
-				<button type="button" data-user-filter="inactive" onclick="setUserFilter('inactive',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg><span>غیرفعال</span></button>
-				<button type="button" data-user-filter="vip" onclick="setUserFilter('vip',this)" class="user-filter-chip user-filter-vip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 7 5 4 5-7 5 7 5-4-2 13H4L2 7Z"/></svg><span>VIP</span></button>
-			</div>
-			<div class="flex flex-col sm:flex-row gap-2">
-				<div class="relative min-w-0 flex-1">
-					<input type="text" id="search-input" oninput="filterAndRenderUsers()" placeholder="جستجوی نام کاربری یا UUID..." class="user-search-input w-full" aria-label="جستجوی کاربران">
-					<svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke-width="1.8"/><path d="m16 16 5 5" stroke-width="1.8" stroke-linecap="round"/></svg>
+		<div class="mb-5 flex flex-col md:flex-row gap-2 justify-between items-center bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-md p-2 shadow-sm">
+			<div class="relative w-full md:w-80">
+				<input type="text" id="search-input" oninput="filterAndRenderUsers()" placeholder="جستجوی نام کاربری یا UUID..." class="w-full pl-3 pr-8 py-1.5 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs">
+				<div class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none text-gray-400">
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
 				</div>
-				<select id="sort-users" onchange="filterAndRenderUsers()" class="user-sort-select sm:w-56">
-					<option value="newest">↓ جدیدترین کاربران</option>
-					<option value="name">⇅ مرتب‌سازی بر اساس نام</option>
-					<option value="usage-desc">↑ بیشترین مصرف ترافیک</option>
-					<option value="usage-asc">↓ کمترین مصرف ترافیک</option>
-					<option value="expiry-asc">◷ نزدیک‌ترین انقضا</option>
+			</div>
+			<div class="flex items-center gap-2 w-full md:w-auto">
+				<select id="filter-status" onchange="filterAndRenderUsers()" class="flex-1 min-w-0 px-2 py-1.5 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 dark:text-zinc-300 cursor-pointer truncate">
+					<option value="all">🔍 همه</option>
+					<option value="active">✅ فعال</option>
+					<option value="inactive">❌ غیرفعال</option>
+					<option value="online">⚡ آنلاین</option>
+					<option value="offline">💤 آفلاین</option>
+					<option value="expired">⏳ منقضی</option>
+				</select>
+				<select id="sort-users" onchange="filterAndRenderUsers()" class="flex-1 min-w-0 px-2 py-1.5 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 dark:text-zinc-300 cursor-pointer truncate">
+					<option value="newest">📅 جدیدترین</option>
+					<option value="name">🔤 نام کاربری (الفبا)</option>
+					<option value="usage-desc">📊 بیشترین مصرف</option>
+					<option value="usage-asc">📈 کمترین مصرف</option>
+					<option value="expiry-asc">⏳ کمترین زمان باقی‌مانده</option>
 				</select>
 			</div>
-			<select id="filter-status" onchange="syncUserFilterChips();filterAndRenderUsers()" class="hidden" aria-hidden="true" tabindex="-1">
-				<option value="all">همه کاربران</option><option value="active">فعال</option><option value="online">آنلاین</option><option value="offline">آفلاین</option><option value="expired">منقضی‌شده</option><option value="inactive">غیرفعال</option><option value="vip">VIP</option>
-			</select>
 		</div>
-		<style>
-		/* Final users-page cleanup: use only the redesigned filter bar (remove legacy duplicate chips). */
-		#alpha-chips{display:none!important}
-		body.alpha-view-users #alpha-chips{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
-		.user-filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.2em;font-size:.72em;opacity:.72;font-weight:800;margin-inline-start:.1rem}
-		.user-filter-chip{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:40px;padding:.55rem .85rem;border:1px solid #dbe4f5;border-radius:9999px;background:linear-gradient(145deg,#fff,#f7f9ff);color:#334155;font-size:12px;font-weight:750;white-space:nowrap;transition:all .18s ease;box-shadow:0 2px 7px rgba(71,85,105,.04)}
-		[aria-label="فیلتر کاربران"]{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:9px;margin-bottom:14px}
-		.user-filter-chip svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-		.user-filter-chip:hover{transform:translateY(-1px);border-color:#a5b4fc;box-shadow:0 5px 12px rgba(99,102,241,.10)}
-		.user-filter-chip.is-selected{background:linear-gradient(120deg,#635bff,#b44bfa 60%,#f052a8);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(139,92,246,.22)}
-		.user-filter-chip[data-user-filter="active"] svg,.user-filter-chip[data-user-filter="online"] svg{color:#059669}
-		.user-filter-chip[data-user-filter="offline"] svg{color:#64748b}
-		.user-filter-chip[data-user-filter="expired"] svg{color:#d97706}
-		.user-filter-chip[data-user-filter="inactive"] svg{color:#e11d48}
-		.user-filter-chip.user-filter-vip{background:#faf5ff;border-color:#e9d5ff;color:#7e22ce}
-		.user-filter-chip.user-filter-vip.is-selected{background:linear-gradient(120deg,#7c3aed,#c026d3);color:#fff}
-		.user-search-input,.user-sort-select{min-height:43px;border:1px solid #dbe4f5;border-radius:14px;background:#f8faff;color:#334155;font-size:13px;outline:none;transition:border-color .2s,box-shadow .2s}
-		.user-search-input{padding:.7rem 2.7rem .7rem .9rem}
-		.user-sort-select{padding:.65rem .8rem;cursor:pointer}
-		.user-search-input:focus,.user-sort-select:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.15)}
-		.dark .user-search-input{background:#18181b}
-		.dark .user-search-input,.dark .user-sort-select{background:#18181b;border-color:#3f3f46;color:#e4e4e7}
-		@media(max-width:420px){.user-filter-chip{padding:.5rem .68rem;font-size:11px;min-height:37px}.user-filter-chip svg{width:15px;height:15px}}
-		</style>
-		<style id="alpha-users-table-redesign">
-		#users-table-container{border:1px solid #dbeafe;border-radius:22px;background:rgba(255,255,255,.84);padding:10px;box-shadow:0 10px 30px rgba(99,102,241,.08)}
-		#users-table-container table{border-spacing:0 7px!important;min-width:720px}
-		#users-table-container thead th{background:#f8faff!important;color:#334155!important;border-color:#e2e8f0!important;padding:13px 10px!important;font-size:12px}
-		#users-table-container tbody tr{filter:drop-shadow(0 2px 5px rgba(99,102,241,.04))}
-		#users-table-container tbody td{background:rgba(255,255,255,.96);border-top:1px solid #e6ecfa;border-bottom:1px solid #e6ecfa;padding:12px 9px!important;vertical-align:middle}
-		#users-table-container tbody td:first-child{border-right:1px solid #e6ecfa;border-radius:0 14px 14px 0}
-		#users-table-container tbody td:last-child{border-left:1px solid #e6ecfa;border-radius:14px 0 0 14px}
-		#users-table-container tbody tr:hover td{background:#f7f9ff}
-		.dark #users-table-container{background:rgba(24,24,27,.88);border-color:#3f3f46}
-		.dark #users-table-container thead th{background:#27272a!important;color:#e4e4e7!important;border-color:#3f3f46!important}
-		.dark #users-table-container tbody td{background:#18181b;border-color:#3f3f46;color:#e4e4e7}
-		.dark #users-table-container tbody tr:hover td{background:#27272a}
-		@media(max-width:640px){#users-table-container{overflow-x:auto;padding:7px}#users-table-container table{min-width:680px}}
-		
-		#users-table-container table{width:100%;border-collapse:separate}
-		#users-table-container tbody td{line-height:1.45}
-		#users-table-container tbody tr{transition:transform .16s ease,filter .16s ease}
-		#users-table-container tbody tr:hover{transform:translateY(-1px)}
-		#users-table-container button{touch-action:manipulation}
-		@media(max-width:640px){[aria-label="فیلتر کاربران"]{gap:7px}.user-filter-chip{flex:0 0 auto;min-height:38px;padding:.48rem .65rem}.user-search-input,.user-sort-select{font-size:13px;min-width:0}#users-table-container{max-width:100%;-webkit-overflow-scrolling:touch}#users-table-container table{min-width:700px}}
-</style>
 		<div class="flex items-center justify-between mb-4">
 			<h2 class="text-lg font-bold text-gray-800 dark:text-zinc-200">لیست کاربران</h2>
 			<div class="flex items-center gap-5">
@@ -7960,18 +7912,6 @@ async function executeRocketCreate() {
 				document.getElementById('loading-state').innerHTML = '<span class="text-red-500">خطا در پردازش اطلاعات کاربران</span>';
 			}
 		}
-		function setUserFilter(value, button) {
-			const select = document.getElementById('filter-status');
-			if (!select) return;
-			select.value = value;
-			document.querySelectorAll('[data-user-filter]').forEach(el => el.classList.toggle('is-selected', el.dataset.userFilter === value));
-			filterAndRenderUsers();
-		}
-		function syncUserFilterChips() {
-			const select = document.getElementById('filter-status');
-			const value = select ? select.value : 'all';
-			document.querySelectorAll('[data-user-filter]').forEach(el => el.classList.toggle('is-selected', el.dataset.userFilter === value));
-		}
 		function filterAndRenderUsers() {
 			if (!window.allUsers) return;
 			const searchQuery = (document.getElementById('search-input').value || '').toLowerCase().trim();
@@ -8004,11 +7944,10 @@ async function executeRocketCreate() {
 						}
 					}
 					if (filterStatus === 'active') return isActive && !isExpired;
-					if (filterStatus === 'inactive') return !isActive && !isExpired;
+					if (filterStatus === 'inactive') return !isActive;
 					if (filterStatus === 'online') return isOnline;
 					if (filterStatus === 'offline') return !isOnline;
-					if (filterStatus === 'expired') return isExpired;
-					if (filterStatus === 'vip') return u.is_vip === 1 || u.is_vip === true || u.vip === 1 || u.vip === true || String(u.role || u.user_type || '').toLowerCase() === 'vip';
+					if (filterStatus === 'expired') return isExpired || !isActive;
 					return true;
 				});
 			}
@@ -11358,7 +11297,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		.al-q { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 14px 8px; border-radius: 16px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: inherit; cursor: pointer; font-size: 12.5px; font-weight: 700; text-align: center; transition: .2s; min-height: 84px; }
 		.al-q:hover { border-color: var(--a3); box-shadow: 0 0 16px var(--glow); transform: translateY(-2px); }
 		.al-q svg { width: 24px; height: 24px; color: hsl(calc(var(--h) - 75) 95% 62%); }
-		#alpha-chips{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;border:0!important}
+		#alpha-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
 		#alpha-dash { box-shadow: none !important; }
 		.al-legend div { white-space: nowrap; }
 		#alpha-bnav { display: none; }
@@ -11414,7 +11353,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		#alpha-chips { scroll-margin-top:18px; }
 		body.alpha-view-dash main > :not(#alpha-dash) { display:none !important; }
 		body.alpha-view-users #alpha-dash { display:none !important; }
-				body.alpha-view-users #alpha-chips{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
+				body.alpha-view-users #alpha-chips { display:flex; }
 		#alpha-bnav button.active { color:#52f5d0; background:rgba(0,210,255,.1); }
 		@media(max-width:900px) { .al-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.al-middle,.al-bottom-grid {grid-template-columns:1fr;} .al-hero{padding:17px}.al-brand-mark{width:55px;height:55px;font-size:52px}.al-brand-title{font-size:25px}.al-service{min-width:100px}.al-stat{min-height:130px}.al-stat-value{font-size:25px} }
 		@media(max-width:480px) { #alpha-dash{gap:12px}.al-hero{align-items:flex-start;padding:15px 13px}.al-brand{gap:8px}.al-brand-mark{width:39px;height:42px;font-size:40px}.al-brand-title{font-size:20px;letter-spacing:2px}.al-brand-sub{font-size:11px}.al-service{min-width:82px;font-size:11px}.al-live{padding:7px 9px;font-size:12px}.al-stat-grid{gap:9px}.al-stat{padding:13px;min-height:122px}.al-stat-label{font-size:11px}.al-stat-value{font-size:23px}.al-stat-icon{width:38px;height:38px}.al-chart-card,.al-quick-card,.al-recent-card,.al-system-card,.al-server-card{padding:14px}.al-panel-title{font-size:15px}.al-q{min-height:84px;font-size:12px} }
@@ -11522,15 +11461,15 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		};
 		function clickSel(sel) { var b = document.querySelector(sel); if (b) b.click(); return !!b; }
 		function call(fn) { return function () { try { if (typeof window[fn] === 'function') window[fn].apply(null, [].slice.call(arguments, 1)); } catch (e) {} }; }
-		try { document.querySelectorAll('#alpha-chips').forEach(function(el){ el.remove(); }); } catch(e) {}
 		var main = document.querySelector('body > main');
 		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
 		function go(where) {
 			closeDrawer();
+			if (where === 'users' && typeof loadUsers === 'function' && !window.allUsers) loadUsers();
 			var isUsers = where === 'users';
 			document.body.classList.toggle('alpha-view-users', isUsers);
 			document.body.classList.toggle('alpha-view-dash', !isUsers);
-			var t = isUsers ? (document.querySelector('[aria-label=\"فیلتر کاربران\"]') || usersAnchor) : document.getElementById('alpha-dash');
+			var t = isUsers ? (document.getElementById('alpha-chips') || usersAnchor) : document.getElementById('alpha-dash');
 			if (t) { window.scrollTo({top:0,behavior:'smooth'}); }
 			setActive(isUsers ? 'users' : 'dash');
 			bnav.querySelectorAll('button[data-a]').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-a') === (isUsers ? 'users' : 'dash')); });
@@ -11602,8 +11541,18 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var searchBtn = document.getElementById('al-search'); if (searchBtn) searchBtn.addEventListener('click', focusSearch);
 		document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); focusSearch(); } });
 
-		// Legacy duplicate filter chips removed: the redesigned user-filter toolbar above is the single source of truth.
-
+		var fs = document.getElementById('filter-status');
+		var chips = document.createElement('div'); chips.id = 'alpha-chips';
+		var CH = [['all', 'همه'], ['active', '✅ فعال'], ['online', '⚡ آنلاین'], ['offline', '💤 آفلاین'], ['expired', '⏳ منقضی / تمام‌شده'], ['inactive', '❌ غیرفعال']];
+		chips.innerHTML = CH.map(function (c) { return '<button type="button" class="al-chip" data-f="' + c[0] + '">' + c[1] + ' <span data-n="' + c[0] + '"></span></button>'; }).join('');
+		var sInput = document.getElementById('search-input');
+		var bar = (function () { if (!sInput || !fs) return null; var n = sInput; while (n && n.parentElement && !n.contains(fs)) n = n.parentElement; return n; })();
+		if (bar && bar.parentElement) bar.parentElement.insertBefore(chips, bar);
+		function setFilter(v) { if (!fs) return; fs.value = v; if (typeof filterAndRenderUsers === 'function') filterAndRenderUsers(); paintChips(); }
+		function paintChips() { chips.querySelectorAll('[data-f]').forEach(function (b) { b.classList.toggle('on', fs && fs.value === b.getAttribute('data-f')); }); }
+		chips.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) setFilter(b.getAttribute('data-f')); });
+		if (fs) fs.addEventListener('change', paintChips);
+		paintChips();
 
 		function fa(n) { try { return Number(n).toLocaleString('fa-IR'); } catch (e) { return String(n); } }
 		function isExpired(u, now) {
@@ -11634,11 +11583,11 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			for (var i=6;i>=0;i--) { var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()-i); var k=d.toISOString().slice(0,10); var r=rows.find(function(x){return x.day===k;}); labels.push({key:k,label:d.toLocaleDateString('fa-IR',{weekday:'short'})}); vals.push(r ? Number(r.total) : null); }
 			var known = vals.filter(function(v){return v !== null;}); var max = Math.max.apply(null,known.concat([1])); var points=[];
 			for (var j=0;j<7;j++){ var x=42+j*86; var v=vals[j]; var y=v===null?184:184-(v/max)*132; points.push({x:x,y:y,v:v}); }
-			var grid=''; for(var gy=0;gy<4;gy++){var yy=28+gy*52;grid+='<line x1="42" y1="'+yy+'" x2="558" y2="'+yy+'" stroke="rgba(110,190,240,.15)" stroke-width="1"/>';}
+			var grid=''; for(var gy=0;gy<4;gy++){var yy=28+gy*52;grid+='<line x1="42" y1="'+yy+'" x2="558" y2="'+yy+'" stroke="var(--dash-line)" stroke-width="1"/>';}
 			var segments=[]; for(var p=0;p<points.length;p++){if(points[p].v!==null)segments.push((segments.length?'L':'M')+points[p].x+' '+points[p].y);else if(segments.length)segments.push('');}
 			var path=''; var active=[]; points.forEach(function(pt){if(pt.v===null){if(active.length){path+='M'+active.map(function(a){return a.x+' '+a.y;}).join(' L');active=[];}}else active.push(pt);}); if(active.length) path+='M'+active.map(function(a){return a.x+' '+a.y;}).join(' L');
 			var dots=points.map(function(pt){return pt.v===null?'':'<circle cx="'+pt.x+'" cy="'+pt.y+'" r="4" fill="#08e9d0" stroke="#061b35" stroke-width="2"><title>'+pt.v.toFixed(2)+' GB</title></circle>';}).join('');
-			var xlabels=labels.map(function(l,i){return '<text x="'+points[i].x+'" y="211" text-anchor="middle" font-size="11" fill="#a9c7df">'+escHtml(l.label)+'</text>';}).join('');
+			var xlabels=labels.map(function(l,i){return '<text x="'+points[i].x+'" y="211" text-anchor="middle" font-size="11" fill="var(--dash-muted)">'+escHtml(l.label)+'</text>';}).join('');
 			svg.innerHTML='<defs><linearGradient id="al-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00eeb0" stop-opacity=".25"/><stop offset="100%" stop-color="#00cfff" stop-opacity="0"/></linearGradient><filter id="al-chart-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+grid+(known.length>1?'<path d="'+path+' L'+points.filter(function(p){return p.v!==null;}).slice(-1)[0].x+' 184 L'+points.filter(function(p){return p.v!==null;})[0].x+' 184 Z" fill="url(#al-chart-fill)"/>':'')+'<path d="'+path+'" fill="none" stroke="#00e7d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#al-chart-glow)"/>'+dots+xlabels;
 			var note=document.getElementById('al-chart-note'); if(note) note.textContent=known.length<2?'تاریخچه واقعی از امروز ذخیره می‌شود؛ برای نمایش روند هفت‌روزه، داشبورد باید در روزهای آینده بازدید شود.':'مقادیر نشان‌دهنده مجموع مصرف ثبت‌شده کاربران در هر روز هستند؛ تاریخچه از زمان فعال‌سازی این داشبورد جمع‌آوری شده است.';
 		}
