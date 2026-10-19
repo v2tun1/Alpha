@@ -6115,10 +6115,6 @@ const HTML_TEMPLATES = {
 										<span>آی‌پی‌های تمیز کلودفلر (Clean IPs)</span>
 									</h4>
 									<div class="flex items-center gap-1.5">
-										<button type="button" onclick="openIpScannerModal()" class="px-2.5 py-1 bg-transparent border-2 border-sky-500 text-sky-600 dark:text-sky-500 hover:bg-sky-50 dark:hover:bg-sky-900/20 rounded-md text-[11px] font-bold transition flex items-center gap-1 shadow-sm">
-											<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-											<span>اسکنر آی‌پی</span>
-										</button>
 										<button type="button" onclick="openIpSelectorModal()" class="px-2.5 py-1 bg-transparent border-2 border-amber-500 text-amber-600 dark:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-md text-[11px] font-bold transition flex items-center gap-1 shadow-sm">
 											<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
 										<span>مخزن آی‌پی</span>
@@ -6443,56 +6439,6 @@ const HTML_TEMPLATES = {
 				<button type="button" onclick="toggleIpSelectorModal(false)" class="flex-1 py-2.5 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs sm:text-sm transition shadow-sm">لغو</button>
 				<button type="button" onclick="applySelectedIps()" class="flex-1 py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-xs sm:text-sm transition shadow-lg">دریافت</button>
 			</div>
-		</div>
-	</div>
-</div>
-<div id="ip-scanner-modal" class="fixed inset-0 z-[65] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-out">
-	<div class="w-full max-w-lg bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-md shadow-xl overflow-hidden transition-all transform duration-300 opacity-0 scale-95 ease-out flex flex-col max-h-[90vh]">
-		<div class="px-6 py-4 border-b border-gray-150 dark:border-amoled-border flex justify-between items-center bg-gray-50 dark:bg-zinc-900/50 flex-shrink-0">
-			<h3 class="font-bold text-gray-900 dark:text-zinc-100 text-sm flex items-center gap-2">
-				<svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-				اسکنر اختصاصی آی‌پی تمیز
-			</h3>
-			<button type="button" onclick="toggleIpScannerModal(false)" class="p-1.5 rounded-md bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/50 transition-all duration-200 shadow-sm">
-				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-			</button>
-		</div>
-		<div class="p-5 space-y-4 overflow-y-auto flex-1">
-			<div class="border border-green-200 dark:border-green-900/50 bg-green-50/50 dark:bg-green-900/10 rounded-md p-4 shadow-sm">
-				<div class="flex items-center gap-2 mb-2">
-					<svg class="w-5 h-5 text-green-600 dark:text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0004.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02L19.695 6.183c.1568-.2716.0637-.6182-.2079-.7754-.2716-.1564-.6183-.0633-.775.2082l-1.8584 3.2185c-1.3853-.6328-2.9697-.9881-4.6644-.9881-1.6946 0-3.279.3553-4.664.9881L5.6664 5.6158c-.1567-.2715-.5038-.3646-.775-.2082-.2716.1572-.3647.5038-.2079.7754l1.8136 3.1385C2.963 11.2384 1.1571 14.5422 1 18.4234h22c-.1572-3.8812-1.963-7.185-5.4955-9.102"/></svg>
-					<h4 class="font-black text-sm text-green-700 dark:text-green-400">کاربران موبایل (Pydroid 3)</h4>
-				</div>
-				<p class="text-[11px] text-gray-600 dark:text-gray-400 mb-3 leading-relaxed font-medium">
-					اپلیکیشن <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 font-bold underline">Pydroid 3</a> را نصب کنید. از منوی کناری برنامه وارد بخش <b>Terminal</b> شوید و کد زیر را اجرا کنید؛ سپس آدرس <code class="bg-white dark:bg-zinc-800 px-1 py-0.5 rounded text-blue-500 font-bold shadow-sm" dir="ltr">http://127.0.0.1:8000</code> را در مرورگر باز کنید.
-				</p>
-				<div class="flex flex-col gap-2">
-					<div class="w-full bg-gray-100 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md p-2.5 text-[10px] font-mono text-left text-gray-800 dark:text-zinc-300 break-all select-all overflow-x-auto whitespace-pre-wrap max-h-24 overflow-y-auto" dir="ltr">python -c "import urllib.request; req = urllib.request.Request('<ALPHA_WORKER_URL>/tools/scanner-bundle.txt', headers={'User-Agent': 'Mozilla/5.0'}); exec(urllib.request.urlopen(req).read().decode('utf-8').split('---PYTH' + 'ON---')[1].split('---POWERSHELL---')[0].strip())"</div>
-					<button type="button" onclick="copyPythonScannerCommand(this)" class="w-full flex items-center justify-center gap-1.5 py-2 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700/80 rounded text-xs font-bold transition shadow-sm">
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-						<span>کپی کد Pydroid</span>
-					</button>
-				</div>
-			</div>
-			<div class="border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-900/10 rounded-md p-4 shadow-sm">
-				<div class="flex items-center gap-2 mb-2">
-					<svg class="w-5 h-5 text-blue-600 dark:text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/></svg>
-					<h4 class="font-black text-sm text-blue-700 dark:text-blue-400">کاربران ویندوز (CMD)</h4>
-				</div>
-				<p class="text-[11px] text-gray-600 dark:text-gray-400 mb-3 leading-relaxed font-medium">
-					محیط <code class="font-bold">CMD</code>را در ویندوز باز کنید و کد زیر را برای اجرای اسکنر در آن پیست کنید و اینتر بزنید.
-				</p>
-				<div class="flex flex-col gap-2">
-					<div class="w-full bg-gray-100 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md p-2.5 text-[10px] font-mono text-left text-gray-800 dark:text-zinc-300 break-all select-all overflow-x-auto whitespace-pre-wrap max-h-24 overflow-y-auto" dir="ltr">powershell -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13; $wc = New-Object System.Net.WebClient; $wc.Encoding = [System.Text.Encoding]::UTF8; $text = ($wc.DownloadString('<ALPHA_WORKER_URL>/tools/scanner-bundle.txt') -split '---POWERSHELL---')[1].Trim(); [IO.File]::WriteAllText('alpha-scanner.ps1', $text, [System.Text.Encoding]::UTF8); .\alpha-scanner.ps1"</div>
-					<button type="button" onclick="copyPowerShellScannerCommand(this)" class="w-full flex items-center justify-center gap-1.5 py-2 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700/80 rounded text-xs font-bold transition shadow-sm">
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-						<span>کپی کد CMD</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="p-4 border-t border-gray-150 dark:border-amoled-border bg-gray-50 dark:bg-zinc-900/50 flex-shrink-0">
-			<button type="button" onclick="toggleIpScannerModal(false)" class="w-full py-2.5 bg-transparent border-2 border-red-700 text-red-700 hover:bg-red-900/20 hover:text-red-800 dark:border-red-700 dark:text-red-500 dark:hover:bg-red-900/40 dark:hover:text-red-400 font-bold rounded-md text-xs transition shadow-sm">بستن صفحه</button>
 		</div>
 	</div>
 </div>
@@ -10416,25 +10362,9 @@ function populateIpSelect() {
 function toggleIpSelectorModal(show) {
 	setModalState('ip-selector-modal', show);
 }
-function toggleIpScannerModal(show) {
-	setModalState('ip-scanner-modal', show);
-}
-function openIpScannerModal() {
-	toggleIpScannerModal(true);
-}
 function copyRelayManagerCommand(btn) {
 	const url = window.location.origin + "/tools/relay-manager.sh";
 	copyScannerCode("bash <(curl -fsSL '" + url + "' | tr -d '\\r')", btn);
-}
-function copyPythonScannerCommand(btn) {
-	const url = window.location.origin + "/tools/scanner-bundle.txt";
-	const command = "ALPHA_SCANNER_URL='" + url + "' python -c \\\"import urllib.request; req = urllib.request.Request('" + url + "', headers={'User-Agent': 'Mozilla/5.0'}); exec(urllib.request.urlopen(req).read().decode('utf-8').split('---PYTH' + 'ON---')[1].split('---POWERSHELL---')[0].strip())\\\"";
-	copyScannerCode(command, btn);
-}
-function copyPowerShellScannerCommand(btn) {
-	const url = window.location.origin + "/tools/scanner-bundle.txt";
-	const command = "powershell -ExecutionPolicy Bypass -Command \\\"$env:ALPHA_SCANNER_URL='" + url + "'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13; $wc = New-Object System.Net.WebClient; $wc.Encoding = [System.Text.Encoding]::UTF8; $text = ($wc.DownloadString('" + url + "') -split '---POWERSHELL---')[1].Trim(); [IO.File]::WriteAllText('alpha-scanner.ps1', $text, [System.Text.Encoding]::UTF8); .\\alpha-scanner.ps1\\\"";
-	copyScannerCode(command, btn);
 }
 function copyScannerCode(text, btn) {
 	navigator.clipboard.writeText(text).then(() => {
@@ -10780,7 +10710,6 @@ function applySelectedIps() {
 				if (e.target.id === 'user-modal') toggleModal(false);
 				if (e.target.id === 'rocket-modal') toggleRocketModal(false);
 				if (e.target.id === 'ip-selector-modal') toggleIpSelectorModal(false);
-				if (e.target.id === 'ip-scanner-modal') toggleIpScannerModal(false);
 				if (e.target.id === 'settings-modal') toggleSettingsModal(false);
 				if (e.target.id === 'update-modal') toggleUpdateModal(false);
 				if (e.target.id === 'token-modal') toggleTokenModal(false);
