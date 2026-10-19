@@ -5501,7 +5501,11 @@ const HTML_TEMPLATES = {
 			</select>
 		</div>
 		<style>
+		/* Final users-page cleanup: use only the redesigned filter bar (remove legacy duplicate chips). */
+		#alpha-chips{display:none!important}
+		body.alpha-view-users #alpha-chips{display:none!important}
 		.user-filter-chip{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:40px;padding:.55rem .85rem;border:1px solid #dbe4f5;border-radius:9999px;background:linear-gradient(145deg,#fff,#f7f9ff);color:#334155;font-size:12px;font-weight:750;white-space:nowrap;transition:all .18s ease;box-shadow:0 2px 7px rgba(71,85,105,.04)}
+		[aria-label="فیلتر کاربران"]{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:9px;margin-bottom:14px}
 		.user-filter-chip svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 		.user-filter-chip:hover{transform:translateY(-1px);border-color:#a5b4fc;box-shadow:0 5px 12px rgba(99,102,241,.10)}
 		.user-filter-chip.is-selected{background:linear-gradient(120deg,#635bff,#b44bfa 60%,#f052a8);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(139,92,246,.22)}
@@ -5515,10 +5519,32 @@ const HTML_TEMPLATES = {
 		.user-search-input{padding:.7rem 2.7rem .7rem .9rem}
 		.user-sort-select{padding:.65rem .8rem;cursor:pointer}
 		.user-search-input:focus,.user-sort-select:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.15)}
-		dark .user-search-input{background:#18181b}
+		.dark .user-search-input{background:#18181b}
 		.dark .user-search-input,.dark .user-sort-select{background:#18181b;border-color:#3f3f46;color:#e4e4e7}
 		@media(max-width:420px){.user-filter-chip{padding:.5rem .68rem;font-size:11px;min-height:37px}.user-filter-chip svg{width:15px;height:15px}}
 		</style>
+		<style id="alpha-users-table-redesign">
+		#users-table-container{border:1px solid #dbeafe;border-radius:22px;background:rgba(255,255,255,.84);padding:10px;box-shadow:0 10px 30px rgba(99,102,241,.08)}
+		#users-table-container table{border-spacing:0 7px!important;min-width:720px}
+		#users-table-container thead th{background:#f8faff!important;color:#334155!important;border-color:#e2e8f0!important;padding:13px 10px!important;font-size:12px}
+		#users-table-container tbody tr{filter:drop-shadow(0 2px 5px rgba(99,102,241,.04))}
+		#users-table-container tbody td{background:rgba(255,255,255,.96);border-top:1px solid #e6ecfa;border-bottom:1px solid #e6ecfa;padding:12px 9px!important;vertical-align:middle}
+		#users-table-container tbody td:first-child{border-right:1px solid #e6ecfa;border-radius:0 14px 14px 0}
+		#users-table-container tbody td:last-child{border-left:1px solid #e6ecfa;border-radius:14px 0 0 14px}
+		#users-table-container tbody tr:hover td{background:#f7f9ff}
+		.dark #users-table-container{background:rgba(24,24,27,.88);border-color:#3f3f46}
+		.dark #users-table-container thead th{background:#27272a!important;color:#e4e4e7!important;border-color:#3f3f46!important}
+		.dark #users-table-container tbody td{background:#18181b;border-color:#3f3f46;color:#e4e4e7}
+		.dark #users-table-container tbody tr:hover td{background:#27272a}
+		@media(max-width:640px){#users-table-container{overflow-x:auto;padding:7px}#users-table-container table{min-width:680px}}
+		
+		#users-table-container table{width:100%;border-collapse:separate}
+		#users-table-container tbody td{line-height:1.45}
+		#users-table-container tbody tr{transition:transform .16s ease,filter .16s ease}
+		#users-table-container tbody tr:hover{transform:translateY(-1px)}
+		#users-table-container button{touch-action:manipulation}
+		@media(max-width:640px){[aria-label="فیلتر کاربران"]{gap:7px}.user-filter-chip{flex:0 0 auto;min-height:38px;padding:.48rem .65rem}.user-search-input,.user-sort-select{font-size:13px;min-width:0}#users-table-container{max-width:100%;-webkit-overflow-scrolling:touch}#users-table-container table{min-width:700px}}
+</style>
 		<div class="flex items-center justify-between mb-4">
 			<h2 class="text-lg font-bold text-gray-800 dark:text-zinc-200">لیست کاربران</h2>
 			<div class="flex items-center gap-5">
@@ -11574,18 +11600,8 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var searchBtn = document.getElementById('al-search'); if (searchBtn) searchBtn.addEventListener('click', focusSearch);
 		document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); focusSearch(); } });
 
-		var fs = document.getElementById('filter-status');
-		var chips = document.createElement('div'); chips.id = 'alpha-chips';
-		var CH = [['all', 'همه'], ['active', '✅ فعال'], ['online', '⚡ آنلاین'], ['offline', '💤 آفلاین'], ['expired', '⏳ منقضی / تمام‌شده'], ['inactive', '❌ غیرفعال']];
-		chips.innerHTML = CH.map(function (c) { return '<button type="button" class="al-chip" data-f="' + c[0] + '">' + c[1] + ' <span data-n="' + c[0] + '"></span></button>'; }).join('');
-		var sInput = document.getElementById('search-input');
-		var bar = (function () { if (!sInput || !fs) return null; var n = sInput; while (n && n.parentElement && !n.contains(fs)) n = n.parentElement; return n; })();
-		if (bar && bar.parentElement) bar.parentElement.insertBefore(chips, bar);
-		function setFilter(v) { if (!fs) return; fs.value = v; if (typeof filterAndRenderUsers === 'function') filterAndRenderUsers(); paintChips(); }
-		function paintChips() { chips.querySelectorAll('[data-f]').forEach(function (b) { b.classList.toggle('on', fs && fs.value === b.getAttribute('data-f')); }); }
-		chips.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) setFilter(b.getAttribute('data-f')); });
-		if (fs) fs.addEventListener('change', paintChips);
-		paintChips();
+		// Legacy duplicate filter chips removed: the redesigned user-filter toolbar above is the single source of truth.
+
 
 		function fa(n) { try { return Number(n).toLocaleString('fa-IR'); } catch (e) { return String(n); } }
 		function isExpired(u, now) {
