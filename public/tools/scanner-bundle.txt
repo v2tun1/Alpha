@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Z E U S - Local Scanner</title>
+	<title>A L P H A - Local Scanner</title>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
@@ -237,26 +237,14 @@
 		}
 		
 		async function fetchWithFallbackUI(path, options = {}) {
-			const primaryUrl = 'https://fesavswgvswgfvasw.hxxyrukih4kvmeawzmdmug2eh5uwtcmt.workers.dev/' + path;
-			const fallbackUrl1 = 'https://testfnryjnrjrurjejne4r6uju.pages.dev/' + path;
-			const fallbackUrl2 = 'https://hoplimit.shop/' + path;
-			
-			try {
-				const res1 = await fetch(primaryUrl, options);
-				if (res1.ok) return res1;
-			} catch (e) {}
-			
-			try {
-				const res2 = await fetch(fallbackUrl1, options);
-				if (res2.ok) return res2;
-			} catch (e) {}
-			
-			return await fetch(fallbackUrl2, options);
+			const cleanPath = String(path).split('?')[0].replace(/^\/+/, '');
+			const query = String(path).includes('?') ? '?' + String(path).split('?').slice(1).join('?') : '';
+			return fetch('/' + cleanPath + query, options);
 		}
 		
-		async function loadIpsFromGithub() {
+		async function loadIpsFromLocalAssets() {
 			try {
-				const response = await fetchWithFallbackUI('ips.txt?t=' + Date.now());
+				const response = await fetchWithFallbackUI('data/ip-addresses.txt?t=' + Date.now());
 				if (!response.ok) throw new Error('Fetch failed');
 				const text = await response.text();
 				const blocks = text.split('----------');
@@ -294,7 +282,7 @@
 				document.getElementById('btn-fetch').innerHTML = 'خطا در ارتباط (صفحه را رفرش کنید)';
 			}
 		}
-		document.addEventListener('DOMContentLoaded', loadIpsFromGithub);
+		document.addEventListener('DOMContentLoaded', loadIpsFromLocalAssets);
 		
 		function setupScannerUI(ipList, successMessage) {
 			fetchedIPs = ipList;
@@ -588,15 +576,16 @@ import time
 import json
 import threading
 import urllib.request
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from concurrent.futures import ThreadPoolExecutor
 
 PORT = 8000
 SCAN_EXECUTOR = ThreadPoolExecutor(max_workers=100)
-ZEUS_URL = "https://fesavswgvswgfvasw.hxxyrukih4kvmeawzmdmug2eh5uwtcmt.workers.dev/zeus-scanner.txt"
+ALPHA_SCANNER_URL = os.environ.get("ALPHA_SCANNER_URL", "")
 
 try:
-    _req = urllib.request.Request(ZEUS_URL, headers={'User-Agent': 'Mozilla/5.0'})
+    _req = urllib.request.Request(ALPHA_SCANNER_URL, headers={'User-Agent': 'Mozilla/5.0'})
     _txt = urllib.request.urlopen(_req).read().decode('utf-8')
     HTML_CONTENT = _txt.split('---HTML---')[1].split('---PYTH' + 'ON---')[0].strip()
 except Exception as e:
@@ -613,7 +602,7 @@ def scan_ip(ip, target_sni, timeout=3.5):
                 context.check_hostname = False
                 context.verify_mode = ssl.CERT_NONE
                 with context.wrap_socket(sock, server_hostname=target_sni) as ssock:
-                    req = f"GET / HTTP/1.1\r\nHost: {target_sni}\r\nUser-Agent: Zeus-Scanner\r\nConnection: close\r\n\r\n"
+                    req = f"GET / HTTP/1.1\r\nHost: {target_sni}\r\nUser-Agent: Alpha-Scanner\r\nConnection: close\r\n\r\n"
                     ssock.sendall(req.encode('ascii'))
                     resp = ssock.recv(2048)
                     if resp.startswith(b"HTTP/1."):
@@ -628,7 +617,7 @@ def scan_ip(ip, target_sni, timeout=3.5):
     else:
         return {"ip": ip, "success": False, "error": last_error}
 
-class ZeusRequestHandler(BaseHTTPRequestHandler):
+class AlphaRequestHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -691,7 +680,7 @@ if __name__ == '__main__':
     while PORT <= 8010:
         try:
             server_address = ('127.0.0.1', PORT)
-            httpd = ThreadingHTTPServer(server_address, ZeusRequestHandler)
+            httpd = ThreadingHTTPServer(server_address, AlphaRequestHandler)
             break
         except OSError:
             PORT += 1
@@ -701,7 +690,7 @@ if __name__ == '__main__':
         exit(1)
 
     print("\033[96m==========================================\033[0m")
-    print("\033[92m  Zeus Scanner Core (Unified) is RUNNING!\033[0m")
+    print("\033[92m  Alpha Scanner Core (Unified) is RUNNING!\033[0m")
     print(f"\033[93m  Open in Browser: http://127.0.0.1:{PORT}/\033[0m")
     print("\033[90m  Do NOT close this terminal during scan.\033[0m")
     print("\033[96m==========================================\033[0m")
@@ -713,13 +702,13 @@ if __name__ == '__main__':
         httpd.server_close()
 ---POWERSHELL---
 $port = 8000
-$zeusUrl = "https://fesavswgvswgfvasw.hxxyrukih4kvmeawzmdmug2eh5uwtcmt.workers.dev/zeus-scanner.txt"
+$alphaScannerUrl = $env:ALPHA_SCANNER_URL
 
 try {
     $wc = New-Object System.Net.WebClient
     $wc.Encoding = [System.Text.Encoding]::UTF8
     $wc.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
-    $txt = $wc.DownloadString($zeusUrl)
+    $txt = $wc.DownloadString($alphaScannerUrl)
     $htmlContent = ($txt -split '---HTML---')[1] -split ('---PYTH' + 'ON---') | Select-Object -First 1
     $htmlContent = $htmlContent.Trim()
 } catch {
@@ -748,7 +737,7 @@ if (-not $serverStarted) {
 }
 
 Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host "  Zeus Scanner Core (Unified) is RUNNING!" -ForegroundColor Green
+Write-Host "  Alpha Scanner Core (Unified) is RUNNING!" -ForegroundColor Green
 Write-Host "  Listening on: $url" -ForegroundColor Yellow
 Write-Host "  Do NOT close this window during scan." -ForegroundColor Gray
 Write-Host "==========================================" -ForegroundColor Cyan
@@ -844,7 +833,7 @@ try {
                             if ($task.SslAsyncResult.IsCompleted) {
                                 try {
                                     $task.SslStream.EndAuthenticateAsClient($task.SslAsyncResult)
-                                    $reqStr = "GET / HTTP/1.1`r`nHost: $sni`r`nUser-Agent: Zeus-Scanner`r`nConnection: close`r`n`r`n"
+                                    $reqStr = "GET / HTTP/1.1`r`nHost: $sni`r`nUser-Agent: Alpha-Scanner`r`nConnection: close`r`n`r`n"
                                     $reqBytes = [System.Text.Encoding]::ASCII.GetBytes($reqStr)
                                     $task.SslStream.Write($reqBytes, 0, $reqBytes.Length)
                                     $task.ReadAsyncResult = $task.SslStream.BeginRead($task.Buffer, 0, $task.Buffer.Length, $null, $null)

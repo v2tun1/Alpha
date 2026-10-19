@@ -1,11 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "alpha",
-  "main": "./Source.js",
+  "main": "./src/worker.js",
   "compatibility_date": "2026-10-17",
   "workers_dev": true,
-  "observability": {
-    "enabled": true
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
   },
   "d1_databases": [
     {

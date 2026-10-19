@@ -3,10 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check Source.js",
+    "check": "node --check src/worker.js",
+    "sync:source": "node scripts/sync-source.mjs",
     "dev": "wrangler dev",
     "deploy:dry": "wrangler deploy --dry-run",
-    "deploy": "wrangler deploy"
+    "predeploy:dry": "npm run sync:source",
+    "deploy": "wrangler deploy",
+    "predeploy": "npm run sync:source"
   },
   "devDependencies": {
     "wrangler": "^4.102.0"
