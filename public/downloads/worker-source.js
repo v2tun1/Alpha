@@ -5473,31 +5473,52 @@ const HTML_TEMPLATES = {
 		<div id="loading-state" class="text-center py-12">
 			<span class="text-gray-500 dark:text-gray-400">در حال بارگذاری کاربران...</span>
 		</div>
-		<div class="mb-5 flex flex-col md:flex-row gap-2 justify-between items-center bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-md p-2 shadow-sm">
-			<div class="relative w-full md:w-80">
-				<input type="text" id="search-input" oninput="filterAndRenderUsers()" placeholder="جستجوی نام کاربری یا UUID..." class="w-full pl-3 pr-8 py-1.5 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs">
-				<div class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none text-gray-400">
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+		<div class="mb-5 rounded-2xl border border-indigo-100 dark:border-amoled-border bg-white/90 dark:bg-amoled-card/90 p-3 sm:p-4 shadow-[0_8px_28px_rgba(99,102,241,0.08)]">
+			<div class="mb-3 flex flex-wrap items-center gap-2" role="group" aria-label="فیلتر کاربران">
+				<button type="button" data-user-filter="all" onclick="setUserFilter('all',this)" class="user-filter-chip is-selected"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM20 8v6M23 11h-6"/></svg><span>همه کاربران</span></button>
+				<button type="button" data-user-filter="active" onclick="setUserFilter('active',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/></svg><span>فعال</span></button>
+				<button type="button" data-user-filter="online" onclick="setUserFilter('online',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg><span>آنلاین</span></button>
+				<button type="button" data-user-filter="offline" onclick="setUserFilter('offline',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20M8.5 8.5a5 5 0 0 0 7 7M5 5a11 11 0 0 0-3 7M19 12a11 11 0 0 0-1-4M9 16.5a6 6 0 0 0 6 0"/></svg><span>آفلاین</span></button>
+				<button type="button" data-user-filter="expired" onclick="setUserFilter('expired',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>منقضی‌شده</span></button>
+				<button type="button" data-user-filter="inactive" onclick="setUserFilter('inactive',this)" class="user-filter-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg><span>غیرفعال</span></button>
+				<button type="button" data-user-filter="vip" onclick="setUserFilter('vip',this)" class="user-filter-chip user-filter-vip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 7 5 4 5-7 5 7 5-4-2 13H4L2 7Z"/></svg><span>VIP</span></button>
+			</div>
+			<div class="flex flex-col sm:flex-row gap-2">
+				<div class="relative min-w-0 flex-1">
+					<input type="text" id="search-input" oninput="filterAndRenderUsers()" placeholder="جستجوی نام کاربری یا UUID..." class="user-search-input w-full" aria-label="جستجوی کاربران">
+					<svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke-width="1.8"/><path d="m16 16 5 5" stroke-width="1.8" stroke-linecap="round"/></svg>
 				</div>
-			</div>
-			<div class="flex items-center gap-2 w-full md:w-auto">
-				<select id="filter-status" onchange="filterAndRenderUsers()" class="flex-1 min-w-0 px-2 py-1.5 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 dark:text-zinc-300 cursor-pointer truncate">
-					<option value="all">🔍 همه</option>
-					<option value="active">✅ فعال</option>
-					<option value="inactive">❌ غیرفعال</option>
-					<option value="online">⚡ آنلاین</option>
-					<option value="offline">💤 آفلاین</option>
-					<option value="expired">⏳ منقضی</option>
-				</select>
-				<select id="sort-users" onchange="filterAndRenderUsers()" class="flex-1 min-w-0 px-2 py-1.5 bg-gray-50 dark:bg-amoled-input border border-gray-300 dark:border-amoled-border rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 dark:text-zinc-300 cursor-pointer truncate">
-					<option value="newest">📅 جدیدترین</option>
-					<option value="name">🔤 نام کاربری (الفبا)</option>
-					<option value="usage-desc">📊 بیشترین مصرف</option>
-					<option value="usage-asc">📈 کمترین مصرف</option>
-					<option value="expiry-asc">⏳ کمترین زمان باقی‌مانده</option>
+				<select id="sort-users" onchange="filterAndRenderUsers()" class="user-sort-select sm:w-56">
+					<option value="newest">↓ جدیدترین کاربران</option>
+					<option value="name">⇅ مرتب‌سازی بر اساس نام</option>
+					<option value="usage-desc">↑ بیشترین مصرف ترافیک</option>
+					<option value="usage-asc">↓ کمترین مصرف ترافیک</option>
+					<option value="expiry-asc">◷ نزدیک‌ترین انقضا</option>
 				</select>
 			</div>
+			<select id="filter-status" onchange="syncUserFilterChips();filterAndRenderUsers()" class="hidden" aria-hidden="true" tabindex="-1">
+				<option value="all">همه کاربران</option><option value="active">فعال</option><option value="online">آنلاین</option><option value="offline">آفلاین</option><option value="expired">منقضی‌شده</option><option value="inactive">غیرفعال</option><option value="vip">VIP</option>
+			</select>
 		</div>
+		<style>
+		.user-filter-chip{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:40px;padding:.55rem .85rem;border:1px solid #dbe4f5;border-radius:9999px;background:linear-gradient(145deg,#fff,#f7f9ff);color:#334155;font-size:12px;font-weight:750;white-space:nowrap;transition:all .18s ease;box-shadow:0 2px 7px rgba(71,85,105,.04)}
+		.user-filter-chip svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+		.user-filter-chip:hover{transform:translateY(-1px);border-color:#a5b4fc;box-shadow:0 5px 12px rgba(99,102,241,.10)}
+		.user-filter-chip.is-selected{background:linear-gradient(120deg,#635bff,#b44bfa 60%,#f052a8);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(139,92,246,.22)}
+		.user-filter-chip[data-user-filter="active"] svg,.user-filter-chip[data-user-filter="online"] svg{color:#059669}
+		.user-filter-chip[data-user-filter="offline"] svg{color:#64748b}
+		.user-filter-chip[data-user-filter="expired"] svg{color:#d97706}
+		.user-filter-chip[data-user-filter="inactive"] svg{color:#e11d48}
+		.user-filter-chip.user-filter-vip{background:#faf5ff;border-color:#e9d5ff;color:#7e22ce}
+		.user-filter-chip.user-filter-vip.is-selected{background:linear-gradient(120deg,#7c3aed,#c026d3);color:#fff}
+		.user-search-input,.user-sort-select{min-height:43px;border:1px solid #dbe4f5;border-radius:14px;background:#f8faff;color:#334155;font-size:13px;outline:none;transition:border-color .2s,box-shadow .2s}
+		.user-search-input{padding:.7rem 2.7rem .7rem .9rem}
+		.user-sort-select{padding:.65rem .8rem;cursor:pointer}
+		.user-search-input:focus,.user-sort-select:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.15)}
+		dark .user-search-input{background:#18181b}
+		.dark .user-search-input,.dark .user-sort-select{background:#18181b;border-color:#3f3f46;color:#e4e4e7}
+		@media(max-width:420px){.user-filter-chip{padding:.5rem .68rem;font-size:11px;min-height:37px}.user-filter-chip svg{width:15px;height:15px}}
+		</style>
 		<div class="flex items-center justify-between mb-4">
 			<h2 class="text-lg font-bold text-gray-800 dark:text-zinc-200">لیست کاربران</h2>
 			<div class="flex items-center gap-5">
@@ -7912,6 +7933,18 @@ async function executeRocketCreate() {
 				document.getElementById('loading-state').innerHTML = '<span class="text-red-500">خطا در پردازش اطلاعات کاربران</span>';
 			}
 		}
+		function setUserFilter(value, button) {
+			const select = document.getElementById('filter-status');
+			if (!select) return;
+			select.value = value;
+			document.querySelectorAll('[data-user-filter]').forEach(el => el.classList.toggle('is-selected', el.dataset.userFilter === value));
+			filterAndRenderUsers();
+		}
+		function syncUserFilterChips() {
+			const select = document.getElementById('filter-status');
+			const value = select ? select.value : 'all';
+			document.querySelectorAll('[data-user-filter]').forEach(el => el.classList.toggle('is-selected', el.dataset.userFilter === value));
+		}
 		function filterAndRenderUsers() {
 			if (!window.allUsers) return;
 			const searchQuery = (document.getElementById('search-input').value || '').toLowerCase().trim();
@@ -7944,10 +7977,11 @@ async function executeRocketCreate() {
 						}
 					}
 					if (filterStatus === 'active') return isActive && !isExpired;
-					if (filterStatus === 'inactive') return !isActive;
+					if (filterStatus === 'inactive') return !isActive && !isExpired;
 					if (filterStatus === 'online') return isOnline;
 					if (filterStatus === 'offline') return !isOnline;
-					if (filterStatus === 'expired') return isExpired || !isActive;
+					if (filterStatus === 'expired') return isExpired;
+					if (filterStatus === 'vip') return u.is_vip === 1 || u.is_vip === true || u.vip === 1 || u.vip === true || String(u.role || u.user_type || '').toLowerCase() === 'vip';
 					return true;
 				});
 			}
