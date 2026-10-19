@@ -11465,7 +11465,6 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
 		function go(where) {
 			closeDrawer();
-			if (where === 'users' && typeof loadUsers === 'function' && !window.allUsers) loadUsers();
 			var isUsers = where === 'users';
 			document.body.classList.toggle('alpha-view-users', isUsers);
 			document.body.classList.toggle('alpha-view-dash', !isUsers);
@@ -11583,11 +11582,11 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			for (var i=6;i>=0;i--) { var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()-i); var k=d.toISOString().slice(0,10); var r=rows.find(function(x){return x.day===k;}); labels.push({key:k,label:d.toLocaleDateString('fa-IR',{weekday:'short'})}); vals.push(r ? Number(r.total) : null); }
 			var known = vals.filter(function(v){return v !== null;}); var max = Math.max.apply(null,known.concat([1])); var points=[];
 			for (var j=0;j<7;j++){ var x=42+j*86; var v=vals[j]; var y=v===null?184:184-(v/max)*132; points.push({x:x,y:y,v:v}); }
-			var grid=''; for(var gy=0;gy<4;gy++){var yy=28+gy*52;grid+='<line x1="42" y1="'+yy+'" x2="558" y2="'+yy+'" stroke="var(--dash-line)" stroke-width="1"/>';}
+			var grid=''; for(var gy=0;gy<4;gy++){var yy=28+gy*52;grid+='<line x1="42" y1="'+yy+'" x2="558" y2="'+yy+'" stroke="rgba(110,190,240,.15)" stroke-width="1"/>';}
 			var segments=[]; for(var p=0;p<points.length;p++){if(points[p].v!==null)segments.push((segments.length?'L':'M')+points[p].x+' '+points[p].y);else if(segments.length)segments.push('');}
 			var path=''; var active=[]; points.forEach(function(pt){if(pt.v===null){if(active.length){path+='M'+active.map(function(a){return a.x+' '+a.y;}).join(' L');active=[];}}else active.push(pt);}); if(active.length) path+='M'+active.map(function(a){return a.x+' '+a.y;}).join(' L');
 			var dots=points.map(function(pt){return pt.v===null?'':'<circle cx="'+pt.x+'" cy="'+pt.y+'" r="4" fill="#08e9d0" stroke="#061b35" stroke-width="2"><title>'+pt.v.toFixed(2)+' GB</title></circle>';}).join('');
-			var xlabels=labels.map(function(l,i){return '<text x="'+points[i].x+'" y="211" text-anchor="middle" font-size="11" fill="var(--dash-muted)">'+escHtml(l.label)+'</text>';}).join('');
+			var xlabels=labels.map(function(l,i){return '<text x="'+points[i].x+'" y="211" text-anchor="middle" font-size="11" fill="#a9c7df">'+escHtml(l.label)+'</text>';}).join('');
 			svg.innerHTML='<defs><linearGradient id="al-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00eeb0" stop-opacity=".25"/><stop offset="100%" stop-color="#00cfff" stop-opacity="0"/></linearGradient><filter id="al-chart-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+grid+(known.length>1?'<path d="'+path+' L'+points.filter(function(p){return p.v!==null;}).slice(-1)[0].x+' 184 L'+points.filter(function(p){return p.v!==null;})[0].x+' 184 Z" fill="url(#al-chart-fill)"/>':'')+'<path d="'+path+'" fill="none" stroke="#00e7d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#al-chart-glow)"/>'+dots+xlabels;
 			var note=document.getElementById('al-chart-note'); if(note) note.textContent=known.length<2?'تاریخچه واقعی از امروز ذخیره می‌شود؛ برای نمایش روند هفت‌روزه، داشبورد باید در روزهای آینده بازدید شود.':'مقادیر نشان‌دهنده مجموع مصرف ثبت‌شده کاربران در هر روز هستند؛ تاریخچه از زمان فعال‌سازی این داشبورد جمع‌آوری شده است.';
 		}
