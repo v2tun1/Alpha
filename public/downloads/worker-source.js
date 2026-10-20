@@ -4748,56 +4748,6 @@ const HTML_TEMPLATES = {
 			size(); draw(); addEventListener('resize', function () { size(); draw(); });
 		})();
 	</script>
-
-<style id="alpha-hide-users-page-test">
-/* Temporary test: hide the complete users page content while preserving global navigation. */
-#stats-accordion-wrapper,
-#loading-state,
-#search-input,
-#filter-status,
-#sort-users,
-#users-tbody,
-#empty-state,
-#users-table-container,
-#users-table-wrapper {
-  display: none !important;
-}
-body:has(#stats-accordion-wrapper) #stats-accordion-wrapper { display:none !important; }
-body:has(#search-input) .mb-5:has(#search-input),
-body:has(#search-input) .flex.items-center.justify-between:has(h2),
-body:has(#search-input) .flex.items-center.justify-between:has(button[onclick*="createDirectUser"]) {
-  display:none !important;
-}
-body:has(#search-input) #stats-accordion-wrapper {
-  max-height:0 !important; opacity:0 !important; overflow:hidden !important;
-}
-</style>
-<script id="alpha-hide-users-page-test-js">
-(() => {
-  const hide = (el) => { if (el) el.style.setProperty('display', 'none', 'important'); };
-  const apply = () => {
-    hide(document.getElementById('stats-accordion-wrapper'));
-    hide(document.getElementById('loading-state'));
-    hide(document.getElementById('empty-state'));
-    hide(document.getElementById('users-tbody'));
-    const search = document.getElementById('search-input');
-    if (search) hide(search.closest('.mb-5'));
-    const title = [...document.querySelectorAll('h2')].find(el => el.textContent.includes('لیست کاربران'));
-    if (title) hide(title.closest('.flex.items-center.justify-between'));
-    const table = document.querySelector('table');
-    if (table) hide(table.closest('.overflow-x-auto') || table.parentElement);
-    const stats = document.getElementById('stats-accordion-wrapper');
-    if (stats && stats.parentElement) {
-      hide(stats.parentElement.querySelector(':scope > button'));
-    }
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
-  else apply();
-  setTimeout(apply, 300);
-  setTimeout(apply, 1200);
-})();
-</script>
-
 </body>
 </html>`,
 	setup: `<!DOCTYPE html>
