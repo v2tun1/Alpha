@@ -12153,24 +12153,7 @@ const flagContainer = document.getElementById('display-flag');
 	${COMMON_WAVES_SCRIPT}
 
 <script>
-/* USER PAGE CLEAR TEST: hide all page content inside main when Users view is active. */
-(function(){
-  var style = document.createElement('style');
-  style.id = 'alpha-users-page-cleared-test-style';
-  style.textContent = 'body.alpha-view-users main > * { display:none !important; } body.alpha-view-users main { min-height:0 !important; padding-top:0 !important; padding-bottom:0 !important; }';
-  (document.head || document.documentElement).appendChild(style);
-  function clearUsersPage(){
-    if (!document.body || !document.body.classList.contains('alpha-view-users')) return;
-    var main = document.querySelector('body > main');
-    if (main) Array.prototype.forEach.call(main.children, function(child){ child.style.setProperty('display','none','important'); });
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', clearUsersPage);
-  else clearUsersPage();
-  var observer = new MutationObserver(clearUsersPage);
-  if (document.documentElement) observer.observe(document.documentElement, {attributes:true, subtree:true, attributeFilter:['class']});
-  setTimeout(clearUsersPage, 300);
-  setTimeout(clearUsersPage, 1000);
-})();
+/* Users view content remains visible; scoped redesign above preserves existing hooks and interactions. */
 </script>
 </body>
 </html>`,
