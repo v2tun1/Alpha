@@ -11436,40 +11436,6 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			#alpha-theme-btn { bottom: 92px !important; }
 			#alpha-theme-pop { bottom: 148px !important; }
 		}
-
-		/* CREATE USER — redesigned blue glassmorphism surface (keeps existing IDs/events) */
-		#user-modal { background: rgba(8,14,38,.48) !important; backdrop-filter: blur(22px) saturate(145%) !important; -webkit-backdrop-filter: blur(22px) saturate(145%) !important; padding: 12px !important; }
-		#user-modal-card { width: min(100%, 980px) !important; max-width: 980px !important; max-height: min(92dvh, 1000px) !important; border-radius: 30px !important; overflow: hidden !important; color: #f5f8ff !important; border: 1px solid rgba(224,239,255,.58) !important; background: linear-gradient(145deg,rgba(113,157,224,.78),rgba(112,133,190,.68) 48%,rgba(158,128,202,.70)) !important; box-shadow: 0 28px 90px rgba(8,18,58,.38), inset 0 1px 0 rgba(255,255,255,.72) !important; backdrop-filter: blur(32px) saturate(160%) !important; -webkit-backdrop-filter: blur(32px) saturate(160%) !important; }
-		#user-modal-card > div:first-child { background: linear-gradient(110deg,rgba(240,248,255,.20),rgba(255,255,255,.08)) !important; border-color: rgba(239,247,255,.34) !important; padding: 18px 20px !important; min-height: 84px; }
-		#user-modal-card #modal-title { color: #111d3b !important; font-size: 18px !important; font-weight: 900 !important; }
-		#user-modal-card > div:first-child p { color: rgba(24,39,73,.76) !important; font-size: 12px !important; }
-		#user-modal-card form { background: transparent !important; }
-		#user-modal-card form > div:first-of-type { background: transparent !important; }
-		#user-modal-card form > div:first-of-type > div:first-child { background: rgba(227,240,255,.18) !important; border-color: rgba(236,246,255,.32) !important; }
-		#user-modal-card .user-modal-tab-btn { border: 1px solid rgba(234,244,255,.36) !important; border-radius: 18px !important; color: #263858 !important; background: rgba(238,246,255,.23) !important; min-height: 58px; transition: all .2s ease !important; }
-		#user-modal-card .user-modal-tab-btn.active { color: #164dc5 !important; background: linear-gradient(125deg,rgba(107,172,255,.42),rgba(164,145,255,.34)) !important; border-color: rgba(184,214,255,.88) !important; box-shadow: 0 7px 22px rgba(44,91,185,.18),inset 0 1px rgba(255,255,255,.7) !important; }
-		#user-modal-card form > div:first-of-type > div:last-child { background: transparent !important; }
-		#user-modal-card .rounded-xl, #user-modal-card .rounded-2xl, #user-modal-card .rounded-lg { border-radius: 23px !important; }
-		#user-modal-card form [class*="border-gray-"], #user-modal-card form [class*="border-amoled-"] { border-color: rgba(242,248,255,.54) !important; }
-		#user-modal-card form [class*="bg-white"], #user-modal-card form [class*="bg-gray-50"], #user-modal-card form [class*="bg-gray-100"], #user-modal-card form [class*="dark:bg-amoled-card"], #user-modal-card form [class*="dark:bg-zinc-"] { background: rgba(225,239,255,.20) !important; }
-		#user-modal-card form input:not([type=checkbox]):not([type=radio]), #user-modal-card form select, #user-modal-card form textarea { color: #182744 !important; background: rgba(245,250,255,.30) !important; border: 1px solid rgba(244,249,255,.72) !important; border-radius: 16px !important; box-shadow: inset 0 1px 4px rgba(36,62,112,.05),0 4px 12px rgba(37,63,115,.06) !important; min-height: 48px; }
-		#user-modal-card form input::placeholder, #user-modal-card form textarea::placeholder { color: rgba(42,57,88,.55) !important; }
-		#user-modal-card form label, #user-modal-card form h4, #user-modal-card form h3, #user-modal-card form h5 { color: #172846 !important; }
-		#user-modal-card form p, #user-modal-card form small { color: rgba(30,46,78,.72) !important; }
-		#user-modal-card form button[type=submit], #user-modal-card form .bg-blue-600 { border-radius: 17px !important; }
-		#user-modal-card form button[type=submit] { background: linear-gradient(105deg,#d946ef 0%,#7660ff 48%,#329dff 100%) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.62) !important; box-shadow: 0 9px 25px rgba(84,87,230,.32) !important; }
-		#user-modal-card button[onclick="toggleModal(false)"] { border-radius: 15px !important; background: rgba(255,245,248,.20) !important; border-color: rgba(255,112,130,.9) !important; }
-		#user-modal-card form > div:last-child { background: rgba(226,239,255,.18) !important; border-color: rgba(241,248,255,.36) !important; }
-		#user-modal-card form { scrollbar-color: rgba(255,255,255,.55) transparent; }
-		#user-modal-card form * { scrollbar-width: thin; }
-		@media (max-width: 640px) {
-			#user-modal { padding: 8px !important; align-items: center !important; }
-			#user-modal-card { max-height: 91dvh !important; border-radius: 27px !important; }
-			#user-modal-card > div:first-child { padding: 15px 14px !important; }
-			#user-modal-card #modal-title { font-size: 16px !important; }
-			#user-modal-card form > div:first-of-type > div:first-child { padding: 10px !important; gap: 7px !important; }
-			#user-modal-card .user-modal-tab-btn { min-height: 56px !important; padding: 8px 5px !important; font-size: 12px !important; }
-		}
 	</style>
 	<script>
 	(function () {
@@ -11708,7 +11674,57 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			line-height: 1;
 			vertical-align: -0.05em;
 		}
-	</style>
+	
+
+/* ===== ALPHA PROFESSIONAL UNIFIED UI SYSTEM ===== */
+:root{--alpha-bg:#070b18;--alpha-panel:rgba(15,23,48,.82);--alpha-panel-2:rgba(21,31,63,.78);--alpha-border:rgba(139,160,255,.20);--alpha-text:#edf2ff;--alpha-muted:#9ba9c8;--alpha-blue:#4ea5ff;--alpha-violet:#8b5cf6;--alpha-pink:#e650d8;--alpha-cyan:#28d7e5;--alpha-radius:20px;--alpha-shadow:0 18px 48px rgba(0,0,0,.24)}
+html{background:var(--alpha-bg);scroll-behavior:smooth}body{font-family:'Vazirmatn',sans-serif!important;background:radial-gradient(ellipse at 12% 0%,rgba(73,91,208,.22),transparent 35%),radial-gradient(ellipse at 90% 20%,rgba(153,54,210,.16),transparent 32%),linear-gradient(145deg,#070b18 0%,#0a1025 52%,#0b1020 100%)!important;color:var(--alpha-text)}
+body.alpha{color:var(--alpha-text)}
+/* dashboard shell */
+header:not(.keep-original),body.alpha header.top{background:rgba(9,15,34,.78)!important;border-color:var(--alpha-border)!important;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 12px 36px rgba(0,0,0,.20)}
+body.alpha .wrap{max-width:1500px!important;width:min(96%,1500px)!important}
+body.alpha .glass,body.alpha .glass.card,body.alpha .glass.neon,body.alpha .glass.stepcard,body.alpha .glass.banner{background:linear-gradient(145deg,rgba(20,30,62,.82),rgba(10,17,39,.88))!important;border:1px solid var(--alpha-border)!important;border-radius:22px!important;box-shadow:var(--alpha-shadow),inset 0 1px 0 rgba(255,255,255,.035)!important;color:var(--alpha-text)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+body.alpha .hero{color:var(--alpha-text)}body.alpha .muted,.al-mu{color:var(--alpha-muted)!important}
+/* common app cards and content blocks */
+main section,main .rounded-xl,main .rounded-2xl,main .rounded-lg,[id$="-modal"] .rounded-xl,[id$="-modal"] .rounded-2xl{border-radius:20px!important}
+html.dark main [class*="bg-amoled-card"],html.dark main [class*="bg-zinc-900"],html.dark main [class*="bg-gray-900"],html.dark main [class*="bg-gray-800"],html.dark [id$="-modal"] [class*="bg-amoled-card"],html.dark [id$="-modal"] [class*="bg-zinc-900"]{background:linear-gradient(145deg,rgba(19,29,59,.96),rgba(10,17,37,.97))!important}
+html.dark main [class*="border-amoled-border"],html.dark main [class*="border-gray-700"],html.dark main [class*="border-zinc-700"],html.dark [id$="-modal"] [class*="border-amoled-border"]{border-color:var(--alpha-border)!important}
+/* inputs */
+input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{border-radius:13px!important;border-color:rgba(142,161,219,.25)!important;transition:border-color .2s,box-shadow .2s,background .2s!important}
+html.dark input:not([type=checkbox]):not([type=radio]):not([type=range]),html.dark select,html.dark textarea{background:rgba(5,11,28,.62)!important;color:#edf2ff!important}
+html.dark input::placeholder,html.dark textarea::placeholder{color:#7e8bad!important}
+input:focus,select:focus,textarea:focus{outline:none!important;border-color:rgba(86,155,255,.82)!important;box-shadow:0 0 0 3px rgba(69,133,255,.14)!important}
+/* buttons */
+button,a[role=button],input[type=submit]{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important}
+button:not(:disabled):hover{filter:brightness(1.08)}button:not(:disabled):active{transform:translateY(1px) scale(.99)}
+button[class*="bg-blue-600"],button[class*="bg-indigo-600"],button[class*="bg-violet-600"],button[class*="bg-purple-600"],button[type=submit]{border-color:transparent!important;background-image:linear-gradient(105deg,#7848ef,#426bfa 58%,#18b9e8)!important;color:white!important;box-shadow:0 8px 22px rgba(76,91,238,.23)!important;border-radius:13px!important}
+/* tables */
+table{border-collapse:separate!important;border-spacing:0 7px!important}thead th{background:rgba(24,35,69,.9)!important;color:#bfcdf0!important;border-color:var(--alpha-border)!important}tbody tr{background:rgba(16,26,53,.70)!important;transition:background .18s,transform .18s}tbody tr:hover{background:rgba(40,57,103,.68)!important}tbody td{border-top:1px solid rgba(139,160,255,.10)!important;border-bottom:1px solid rgba(139,160,255,.10)!important}tbody td:first-child{border-radius:0 12px 12px 0;border-right:1px solid rgba(139,160,255,.10)!important}tbody td:last-child{border-radius:12px 0 0 12px;border-left:1px solid rgba(139,160,255,.10)!important}
+/* modal windows */
+[id$="-modal"]{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+[id$="-modal"]>div,[id$="-modal"] .modal-content{border-color:var(--alpha-border)!important;border-radius:24px!important;box-shadow:0 30px 90px rgba(0,0,0,.48)!important}
+html.dark [id$="-modal"] .border-b{border-color:var(--alpha-border)!important}
+/* create-user wizard: unified protocol cards, fields, tabs */
+#user-modal #user-modal-card,#user-modal form,#user-modal form>div{min-width:0}
+.user-modal-tab-btn{border-radius:14px!important}
+#user-modal .user-modal-tab-btn.active{background:linear-gradient(115deg,rgba(105,77,239,.23),rgba(44,155,255,.15))!important;border-color:rgba(115,139,255,.48)!important;color:#a9c7ff!important}
+#user-modal label{line-height:1.7}
+#user-modal [class*="rounded-xl"]{border-radius:17px!important}
+/* status chips, alerts and visual polish */
+[class*="bg-green-100"], [class*="dark:bg-green-950"]{border-radius:11px}
+[class*="bg-yellow-50"], [class*="dark:bg-yellow-950"], [class*="bg-amber-50"]{border-radius:13px!important}
+/* scrollbars */
+*{scrollbar-width:thin;scrollbar-color:rgba(111,135,211,.55) transparent}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(111,135,211,.42);border-radius:20px;border:2px solid transparent;background-clip:padding-box}::-webkit-scrollbar-thumb:hover{background:rgba(135,155,238,.7);background-clip:padding-box}
+/* mobile layout */
+@media(max-width:768px){body.alpha .wrap{width:100%!important;padding-left:12px!important;padding-right:12px!important}body.alpha header.top{border-radius:0 0 20px 20px!important;margin-bottom:12px!important}body.alpha .glass,body.alpha .glass.card,body.alpha .glass.neon{border-radius:18px!important}main{padding-left:10px!important;padding-right:10px!important}#user-modal{padding:8px!important}#user-modal>div{max-height:94dvh!important;border-radius:22px!important}table{min-width:720px}button{touch-action:manipulation}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* keep the existing light-mode switch functional, but maintain a coordinated pearl/glass palette */
+html:not(.dark) body{background:radial-gradient(ellipse at 10% 0%,rgba(103,126,255,.14),transparent 36%),radial-gradient(ellipse at 90% 10%,rgba(220,104,234,.10),transparent 32%),linear-gradient(145deg,#edf2ff,#f7f8ff 55%,#edf3fb)!important;color:#202a43!important}
+html:not(.dark) body.alpha .glass,html:not(.dark) body.alpha .glass.card,html:not(.dark) body.alpha .glass.neon,html:not(.dark) body.alpha .glass.stepcard{background:rgba(255,255,255,.72)!important;border-color:rgba(255,255,255,.88)!important;color:#202a43!important;box-shadow:0 14px 36px rgba(61,81,150,.12),inset 0 1px 0 #fff!important}
+html:not(.dark) body.alpha .muted{color:#687593!important}
+html:not(.dark) input:not([type=checkbox]):not([type=radio]):not([type=range]),html:not(.dark) select,html:not(.dark) textarea{background:rgba(255,255,255,.72)!important;color:#202a43!important}
+
+</style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-amoled-bg dark:text-zinc-100 min-h-screen flex flex-col items-center py-12 px-4 overflow-x-hidden">
 	<div class="w-full max-w-xl glass rounded-md shadow-2xl p-6 md:p-8 relative overflow-hidden z-10">
