@@ -11251,6 +11251,39 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		}
 	})();
 	</script>
+
+		/* ALPHA TEMPLATE SYSTEM: one visual language across dashboard, users, forms and every modal */
+		:root { --alpha-bg:#020d1d; --alpha-panel:#071b36; --alpha-panel-2:#0b2448; --alpha-cyan:#16d9ff; --alpha-teal:#00efb2; --alpha-purple:#8b5cf6; --alpha-pink:#db35ff; --alpha-line:rgba(86,181,255,.24); }
+		body { background: radial-gradient(900px 500px at 10% -10%,rgba(0,217,255,.16),transparent 60%), radial-gradient(850px 500px at 100% 15%,rgba(133,72,255,.18),transparent 60%), var(--alpha-bg) !important; color:#eaf5ff !important; }
+		body > main { max-width:1320px !important; }
+		body > main > *:not(#alpha-dash), body > main > section, body > main > div { color:#eaf5ff; }
+		/* preserve the existing labels and controls, only restyle their containers */
+		body > main > div, body > main > section, .modal-content, [role="dialog"] > div { border-color:var(--alpha-line) !important; background:linear-gradient(145deg,rgba(7,31,61,.96),rgba(3,16,36,.98)) !important; box-shadow:0 14px 38px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04) !important; border-radius:20px !important; }
+		body > main h2, body > main h3 { color:#f4fbff !important; letter-spacing:-.2px; }
+		body > main h2 { font-size:clamp(18px,2vw,25px) !important; }
+		body > main label, body > main .text-gray-700, body > main .text-gray-600, body > main .text-zinc-700 { color:#c6def2 !important; }
+		body input:not([type=checkbox]):not([type=radio]), body select, body textarea { background:rgba(3,17,38,.82) !important; border:1px solid rgba(72,164,230,.30) !important; color:#eef9ff !important; border-radius:11px !important; min-height:40px; }
+		body input:not([type=checkbox]):not([type=radio]):focus, body select:focus, body textarea:focus { border-color:var(--alpha-cyan) !important; outline:0 !important; box-shadow:0 0 0 3px rgba(22,217,255,.13),0 0 20px rgba(22,217,255,.10) !important; }
+		body button:not(.al-nav):not(#theme-toggle):not(#grayscale-toggle):not(#mobile-menu-toggle) { border-radius:11px !important; transition:transform .18s ease,filter .18s ease,box-shadow .18s ease !important; }
+		body button.bg-blue-600, body button.bg-indigo-600, body button.bg-green-600, body button.bg-purple-600, body a.bg-blue-600 { background:linear-gradient(90deg,var(--alpha-purple),var(--alpha-cyan)) !important; border:0 !important; color:#fff !important; box-shadow:0 7px 20px rgba(64,139,255,.24) !important; }
+		body button:hover { filter:brightness(1.12); transform:translateY(-1px); }
+		body table { border-collapse:separate !important; border-spacing:0 7px !important; }
+		body thead th { color:#8db8d6 !important; font-weight:800 !important; border-bottom:1px solid rgba(95,174,225,.18) !important; }
+		body tbody tr { background:rgba(9,35,68,.72) !important; }
+		body tbody td { color:#e3f4ff !important; border-top:1px solid rgba(95,174,225,.15) !important; border-bottom:1px solid rgba(95,174,225,.15) !important; }
+		body tbody td:first-child { border-radius:0 12px 12px 0; border-right:1px solid rgba(95,174,225,.15) !important; }
+		body tbody td:last-child { border-radius:12px 0 0 12px; border-left:1px solid rgba(95,174,225,.15) !important; }
+		/* all dialogs inherit the template, while keeping every original field and action */
+		body .fixed.inset-0 { background:rgba(0,5,18,.76) !important; backdrop-filter:blur(12px); }
+		body .fixed.inset-0 > div { background:linear-gradient(145deg,#092349,#04132b) !important; border:1px solid var(--alpha-line) !important; border-radius:22px !important; color:#eaf5ff !important; }
+		body .fixed.inset-0 .border-gray-200, body .fixed.inset-0 .dark\:border-amoled-border { border-color:var(--alpha-line) !important; }
+		body .fixed.inset-0 .bg-white, body .fixed.inset-0 .dark\:bg-amoled-input { background:rgba(4,20,43,.9) !important; }
+		body .fixed.inset-0 h2, body .fixed.inset-0 h3, body .fixed.inset-0 label { color:#eaf5ff !important; }
+		/* visually separate every original panel section without renaming or deleting anything */
+		#user-modal, #settings-modal, #pwa-install-modal, #rocket-modal, #qr-modal, #warning-modal { z-index:80 !important; }
+		@media (max-width:1023px) { body > main { padding-left:12px !important; padding-right:12px !important; } }
+		@media (max-width:600px) { body > main { padding-top:14px !important; } body > main > div, body > main > section { border-radius:16px !important; } }
+
 	<!-- ALPHA LAYOUT -->
 	<style id="alpha-layout">
 		.al-glass { background: linear-gradient(160deg, rgba(24,28,68,.95), rgba(10,12,34,.97)); border: 1px solid var(--edge); border-radius: 20px; box-shadow: 0 10px 34px rgba(0,0,0,.35), 0 0 22px hsla(var(--h),95%,60%,.08);  color: #e9ecff; }
