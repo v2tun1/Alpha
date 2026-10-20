@@ -11252,6 +11252,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 	})();
 	</script>
 
+		<style id="alpha-template-overrides">
 		/* ALPHA TEMPLATE SYSTEM: one visual language across dashboard, users, forms and every modal */
 		:root { --alpha-bg:#020d1d; --alpha-panel:#071b36; --alpha-panel-2:#0b2448; --alpha-cyan:#16d9ff; --alpha-teal:#00efb2; --alpha-purple:#8b5cf6; --alpha-pink:#db35ff; --alpha-line:rgba(86,181,255,.24); }
 		body { background: radial-gradient(900px 500px at 10% -10%,rgba(0,217,255,.16),transparent 60%), radial-gradient(850px 500px at 100% 15%,rgba(133,72,255,.18),transparent 60%), var(--alpha-bg) !important; color:#eaf5ff !important; }
@@ -11284,6 +11285,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		@media (max-width:1023px) { body > main { padding-left:12px !important; padding-right:12px !important; } }
 		@media (max-width:600px) { body > main { padding-top:14px !important; } body > main > div, body > main > section { border-radius:16px !important; } }
 
+		</style>
 	<!-- ALPHA LAYOUT -->
 	<style id="alpha-layout">
 		.al-glass { background: linear-gradient(160deg, rgba(24,28,68,.95), rgba(10,12,34,.97)); border: 1px solid var(--edge); border-radius: 20px; box-shadow: 0 10px 34px rgba(0,0,0,.35), 0 0 22px hsla(var(--h),95%,60%,.08);  color: #e9ecff; }
