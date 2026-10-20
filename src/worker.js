@@ -4748,56 +4748,6 @@ const HTML_TEMPLATES = {
 			size(); draw(); addEventListener('resize', function () { size(); draw(); });
 		})();
 	</script>
-
-<style id="alpha-hide-users-page-test">
-/* Temporary test: hide the complete users page content while preserving global navigation. */
-#stats-accordion-wrapper,
-#loading-state,
-#search-input,
-#filter-status,
-#sort-users,
-#users-tbody,
-#empty-state,
-#users-table-container,
-#users-table-wrapper {
-  display: none !important;
-}
-body:has(#stats-accordion-wrapper) #stats-accordion-wrapper { display:none !important; }
-body:has(#search-input) .mb-5:has(#search-input),
-body:has(#search-input) .flex.items-center.justify-between:has(h2),
-body:has(#search-input) .flex.items-center.justify-between:has(button[onclick*="createDirectUser"]) {
-  display:none !important;
-}
-body:has(#search-input) #stats-accordion-wrapper {
-  max-height:0 !important; opacity:0 !important; overflow:hidden !important;
-}
-</style>
-<script id="alpha-hide-users-page-test-js">
-(() => {
-  const hide = (el) => { if (el) el.style.setProperty('display', 'none', 'important'); };
-  const apply = () => {
-    hide(document.getElementById('stats-accordion-wrapper'));
-    hide(document.getElementById('loading-state'));
-    hide(document.getElementById('empty-state'));
-    hide(document.getElementById('users-tbody'));
-    const search = document.getElementById('search-input');
-    if (search) hide(search.closest('.mb-5'));
-    const title = [...document.querySelectorAll('h2')].find(el => el.textContent.includes('لیست کاربران'));
-    if (title) hide(title.closest('.flex.items-center.justify-between'));
-    const table = document.querySelector('table');
-    if (table) hide(table.closest('.overflow-x-auto') || table.parentElement);
-    const stats = document.getElementById('stats-accordion-wrapper');
-    if (stats && stats.parentElement) {
-      hide(stats.parentElement.querySelector(':scope > button'));
-    }
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
-  else apply();
-  setTimeout(apply, 300);
-  setTimeout(apply, 1200);
-})();
-</script>
-
 </body>
 </html>`,
 	setup: `<!DOCTYPE html>
@@ -12471,18 +12421,23 @@ const flagContainer = document.getElementById('display-flag');
 	${COMMON_WAVES_SCRIPT}
 
 <script>
-/* TEMP TEST: hide the user-list section for visual confirmation. */
+/* USER PAGE CLEAR TEST: hide all page content inside main when Users view is active. */
 (function(){
- function hideUsersListForTest(){
-  var title=Array.prototype.find.call(document.querySelectorAll('main h2, main h3'),function(el){return (el.textContent||'').trim().indexOf('لیست کاربران')!==-1;});
-  if(title){var row=title.parentElement;if(row)row.style.setProperty('display','none','important');}
-  ['loading-state','users-table-container'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.setProperty('display','none','important');});
-  var search=document.getElementById('search-input');if(search&&search.parentElement&&search.parentElement.parentElement)search.parentElement.parentElement.style.setProperty('display','none','important');
-  ['filter-status','sort-users'].forEach(function(id){var el=document.getElementById(id);if(el&&el.parentElement&&el.parentElement.parentElement)el.parentElement.parentElement.style.setProperty('display','none','important');});
-  document.querySelectorAll('[id*="user-list"],[id*="users-list"],[id*="user-cards"],[id*="users-cards"],.user-card,.user-list-card').forEach(function(el){el.style.setProperty('display','none','important');});
- }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',hideUsersListForTest);else hideUsersListForTest();
- setTimeout(hideUsersListForTest,500);setTimeout(hideUsersListForTest,1500);
+  var style = document.createElement('style');
+  style.id = 'alpha-users-page-cleared-test-style';
+  style.textContent = 'body.alpha-view-users main > * { display:none !important; } body.alpha-view-users main { min-height:0 !important; padding-top:0 !important; padding-bottom:0 !important; }';
+  (document.head || document.documentElement).appendChild(style);
+  function clearUsersPage(){
+    if (!document.body || !document.body.classList.contains('alpha-view-users')) return;
+    var main = document.querySelector('body > main');
+    if (main) Array.prototype.forEach.call(main.children, function(child){ child.style.setProperty('display','none','important'); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', clearUsersPage);
+  else clearUsersPage();
+  var observer = new MutationObserver(clearUsersPage);
+  if (document.documentElement) observer.observe(document.documentElement, {attributes:true, subtree:true, attributeFilter:['class']});
+  setTimeout(clearUsersPage, 300);
+  setTimeout(clearUsersPage, 1000);
 })();
 </script>
 </body>
