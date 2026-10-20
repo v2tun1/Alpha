@@ -5775,49 +5775,6 @@ const HTML_TEMPLATES = {
 		</button>
 	</div>
 </div>
-<style id="create-user-glass-theme">
-/* Glassmorphism refresh for the existing create-user/configuration workflow.
-   All original IDs, form controls and event handlers are intentionally preserved. */
-#user-modal{background:rgba(8,13,32,.58)!important;backdrop-filter:blur(18px) saturate(145%)!important;-webkit-backdrop-filter:blur(18px) saturate(145%)!important;padding:12px!important}
-#user-modal-card{background:linear-gradient(145deg,rgba(240,247,255,.88),rgba(218,229,250,.72) 48%,rgba(245,226,255,.70))!important;border:1px solid rgba(255,255,255,.78)!important;border-radius:28px!important;box-shadow:0 28px 90px rgba(22,34,83,.30),inset 0 1px 0 rgba(255,255,255,.85)!important;backdrop-filter:blur(28px) saturate(155%)!important;-webkit-backdrop-filter:blur(28px) saturate(155%)!important;color:#202b43!important;max-height:94dvh!important}
-#user-modal-card>div:first-child{background:rgba(255,255,255,.36)!important;border-color:rgba(255,255,255,.55)!important;padding:17px 20px!important;min-height:82px}
-#user-modal-card #modal-title{color:#17233b!important;font-size:clamp(15px,2.5vw,20px)!important}
-#user-modal-card>div:first-child p{color:#596984!important}
-#user-modal-card form>div{min-height:0}
-#user-modal-card form>div>div:first-child{background:rgba(255,255,255,.26)!important;border-color:rgba(255,255,255,.48)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important}
-#user-modal-card .user-modal-tab-btn{border-radius:18px!important;transition:all .22s ease!important}
-#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,rgba(76,137,255,.22),rgba(139,92,246,.16))!important;border:1px solid rgba(93,143,255,.48)!important;color:#2463d7!important;box-shadow:0 8px 24px rgba(64,112,220,.12),inset 0 1px 0 rgba(255,255,255,.72)!important}
-#user-modal-card .user-tab-panel>div,#user-modal-card .user-tab-panel .rounded-xl{border-radius:23px!important}
-#user-modal-card .user-tab-panel>div{background:rgba(255,255,255,.32)!important;border-color:rgba(255,255,255,.68)!important;box-shadow:0 8px 24px rgba(48,67,116,.045),inset 0 1px 0 rgba(255,255,255,.55)!important}
-#user-modal-card label.flex.items-center.justify-between{background:rgba(255,255,255,.40)!important;border-color:rgba(255,255,255,.78)!important;border-radius:19px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.75)!important;padding:13px!important}
-#user-modal-card input:not([type=checkbox]):not([type=radio]),#user-modal-card select,#user-modal-card textarea{background:rgba(255,255,255,.43)!important;border:1px solid rgba(255,255,255,.86)!important;border-radius:15px!important;color:#26334b!important;box-shadow:0 4px 12px rgba(37,55,100,.055),inset 0 1px 0 rgba(255,255,255,.65)!important;min-height:44px}
-#user-modal-card input::placeholder,#user-modal-card textarea::placeholder{color:#7d8aa3!important}
-#user-modal-card input:focus,#user-modal-card select:focus,#user-modal-card textarea:focus{outline:none!important;border-color:rgba(75,130,255,.72)!important;box-shadow:0 0 0 3px rgba(75,130,255,.13),inset 0 1px 0 rgba(255,255,255,.8)!important}
-#user-modal-card button{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-#user-modal-card button:active{transform:scale(.98)}
-#user-modal-card #submit-btn-desktop{background:linear-gradient(115deg,#bb42ed,#6375ff 55%,#27a9f7)!important;color:white!important;border:1px solid rgba(255,255,255,.75)!important;border-radius:16px!important;box-shadow:0 9px 24px rgba(100,89,240,.24)!important}
-#user-modal-card button[onclick="toggleModal(false)"]{border-radius:14px!important}
-#user-modal-card .custom-scrollbar{scrollbar-width:thin;scrollbar-color:rgba(83,115,190,.35) transparent}
-#user-modal-card .custom-scrollbar::-webkit-scrollbar{width:5px}
-#user-modal-card .custom-scrollbar::-webkit-scrollbar-thumb{background:rgba(83,115,190,.35);border-radius:9px}
-@media(max-width:767px){
- #user-modal{padding:8px!important;align-items:center!important}
- #user-modal-card{width:100%!important;max-height:92dvh!important;border-radius:25px!important}
- #user-modal-card>div:first-child{padding:14px 15px!important;min-height:74px}
- #user-modal-card form>div.flex.flex-col.md\:flex-row{flex-direction:column!important;overflow:hidden!important}
- #user-modal-card form>div>div:first-child{width:100%!important;flex-direction:row!important;overflow-x:auto!important;padding:9px!important;border-left:0!important;border-bottom:1px solid rgba(255,255,255,.65)!important;gap:7px!important}
- #user-modal-card form>div>div:first-child>div:first-child{display:flex!important;flex-direction:row!important;width:100%!important;gap:7px!important}
- #user-modal-card .user-modal-tab-btn{min-width:94px!important;flex:1 0 auto!important;padding:9px 7px!important;gap:5px!important}
- #user-modal-card .user-modal-tab-btn>div.hidden{display:none!important}
- #user-modal-card .user-modal-tab-btn span{font-size:11px!important}
- #user-modal-card form>div>div:last-child{padding:13px!important;max-height:none!important;flex:1 1 auto!important;min-height:0!important}
- #user-modal-card .user-tab-panel>div{padding:13px!important;margin-bottom:12px!important}
- #user-modal-card .user-tab-panel .grid{gap:9px!important}
- #user-modal-card form>div>div:first-child .hidden.md\:flex{display:none!important}
-}
-@media(prefers-reduced-motion:reduce){#user-modal-card *{transition:none!important;animation:none!important}}
-</style>
-
 	<div id="user-modal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200 ease-out">
 		<div id="user-modal-card" class="w-full max-w-5xl bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-[opacity,transform] duration-200 opacity-0 scale-95 ease-out flex flex-col max-h-[92vh] transform-gpu">
 			<div class="px-5 py-4 border-b border-gray-150 dark:border-amoled-border flex justify-between items-center bg-gray-50/70 dark:bg-amoled-bg/60">
@@ -11478,6 +11435,40 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			body > main { padding-bottom: 120px !important; }
 			#alpha-theme-btn { bottom: 92px !important; }
 			#alpha-theme-pop { bottom: 148px !important; }
+		}
+
+		/* CREATE USER — redesigned blue glassmorphism surface (keeps existing IDs/events) */
+		#user-modal { background: rgba(8,14,38,.48) !important; backdrop-filter: blur(22px) saturate(145%) !important; -webkit-backdrop-filter: blur(22px) saturate(145%) !important; padding: 12px !important; }
+		#user-modal-card { width: min(100%, 980px) !important; max-width: 980px !important; max-height: min(92dvh, 1000px) !important; border-radius: 30px !important; overflow: hidden !important; color: #f5f8ff !important; border: 1px solid rgba(224,239,255,.58) !important; background: linear-gradient(145deg,rgba(113,157,224,.78),rgba(112,133,190,.68) 48%,rgba(158,128,202,.70)) !important; box-shadow: 0 28px 90px rgba(8,18,58,.38), inset 0 1px 0 rgba(255,255,255,.72) !important; backdrop-filter: blur(32px) saturate(160%) !important; -webkit-backdrop-filter: blur(32px) saturate(160%) !important; }
+		#user-modal-card > div:first-child { background: linear-gradient(110deg,rgba(240,248,255,.20),rgba(255,255,255,.08)) !important; border-color: rgba(239,247,255,.34) !important; padding: 18px 20px !important; min-height: 84px; }
+		#user-modal-card #modal-title { color: #111d3b !important; font-size: 18px !important; font-weight: 900 !important; }
+		#user-modal-card > div:first-child p { color: rgba(24,39,73,.76) !important; font-size: 12px !important; }
+		#user-modal-card form { background: transparent !important; }
+		#user-modal-card form > div:first-of-type { background: transparent !important; }
+		#user-modal-card form > div:first-of-type > div:first-child { background: rgba(227,240,255,.18) !important; border-color: rgba(236,246,255,.32) !important; }
+		#user-modal-card .user-modal-tab-btn { border: 1px solid rgba(234,244,255,.36) !important; border-radius: 18px !important; color: #263858 !important; background: rgba(238,246,255,.23) !important; min-height: 58px; transition: all .2s ease !important; }
+		#user-modal-card .user-modal-tab-btn.active { color: #164dc5 !important; background: linear-gradient(125deg,rgba(107,172,255,.42),rgba(164,145,255,.34)) !important; border-color: rgba(184,214,255,.88) !important; box-shadow: 0 7px 22px rgba(44,91,185,.18),inset 0 1px rgba(255,255,255,.7) !important; }
+		#user-modal-card form > div:first-of-type > div:last-child { background: transparent !important; }
+		#user-modal-card .rounded-xl, #user-modal-card .rounded-2xl, #user-modal-card .rounded-lg { border-radius: 23px !important; }
+		#user-modal-card form [class*="border-gray-"], #user-modal-card form [class*="border-amoled-"] { border-color: rgba(242,248,255,.54) !important; }
+		#user-modal-card form [class*="bg-white"], #user-modal-card form [class*="bg-gray-50"], #user-modal-card form [class*="bg-gray-100"], #user-modal-card form [class*="dark:bg-amoled-card"], #user-modal-card form [class*="dark:bg-zinc-"] { background: rgba(225,239,255,.20) !important; }
+		#user-modal-card form input:not([type=checkbox]):not([type=radio]), #user-modal-card form select, #user-modal-card form textarea { color: #182744 !important; background: rgba(245,250,255,.30) !important; border: 1px solid rgba(244,249,255,.72) !important; border-radius: 16px !important; box-shadow: inset 0 1px 4px rgba(36,62,112,.05),0 4px 12px rgba(37,63,115,.06) !important; min-height: 48px; }
+		#user-modal-card form input::placeholder, #user-modal-card form textarea::placeholder { color: rgba(42,57,88,.55) !important; }
+		#user-modal-card form label, #user-modal-card form h4, #user-modal-card form h3, #user-modal-card form h5 { color: #172846 !important; }
+		#user-modal-card form p, #user-modal-card form small { color: rgba(30,46,78,.72) !important; }
+		#user-modal-card form button[type=submit], #user-modal-card form .bg-blue-600 { border-radius: 17px !important; }
+		#user-modal-card form button[type=submit] { background: linear-gradient(105deg,#d946ef 0%,#7660ff 48%,#329dff 100%) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.62) !important; box-shadow: 0 9px 25px rgba(84,87,230,.32) !important; }
+		#user-modal-card button[onclick="toggleModal(false)"] { border-radius: 15px !important; background: rgba(255,245,248,.20) !important; border-color: rgba(255,112,130,.9) !important; }
+		#user-modal-card form > div:last-child { background: rgba(226,239,255,.18) !important; border-color: rgba(241,248,255,.36) !important; }
+		#user-modal-card form { scrollbar-color: rgba(255,255,255,.55) transparent; }
+		#user-modal-card form * { scrollbar-width: thin; }
+		@media (max-width: 640px) {
+			#user-modal { padding: 8px !important; align-items: center !important; }
+			#user-modal-card { max-height: 91dvh !important; border-radius: 27px !important; }
+			#user-modal-card > div:first-child { padding: 15px 14px !important; }
+			#user-modal-card #modal-title { font-size: 16px !important; }
+			#user-modal-card form > div:first-of-type > div:first-child { padding: 10px !important; gap: 7px !important; }
+			#user-modal-card .user-modal-tab-btn { min-height: 56px !important; padding: 8px 5px !important; font-size: 12px !important; }
 		}
 	</style>
 	<script>
