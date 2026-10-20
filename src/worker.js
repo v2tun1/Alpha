@@ -11564,7 +11564,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		/* ALPHA users page visual refresh: keep existing controls and handlers intact */
 		var alphaUsersTheme = document.createElement('style');
 		alphaUsersTheme.id = 'alpha-users-neon-theme-v2';
-		alphaUsersTheme.textContent = `
+		alphaUsersTheme.textContent = \`
 		:root { --alpha-u-bg:#03102d; --alpha-u-card:rgba(4,20,55,.88); --alpha-u-line:#087dff; --alpha-u-cyan:#00e5ff; --alpha-u-violet:#9b36ff; }
 		#alpha-users-hero {
 			display:flex!important; align-items:center; justify-content:space-between; gap:18px;
@@ -11604,7 +11604,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 			#users-table-container {padding:8px!important;border-radius:20px!important}
 			#users-table-container table {min-width:720px}
 			#alpha-bnav {border-radius:24px 24px 0 0!important}
-		}`;
+		}\`;
 		document.head.appendChild(alphaUsersTheme);
 
 		var dash = document.createElement('section'); dash.id = 'alpha-dash';
