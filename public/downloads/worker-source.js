@@ -10120,7 +10120,7 @@ async function testUserSocksProxy() {
 				window.location.reload();
 			}
 		}
-const CURRENT_VERSION = '2.3.0';
+const CURRENT_VERSION = '2.3.1';
 const UPDATE_FIX = "constsCURRENT_VERSION='d.d.d'";
 		window.autoUpdateStatusCache = false;
 		async function checkAutoUpdateSetup() {
@@ -11683,7 +11683,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
         }
 
 
-        /* ALPHA full users-template override v2.3.0: deliberately loaded last */
+        /* ALPHA full users-template override v2.3.1: users view selected at startup */
         body.alpha-view-users {
           --alpha-user-bg:#02091d; --alpha-user-panel:#061735; --alpha-user-panel2:#081d43;
           --alpha-user-line:rgba(35,127,255,.58); --alpha-user-text:#eff7ff; --alpha-user-muted:#91add9;
@@ -11925,7 +11925,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		var legacyLegend = document.getElementById('al-legend'); if (legacyLegend) legacyLegend.addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
 		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
 		var h = new Date().getHours(); var hello=document.getElementById('al-hello'); if(hello) hello.textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
-		go('dash');
+		go('users');
 
 	})();
 	</script>
