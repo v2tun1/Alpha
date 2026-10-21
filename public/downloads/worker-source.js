@@ -10120,7 +10120,7 @@ async function testUserSocksProxy() {
 				window.location.reload();
 			}
 		}
-const CURRENT_VERSION = '2.3.1';
+const CURRENT_VERSION = '2.3.3';
 const UPDATE_FIX = "constsCURRENT_VERSION='d.d.d'";
 		window.autoUpdateStatusCache = false;
 		async function checkAutoUpdateSetup() {
@@ -11770,6 +11770,44 @@ body.alpha-view-users #alpha-bnav button.active { color:#fff !important; backgro
  body.alpha-view-users #alpha-bnav { bottom:8px !important; width:calc(100% - 22px) !important; }
  body.alpha-view-users #alpha-bnav button { min-width:0 !important; padding-left:4px !important; padding-right:4px !important; }
 }
+
+/* ALPHA USERS VISIBLE REDESIGN v2.3.3 — scoped to real panel template */
+body.alpha-view-users { background:#03091b !important; color:#eef5ff !important; }
+body.alpha-view-users > main { width:100% !important; max-width:1500px !important; margin-inline:auto !important; padding:14px clamp(10px,2vw,28px) 130px !important; }
+body.alpha-view-users #alpha-users-hero { background:linear-gradient(115deg,#052d68 0%,#101d57 48%,#300d69 100%) !important; border:1px solid #087cff !important; border-radius:24px !important; box-shadow:0 0 26px #006aff22,inset 0 1px #ffffff18 !important; }
+body.alpha-view-users #stats-accordion-wrapper { background:linear-gradient(145deg,#061b42,#040c24) !important; border:1px solid #00b9ff66 !important; border-radius:24px !important; padding:12px !important; box-shadow:0 0 24px #006bff1c !important; }
+body.alpha-view-users #stats-accordion-wrapper > div { display:grid !important; grid-template-columns:repeat(4,minmax(0,1fr)) !important; gap:12px !important; }
+body.alpha-view-users #stats-accordion-wrapper > div > div { background:linear-gradient(145deg,#0a2858,#071431) !important; border:1px solid #187cff88 !important; border-radius:19px !important; min-width:0 !important; box-shadow:inset 0 1px #ffffff0c !important; }
+body.alpha-view-users #search-input, body.alpha-view-users #filter-status, body.alpha-view-users #sort-users { background:#071a3a !important; color:#eaf4ff !important; border:1px solid #247df477 !important; border-radius:15px !important; }
+body.alpha-view-users main > .mb-5.flex.flex-col { background:linear-gradient(145deg,#061735,#040d24) !important; border:1px solid #2879e866 !important; border-radius:20px !important; padding:12px !important; }
+body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2 { font-size:clamp(20px,2vw,28px) !important; color:#f4f8ff !important; font-weight:900 !important; }
+body.alpha-view-users #users-table-container { background:linear-gradient(145deg,#061735,#030b20) !important; border:1px solid #167eff99 !important; border-radius:22px !important; padding:10px !important; box-shadow:0 12px 32px #0005,0 0 22px #006bff14 !important; }
+body.alpha-view-users #users-table-container table { border-collapse:separate !important; border-spacing:0 10px !important; width:100% !important; color:#eaf4ff !important; }
+body.alpha-view-users #users-table-container thead th { background:#0a2048 !important; color:#8dc7ff !important; border:0 !important; padding:15px 10px !important; font-weight:800 !important; white-space:nowrap !important; }
+body.alpha-view-users #users-table-container tbody tr { background:transparent !important; box-shadow:0 5px 16px #0003 !important; }
+body.alpha-view-users #users-table-container tbody td { background:linear-gradient(110deg,#0a2450,#071735) !important; color:#edf6ff !important; padding:14px 10px !important; border-top:1px solid #197cff77 !important; border-bottom:1px solid #197cff77 !important; vertical-align:middle !important; }
+body.alpha-view-users #users-table-container tbody tr td:first-child { border-right:1px solid #197cff77 !important; border-radius:0 15px 15px 0 !important; }
+body.alpha-view-users #users-table-container tbody tr td:last-child { border-left:1px solid #197cff77 !important; border-radius:15px 0 0 15px !important; }
+body.alpha-view-users #users-table-container tbody tr:hover td { background:linear-gradient(110deg,#10346a,#0b2451) !important; }
+body.alpha-view-users #users-table-container button { border-radius:10px !important; transition:transform .16s,filter .16s !important; }
+body.alpha-view-users #users-table-container button:hover { transform:translateY(-1px) !important; filter:brightness(1.2) !important; }
+body.alpha-view-users #alpha-bnav { background:linear-gradient(110deg,#041b40f5,#17104ff5,#330d5bf5) !important; border:1px solid #168effaa !important; border-radius:25px !important; box-shadow:0 0 26px #006bff30,0 10px 35px #0006 !important; backdrop-filter:blur(20px) !important; }
+body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120deg,#00aaff,#244cff 55%,#a000ff) !important; color:white !important; border-radius:18px !important; box-shadow:0 0 20px #4b5dff55 !important; }
+@media(max-width:760px) {
+ body.alpha-view-users > main { padding:9px 9px 120px !important; }
+ body.alpha-view-users #stats-accordion-wrapper { padding:8px !important; }
+ body.alpha-view-users #stats-accordion-wrapper > div { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+ body.alpha-view-users #stats-accordion-wrapper > div > div { min-height:112px !important; padding:11px !important; border-radius:16px !important; }
+ body.alpha-view-users main > .mb-5.flex.flex-col { display:flex !important; flex-direction:column !important; align-items:stretch !important; gap:9px !important; }
+ body.alpha-view-users main > .mb-5.flex.flex-col > div { width:100% !important; max-width:none !important; }
+ body.alpha-view-users main > .mb-5.flex.flex-col > div:last-child { display:grid !important; grid-template-columns:1fr 1fr !important; }
+ body.alpha-view-users #users-table-container { padding:5px !important; border-radius:17px !important; }
+ body.alpha-view-users #users-table-container table { min-width:900px !important; }
+ body.alpha-view-users #users-table-container thead th { padding:11px 8px !important; }
+ body.alpha-view-users #users-table-container tbody td { padding:11px 8px !important; }
+ body.alpha-view-users #alpha-bnav { width:calc(100% - 20px) !important; bottom:8px !important; }
+}
+
 </style>
 	<script>
 	(function () {
