@@ -5383,80 +5383,97 @@ const HTML_TEMPLATES = {
 	</header>
 	<main class="max-w-6xl mx-auto px-4 py-8 pb-56 md:pb-32 relative z-10">
 
-<div class="al2-wrap">
+<div class="al3-wrap">
 <style>
-.al2-wrap{margin:0 0 24px;color:#e2e8f0;font-family:inherit}
-.al2-card{background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,27,75,.75));border:1px solid rgba(99,102,241,.35);border-radius:18px;padding:16px;box-shadow:0 20px 40px -20px rgba(59,130,246,.35);margin-bottom:14px}
-.al2-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.al2-head-l{display:flex;align-items:center;gap:12px}
-.al2-ico{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4);color:#60a5fa;flex:0 0 auto}
-.al2-title{font-size:18px;font-weight:900;color:#f8fafc;margin:0}
-.al2-sub{font-size:11px;color:#94a3b8;margin:3px 0 0}
-.al2-add{padding:9px 14px;border-radius:12px;border:0;cursor:pointer;font-weight:800;font-size:12px;color:#fff;background:linear-gradient(90deg,#3b82f6,#7c3aed);box-shadow:0 10px 20px -10px rgba(124,58,237,.8);white-space:nowrap}
-.al2-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-.al2-stat{border-radius:16px;padding:12px;background:rgba(15,23,42,.8);border:1px solid rgba(148,163,184,.2)}
-.al2-stat-top{display:flex;align-items:center;gap:8px}
-.al2-stat-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto;border:1px solid currentColor}
-.al2-stat-lab{font-size:11px;color:#cbd5e1;font-weight:700}
-.al2-stat-val{font-size:22px;font-weight:900;color:#f8fafc;margin-top:8px;direction:ltr;text-align:right}
-.al2-stat-foot{font-size:10px;color:#94a3b8;margin-top:4px}
-.al2-bar{height:5px;border-radius:9px;background:rgba(148,163,184,.2);margin-top:8px;overflow:hidden}
-.al2-bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#06b6d4,#8b5cf6);border-radius:9px;transition:width .5s}
-.al2-chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px}
-.al2-chip{flex:0 0 auto;padding:7px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.7);color:#cbd5e1;font-size:11px;font-weight:700;cursor:pointer}
-.al2-chip.on{background:linear-gradient(90deg,#3b82f6,#7c3aed);color:#fff;border-color:transparent}
-.al2-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.al2-input{width:100%;padding:9px 12px;border-radius:12px;border:1px solid rgba(99,102,241,.3);background:rgba(15,23,42,.8);color:#e2e8f0;font-size:12px;box-sizing:border-box}
-.al2-input.full{grid-column:1/-1}
-.al2-listhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.al2-listhead h3{margin:0;font-size:15px;font-weight:900;color:#f8fafc}
-.al2-count{color:#60a5fa;font-size:12px;font-weight:800;margin-right:6px}
-.al2-row{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:rgba(15,23,42,.8);border:1px solid rgba(99,102,241,.25);margin-bottom:8px}
-.al2-av{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,#06b6d4,#7c3aed)}
-.al2-meta{flex:1;min-width:0}
-.al2-name{font-size:13px;font-weight:800;color:#f8fafc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:right}
-.al2-use{font-size:10px;color:#94a3b8;direction:ltr;text-align:right;margin-top:2px}
-.al2-mini{height:4px;border-radius:9px;background:rgba(148,163,184,.2);margin-top:5px;overflow:hidden}
-.al2-mini>i{display:block;height:100%;background:linear-gradient(90deg,#06b6d4,#8b5cf6)}
-.al2-pill{flex:0 0 auto;font-size:10px;font-weight:800;padding:4px 8px;border-radius:999px;border:1px solid}
-.al2-p-on{color:#34d399;border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.12)}
-.al2-p-off{color:#94a3b8;border-color:rgba(148,163,184,.4);background:rgba(51,65,85,.4)}
-.al2-p-dis{color:#fca5a5;border-color:rgba(248,113,113,.5);background:rgba(127,29,29,.25)}
-.al2-p-exp{color:#fbbf24;border-color:rgba(251,191,36,.5);background:rgba(120,53,15,.25)}
-.al2-top{display:flex;align-items:center;gap:10px}
-.al2-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.al2-btn{padding:6px 9px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#c7d2fe;font-size:10px;font-weight:800;cursor:pointer}
-.al2-del{color:#fca5a5;border-color:rgba(248,113,113,.45)}
-.al2-act{flex:0 0 auto;width:30px;height:30px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#a5b4fc;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.al2-ring{flex:0 0 auto;width:44px;height:44px}
-.al2-ringwrap{position:relative;width:44px;height:44px;flex:0 0 auto}
-.al2-ringwrap span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#e2e8f0;direction:ltr}
-.al2-empty{text-align:center;color:#94a3b8;font-size:12px;padding:18px;border:1px dashed rgba(148,163,184,.3);border-radius:14px}
+.al3-wrap{--fg:#0f172a;--mut:#64748b;--gl:rgba(255,255,255,.62);--gl2:rgba(255,255,255,.8);--bd:rgba(148,163,184,.35);--acc1:#7c3aed;--acc2:#3b82f6;--ok:#059669;--bad:#dc2626;--warn:#d97706;margin:0 0 20px;font-family:inherit;color:var(--fg)}
+.dark .al3-wrap,.al3-wrap.dark{--fg:#f1f5f9;--mut:#94a3b8;--gl:rgba(15,23,42,.55);--gl2:rgba(30,41,59,.7);--bd:rgba(148,163,184,.22);--ok:#34d399;--bad:#f87171;--warn:#fbbf24}
+.al3-glass{background:linear-gradient(135deg,var(--gl2),var(--gl));backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid var(--bd);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 36px -18px rgba(37,99,235,.35);border-radius:20px}
+.al3-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;margin-bottom:14px;overflow:hidden;transform:perspective(900px) rotateX(3deg);transition:transform .5s}
+.al3-bar:hover{transform:perspective(900px) rotateX(0)}
+.al3-bar::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(closest-side,rgba(124,58,237,.35),transparent);pointer-events:none}
+.al3-bar-l{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.al3-ico{width:46px;height:46px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--acc2),var(--acc1));box-shadow:0 10px 22px -8px rgba(124,58,237,.8)}
+.al3-title{margin:0;font-size:18px;font-weight:900}
+.al3-sub{margin:3px 0 0;font-size:11px;color:var(--mut)}
+.al3-add{position:relative;z-index:1;padding:10px 14px;border-radius:14px;border:0;cursor:pointer;color:#fff;font-weight:800;font-size:12px;background:linear-gradient(90deg,var(--acc2),var(--acc1));box-shadow:0 12px 24px -10px rgba(124,58,237,.9);transform:translateZ(0);transition:transform .2s,filter .2s;white-space:nowrap}
+.al3-add:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.al3-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.al3-stat{padding:12px;border-radius:18px}
+.al3-stat-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.al3-stat-lab{font-size:11px;font-weight:700;color:var(--mut)}
+.al3-stat-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);background:var(--gl2)}
+.al3-stat-val{font-size:24px;font-weight:900;margin-top:8px;direction:ltr;text-align:right}
+.al3-stat-foot{font-size:10px;color:var(--mut);margin-top:2px}
+.al3-track{height:6px;border-radius:9px;background:rgba(148,163,184,.22);margin-top:8px;overflow:hidden}
+.al3-track>i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#06b6d4,#8b5cf6);transition:width .5s}
+.al3-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin-bottom:10px;scrollbar-width:none}
+.al3-chip{flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1px solid var(--bd);background:var(--gl);color:var(--mut);font-size:11px;font-weight:800;cursor:pointer;backdrop-filter:blur(10px)}
+.al3-chip.on{background:linear-gradient(90deg,var(--acc2),var(--acc1));color:#fff;border-color:transparent;box-shadow:0 8px 18px -8px rgba(124,58,237,.9)}
+.al3-search{display:flex;gap:8px;margin-bottom:14px}
+.al3-input{flex:1;padding:11px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);font-size:12px;backdrop-filter:blur(10px);box-sizing:border-box;min-width:0}
+.al3-input::placeholder{color:var(--mut)}
+.al3-listhead{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 8px}
+.al3-listhead h3{margin:0;font-size:15px;font-weight:900}
+.al3-count{font-size:12px;color:var(--acc2);font-weight:800;margin-right:6px}
+.al3-row{padding:12px;margin-bottom:10px;border-radius:18px;transform:translateZ(0);transition:transform .3s,box-shadow .3s}
+.al3-row:hover{transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(124,58,237,.45)}
+.al3-top{display:flex;align-items:center;gap:10px}
+.al3-av{width:42px;height:42px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,#06b6d4,#7c3aed);box-shadow:0 8px 16px -8px rgba(124,58,237,.8)}
+.al3-meta{flex:1;min-width:0}
+.al3-name{font-size:13px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:right}
+.al3-use{font-size:10px;color:var(--mut);direction:ltr;text-align:right;margin-top:2px}
+.al3-pill{flex:0 0 auto;font-size:10px;font-weight:900;padding:5px 9px;border-radius:999px;border:1px solid}
+.al3-p-on{color:var(--ok);border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.12)}
+.al3-p-off{color:var(--mut);border-color:var(--bd);background:rgba(148,163,184,.12)}
+.al3-p-dis{color:var(--bad);border-color:rgba(248,113,113,.5);background:rgba(239,68,68,.1)}
+.al3-p-exp{color:var(--warn);border-color:rgba(251,191,36,.5);background:rgba(245,158,11,.12)}
+.al3-ring{flex:0 0 auto;position:relative;width:44px;height:44px}
+.al3-ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;direction:ltr}
+.al3-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.al3-btn{padding:6px 10px;border-radius:10px;border:1px solid var(--bd);background:var(--gl2);color:var(--fg);font-size:10px;font-weight:800;cursor:pointer;transition:transform .15s}
+.al3-btn:hover{transform:translateY(-1px)}
+.al3-btn.al3-del{color:var(--bad)}
+.al3-empty{text-align:center;color:var(--mut);font-size:12px;padding:20px;border-radius:18px;border:1px dashed var(--bd)}
+@media (max-width:420px){.al3-stat-val{font-size:20px}.al3-add{padding:9px 10px}}
 </style>
-<div class="al2-stats">
-	<div class="al2-stat" style="color:#2dd4bf"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کل کاربران</span></div><div class="al2-stat-val" id="al2-total">0</div><div class="al2-stat-foot">همه کاربران ثبت‌شده</div></div>
-	<div class="al2-stat" style="color:#c084fc"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM19 8v6M22 11h-6"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران فعال</span></div><div class="al2-stat-val" id="al2-active">0</div><div class="al2-stat-foot">فعال و بدون محدودیت</div></div>
-	<div class="al2-stat" style="color:#60a5fa"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران آفلاین</span></div><div class="al2-stat-val" id="al2-offline">0</div><div class="al2-stat-foot">غیر متصل در این لحظه</div></div>
-	<div class="al2-stat" style="color:#fbbf24"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">مصرف کل ترافیک</span></div><div class="al2-stat-val" id="al2-traffic">0 GB</div><div class="al2-ringwrap" style="margin-top:6px"><svg width="44" height="44" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(148,163,184,.2)" stroke-width="4"/><circle id="al2-traffic-ring" cx="20" cy="20" r="16" fill="none" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="100.53" transform="rotate(-90 20 20)"/></svg><span id="al2-traffic-pct">0%</span></div><div class="al2-stat-foot" id="al2-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
+
+<div class="al3-glass al3-bar">
+	<div class="al3-bar-l">
+		<div class="al3-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
+		<div>
+			<h2 class="al3-title">مدیریت کاربران</h2>
+			<p class="al3-sub">مشاهده، مدیریت و کنترل کاربران سرویس</p>
+		</div>
+	</div>
+	<button type="button" class="al3-add" onclick="openCreateModal()">+ افزودن کاربر</button>
 </div>
-<div class="al2-chips" id="al2-chips">
-	<button type="button" class="al2-chip on" data-f="all">همه</button>
-	<button type="button" class="al2-chip" data-f="active">✅ فعال</button>
-	<button type="button" class="al2-chip" data-f="online">⚡ آنلاین</button>
-	<button type="button" class="al2-chip" data-f="offline">💤 آفلاین</button>
-	<button type="button" class="al2-chip" data-f="expired">⏳ منقضی</button>
-	<button type="button" class="al2-chip" data-f="disabled">❌ غیرفعال</button>
+
+<div class="al3-stats">
+	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">کل کاربران</span><span class="al3-stat-ico" style="color:#7c3aed"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span></div><div class="al3-stat-val" id="al3-total">0</div><div class="al3-stat-foot">همه کاربران ثبت‌شده</div></div>
+	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">کاربران آنلاین</span><span class="al3-stat-ico" style="color:#059669"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 20h.01"/></svg></span></div><div class="al3-stat-val" id="al3-online">0</div><div class="al3-stat-foot">متصل در این لحظه</div></div>
+	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">کاربران آفلاین</span><span class="al3-stat-ico" style="color:#3b82f6"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></div><div class="al3-stat-val" id="al3-offline">0</div><div class="al3-stat-foot">غیر متصل</div></div>
+	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">مصرف کل ترافیک</span><span class="al3-stat-ico" style="color:#f59e0b"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span></div><div class="al3-stat-val" id="al3-traffic">0 GB</div><div class="al3-track"><i id="al3-traffic-bar"></i></div><div class="al3-stat-foot" id="al3-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
 </div>
-<div class="al2-filters">
-	<input type="text" class="al2-input full" id="al2-search" placeholder="جستجوی نام کاربری..." />
-	<select class="al2-input" id="al2-sort">
+
+<div class="al3-chips" id="al3-chips">
+	<button type="button" class="al3-chip on" data-f="all">همه کاربران</button>
+	<button type="button" class="al3-chip" data-f="active">✅ فعال</button>
+	<button type="button" class="al3-chip" data-f="online">⚡ آنلاین</button>
+	<button type="button" class="al3-chip" data-f="offline">💤 آفلاین</button>
+	<button type="button" class="al3-chip" data-f="expired">⏳ منقضی‌شده</button>
+	<button type="button" class="al3-chip" data-f="disabled">❌ غیرفعال</button>
+</div>
+<div class="al3-search">
+	<input type="text" class="al3-glass al3-input" id="al3-search" placeholder="جستجوی نام کاربری..." />
+	<select class="al3-glass al3-input" id="al3-sort" style="flex:0 0 130px">
 		<option value="newest">📅 جدیدترین</option>
 		<option value="usage-desc">📊 بیشترین مصرف</option>
-		<option value="name">🔤 نام کاربری (الفبا)</option>
+		<option value="name">🔤 الفبا</option>
 	</select>
 </div>
-<div class="al2-listhead"><h3>کاربران <span class="al2-count" id="al2-count">(0)</span></h3></div>
-<div id="al2-list"><div class="al2-empty">در حال بارگذاری کاربران...</div></div>
+<div class="al3-listhead"><h3>کاربران <span class="al3-count" id="al3-count">(0)</span></h3></div>
+<div id="al3-list"><div class="al3-empty">در حال بارگذاری کاربران...</div></div>
+
 <script>
 (function () {
 	var state = { filter: 'all', q: '', sort: 'newest', last: null };
@@ -5464,29 +5481,35 @@ const HTML_TEMPLATES = {
 	function gb(n) { return (Number(n) || 0).toFixed(2); }
 	function exceeded(u) { return !!(u.limit_gb && u.used_gb >= u.limit_gb); }
 	function statusOf(u) {
-		if (u.is_active !== 1) return { k: 'disabled', t: 'غیرفعال', c: 'al2-p-dis' };
-		if (exceeded(u)) return { k: 'expired', t: 'تمام‌شده', c: 'al2-p-exp' };
-		if (u.is_online === 1) return { k: 'online', t: 'آنلاین', c: 'al2-p-on' };
-		return { k: 'offline', t: 'آفلاین', c: 'al2-p-off' };
+		if (u.is_active !== 1) return { k: 'disabled', t: 'غیرفعال', c: 'al3-p-dis' };
+		if (exceeded(u)) return { k: 'expired', t: 'منقضی‌شده', c: 'al3-p-exp' };
+		if (u.is_online === 1) return { k: 'online', t: 'آنلاین', c: 'al3-p-on' };
+		return { k: 'offline', t: 'آفلاین', c: 'al3-p-off' };
+	}
+	function ring(pct, unlimited) {
+		var col = pct >= 90 ? '#ef4444' : pct >= 70 ? '#f59e0b' : '#06b6d4';
+		var off = (100.53 * (1 - pct / 100)).toFixed(2);
+		return '<div class="al3-ring"><svg width="44" height="44" viewBox="0 0 40 40">' +
+			'<circle cx="20" cy="20" r="16" fill="none" stroke="rgba(148,163,184,.25)" stroke-width="4"/>' +
+			'<circle cx="20" cy="20" r="16" fill="none" stroke="' + (unlimited ? 'rgba(148,163,184,.4)' : col) + '" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="' + (unlimited ? 0 : off) + '" transform="rotate(-90 20 20)"/></svg>' +
+			'<span>' + (unlimited ? '∞' : Math.round(pct) + '%') + '</span></div>';
 	}
 	function render() {
 		var users = Array.isArray(window.allUsers) ? window.allUsers : [];
-		var total = users.length, active = 0, offline = 0, used = 0, limit = 0, hasLimit = false;
+		var active = 0, offline = 0, online = 0, used = 0, limit = 0, hasLimit = false;
 		users.forEach(function (u) {
-			var s = statusOf(u);
 			if (u.is_active === 1 && !exceeded(u)) active++;
-			if (u.is_online !== 1) offline++;
+			if (u.is_online === 1) online++; else offline++;
 			used += Number(u.used_gb) || 0;
 			if (u.limit_gb) { limit += Number(u.limit_gb) || 0; hasLimit = true; }
 		});
-		document.getElementById('al2-total').textContent = total;
-		document.getElementById('al2-active').textContent = active;
-		document.getElementById('al2-offline').textContent = offline;
-		document.getElementById('al2-traffic').textContent = gb(used) + ' GB';
+		document.getElementById('al3-total').textContent = users.length;
+		document.getElementById('al3-online').textContent = online;
+		document.getElementById('al3-offline').textContent = offline;
+		document.getElementById('al3-traffic').textContent = gb(used) + ' GB';
 		var tp = (hasLimit && limit > 0) ? Math.min(100, used / limit * 100) : 0;
-		document.getElementById('al2-traffic-ring').setAttribute('stroke-dashoffset', (100.53 * (1 - tp / 100)).toFixed(2));
-		document.getElementById('al2-traffic-pct').textContent = hasLimit ? Math.round(tp) + '%' : '∞';
-		document.getElementById('al2-traffic-foot').textContent = hasLimit ? (gb(used) + ' از ' + gb(limit) + ' GB سهمیه') : 'برای کاربران سهمیه حجمی ثبت نشده';
+		document.getElementById('al3-traffic-bar').style.width = tp + '%';
+		document.getElementById('al3-traffic-foot').textContent = hasLimit ? (gb(used) + ' از ' + gb(limit) + ' GB سهمیه') : 'برای کاربران سهمیه ثبت نشده';
 
 		var list = users.filter(function (u) {
 			var s = statusOf(u);
@@ -5502,38 +5525,38 @@ const HTML_TEMPLATES = {
 		else if (state.sort === 'name') list.sort(function (a, b) { return String(a.username).localeCompare(String(b.username)); });
 		else list.sort(function (a, b) { return (b.created_at || 0) - (a.created_at || 0); });
 
-		document.getElementById('al2-count').textContent = '(' + list.length + ')';
-		var box = document.getElementById('al2-list');
-		if (!users.length) { box.innerHTML = '<div class="al2-empty">کاربری وجود ندارد. از دکمه «افزودن کاربر» شروع کنید.</div>'; return; }
-		if (!list.length) { box.innerHTML = '<div class="al2-empty">کاربری با این فیلتر پیدا نشد.</div>'; return; }
+		document.getElementById('al3-count').textContent = '(' + list.length + ')';
+		var box = document.getElementById('al3-list');
+		if (!users.length) { box.innerHTML = '<div class="al3-empty">کاربری وجود ندارد. از دکمه «افزودن کاربر» شروع کنید.</div>'; return; }
+		if (!list.length) { box.innerHTML = '<div class="al3-empty">کاربری با این فیلتر پیدا نشد.</div>'; return; }
 		box.innerHTML = list.slice(0, 50).map(function (u) {
 			var s = statusOf(u), name = String(u.username || '');
 			var enc = encodeURIComponent(name);
 			var pct = u.limit_gb ? Math.min(100, (u.used_gb || 0) / u.limit_gb * 100) : 0;
 			var use = gb(u.used_gb) + ' / ' + (u.limit_gb ? gb(u.limit_gb) + ' GB' : '∞');
-			var btn = function (label, fn, cls) { return '<button type="button" class="al2-btn ' + (cls || '') + '" data-user="' + enc + '" onclick="' + fn + '(this.dataset.user)">' + label + '</button>'; };
-			return '<div class="al2-row">' +
-				'<div class="al2-top"><div class="al2-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
-				'<div class="al2-meta"><div class="al2-name">' + esc(name) + '</div><div class="al2-use">' + esc(use) + '</div>' +
-				'</div>' +
-				'<span class="al2-pill ' + s.c + '">' + s.t + '</span>' + '<div class="al2-ringwrap"><svg width="44" height="44" viewBox="0 0 40 40">' +'<circle cx="20" cy="20" r="16" fill="none" stroke="rgba(148,163,184,.2)" stroke-width="4"/>' +'<circle cx="20" cy="20" r="16" fill="none" stroke="' + (pct >= 90 ? '#f87171' : pct >= 70 ? '#fbbf24' : '#22d3ee') + '" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="' + (100.53 * (1 - pct / 100)).toFixed(2) + '" transform="rotate(-90 20 20)"/></svg>' +'<span>' + (u.limit_gb ? Math.round(pct) + '%' : '∞') + '</span></div>' +
-				'<div class="al2-btns">' +
+			var btn = function (label, fn, cls) { return '<button type="button" class="al3-btn ' + (cls || '') + '" data-user="' + enc + '" onclick="' + fn + '(this.dataset.user)">' + label + '</button>'; };
+			return '<div class="al3-glass al3-row">' +
+				'<div class="al3-top"><div class="al3-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
+				'<div class="al3-meta"><div class="al3-name">' + esc(name) + '</div><div class="al3-use">' + esc(use) + '</div></div>' +
+				ring(pct, !u.limit_gb) +
+				'<span class="al3-pill ' + s.c + '">' + s.t + '</span></div>' +
+				'<div class="al3-btns">' +
 				btn('ساب', 'copySubLink') + btn('کانفیگ', 'copyConfig') + btn('QR', 'showSubQr') +
 				btn('وضعیت', 'openStatusLink') + btn('ویرایش', 'editUser') +
-				btn(s.k === 'disabled' ? 'فعال' : 'غیرفعال', 'toggleUserStatus') +
-				btn('ریست', 'resetUserData') + btn('حذف', 'deleteUser', 'al2-del') +
+				btn(s.k === 'disabled' ? 'فعال‌سازی' : 'غیرفعال‌سازی', 'toggleUserStatus') +
+				btn('ریست', 'resetUserData') + btn('حذف', 'deleteUser', 'al3-del') +
 				'</div></div>';
 		}).join('');
 	}
-	document.querySelectorAll('#al2-chips [data-f]').forEach(function (b) {
+	document.querySelectorAll('#al3-chips [data-f]').forEach(function (b) {
 		b.addEventListener('click', function () {
 			state.filter = b.getAttribute('data-f');
-			document.querySelectorAll('#al2-chips [data-f]').forEach(function (x) { x.classList.toggle('on', x === b); });
+			document.querySelectorAll('#al3-chips [data-f]').forEach(function (x) { x.classList.toggle('on', x === b); });
 			render();
 		});
 	});
-	document.getElementById('al2-search').addEventListener('input', function (e) { state.q = (e.target.value || '').toLowerCase().trim(); render(); });
-	document.getElementById('al2-sort').addEventListener('change', function (e) { state.sort = e.target.value; render(); });
+	document.getElementById('al3-search').addEventListener('input', function (e) { state.q = (e.target.value || '').toLowerCase().trim(); render(); });
+	document.getElementById('al3-sort').addEventListener('change', function (e) { state.sort = e.target.value; render(); });
 	render();
 	var loading = false;
 	setInterval(function () {
