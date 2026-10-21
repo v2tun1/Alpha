@@ -5423,21 +5423,13 @@ const HTML_TEMPLATES = {
 .al2-p-off{color:#94a3b8;border-color:rgba(148,163,184,.4);background:rgba(51,65,85,.4)}
 .al2-p-dis{color:#fca5a5;border-color:rgba(248,113,113,.5);background:rgba(127,29,29,.25)}
 .al2-p-exp{color:#fbbf24;border-color:rgba(251,191,36,.5);background:rgba(120,53,15,.25)}
+.al2-top{display:flex;align-items:center;gap:10px}
+.al2-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.al2-btn{padding:6px 9px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#c7d2fe;font-size:10px;font-weight:800;cursor:pointer}
+.al2-del{color:#fca5a5;border-color:rgba(248,113,113,.45)}
 .al2-act{flex:0 0 auto;width:30px;height:30px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#a5b4fc;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .al2-empty{text-align:center;color:#94a3b8;font-size:12px;padding:18px;border:1px dashed rgba(148,163,184,.3);border-radius:14px}
 </style>
-<div class="al2-card">
-	<div class="al2-head">
-		<div class="al2-head-l">
-			<div class="al2-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
-			<div>
-				<h2 class="al2-title">مدیریت کاربران</h2>
-				<p class="al2-sub">مشاهده، مدیریت و کنترل کاربران سرویس</p>
-			</div>
-		</div>
-		<button type="button" class="al2-add" onclick="openCreateModal()">+ افزودن کاربر</button>
-	</div>
-</div>
 <div class="al2-stats">
 	<div class="al2-stat" style="color:#2dd4bf"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کل کاربران</span></div><div class="al2-stat-val" id="al2-total">0</div><div class="al2-stat-foot">همه کاربران ثبت‌شده</div></div>
 	<div class="al2-stat" style="color:#c084fc"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM19 8v6M22 11h-6"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران فعال</span></div><div class="al2-stat-val" id="al2-active">0</div><div class="al2-stat-foot">فعال و بدون محدودیت</div></div>
@@ -5511,15 +5503,21 @@ const HTML_TEMPLATES = {
 		if (!list.length) { box.innerHTML = '<div class="al2-empty">کاربری با این فیلتر پیدا نشد.</div>'; return; }
 		box.innerHTML = list.slice(0, 50).map(function (u) {
 			var s = statusOf(u), name = String(u.username || '');
+			var enc = encodeURIComponent(name);
 			var pct = u.limit_gb ? Math.min(100, (u.used_gb || 0) / u.limit_gb * 100) : 0;
 			var use = gb(u.used_gb) + ' / ' + (u.limit_gb ? gb(u.limit_gb) + ' GB' : '∞');
+			var btn = function (label, fn, cls) { return '<button type="button" class="al2-btn ' + (cls || '') + '" data-user="' + enc + '" onclick="' + fn + '(this.dataset.user)">' + label + '</button>'; };
 			return '<div class="al2-row">' +
-				'<button type="button" class="al2-act" title="کپی لینک ساب" onclick="copySubLink(\'' + encodeURIComponent(name).replace(/'/g, '%27') + '\')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg></button>' +
+				'<div class="al2-top"><div class="al2-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
 				'<div class="al2-meta"><div class="al2-name">' + esc(name) + '</div><div class="al2-use">' + esc(use) + '</div>' +
 				(u.limit_gb ? '<div class="al2-mini"><i style="width:' + pct.toFixed(0) + '%"></i></div>' : '') + '</div>' +
-				'<span class="al2-pill ' + s.c + '">' + s.t + '</span>' +
-				'<div class="al2-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
-				'</div>';
+				'<span class="al2-pill ' + s.c + '">' + s.t + '</span></div>' +
+				'<div class="al2-btns">' +
+				btn('ساب', 'copySubLink') + btn('کانفیگ', 'copyConfig') + btn('QR', 'showSubQr') +
+				btn('وضعیت', 'openStatusLink') + btn('ویرایش', 'editUser') +
+				btn(s.k === 'disabled' ? 'فعال' : 'غیرفعال', 'toggleUserStatus') +
+				btn('ریست', 'resetUserData') + btn('حذف', 'deleteUser', 'al2-del') +
+				'</div></div>';
 		}).join('');
 	}
 	document.querySelectorAll('#al2-chips [data-f]').forEach(function (b) {
@@ -5532,7 +5530,13 @@ const HTML_TEMPLATES = {
 	document.getElementById('al2-search').addEventListener('input', function (e) { state.q = (e.target.value || '').toLowerCase().trim(); render(); });
 	document.getElementById('al2-sort').addEventListener('change', function (e) { state.sort = e.target.value; render(); });
 	render();
+	var loading = false;
 	setInterval(function () {
+		if (!window.allUsers && typeof loadUsers === 'function' && !loading) {
+			loading = true;
+			try { loadUsers(); } catch (e) {}
+			setTimeout(function () { loading = false; }, 4000);
+		}
 		if (window.allUsers !== state.last) { state.last = window.allUsers; render(); }
 	}, 1000);
 })();
