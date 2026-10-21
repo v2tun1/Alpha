@@ -5428,13 +5428,16 @@ const HTML_TEMPLATES = {
 .al2-btn{padding:6px 9px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#c7d2fe;font-size:10px;font-weight:800;cursor:pointer}
 .al2-del{color:#fca5a5;border-color:rgba(248,113,113,.45)}
 .al2-act{flex:0 0 auto;width:30px;height:30px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#a5b4fc;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.al2-ring{flex:0 0 auto;width:44px;height:44px}
+.al2-ringwrap{position:relative;width:44px;height:44px;flex:0 0 auto}
+.al2-ringwrap span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#e2e8f0;direction:ltr}
 .al2-empty{text-align:center;color:#94a3b8;font-size:12px;padding:18px;border:1px dashed rgba(148,163,184,.3);border-radius:14px}
 </style>
 <div class="al2-stats">
 	<div class="al2-stat" style="color:#2dd4bf"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کل کاربران</span></div><div class="al2-stat-val" id="al2-total">0</div><div class="al2-stat-foot">همه کاربران ثبت‌شده</div></div>
 	<div class="al2-stat" style="color:#c084fc"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM19 8v6M22 11h-6"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران فعال</span></div><div class="al2-stat-val" id="al2-active">0</div><div class="al2-stat-foot">فعال و بدون محدودیت</div></div>
 	<div class="al2-stat" style="color:#60a5fa"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران آفلاین</span></div><div class="al2-stat-val" id="al2-offline">0</div><div class="al2-stat-foot">غیر متصل در این لحظه</div></div>
-	<div class="al2-stat" style="color:#fbbf24"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">مصرف کل ترافیک</span></div><div class="al2-stat-val" id="al2-traffic">0 GB</div><div class="al2-bar"><i id="al2-traffic-bar"></i></div><div class="al2-stat-foot" id="al2-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
+	<div class="al2-stat" style="color:#fbbf24"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">مصرف کل ترافیک</span></div><div class="al2-stat-val" id="al2-traffic">0 GB</div><div class="al2-ringwrap" style="margin-top:6px"><svg width="44" height="44" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(148,163,184,.2)" stroke-width="4"/><circle id="al2-traffic-ring" cx="20" cy="20" r="16" fill="none" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="100.53" transform="rotate(-90 20 20)"/></svg><span id="al2-traffic-pct">0%</span></div><div class="al2-stat-foot" id="al2-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
 </div>
 <div class="al2-chips" id="al2-chips">
 	<button type="button" class="al2-chip on" data-f="all">همه</button>
@@ -5480,7 +5483,9 @@ const HTML_TEMPLATES = {
 		document.getElementById('al2-active').textContent = active;
 		document.getElementById('al2-offline').textContent = offline;
 		document.getElementById('al2-traffic').textContent = gb(used) + ' GB';
-		document.getElementById('al2-traffic-bar').style.width = (hasLimit && limit > 0 ? Math.min(100, used / limit * 100) : 0) + '%';
+		var tp = (hasLimit && limit > 0) ? Math.min(100, used / limit * 100) : 0;
+		document.getElementById('al2-traffic-ring').setAttribute('stroke-dashoffset', (100.53 * (1 - tp / 100)).toFixed(2));
+		document.getElementById('al2-traffic-pct').textContent = hasLimit ? Math.round(tp) + '%' : '∞';
 		document.getElementById('al2-traffic-foot').textContent = hasLimit ? (gb(used) + ' از ' + gb(limit) + ' GB سهمیه') : 'برای کاربران سهمیه حجمی ثبت نشده';
 
 		var list = users.filter(function (u) {
@@ -5510,8 +5515,8 @@ const HTML_TEMPLATES = {
 			return '<div class="al2-row">' +
 				'<div class="al2-top"><div class="al2-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
 				'<div class="al2-meta"><div class="al2-name">' + esc(name) + '</div><div class="al2-use">' + esc(use) + '</div>' +
-				(u.limit_gb ? '<div class="al2-mini"><i style="width:' + pct.toFixed(0) + '%"></i></div>' : '') + '</div>' +
-				'<span class="al2-pill ' + s.c + '">' + s.t + '</span></div>' +
+				'</div>' +
+				'<span class="al2-pill ' + s.c + '">' + s.t + '</span>' + '<div class="al2-ringwrap"><svg width="44" height="44" viewBox="0 0 40 40">' +'<circle cx="20" cy="20" r="16" fill="none" stroke="rgba(148,163,184,.2)" stroke-width="4"/>' +'<circle cx="20" cy="20" r="16" fill="none" stroke="' + (pct >= 90 ? '#f87171' : pct >= 70 ? '#fbbf24' : '#22d3ee') + '" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="' + (100.53 * (1 - pct / 100)).toFixed(2) + '" transform="rotate(-90 20 20)"/></svg>' +'<span>' + (u.limit_gb ? Math.round(pct) + '%' : '∞') + '</span></div>' +
 				'<div class="al2-btns">' +
 				btn('ساب', 'copySubLink') + btn('کانفیگ', 'copyConfig') + btn('QR', 'showSubQr') +
 				btn('وضعیت', 'openStatusLink') + btn('ویرایش', 'editUser') +
