@@ -11310,48 +11310,54 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
             body.alpha-view-users #users-table-container table { min-width:920px; }
         }
 
-        /* ALPHA USERS POLISH v2.3 — responsive, accessible, scoped enhancements */
-        body.alpha-view-users #users-table-container {
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-x: contain;
-        }
-        body.alpha-view-users #users-table-container thead th {
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            white-space: nowrap;
-        }
+
+        /* ALPHA USERS POLISH v2 — visual-only overrides; keeps existing IDs, forms and handlers intact. */
         body.alpha-view-users #users-table-container tbody tr {
-            transition: background-color .18s ease, transform .18s ease;
+            outline:1px solid rgba(32,139,255,.18);
+            border-radius:16px;
+            transition:background .18s ease, transform .18s ease, filter .18s ease;
         }
-        body.alpha-view-users #users-table-container button,
-        body.alpha-view-users #alpha-chips .al-chip,
-        body.alpha-view-users .users-add-primary {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
+        body.alpha-view-users #users-table-container tbody tr:hover {
+            transform:translateY(-1px);
+            filter:drop-shadow(0 7px 12px rgba(0,94,255,.12));
         }
-        body.alpha-view-users button:focus-visible,
-        body.alpha-view-users input:focus-visible,
-        body.alpha-view-users select:focus-visible {
-            outline: 2px solid #22d3ee !important;
-            outline-offset: 3px;
+        body.alpha-view-users #users-table-container tbody td {
+            border-top:1px solid rgba(47,143,255,.20) !important;
+            border-bottom:1px solid rgba(47,143,255,.20) !important;
         }
-        body.alpha-view-users #loading-state,
-        body.alpha-view-users #empty-state {
-            border-radius: 18px;
+        body.alpha-view-users #users-table-container tbody td:first-child {
+            border-right:1px solid rgba(47,143,255,.20) !important;
         }
-        @media (max-width: 520px) {
-            body.alpha-view-users main { padding-inline: 10px !important; }
-            body.alpha-view-users #users-table-container { margin-inline: -1px; }
-            body.alpha-view-users #users-table-container table { min-width: 900px; }
-            body.alpha-view-users #stats-accordion-wrapper > div > div {
-                overflow-wrap: anywhere;
-            }
-            body.alpha-view-users #alpha-chips .al-chip { min-height: 38px; }
+        body.alpha-view-users #users-table-container tbody td:last-child {
+            border-left:1px solid rgba(47,143,255,.20) !important;
         }
-        @media (prefers-reduced-motion: reduce) {
-            body.alpha-view-users #users-table-container tbody tr,
-            body.alpha-view-users #users-table-container button { transition: none !important; }
+        body.alpha-view-users #users-table-container tbody td button {
+            border-radius:999px;
+        }
+        body.alpha-view-users #users-table-container .text-gray-500,
+        body.alpha-view-users #users-table-container .text-gray-400 {
+            color:#8eadd1 !important;
+        }
+        body.alpha-view-users #users-table-container .text-gray-900,
+        body.alpha-view-users #users-table-container .dark\\:text-white {
+            color:#eff7ff !important;
+        }
+        body.alpha-view-users #users-table-container .bg-blue-600,
+        body.alpha-view-users #users-table-container .bg-indigo-600 {
+            background:linear-gradient(110deg,#087cf4,#5b36f5 65%,#a51df2) !important;
+            box-shadow:0 0 12px rgba(44,107,255,.22);
+        }
+        body.alpha-view-users #users-table-container input[type=checkbox] {
+            width:16px; height:16px;
+        }
+        body.alpha-view-users #users-table-container + * {
+            color:#a8c7ec;
+        }
+        @media(max-width:699px) {
+            body.alpha-view-users #alpha-users-hero { gap:10px; }
+            body.alpha-view-users #alpha-users-hero .users-add-primary { white-space:nowrap; }
+            body.alpha-view-users #alpha-chips { overflow-x:auto; flex-wrap:nowrap; }
+            body.alpha-view-users #alpha-chips .al-chip { flex:0 0 auto; }
         }
 
 	</style>
