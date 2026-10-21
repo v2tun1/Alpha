@@ -5382,59 +5382,161 @@ const HTML_TEMPLATES = {
 		</div>
 	</header>
 	<main class="max-w-6xl mx-auto px-4 py-8 pb-56 md:pb-32 relative z-10">
-<div class="tpl3d-wrap">
+
+<div class="al2-wrap">
 <style>
-.tpl3d-wrap{margin:0 0 24px;perspective:1200px}
-.tpl3d-card{position:relative;border-radius:22px;padding:22px 20px 20px;background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(17,24,58,.88));border:1px solid rgba(124,58,237,.35);box-shadow:0 30px 60px -20px rgba(59,130,246,.35);transform:rotateX(6deg) rotateY(-4deg);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1);overflow:hidden}
-.tpl3d-card:hover{transform:rotateX(0) rotateY(0)}
-.tpl3d-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 0%,rgba(6,182,212,.25),transparent 55%),radial-gradient(circle at 0% 100%,rgba(124,58,237,.28),transparent 55%);pointer-events:none}
-.tpl3d-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.tpl3d-title{font-size:20px;font-weight:900;color:#f8fafc;margin:0;line-height:1.5}
-.tpl3d-sub{font-size:12px;color:#94a3b8;margin:6px 0 0;line-height:1.8}
-.tpl3d-cube{width:96px;height:96px;flex:0 0 auto;animation:tpl3d-float 4s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(6,182,212,.55))}
-@keyframes tpl3d-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.tpl3d-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
-.tpl3d-feat{border-radius:14px;padding:12px 8px;background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.18);text-align:center;transform:translateZ(18px);transition:transform .35s,border-color .35s}
-.tpl3d-feat:hover{transform:translateZ(30px) translateY(-3px);border-color:rgba(6,182,212,.6)}
-.tpl3d-feat b{display:block;color:#e2e8f0;font-size:12px;font-weight:800;margin-top:8px}
-.tpl3d-feat span{display:block;color:#94a3b8;font-size:10px;margin-top:3px;line-height:1.6}
-.tpl3d-ico{width:34px;height:34px;margin:0 auto;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#06b6d4,#7c3aed);color:#fff;box-shadow:0 8px 16px -6px rgba(6,182,212,.6)}
-.tpl3d-cta{position:relative;margin-top:16px;width:100%;padding:12px;border-radius:14px;border:0;cursor:pointer;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(90deg,#06b6d4,#7c3aed);box-shadow:0 12px 24px -10px rgba(124,58,237,.7);transform:translateZ(24px);transition:filter .2s}
-.tpl3d-cta:hover{filter:brightness(1.12)}
-@media (max-width:480px){.tpl3d-grid{grid-template-columns:1fr}.tpl3d-card{transform:none}}
+.al2-wrap{margin:0 0 24px;color:#e2e8f0;font-family:inherit}
+.al2-card{background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,27,75,.75));border:1px solid rgba(99,102,241,.35);border-radius:18px;padding:16px;box-shadow:0 20px 40px -20px rgba(59,130,246,.35);margin-bottom:14px}
+.al2-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.al2-head-l{display:flex;align-items:center;gap:12px}
+.al2-ico{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4);color:#60a5fa;flex:0 0 auto}
+.al2-title{font-size:18px;font-weight:900;color:#f8fafc;margin:0}
+.al2-sub{font-size:11px;color:#94a3b8;margin:3px 0 0}
+.al2-add{padding:9px 14px;border-radius:12px;border:0;cursor:pointer;font-weight:800;font-size:12px;color:#fff;background:linear-gradient(90deg,#3b82f6,#7c3aed);box-shadow:0 10px 20px -10px rgba(124,58,237,.8);white-space:nowrap}
+.al2-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.al2-stat{border-radius:16px;padding:12px;background:rgba(15,23,42,.8);border:1px solid rgba(148,163,184,.2)}
+.al2-stat-top{display:flex;align-items:center;gap:8px}
+.al2-stat-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto;border:1px solid currentColor}
+.al2-stat-lab{font-size:11px;color:#cbd5e1;font-weight:700}
+.al2-stat-val{font-size:22px;font-weight:900;color:#f8fafc;margin-top:8px;direction:ltr;text-align:right}
+.al2-stat-foot{font-size:10px;color:#94a3b8;margin-top:4px}
+.al2-bar{height:5px;border-radius:9px;background:rgba(148,163,184,.2);margin-top:8px;overflow:hidden}
+.al2-bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#06b6d4,#8b5cf6);border-radius:9px;transition:width .5s}
+.al2-chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px}
+.al2-chip{flex:0 0 auto;padding:7px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.7);color:#cbd5e1;font-size:11px;font-weight:700;cursor:pointer}
+.al2-chip.on{background:linear-gradient(90deg,#3b82f6,#7c3aed);color:#fff;border-color:transparent}
+.al2-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.al2-input{width:100%;padding:9px 12px;border-radius:12px;border:1px solid rgba(99,102,241,.3);background:rgba(15,23,42,.8);color:#e2e8f0;font-size:12px;box-sizing:border-box}
+.al2-input.full{grid-column:1/-1}
+.al2-listhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.al2-listhead h3{margin:0;font-size:15px;font-weight:900;color:#f8fafc}
+.al2-count{color:#60a5fa;font-size:12px;font-weight:800;margin-right:6px}
+.al2-row{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:rgba(15,23,42,.8);border:1px solid rgba(99,102,241,.25);margin-bottom:8px}
+.al2-av{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,#06b6d4,#7c3aed)}
+.al2-meta{flex:1;min-width:0}
+.al2-name{font-size:13px;font-weight:800;color:#f8fafc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:right}
+.al2-use{font-size:10px;color:#94a3b8;direction:ltr;text-align:right;margin-top:2px}
+.al2-mini{height:4px;border-radius:9px;background:rgba(148,163,184,.2);margin-top:5px;overflow:hidden}
+.al2-mini>i{display:block;height:100%;background:linear-gradient(90deg,#06b6d4,#8b5cf6)}
+.al2-pill{flex:0 0 auto;font-size:10px;font-weight:800;padding:4px 8px;border-radius:999px;border:1px solid}
+.al2-p-on{color:#34d399;border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.12)}
+.al2-p-off{color:#94a3b8;border-color:rgba(148,163,184,.4);background:rgba(51,65,85,.4)}
+.al2-p-dis{color:#fca5a5;border-color:rgba(248,113,113,.5);background:rgba(127,29,29,.25)}
+.al2-p-exp{color:#fbbf24;border-color:rgba(251,191,36,.5);background:rgba(120,53,15,.25)}
+.al2-act{flex:0 0 auto;width:30px;height:30px;border-radius:9px;border:1px solid rgba(99,102,241,.4);background:rgba(30,41,59,.8);color:#a5b4fc;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.al2-empty{text-align:center;color:#94a3b8;font-size:12px;padding:18px;border:1px dashed rgba(148,163,184,.3);border-radius:14px}
 </style>
-<div class="tpl3d-card">
-	<div class="tpl3d-top">
-		<div>
-			<h2 class="tpl3d-title">کنترل کامل، در دستان شما</h2>
-			<p class="tpl3d-sub">مدیریت کاربران، تنظیمات و نظارت بر فعالیت‌ها را به سادگی انجام دهید.</p>
+<div class="al2-card">
+	<div class="al2-head">
+		<div class="al2-head-l">
+			<div class="al2-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
+			<div>
+				<h2 class="al2-title">مدیریت کاربران</h2>
+				<p class="al2-sub">مشاهده، مدیریت و کنترل کاربران سرویس</p>
+			</div>
 		</div>
-		<svg class="tpl3d-cube" viewBox="0 0 96 96" aria-hidden="true">
-			<polygon points="48,10 84,30 48,50 12,30" fill="#67e8f9" opacity=".95"/>
-			<polygon points="12,30 48,50 48,90 12,70" fill="#4f46e5" opacity=".88"/>
-			<polygon points="84,30 48,50 48,90 84,70" fill="#7c3aed" opacity=".88"/>
-			<polyline points="48,50 48,90" stroke="#e0f2fe" stroke-width="1.5" fill="none" opacity=".7"/>
-		</svg>
+		<button type="button" class="al2-add" onclick="openCreateModal()">+ افزودن کاربر</button>
 	</div>
-	<div class="tpl3d-grid">
-		<div class="tpl3d-feat">
-			<div class="tpl3d-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
-			<b>مدیریت آسان</b>
-			<span>کاربران و دسترسی‌ها</span>
-		</div>
-		<div class="tpl3d-feat">
-			<div class="tpl3d-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div>
-			<b>گزارش‌های دقیق</b>
-			<span>تحلیل و بررسی عملکرد</span>
-		</div>
-		<div class="tpl3d-feat">
-			<div class="tpl3d-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-			<b>امنیت پیشرفته</b>
-			<span>محافظت از داده‌ها</span>
-		</div>
-	</div>
-	<button type="button" class="tpl3d-cta" onclick="openCreateModal()">ساخت کاربر جدید</button>
 </div>
+<div class="al2-stats">
+	<div class="al2-stat" style="color:#2dd4bf"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کل کاربران</span></div><div class="al2-stat-val" id="al2-total">0</div><div class="al2-stat-foot">همه کاربران ثبت‌شده</div></div>
+	<div class="al2-stat" style="color:#c084fc"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM19 8v6M22 11h-6"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران فعال</span></div><div class="al2-stat-val" id="al2-active">0</div><div class="al2-stat-foot">فعال و بدون محدودیت</div></div>
+	<div class="al2-stat" style="color:#60a5fa"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">کاربران آفلاین</span></div><div class="al2-stat-val" id="al2-offline">0</div><div class="al2-stat-foot">غیر متصل در این لحظه</div></div>
+	<div class="al2-stat" style="color:#fbbf24"><div class="al2-stat-top"><span class="al2-stat-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span><span class="al2-stat-lab" style="color:#cbd5e1">مصرف کل ترافیک</span></div><div class="al2-stat-val" id="al2-traffic">0 GB</div><div class="al2-bar"><i id="al2-traffic-bar"></i></div><div class="al2-stat-foot" id="al2-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
+</div>
+<div class="al2-chips" id="al2-chips">
+	<button type="button" class="al2-chip on" data-f="all">همه</button>
+	<button type="button" class="al2-chip" data-f="active">✅ فعال</button>
+	<button type="button" class="al2-chip" data-f="online">⚡ آنلاین</button>
+	<button type="button" class="al2-chip" data-f="offline">💤 آفلاین</button>
+	<button type="button" class="al2-chip" data-f="expired">⏳ منقضی</button>
+	<button type="button" class="al2-chip" data-f="disabled">❌ غیرفعال</button>
+</div>
+<div class="al2-filters">
+	<input type="text" class="al2-input full" id="al2-search" placeholder="جستجوی نام کاربری..." />
+	<select class="al2-input" id="al2-sort">
+		<option value="newest">📅 جدیدترین</option>
+		<option value="usage-desc">📊 بیشترین مصرف</option>
+		<option value="name">🔤 نام کاربری (الفبا)</option>
+	</select>
+</div>
+<div class="al2-listhead"><h3>کاربران <span class="al2-count" id="al2-count">(0)</span></h3></div>
+<div id="al2-list"><div class="al2-empty">در حال بارگذاری کاربران...</div></div>
+<script>
+(function () {
+	var state = { filter: 'all', q: '', sort: 'newest', last: null };
+	function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+	function gb(n) { return (Number(n) || 0).toFixed(2); }
+	function exceeded(u) { return !!(u.limit_gb && u.used_gb >= u.limit_gb); }
+	function statusOf(u) {
+		if (u.is_active !== 1) return { k: 'disabled', t: 'غیرفعال', c: 'al2-p-dis' };
+		if (exceeded(u)) return { k: 'expired', t: 'تمام‌شده', c: 'al2-p-exp' };
+		if (u.is_online === 1) return { k: 'online', t: 'آنلاین', c: 'al2-p-on' };
+		return { k: 'offline', t: 'آفلاین', c: 'al2-p-off' };
+	}
+	function render() {
+		var users = Array.isArray(window.allUsers) ? window.allUsers : [];
+		var total = users.length, active = 0, offline = 0, used = 0, limit = 0, hasLimit = false;
+		users.forEach(function (u) {
+			var s = statusOf(u);
+			if (u.is_active === 1 && !exceeded(u)) active++;
+			if (u.is_online !== 1) offline++;
+			used += Number(u.used_gb) || 0;
+			if (u.limit_gb) { limit += Number(u.limit_gb) || 0; hasLimit = true; }
+		});
+		document.getElementById('al2-total').textContent = total;
+		document.getElementById('al2-active').textContent = active;
+		document.getElementById('al2-offline').textContent = offline;
+		document.getElementById('al2-traffic').textContent = gb(used) + ' GB';
+		document.getElementById('al2-traffic-bar').style.width = (hasLimit && limit > 0 ? Math.min(100, used / limit * 100) : 0) + '%';
+		document.getElementById('al2-traffic-foot').textContent = hasLimit ? (gb(used) + ' از ' + gb(limit) + ' GB سهمیه') : 'برای کاربران سهمیه حجمی ثبت نشده';
+
+		var list = users.filter(function (u) {
+			var s = statusOf(u);
+			if (state.filter === 'active' && !(u.is_active === 1 && !exceeded(u))) return false;
+			if (state.filter === 'online' && u.is_online !== 1) return false;
+			if (state.filter === 'offline' && u.is_online === 1) return false;
+			if (state.filter === 'expired' && !exceeded(u)) return false;
+			if (state.filter === 'disabled' && s.k !== 'disabled') return false;
+			if (state.q && String(u.username || '').toLowerCase().indexOf(state.q) === -1) return false;
+			return true;
+		});
+		if (state.sort === 'usage-desc') list.sort(function (a, b) { return (b.used_gb || 0) - (a.used_gb || 0); });
+		else if (state.sort === 'name') list.sort(function (a, b) { return String(a.username).localeCompare(String(b.username)); });
+		else list.sort(function (a, b) { return (b.created_at || 0) - (a.created_at || 0); });
+
+		document.getElementById('al2-count').textContent = '(' + list.length + ')';
+		var box = document.getElementById('al2-list');
+		if (!users.length) { box.innerHTML = '<div class="al2-empty">کاربری وجود ندارد. از دکمه «افزودن کاربر» شروع کنید.</div>'; return; }
+		if (!list.length) { box.innerHTML = '<div class="al2-empty">کاربری با این فیلتر پیدا نشد.</div>'; return; }
+		box.innerHTML = list.slice(0, 50).map(function (u) {
+			var s = statusOf(u), name = String(u.username || '');
+			var pct = u.limit_gb ? Math.min(100, (u.used_gb || 0) / u.limit_gb * 100) : 0;
+			var use = gb(u.used_gb) + ' / ' + (u.limit_gb ? gb(u.limit_gb) + ' GB' : '∞');
+			return '<div class="al2-row">' +
+				'<button type="button" class="al2-act" title="کپی لینک ساب" onclick="copySubLink(\'' + encodeURIComponent(name).replace(/'/g, '%27') + '\')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg></button>' +
+				'<div class="al2-meta"><div class="al2-name">' + esc(name) + '</div><div class="al2-use">' + esc(use) + '</div>' +
+				(u.limit_gb ? '<div class="al2-mini"><i style="width:' + pct.toFixed(0) + '%"></i></div>' : '') + '</div>' +
+				'<span class="al2-pill ' + s.c + '">' + s.t + '</span>' +
+				'<div class="al2-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
+				'</div>';
+		}).join('');
+	}
+	document.querySelectorAll('#al2-chips [data-f]').forEach(function (b) {
+		b.addEventListener('click', function () {
+			state.filter = b.getAttribute('data-f');
+			document.querySelectorAll('#al2-chips [data-f]').forEach(function (x) { x.classList.toggle('on', x === b); });
+			render();
+		});
+	});
+	document.getElementById('al2-search').addEventListener('input', function (e) { state.q = (e.target.value || '').toLowerCase().trim(); render(); });
+	document.getElementById('al2-sort').addEventListener('change', function (e) { state.sort = e.target.value; render(); });
+	render();
+	setInterval(function () {
+		if (window.allUsers !== state.last) { state.last = window.allUsers; render(); }
+	}, 1000);
+})();
+</script>
 </div>
 <div style="display:none" aria-hidden="true">
 <div class="bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-300 dark:border-amoled-border rounded-xl mb-6 shadow-sm flex flex-col overflow-hidden">
