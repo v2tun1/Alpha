@@ -5383,140 +5383,167 @@ const HTML_TEMPLATES = {
 	</header>
 	<main class="max-w-6xl mx-auto px-4 py-8 pb-56 md:pb-32 relative z-10">
 
-<div class="al3-wrap">
+<div class="al4-wrap">
 <style>
-.al3-wrap{--fg:#0f172a;--mut:#64748b;--gl:rgba(255,255,255,.62);--gl2:rgba(255,255,255,.8);--bd:rgba(148,163,184,.35);--acc1:#7c3aed;--acc2:#3b82f6;--ok:#059669;--bad:#dc2626;--warn:#d97706;margin:0 0 20px;font-family:inherit;color:var(--fg)}
-.dark .al3-wrap,.al3-wrap.dark{--fg:#f1f5f9;--mut:#94a3b8;--gl:rgba(15,23,42,.55);--gl2:rgba(30,41,59,.7);--bd:rgba(148,163,184,.22);--ok:#34d399;--bad:#f87171;--warn:#fbbf24}
-.al3-glass{background:linear-gradient(135deg,var(--gl2),var(--gl));backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid var(--bd);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 36px -18px rgba(37,99,235,.35);border-radius:20px}
-.al3-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;margin-bottom:14px;overflow:hidden;transform:perspective(900px) rotateX(3deg);transition:transform .5s}
-.al3-bar:hover{transform:perspective(900px) rotateX(0)}
-.al3-bar::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(closest-side,rgba(124,58,237,.35),transparent);pointer-events:none}
-.al3-bar-l{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
-.al3-ico{width:46px;height:46px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--acc2),var(--acc1));box-shadow:0 10px 22px -8px rgba(124,58,237,.8)}
-.al3-title{margin:0;font-size:18px;font-weight:900}
-.al3-sub{margin:3px 0 0;font-size:11px;color:var(--mut)}
-.al3-add{position:relative;z-index:1;padding:10px 14px;border-radius:14px;border:0;cursor:pointer;color:#fff;font-weight:800;font-size:12px;background:linear-gradient(90deg,var(--acc2),var(--acc1));box-shadow:0 12px 24px -10px rgba(124,58,237,.9);transform:translateZ(0);transition:transform .2s,filter .2s;white-space:nowrap}
-.al3-add:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.al3-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.al3-stat{padding:12px;border-radius:18px}
-.al3-stat-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.al3-stat-lab{font-size:11px;font-weight:700;color:var(--mut)}
-.al3-stat-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);background:var(--gl2)}
-.al3-stat-val{font-size:24px;font-weight:900;margin-top:8px;direction:ltr;text-align:right}
-.al3-stat-foot{font-size:10px;color:var(--mut);margin-top:2px}
-.al3-track{height:6px;border-radius:9px;background:rgba(148,163,184,.22);margin-top:8px;overflow:hidden}
-.al3-track>i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#06b6d4,#8b5cf6);transition:width .5s}
-.al3-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin-bottom:10px;scrollbar-width:none}
-.al3-chip{flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1px solid var(--bd);background:var(--gl);color:var(--mut);font-size:11px;font-weight:800;cursor:pointer;backdrop-filter:blur(10px)}
-.al3-chip.on{background:linear-gradient(90deg,var(--acc2),var(--acc1));color:#fff;border-color:transparent;box-shadow:0 8px 18px -8px rgba(124,58,237,.9)}
-.al3-search{display:flex;gap:8px;margin-bottom:14px}
-.al3-input{flex:1;padding:11px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);font-size:12px;backdrop-filter:blur(10px);box-sizing:border-box;min-width:0}
-.al3-input::placeholder{color:var(--mut)}
-.al3-listhead{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 8px}
-.al3-listhead h3{margin:0;font-size:15px;font-weight:900}
-.al3-count{font-size:12px;color:var(--acc2);font-weight:800;margin-right:6px}
-.al3-row{padding:12px;margin-bottom:10px;border-radius:18px;transform:translateZ(0);transition:transform .3s,box-shadow .3s}
-.al3-row:hover{transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(124,58,237,.45)}
-.al3-top{display:flex;align-items:center;gap:10px}
-.al3-av{width:42px;height:42px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,#06b6d4,#7c3aed);box-shadow:0 8px 16px -8px rgba(124,58,237,.8)}
-.al3-meta{flex:1;min-width:0}
-.al3-name{font-size:13px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:right}
-.al3-use{font-size:10px;color:var(--mut);direction:ltr;text-align:right;margin-top:2px}
-.al3-pill{flex:0 0 auto;font-size:10px;font-weight:900;padding:5px 9px;border-radius:999px;border:1px solid}
-.al3-p-on{color:var(--ok);border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.12)}
-.al3-p-off{color:var(--mut);border-color:var(--bd);background:rgba(148,163,184,.12)}
-.al3-p-dis{color:var(--bad);border-color:rgba(248,113,113,.5);background:rgba(239,68,68,.1)}
-.al3-p-exp{color:var(--warn);border-color:rgba(251,191,36,.5);background:rgba(245,158,11,.12)}
-.al3-ring{flex:0 0 auto;position:relative;width:44px;height:44px}
-.al3-ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;direction:ltr}
-.al3-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.al3-btn{padding:6px 10px;border-radius:10px;border:1px solid var(--bd);background:var(--gl2);color:var(--fg);font-size:10px;font-weight:800;cursor:pointer;transition:transform .15s}
-.al3-btn:hover{transform:translateY(-1px)}
-.al3-btn.al3-del{color:var(--bad)}
-.al3-empty{text-align:center;color:var(--mut);font-size:12px;padding:20px;border-radius:18px;border:1px dashed var(--bd)}
-@media (max-width:420px){.al3-stat-val{font-size:20px}.al3-add{padding:9px 10px}}
+.al4-wrap{--fg:#0f172a;--mut:#64748b;--gl:rgba(255,255,255,.62);--gl2:rgba(255,255,255,.85);--bd:rgba(148,163,184,.35);--acc1:#7c3aed;--acc2:#3b82f6;--ok:#059669;--bad:#dc2626;--warn:#d97706;margin:0 0 20px;font-family:inherit;color:var(--fg)}
+.dark .al4-wrap{--fg:#f1f5f9;--mut:#94a3b8;--gl:rgba(15,23,42,.55);--gl2:rgba(30,41,59,.7);--bd:rgba(148,163,184,.22);--ok:#34d399;--bad:#f87171;--warn:#fbbf24}
+.al4-glass{background:linear-gradient(135deg,var(--gl2),var(--gl));backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid var(--bd);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 36px -18px rgba(37,99,235,.35);border-radius:20px}
+.al4-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;margin-bottom:14px;overflow:hidden;transform:perspective(900px) rotateX(3deg);transition:transform .5s}
+.al4-bar:hover{transform:perspective(900px) rotateX(0)}
+.al4-bar-l{display:flex;align-items:center;gap:12px}
+.al4-ico{width:46px;height:46px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--acc2),var(--acc1));box-shadow:0 10px 22px -8px rgba(124,58,237,.8)}
+.al4-title{margin:0;font-size:18px;font-weight:900}
+.al4-sub{margin:3px 0 0;font-size:11px;color:var(--mut)}
+.al4-add{padding:10px 14px;border-radius:14px;border:0;cursor:pointer;color:#fff;font-weight:800;font-size:12px;background:linear-gradient(90deg,var(--acc2),var(--acc1));box-shadow:0 12px 24px -10px rgba(124,58,237,.9);white-space:nowrap}
+.al4-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.al4-stat{padding:12px;border-radius:18px}
+.al4-stat-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.al4-stat-lab{font-size:11px;font-weight:700;color:var(--mut)}
+.al4-stat-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);background:var(--gl2)}
+.al4-stat-val{font-size:24px;font-weight:900;margin-top:8px;direction:ltr;text-align:right}
+.al4-stat-foot{font-size:10px;color:var(--mut);margin-top:2px}
+.al4-track{height:6px;border-radius:9px;background:rgba(148,163,184,.22);margin-top:8px;overflow:hidden}
+.al4-track>i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#06b6d4,#8b5cf6);transition:width .5s}
+.al4-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin-bottom:8px;scrollbar-width:none}
+.al4-chip{flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1px solid var(--bd);background:var(--gl);color:var(--mut);font-size:11px;font-weight:800;cursor:pointer}
+.al4-chip.on{background:linear-gradient(90deg,var(--acc2),var(--acc1));color:#fff;border-color:transparent;box-shadow:0 8px 18px -8px rgba(124,58,237,.9)}
+.al4-search{display:flex;gap:8px;margin-bottom:12px}
+.al4-input{flex:1;padding:11px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);font-size:12px;box-sizing:border-box;min-width:0}
+.al4-input::placeholder{color:var(--mut)}
+.al4-iconbtn{flex:0 0 auto;width:44px;border-radius:16px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.al4-head,.al4-row{display:grid;grid-template-columns:1.6fr 1fr 1.4fr 1.2fr 1.5fr;gap:10px;align-items:center}
+.al4-head{padding:0 16px 8px;font-size:11px;font-weight:800;color:var(--mut)}
+.al4-row{padding:12px 16px;margin-bottom:10px;transition:transform .3s,box-shadow .3s}
+.al4-row:hover{transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(124,58,237,.45)}
+.al4-user{display:flex;align-items:center;gap:10px;min-width:0}
+.al4-av{width:40px;height:40px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:linear-gradient(135deg,#06b6d4,#7c3aed)}
+.al4-name{font-size:13px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:right}
+.al4-pill{display:inline-block;font-size:10px;font-weight:900;padding:5px 10px;border-radius:999px;border:1px solid;white-space:nowrap}
+.al4-p-on{color:var(--ok);border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.12)}
+.al4-p-off{color:var(--mut);border-color:var(--bd);background:rgba(148,163,184,.12)}
+.al4-p-dis{color:var(--bad);border-color:rgba(248,113,113,.5);background:rgba(239,68,68,.1)}
+.al4-p-exp{color:var(--warn);border-color:rgba(251,191,36,.5);background:rgba(245,158,11,.12)}
+.al4-use{font-size:11px;direction:ltr;text-align:right;color:var(--fg);font-weight:700}
+.al4-mini{height:5px;border-radius:9px;background:rgba(148,163,184,.22);margin-top:6px;overflow:hidden}
+.al4-mini>i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#06b6d4,#8b5cf6)}
+.al4-exp{font-size:11px;font-weight:700}
+.al4-exp small{display:block;font-size:10px;font-weight:700;margin-top:2px}
+.al4-acts{display:flex;gap:6px;flex-wrap:wrap}
+.al4-act{width:32px;height:32px;border-radius:50%;border:1px solid var(--bd);background:var(--gl2);color:var(--acc2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.al4-act:hover{transform:translateY(-1px) scale(1.06)}
+.al4-act.del{color:var(--bad)}
+.al4-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:11px;color:var(--mut)}
+.al4-pg{display:flex;gap:6px}
+.al4-pg button{min-width:34px;height:34px;border-radius:12px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);cursor:pointer;font-weight:800}
+.al4-pg button.on{background:linear-gradient(90deg,var(--acc2),var(--acc1));color:#fff;border-color:transparent}
+.al4-pg button:disabled{opacity:.4;cursor:default}
+.al4-empty{text-align:center;color:var(--mut);font-size:12px;padding:20px;border-radius:18px;border:1px dashed var(--bd)}
+@media (max-width:640px){.al4-head{display:none}.al4-row{grid-template-columns:1fr 1fr;gap:10px}.al4-row>.al4-user{grid-column:1/-1}.al4-stats{grid-template-columns:1fr 1fr}.al4-stat-val{font-size:20px}}
 </style>
 
-<div class="al3-glass al3-bar">
-	<div class="al3-bar-l">
-		<div class="al3-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
+<div class="al4-glass al4-bar">
+	<div class="al4-bar-l">
+		<div class="al4-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
 		<div>
-			<h2 class="al3-title">مدیریت کاربران</h2>
-			<p class="al3-sub">مشاهده، مدیریت و کنترل کاربران سرویس</p>
+			<h2 class="al4-title">مدیریت کاربران</h2>
+			<p class="al4-sub">مشاهده، مدیریت و کنترل کاربران سرویس</p>
 		</div>
 	</div>
-	<button type="button" class="al3-add" onclick="openCreateModal()">+ افزودن کاربر</button>
+	<button type="button" class="al4-add" onclick="openCreateModal()">+ افزودن کاربر</button>
 </div>
 
-<div class="al3-stats">
-	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">کل کاربران</span><span class="al3-stat-ico" style="color:#7c3aed"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span></div><div class="al3-stat-val" id="al3-total">0</div><div class="al3-stat-foot">همه کاربران ثبت‌شده</div></div>
-	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">کاربران آنلاین</span><span class="al3-stat-ico" style="color:#059669"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 20h.01"/></svg></span></div><div class="al3-stat-val" id="al3-online">0</div><div class="al3-stat-foot">متصل در این لحظه</div></div>
-	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">کاربران آفلاین</span><span class="al3-stat-ico" style="color:#3b82f6"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></div><div class="al3-stat-val" id="al3-offline">0</div><div class="al3-stat-foot">غیر متصل</div></div>
-	<div class="al3-glass al3-stat"><div class="al3-stat-top"><span class="al3-stat-lab">مصرف کل ترافیک</span><span class="al3-stat-ico" style="color:#f59e0b"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span></div><div class="al3-stat-val" id="al3-traffic">0 GB</div><div class="al3-track"><i id="al3-traffic-bar"></i></div><div class="al3-stat-foot" id="al3-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
+<div class="al4-stats">
+	<div class="al4-glass al4-stat"><div class="al4-stat-top"><span class="al4-stat-lab">کل کاربران</span><span class="al4-stat-ico" style="color:#7c3aed"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></span></div><div class="al4-stat-val" id="al4-total">0</div><div class="al4-stat-foot">همه کاربران ثبت‌شده</div></div>
+	<div class="al4-glass al4-stat"><div class="al4-stat-top"><span class="al4-stat-lab">کاربران آنلاین</span><span class="al4-stat-ico" style="color:#059669"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 20h.01"/></svg></span></div><div class="al4-stat-val" id="al4-online">0</div><div class="al4-stat-foot">متصل در این لحظه</div></div>
+	<div class="al4-glass al4-stat"><div class="al4-stat-top"><span class="al4-stat-lab">کاربران آفلاین</span><span class="al4-stat-ico" style="color:#3b82f6"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></span></div><div class="al4-stat-val" id="al4-offline">0</div><div class="al4-stat-foot">غیر متصل</div></div>
+	<div class="al4-glass al4-stat"><div class="al4-stat-top"><span class="al4-stat-lab">مصرف کل ترافیک</span><span class="al4-stat-ico" style="color:#f59e0b"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span></div><div class="al4-stat-val" id="al4-traffic">0 GB</div><div class="al4-track"><i id="al4-traffic-bar"></i></div><div class="al4-stat-foot" id="al4-traffic-foot">برای کاربران سهمیه ثبت نشده</div></div>
 </div>
 
-<div class="al3-chips" id="al3-chips">
-	<button type="button" class="al3-chip on" data-f="all">همه کاربران</button>
-	<button type="button" class="al3-chip" data-f="active">✅ فعال</button>
-	<button type="button" class="al3-chip" data-f="online">⚡ آنلاین</button>
-	<button type="button" class="al3-chip" data-f="offline">💤 آفلاین</button>
-	<button type="button" class="al3-chip" data-f="expired">⏳ منقضی‌شده</button>
-	<button type="button" class="al3-chip" data-f="disabled">❌ غیرفعال</button>
+<div class="al4-chips" id="al4-chips">
+	<button type="button" class="al4-chip on" data-f="all">همه کاربران</button>
+	<button type="button" class="al4-chip" data-f="active">✅ فعال</button>
+	<button type="button" class="al4-chip" data-f="online">⚡ آنلاین</button>
+	<button type="button" class="al4-chip" data-f="offline">💤 آفلاین</button>
+	<button type="button" class="al4-chip" data-f="expired">⏳ منقضی‌شده</button>
+	<button type="button" class="al4-chip" data-f="disabled">❌ غیرفعال</button>
 </div>
-<div class="al3-search">
-	<input type="text" class="al3-glass al3-input" id="al3-search" placeholder="جستجوی نام کاربری..." />
-	<select class="al3-glass al3-input" id="al3-sort" style="flex:0 0 130px">
+<div class="al4-search">
+	<button type="button" class="al4-iconbtn" title="فیلتر" onclick="document.getElementById('al4-sort').focus()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
+	<input type="text" class="al4-glass al4-input" id="al4-search" placeholder="جستجوی نام کاربری..." />
+	<select class="al4-glass al4-input" id="al4-sort" style="flex:0 0 130px">
 		<option value="newest">📅 جدیدترین</option>
 		<option value="usage-desc">📊 بیشترین مصرف</option>
 		<option value="name">🔤 الفبا</option>
 	</select>
 </div>
-<div class="al3-listhead"><h3>کاربران <span class="al3-count" id="al3-count">(0)</span></h3></div>
-<div id="al3-list"><div class="al3-empty">در حال بارگذاری کاربران...</div></div>
+
+<div class="al4-head"><span>کاربر</span><span>وضعیت</span><span>مصرف ترافیک</span><span>تاریخ انقضا</span><span>عملیات</span></div>
+<div id="al4-list"><div class="al4-empty">در حال بارگذاری کاربران...</div></div>
+<div class="al4-foot"><span id="al4-range"></span><div class="al4-pg" id="al4-pg"></div></div>
 
 <script>
 (function () {
-	var state = { filter: 'all', q: '', sort: 'newest', last: null };
+	var PER = 10;
+	var state = { filter: 'all', q: '', sort: 'newest', page: 1, last: null };
+	var IC = {
+		copy: '<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/>',
+		edit: '<path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',
+		link: '<path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/>',
+		qr: '<path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM15 15h3v3h-3zM21 21h-3M21 15v3"/>',
+		power: '<path d="M18.4 6.6a9 9 0 11-12.8 0M12 2v10"/>',
+		trash: '<path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/>'
+	};
+	function svg(k) { return '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">' + IC[k] + '</svg>'; }
 	function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 	function gb(n) { return (Number(n) || 0).toFixed(2); }
 	function exceeded(u) { return !!(u.limit_gb && u.used_gb >= u.limit_gb); }
-	function statusOf(u) {
-		if (u.is_active !== 1) return { k: 'disabled', t: 'غیرفعال', c: 'al3-p-dis' };
-		if (exceeded(u)) return { k: 'expired', t: 'منقضی‌شده', c: 'al3-p-exp' };
-		if (u.is_online === 1) return { k: 'online', t: 'آنلاین', c: 'al3-p-on' };
-		return { k: 'offline', t: 'آفلاین', c: 'al3-p-off' };
+	function expiryEnd(u) {
+		if (!u.expiry_days) return null;
+		var start = null;
+		if (u.start_on_first_connect === 1) start = u.first_connection_time ? Number(u.first_connection_time) : null;
+		else if (u.created_at) start = new Date(u.created_at).getTime();
+		if (!start) return null;
+		return start + u.expiry_days * 864e5;
 	}
-	function ring(pct, unlimited) {
-		var col = pct >= 90 ? '#ef4444' : pct >= 70 ? '#f59e0b' : '#06b6d4';
-		var off = (100.53 * (1 - pct / 100)).toFixed(2);
-		return '<div class="al3-ring"><svg width="44" height="44" viewBox="0 0 40 40">' +
-			'<circle cx="20" cy="20" r="16" fill="none" stroke="rgba(148,163,184,.25)" stroke-width="4"/>' +
-			'<circle cx="20" cy="20" r="16" fill="none" stroke="' + (unlimited ? 'rgba(148,163,184,.4)' : col) + '" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="' + (unlimited ? 0 : off) + '" transform="rotate(-90 20 20)"/></svg>' +
-			'<span>' + (unlimited ? '∞' : Math.round(pct) + '%') + '</span></div>';
+	function statusOf(u, now) {
+		var end = expiryEnd(u);
+		var timeOver = end && now > end;
+		if (u.is_active !== 1) return { k: 'disabled', t: 'غیرفعال', c: 'al4-p-dis' };
+		if (exceeded(u) || timeOver) return { k: 'expired', t: 'منقضی‌شده', c: 'al4-p-exp' };
+		if (u.is_online === 1) return { k: 'online', t: 'آنلاین', c: 'al4-p-on' };
+		return { k: 'offline', t: 'آفلاین', c: 'al4-p-off' };
+	}
+	function expiryHtml(u, now) {
+		var end = expiryEnd(u);
+		if (!end) return '<span class="al4-exp" style="color:var(--mut)">بدون انقضا</span>';
+		var d = new Date(end), date = '';
+		try { date = d.toLocaleDateString('fa-IR'); } catch (e) { date = d.toISOString().slice(0, 10); }
+		var left = Math.ceil((end - now) / 864e5);
+		if (left < 0) return '<span class="al4-exp" style="color:var(--bad)">' + date + '<small>منقضی‌شده</small></span>';
+		return '<span class="al4-exp">' + date + '<small style="color:var(--ok)">' + left + ' روز باقی‌مانده</small></span>';
 	}
 	function render() {
+		var now = Date.now();
 		var users = Array.isArray(window.allUsers) ? window.allUsers : [];
-		var active = 0, offline = 0, online = 0, used = 0, limit = 0, hasLimit = false;
+		var online = 0, used = 0, limit = 0, hasLimit = false;
 		users.forEach(function (u) {
-			if (u.is_active === 1 && !exceeded(u)) active++;
-			if (u.is_online === 1) online++; else offline++;
+			if (u.is_online === 1) online++;
 			used += Number(u.used_gb) || 0;
 			if (u.limit_gb) { limit += Number(u.limit_gb) || 0; hasLimit = true; }
 		});
-		document.getElementById('al3-total').textContent = users.length;
-		document.getElementById('al3-online').textContent = online;
-		document.getElementById('al3-offline').textContent = offline;
-		document.getElementById('al3-traffic').textContent = gb(used) + ' GB';
-		var tp = (hasLimit && limit > 0) ? Math.min(100, used / limit * 100) : 0;
-		document.getElementById('al3-traffic-bar').style.width = tp + '%';
-		document.getElementById('al3-traffic-foot').textContent = hasLimit ? (gb(used) + ' از ' + gb(limit) + ' GB سهمیه') : 'برای کاربران سهمیه ثبت نشده';
+		document.getElementById('al4-total').textContent = users.length;
+		document.getElementById('al4-online').textContent = online;
+		document.getElementById('al4-offline').textContent = users.length - online;
+		document.getElementById('al4-traffic').textContent = gb(used) + ' GB';
+		document.getElementById('al4-traffic-bar').style.width = (hasLimit && limit > 0 ? Math.min(100, used / limit * 100) : 0) + '%';
+		document.getElementById('al4-traffic-foot').textContent = hasLimit ? (gb(used) + ' از ' + gb(limit) + ' GB سهمیه') : 'برای کاربران سهمیه ثبت نشده';
 
 		var list = users.filter(function (u) {
-			var s = statusOf(u);
-			if (state.filter === 'active' && !(u.is_active === 1 && !exceeded(u))) return false;
+			var s = statusOf(u, now);
+			if (state.filter === 'active' && !(u.is_active === 1 && s.k !== 'expired')) return false;
 			if (state.filter === 'online' && u.is_online !== 1) return false;
 			if (state.filter === 'offline' && u.is_online === 1) return false;
-			if (state.filter === 'expired' && !exceeded(u)) return false;
+			if (state.filter === 'expired' && s.k !== 'expired') return false;
 			if (state.filter === 'disabled' && s.k !== 'disabled') return false;
 			if (state.q && String(u.username || '').toLowerCase().indexOf(state.q) === -1) return false;
 			return true;
@@ -5525,38 +5552,47 @@ const HTML_TEMPLATES = {
 		else if (state.sort === 'name') list.sort(function (a, b) { return String(a.username).localeCompare(String(b.username)); });
 		else list.sort(function (a, b) { return (b.created_at || 0) - (a.created_at || 0); });
 
-		document.getElementById('al3-count').textContent = '(' + list.length + ')';
-		var box = document.getElementById('al3-list');
-		if (!users.length) { box.innerHTML = '<div class="al3-empty">کاربری وجود ندارد. از دکمه «افزودن کاربر» شروع کنید.</div>'; return; }
-		if (!list.length) { box.innerHTML = '<div class="al3-empty">کاربری با این فیلتر پیدا نشد.</div>'; return; }
-		box.innerHTML = list.slice(0, 50).map(function (u) {
-			var s = statusOf(u), name = String(u.username || '');
+		var pages = Math.max(1, Math.ceil(list.length / PER));
+		if (state.page > pages) state.page = pages;
+		var from = (state.page - 1) * PER, slice = list.slice(from, from + PER);
+		var box = document.getElementById('al4-list');
+		if (!users.length) box.innerHTML = '<div class="al4-empty">کاربری وجود ندارد. از دکمه «افزودن کاربر» شروع کنید.</div>';
+		else if (!list.length) box.innerHTML = '<div class="al4-empty">کاربری با این فیلتر پیدا نشد.</div>';
+		else box.innerHTML = slice.map(function (u) {
+			var s = statusOf(u, now), name = String(u.username || '');
 			var enc = encodeURIComponent(name);
 			var pct = u.limit_gb ? Math.min(100, (u.used_gb || 0) / u.limit_gb * 100) : 0;
 			var use = gb(u.used_gb) + ' / ' + (u.limit_gb ? gb(u.limit_gb) + ' GB' : '∞');
-			var btn = function (label, fn, cls) { return '<button type="button" class="al3-btn ' + (cls || '') + '" data-user="' + enc + '" onclick="' + fn + '(this.dataset.user)">' + label + '</button>'; };
-			return '<div class="al3-glass al3-row">' +
-				'<div class="al3-top"><div class="al3-av">' + esc(name.charAt(0).toUpperCase()) + '</div>' +
-				'<div class="al3-meta"><div class="al3-name">' + esc(name) + '</div><div class="al3-use">' + esc(use) + '</div></div>' +
-				ring(pct, !u.limit_gb) +
-				'<span class="al3-pill ' + s.c + '">' + s.t + '</span></div>' +
-				'<div class="al3-btns">' +
-				btn('ساب', 'copySubLink') + btn('کانفیگ', 'copyConfig') + btn('QR', 'showSubQr') +
-				btn('وضعیت', 'openStatusLink') + btn('ویرایش', 'editUser') +
-				btn(s.k === 'disabled' ? 'فعال‌سازی' : 'غیرفعال‌سازی', 'toggleUserStatus') +
-				btn('ریست', 'resetUserData') + btn('حذف', 'deleteUser', 'al3-del') +
-				'</div></div>';
+			var act = function (k, fn, cls) { return '<button type="button" class="al4-act ' + (cls || '') + '" title="' + fn + '" data-user="' + enc + '" onclick="' + fn + '(this.dataset.user)">' + svg(k) + '</button>'; };
+			return '<div class="al4-glass al4-row">' +
+				'<div class="al4-user"><div class="al4-av">' + esc(name.charAt(0).toUpperCase()) + '</div><div style="min-width:0"><div class="al4-name">' + esc(name) + '</div></div></div>' +
+				'<div><span class="al4-pill ' + s.c + '">' + s.t + '</span></div>' +
+				'<div><div class="al4-use">' + esc(use) + '</div>' + (u.limit_gb ? '<div class="al4-mini"><i style="width:' + pct.toFixed(0) + '%"></i></div>' : '') + '</div>' +
+				'<div>' + expiryHtml(u, now) + '</div>' +
+				'<div class="al4-acts">' + act('copy', 'copySubLink') + act('link', 'copyConfig') + act('qr', 'showSubQr') + act('edit', 'editUser') + act('power', 'toggleUserStatus') + act('trash', 'deleteUser', 'del') + '</div>' +
+				'</div>';
 		}).join('');
+
+		document.getElementById('al4-range').textContent = list.length ? ('نمایش ' + (from + 1) + ' تا ' + Math.min(from + PER, list.length) + ' از ' + list.length + ' کاربر') : '';
+		var pg = document.getElementById('al4-pg');
+		var html = '<button type="button" data-p="' + (state.page - 1) + '"' + (state.page <= 1 ? ' disabled' : '') + '>›</button>';
+		for (var i = 1; i <= pages && i <= 5; i++) html += '<button type="button" data-p="' + i + '" class="' + (i === state.page ? 'on' : '') + '">' + i + '</button>';
+		html += '<button type="button" data-p="' + (state.page + 1) + '"' + (state.page >= pages ? ' disabled' : '') + '>‹</button>';
+		pg.innerHTML = html;
 	}
-	document.querySelectorAll('#al3-chips [data-f]').forEach(function (b) {
+	document.getElementById('al4-pg').addEventListener('click', function (e) {
+		var b = e.target.closest('[data-p]'); if (!b || b.disabled) return;
+		state.page = Number(b.getAttribute('data-p')); render();
+	});
+	document.querySelectorAll('#al4-chips [data-f]').forEach(function (b) {
 		b.addEventListener('click', function () {
-			state.filter = b.getAttribute('data-f');
-			document.querySelectorAll('#al3-chips [data-f]').forEach(function (x) { x.classList.toggle('on', x === b); });
+			state.filter = b.getAttribute('data-f'); state.page = 1;
+			document.querySelectorAll('#al4-chips [data-f]').forEach(function (x) { x.classList.toggle('on', x === b); });
 			render();
 		});
 	});
-	document.getElementById('al3-search').addEventListener('input', function (e) { state.q = (e.target.value || '').toLowerCase().trim(); render(); });
-	document.getElementById('al3-sort').addEventListener('change', function (e) { state.sort = e.target.value; render(); });
+	document.getElementById('al4-search').addEventListener('input', function (e) { state.q = (e.target.value || '').toLowerCase().trim(); state.page = 1; render(); });
+	document.getElementById('al4-sort').addEventListener('change', function (e) { state.sort = e.target.value; state.page = 1; render(); });
 	render();
 	var loading = false;
 	setInterval(function () {
