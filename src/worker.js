@@ -5382,6 +5382,61 @@ const HTML_TEMPLATES = {
 		</div>
 	</header>
 	<main class="max-w-6xl mx-auto px-4 py-8 pb-56 md:pb-32 relative z-10">
+<div class="tpl3d-wrap">
+<style>
+.tpl3d-wrap{margin:0 0 24px;perspective:1200px}
+.tpl3d-card{position:relative;border-radius:22px;padding:22px 20px 20px;background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(17,24,58,.88));border:1px solid rgba(124,58,237,.35);box-shadow:0 30px 60px -20px rgba(59,130,246,.35);transform:rotateX(6deg) rotateY(-4deg);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.tpl3d-card:hover{transform:rotateX(0) rotateY(0)}
+.tpl3d-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 0%,rgba(6,182,212,.25),transparent 55%),radial-gradient(circle at 0% 100%,rgba(124,58,237,.28),transparent 55%);pointer-events:none}
+.tpl3d-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tpl3d-title{font-size:20px;font-weight:900;color:#f8fafc;margin:0;line-height:1.5}
+.tpl3d-sub{font-size:12px;color:#94a3b8;margin:6px 0 0;line-height:1.8}
+.tpl3d-cube{width:96px;height:96px;flex:0 0 auto;animation:tpl3d-float 4s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(6,182,212,.55))}
+@keyframes tpl3d-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.tpl3d-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.tpl3d-feat{border-radius:14px;padding:12px 8px;background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.18);text-align:center;transform:translateZ(18px);transition:transform .35s,border-color .35s}
+.tpl3d-feat:hover{transform:translateZ(30px) translateY(-3px);border-color:rgba(6,182,212,.6)}
+.tpl3d-feat b{display:block;color:#e2e8f0;font-size:12px;font-weight:800;margin-top:8px}
+.tpl3d-feat span{display:block;color:#94a3b8;font-size:10px;margin-top:3px;line-height:1.6}
+.tpl3d-ico{width:34px;height:34px;margin:0 auto;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#06b6d4,#7c3aed);color:#fff;box-shadow:0 8px 16px -6px rgba(6,182,212,.6)}
+.tpl3d-cta{position:relative;margin-top:16px;width:100%;padding:12px;border-radius:14px;border:0;cursor:pointer;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(90deg,#06b6d4,#7c3aed);box-shadow:0 12px 24px -10px rgba(124,58,237,.7);transform:translateZ(24px);transition:filter .2s}
+.tpl3d-cta:hover{filter:brightness(1.12)}
+@media (max-width:480px){.tpl3d-grid{grid-template-columns:1fr}.tpl3d-card{transform:none}}
+</style>
+<div class="tpl3d-card">
+	<div class="tpl3d-top">
+		<div>
+			<h2 class="tpl3d-title">کنترل کامل، در دستان شما</h2>
+			<p class="tpl3d-sub">مدیریت کاربران، تنظیمات و نظارت بر فعالیت‌ها را به سادگی انجام دهید.</p>
+		</div>
+		<svg class="tpl3d-cube" viewBox="0 0 96 96" aria-hidden="true">
+			<polygon points="48,10 84,30 48,50 12,30" fill="#67e8f9" opacity=".95"/>
+			<polygon points="12,30 48,50 48,90 12,70" fill="#4f46e5" opacity=".88"/>
+			<polygon points="84,30 48,50 48,90 84,70" fill="#7c3aed" opacity=".88"/>
+			<polyline points="48,50 48,90" stroke="#e0f2fe" stroke-width="1.5" fill="none" opacity=".7"/>
+		</svg>
+	</div>
+	<div class="tpl3d-grid">
+		<div class="tpl3d-feat">
+			<div class="tpl3d-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
+			<b>مدیریت آسان</b>
+			<span>کاربران و دسترسی‌ها</span>
+		</div>
+		<div class="tpl3d-feat">
+			<div class="tpl3d-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div>
+			<b>گزارش‌های دقیق</b>
+			<span>تحلیل و بررسی عملکرد</span>
+		</div>
+		<div class="tpl3d-feat">
+			<div class="tpl3d-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+			<b>امنیت پیشرفته</b>
+			<span>محافظت از داده‌ها</span>
+		</div>
+	</div>
+	<button type="button" class="tpl3d-cta" onclick="openCreateModal()">ساخت کاربر جدید</button>
+</div>
+</div>
+<div style="display:none" aria-hidden="true">
 <div class="bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-300 dark:border-amoled-border rounded-xl mb-6 shadow-sm flex flex-col overflow-hidden">
 	<button onclick="const w = document.getElementById('stats-accordion-wrapper'); const i = document.getElementById('stats-accordion-icon'); w.classList.toggle('max-h-0'); w.classList.toggle('opacity-0'); w.classList.toggle('max-h-[500px]'); w.classList.toggle('opacity-100'); i.classList.toggle('rotate-180'); localStorage.setItem('zeus_stats_hidden', w.classList.contains('max-h-0'));" class="w-full flex items-center justify-between text-xs font-bold cursor-pointer outline-none focus:outline-none focus:ring-0 [-webkit-tap-highlight-color:transparent] px-4 py-2 hover:bg-gray-100/50 dark:hover:bg-zinc-800/30 transition-all duration-300 relative z-20">
 		<div class="flex items-center gap-2">
@@ -5486,6 +5541,7 @@ const HTML_TEMPLATES = {
 	</div>
 </div>
 </div>
+</div>
 <script>
 	if(localStorage.getItem('zeus_stats_hidden') === 'true') {
 		const w = document.getElementById('stats-accordion-wrapper');
@@ -5497,6 +5553,7 @@ const HTML_TEMPLATES = {
 		if(i) i.classList.add('rotate-180');
 	}
 </script>
+		<div style="display:none" aria-hidden="true">
 		<div id="loading-state" class="text-center py-12">
 			<span class="text-gray-500 dark:text-gray-400">در حال بارگذاری کاربران...</span>
 		</div>
@@ -5650,6 +5707,7 @@ const HTML_TEMPLATES = {
 				<span class="inline-flex items-center justify-center p-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-500 text-indigo-600 dark:text-indigo-400 shadow-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
 				<span>برای ایجاد سریع استفاده کنید.</span>
 			</p>
+		</div>
 		</div>
 	</main>
 <div id="pwa-install-modal" class="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/70 opacity-0 pointer-events-none transition-opacity duration-200 ease-out">
