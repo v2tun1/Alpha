@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check src/worker.js",
+    "check": "node --check src/worker.js && node scripts/verify-template.mjs",
     "sync:source": "node scripts/sync-source.mjs",
     "dev": "wrangler dev",
     "deploy:dry": "wrangler deploy --dry-run",
