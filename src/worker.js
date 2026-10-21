@@ -11725,7 +11725,52 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
         @media(max-width:760px){body.alpha-view-users main{padding:10px 9px 108px!important}body.alpha-view-users #alpha-users-hero{min-height:104px;padding:16px 14px!important;border-radius:19px!important}body.alpha-view-users #alpha-users-hero .hero-icon{width:48px;height:48px;border-radius:15px}body.alpha-view-users #alpha-users-hero .users-add-primary{padding:11px 12px!important;font-size:12px!important}body.alpha-view-users #stats-accordion-wrapper{padding:8px!important}body.alpha-view-users #stats-accordion-wrapper>div{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}body.alpha-view-users #stats-accordion-wrapper>div>div{min-height:118px!important;padding:12px!important;border-radius:15px!important}body.alpha-view-users #alpha-chips{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin}body.alpha-view-users #alpha-chips .al-chip{flex:0 0 auto;padding:9px 13px!important}body.alpha-view-users main>.mb-5.flex{padding:10px!important}body.alpha-view-users #users-table-container table{min-width:900px!important}}
         @media(prefers-reduced-motion:reduce){body.alpha-view-users *,body.alpha-view-users *:before,body.alpha-view-users *:after{animation:none!important;transition:none!important}}
 
-	</style>
+	
+/* ALPHA USERS REBUILD v2.3.2 — actual users view styling; keeps original data/actions */
+body.alpha-view-users { background:#02091d !important; color:#edf6ff !important; }
+body.alpha-view-users main { max-width:1480px !important; padding:14px clamp(10px,2vw,28px) 125px !important; }
+body.alpha-view-users #alpha-dash { display:none !important; }
+body.alpha-view-users #stats-accordion-wrapper { margin:12px 0 18px !important; border:1px solid rgba(0,197,255,.48) !important; border-radius:22px !important; padding:10px !important; background:linear-gradient(145deg,rgba(5,24,57,.96),rgba(2,10,30,.98)) !important; box-shadow:0 0 25px rgba(0,113,255,.12) !important; }
+body.alpha-view-users #stats-accordion-wrapper > div { display:grid !important; grid-template-columns:repeat(4,minmax(0,1fr)) !important; gap:10px !important; }
+body.alpha-view-users #stats-accordion-wrapper > div > div { min-width:0 !important; border:1px solid rgba(34,130,255,.52) !important; border-radius:18px !important; padding:15px !important; background:linear-gradient(145deg,#0a2450,#06132e) !important; box-shadow:inset 0 1px rgba(255,255,255,.04) !important; }
+body.alpha-view-users #stats-accordion-wrapper .text-gray-500, body.alpha-view-users #stats-accordion-wrapper .text-gray-400 { color:#91add9 !important; }
+body.alpha-view-users #stats-accordion-wrapper .text-2xl, body.alpha-view-users #stats-accordion-wrapper .text-lg { color:#eff7ff !important; font-weight:900 !important; }
+body.alpha-view-users main > .mb-5.flex.flex-col { display:flex !important; flex-direction:row !important; align-items:center !important; justify-content:space-between !important; gap:12px !important; padding:12px !important; margin:0 0 18px !important; border-radius:20px !important; border:1px solid rgba(48,128,231,.44) !important; background:linear-gradient(145deg,rgba(5,22,50,.97),rgba(3,13,34,.98)) !important; box-shadow:0 8px 24px rgba(0,0,0,.18) !important; }
+body.alpha-view-users #search-input { min-height:48px !important; border-radius:15px !important; padding:10px 40px 10px 14px !important; color:#f0f8ff !important; background:#061735 !important; border:1px solid rgba(42,133,255,.52) !important; font-size:14px !important; }
+body.alpha-view-users #search-input::placeholder { color:#86a5d0 !important; }
+body.alpha-view-users #filter-status, body.alpha-view-users #sort-users { min-height:46px !important; border-radius:14px !important; padding:8px 12px !important; background:#071a3a !important; color:#dcecff !important; border:1px solid rgba(42,133,255,.48) !important; }
+body.alpha-view-users main > .flex.items-center.justify-between.mb-4 { margin:0 0 12px !important; padding:0 4px !important; align-items:center !important; }
+body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2 { color:#f2f8ff !important; font-size:24px !important; font-weight:900 !important; }
+body.alpha-view-users main > .flex.items-center.justify-between.mb-4 button { transform:none !important; box-shadow:0 0 14px rgba(0,150,255,.12) !important; }
+body.alpha-view-users #users-table-container { max-width:100% !important; border:1px solid rgba(30,135,255,.58) !important; border-radius:22px !important; padding:8px 12px 16px !important; background:linear-gradient(145deg,rgba(4,22,52,.98),rgba(2,11,31,.99)) !important; box-shadow:0 12px 30px rgba(0,0,0,.22),0 0 22px rgba(0,105,255,.08) !important; scrollbar-color:#2367bc #06152e; }
+body.alpha-view-users #users-table-container table { border-spacing:0 7px !important; color:#eaf5ff !important; }
+body.alpha-view-users #users-table-container thead th { background:#071b3d !important; color:#9fc8f7 !important; border-color:rgba(39,132,255,.28) !important; padding:15px 10px !important; }
+body.alpha-view-users #users-table-container tbody td { background:rgba(6,28,61,.9) !important; color:#e8f4ff !important; border-top:1px solid rgba(40,135,255,.32) !important; border-bottom:1px solid rgba(40,135,255,.32) !important; padding:14px 10px !important; }
+body.alpha-view-users #users-table-container tbody tr td:first-child { border-right:1px solid rgba(40,135,255,.32) !important; border-radius:0 13px 13px 0 !important; }
+body.alpha-view-users #users-table-container tbody tr td:last-child { border-left:1px solid rgba(40,135,255,.32) !important; border-radius:13px 0 0 13px !important; }
+body.alpha-view-users #users-table-container tbody tr:hover td { background:rgba(13,52,105,.96) !important; }
+body.alpha-view-users #users-table-container button { border-radius:10px !important; }
+body.alpha-view-users #users-table-container input[type=checkbox] { accent-color:#00d8ff !important; }
+body.alpha-view-users #alpha-bnav { bottom:10px !important; width:min(94%,760px) !important; border-radius:26px !important; background:linear-gradient(110deg,rgba(2,22,54,.97),rgba(23,20,90,.97),rgba(54,13,91,.97)) !important; border:1px solid rgba(28,157,255,.7) !important; box-shadow:0 0 26px rgba(0,108,255,.2),0 12px 34px rgba(0,0,0,.38) !important; backdrop-filter:blur(22px) !important; }
+body.alpha-view-users #alpha-bnav button.active { color:#fff !important; background:linear-gradient(120deg,#00a9ff,#244cff 55%,#a400ff) !important; box-shadow:0 0 18px rgba(65,95,255,.38) !important; border-radius:20px !important; }
+@media(max-width:700px) {
+ body.alpha-view-users main { padding:10px 10px 115px !important; }
+ body.alpha-view-users #stats-accordion-wrapper { padding:8px !important; border-radius:18px !important; }
+ body.alpha-view-users #stats-accordion-wrapper > div { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+ body.alpha-view-users #stats-accordion-wrapper > div > div { min-height:108px !important; padding:11px !important; border-radius:15px !important; }
+ body.alpha-view-users #stats-accordion-wrapper .text-2xl, body.alpha-view-users #stats-accordion-wrapper .text-lg { font-size:21px !important; }
+ body.alpha-view-users main > .mb-5.flex.flex-col { flex-direction:column !important; align-items:stretch !important; padding:10px !important; }
+ body.alpha-view-users main > .mb-5.flex.flex-col > div { width:100% !important; max-width:none !important; flex:1 1 auto !important; }
+ body.alpha-view-users main > .mb-5.flex.flex-col > div:last-child { display:grid !important; grid-template-columns:1fr 1fr !important; }
+ body.alpha-view-users #search-input { min-height:48px !important; font-size:13px !important; }
+ body.alpha-view-users #filter-status, body.alpha-view-users #sort-users { width:100% !important; min-width:0 !important; font-size:12px !important; }
+ body.alpha-view-users main > .flex.items-center.justify-between.mb-4 h2 { font-size:20px !important; }
+ body.alpha-view-users #users-table-container { padding:5px 7px 12px !important; border-radius:17px !important; }
+ body.alpha-view-users #users-table-container table { min-width:920px !important; }
+ body.alpha-view-users #alpha-bnav { bottom:8px !important; width:calc(100% - 22px) !important; }
+ body.alpha-view-users #alpha-bnav button { min-width:0 !important; padding-left:4px !important; padding-right:4px !important; }
+}
+</style>
 	<script>
 	(function () {
 		var root = document.documentElement;
