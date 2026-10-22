@@ -5982,7 +5982,7 @@ const HTML_TEMPLATES = {
 	</div>
 </div>
 	<div id="user-modal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200 ease-out"><style>
-#user-modal{background:rgba(15,23,42,.45)!important;backdrop-filter:blur(10px) saturate(120%);-webkit-backdrop-filter:blur(10px) saturate(120%)}
+#user-modal{z-index:200!important;background:rgba(15,23,42,.45)!important;backdrop-filter:blur(10px) saturate(120%);-webkit-backdrop-filter:blur(10px) saturate(120%)}
 #user-modal-card{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(237,233,254,.66))!important;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.7)!important;border-radius:26px!important;box-shadow:0 34px 70px -24px rgba(91,33,182,.5),inset 0 1px 0 rgba(255,255,255,.8)!important}
 .dark #user-modal-card{background:linear-gradient(150deg,rgba(15,23,42,.84),rgba(30,27,75,.66))!important;border-color:rgba(148,163,184,.25)!important;box-shadow:0 34px 70px -24px rgba(59,130,246,.45),inset 0 1px 0 rgba(255,255,255,.08)!important}
 #user-modal-card>div:first-child{background:transparent!important;border-bottom:1px solid rgba(148,163,184,.25)!important}
@@ -6004,8 +6004,8 @@ const HTML_TEMPLATES = {
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 					</div>
 					<div>
-						<h3 id="modal-title" class="font-black text-gray-900 dark:text-zinc-100 text-sm sm:text-base tracking-tight">ایجاد کاربر جدید</h3>
-						<p class="text-[11px] text-gray-500 dark:text-zinc-400 font-medium">مشخصات، دسترسی‌ها و پروتکل‌های اتصال کاربر</p>
+						<h3 id="modal-title" class="font-black text-gray-900 dark:text-zinc-100 text-sm sm:text-base tracking-tight">ساخت حساب جدید</h3>
+						<p class="text-[11px] text-gray-500 dark:text-zinc-400 font-medium">تنظیم هویت، سقف مصرف و مسیرهای این حساب</p>
 					</div>
 				</div>
 				<button type="button" onclick="toggleModal(false)" class="p-2 rounded-lg bg-transparent border-2 border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 shadow-sm" title="بستن">
@@ -6028,7 +6028,7 @@ const HTML_TEMPLATES = {
 									<div class="text-xs font-black">نام کاربری و مشخصات</div>
 									<div class="text-[10px] opacity-75 font-normal">حجم، زمان، محدودیت و تمدید</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">مشخصات</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">هویت و دسترسی</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-ports-network')" id="tab-btn-ports-network" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
@@ -6038,7 +6038,7 @@ const HTML_TEMPLATES = {
 									<div class="text-xs font-black">پورت‌های اتصال و شبکه</div>
 									<div class="text-[10px] opacity-75 font-normal">پورت‌ها، آی‌پی تمیز و فرگمنت</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">پورت و IP</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">درگاه و آدرس</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-proxy-settings')" id="tab-btn-proxy-settings" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
@@ -6048,14 +6048,14 @@ const HTML_TEMPLATES = {
 									<div class="text-xs font-black">تنظیم پروکسی و کشور</div>
 									<div class="text-[10px] opacity-75 font-normal">آی‌پی ثابت و زنجیره اتصال</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">پروکسی</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">مسیر خروجی</span>
 							</button>
 						</div>
 						
 						<div class="hidden md:flex flex-col gap-2 mt-auto pt-4 border-t border-gray-200 dark:border-amoled-border w-full">
 							<button type="submit" id="submit-btn-desktop" class="w-full py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-sm transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer">
 								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-								<span>ایجاد کاربر</span>
+								<span>ساخت حساب</span>
 							</button>
 							<button type="button" onclick="toggleModal(false)" class="w-full py-2 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs transition shadow-sm">
 								انصراف
@@ -6069,7 +6069,7 @@ const HTML_TEMPLATES = {
 								<div class="flex items-center justify-between">
 									<label class="block text-xs font-black text-gray-700 dark:text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-										<span>پروتکل‌های اتصال (انتخاب حداقل یک مورد الزامی است)</span>
+										<span>کدام پروتکل‌ها روشن باشن؟ حداقل یکی</span>
 									</label>
 								</div>
 								<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -6080,7 +6080,7 @@ const HTML_TEMPLATES = {
 											</div>
 											<div>
 												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل VLESS</span>
-												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">پروتکل سبک و پرسرعت </span>
+												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">سبک و خیلی سریع </span>
 											</div>
 										</div>
 										<input type="checkbox" id="input-proto-vless" checked onchange="handleProtocolChange(this)" class="w-4 h-4 rounded focus:ring-green-500/50 bg-white dark:bg-amoled-input border-gray-300 dark:border-amoled-border cursor-pointer text-green-600" style="filter: none !important; accent-color: #16a34a !important;">
@@ -6092,7 +6092,7 @@ const HTML_TEMPLATES = {
 											</div>
 											<div>
 												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل Trojan</span>
-												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">پروتکل امنیتی پیشرفته </span>
+												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">لایه امنیتی قوی </span>
 											</div>
 										</div>
 										<input type="checkbox" id="input-proto-trojan" onchange="handleProtocolChange(this)" class="w-4 h-4 rounded focus:ring-green-500/50 bg-white dark:bg-amoled-input border-gray-300 dark:border-amoled-border cursor-pointer text-green-600" style="filter: none !important; accent-color: #16a34a !important;">
@@ -6104,7 +6104,7 @@ const HTML_TEMPLATES = {
 											</div>
 											<div>
 												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل Shadowsocks</span>
-												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">پروتکل امن سبک</span>
+												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">ساده و کم‌مصرف</span>
 											</div>
 										</div>
 										<input type="checkbox" id="input-proto-ss" onchange="handleProtocolChange(this)" class="w-4 h-4 rounded focus:ring-green-500/50 bg-white dark:bg-amoled-input border-gray-300 dark:border-amoled-border cursor-pointer text-green-600" style="filter: none !important; accent-color: #16a34a !important;">
@@ -6120,11 +6120,11 @@ const HTML_TEMPLATES = {
 								<div class="flex items-center justify-between">
 									<label class="block text-xs font-black text-gray-700 dark:text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-blue-500"></span>
-										<span>نام کاربری (الزامی)</span>
+										<span>شناسه ورود</span>
 									</label>
 									<button type="button" onclick="generateRandomUsername()" class="px-2.5 py-1 bg-transparent border-2 border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md text-[11px] font-bold transition flex items-center gap-1">
 										<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-										<span>نام تصادفی</span>
+										<span>قرعه‌کشی نام</span>
 									</button>
 								</div>
 								<div class="relative">
@@ -6139,11 +6139,11 @@ const HTML_TEMPLATES = {
 								<div class="space-y-3">
 									<h4 class="text-xs font-black text-gray-700 dark:text-zinc-300 flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-										<span>اعتبار حجمی و زمانی</span>
+										<span>سقف حجم و تاریخ انقضا</span>
 									</h4>
 									<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 										<div>
-											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">حجم مجاز (گیگابایت)</label>
+											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">سهم داده (GB)</label>
 											<div class="relative">
 												<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
 													<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
@@ -6151,7 +6151,7 @@ const HTML_TEMPLATES = {
 												<input type="number" id="input-limit" step="0.1" min="0" placeholder="نامحدود" class="w-full pl-3 pr-9 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-semibold text-gray-800 dark:text-zinc-100 placeholder-gray-400 transition shadow-sm">
 											</div>
 											<div class="flex items-center gap-1 mt-1.5 flex-wrap">
-												<span class="text-[9px] text-gray-400 dark:text-zinc-500 font-bold ml-1">انتخاب سریع:</span>
+												<span class="text-[9px] text-gray-400 dark:text-zinc-500 font-bold ml-1">میانبر:</span>
 												<button type="button" onclick="setQuickVol(10)" class="px-2 py-0.5 rounded bg-transparent border border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-[10px] font-bold transition cursor-pointer">۱۰ گیگ</button>
 												<button type="button" onclick="setQuickVol(50)" class="px-2 py-0.5 rounded bg-transparent border border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-[10px] font-bold transition cursor-pointer">۵۰ گیگ</button>
 												<button type="button" onclick="setQuickVol(100)" class="px-2 py-0.5 rounded bg-transparent border border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-[10px] font-bold transition cursor-pointer">۱۰۰ گیگ</button>
@@ -6159,7 +6159,7 @@ const HTML_TEMPLATES = {
 											</div>
 										</div>
 										<div>
-											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">مدت زمان اعتبار (روز)</label>
+											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">طول عمر حساب (روز)</label>
 											<div class="relative">
 												<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
 													<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -6167,7 +6167,7 @@ const HTML_TEMPLATES = {
 												<input type="number" id="input-expiry" min="1" placeholder="نامحدود" class="w-full pl-3 pr-9 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-semibold text-gray-800 dark:text-zinc-100 placeholder-gray-400 transition shadow-sm">
 											</div>
 											<div class="flex items-center gap-1 mt-1.5 flex-wrap">
-												<span class="text-[9px] text-gray-400 dark:text-zinc-500 font-bold ml-1">انتخاب سریع:</span>
+												<span class="text-[9px] text-gray-400 dark:text-zinc-500 font-bold ml-1">میانبر:</span>
 												<button type="button" onclick="setQuickExp(30)" class="px-2 py-0.5 rounded bg-transparent border border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-[10px] font-bold transition cursor-pointer">۱ ماه</button>
 												<button type="button" onclick="setQuickExp(60)" class="px-2 py-0.5 rounded bg-transparent border border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-[10px] font-bold transition cursor-pointer">۲ ماه</button>
 												<button type="button" onclick="setQuickExp(90)" class="px-2 py-0.5 rounded bg-transparent border border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-[10px] font-bold transition cursor-pointer">۳ ماه</button>
@@ -6192,11 +6192,11 @@ const HTML_TEMPLATES = {
 								<div class="space-y-3">
 									<h4 class="text-xs font-black text-gray-700 dark:text-zinc-300 flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-purple-500"></span>
-										<span>محدودیت‌های اتصال و امنیت</span>
+										<span>قفل‌های ورود</span>
 									</h4>
 									<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 										<div>
-											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">تعداد درخواست (ریکوئست)</label>
+											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">سقف درخواست</label>
 											<div class="relative">
 												<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
 													<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -6206,7 +6206,7 @@ const HTML_TEMPLATES = {
 										</div>
 										<div>
 											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1 flex items-center gap-1.5">
-												<span>محدودیت کاربر</span>
+												<span>تعداد اتصال همزمان</span>
 												<button type="button" onclick="openOnlineCounterWarning();" class="text-red-500 hover:text-red-400 cursor-pointer inline-flex items-center animate-sym-bounce hover:animate-none transition-transform hover:scale-125" title="هشدار مهم">
 													<svg class="w-4 h-4 drop-shadow-[0_0_6px_rgba(239,68,68,0.9)] dark:drop-shadow-[0_0_8px_rgba(248,113,113,1)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
 												</button>
@@ -6219,7 +6219,7 @@ const HTML_TEMPLATES = {
 											</div>
 										</div>
 										<div>
-											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">فینگرپرینت TLS</label>
+											<label class="block text-[11px] font-bold text-gray-500 dark:text-zinc-400 mb-1">اثرانگشت TLS</label>
 											<div class="relative">
 												<select id="fingerprint-select" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-semibold text-gray-700 dark:text-zinc-300 cursor-pointer appearance-none shadow-sm">
 													<option value="chrome">🌐 Chrome</option>
@@ -6248,8 +6248,8 @@ const HTML_TEMPLATES = {
 									<div class="flex items-center gap-2">
 										<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
 										<div>
-											<span class="text-xs font-black text-gray-800 dark:text-zinc-200">تمدید خودکار ترافیک</span>
-											<span class="text-[10px] text-gray-400 block font-normal">ریست اتوماتیک در ساعت ۳:۳۰ بامداد</span>
+											<span class="text-xs font-black text-gray-800 dark:text-zinc-200">شارژ خودکار حجم</span>
+											<span class="text-[10px] text-gray-400 block font-normal">بازنشانی شبانه ساعت ۳:۳۰</span>
 										</div>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer select-none">
@@ -6259,11 +6259,11 @@ const HTML_TEMPLATES = {
 								</div>
 								<div id="auto-reset-inputs-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-200/60 dark:border-amoled-border opacity-50 pointer-events-none transition-all duration-200">
 									<div>
-										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">دوره تمدید حجم (روز)</label>
+										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">شارژ حجم هر چند روز؟</label>
 										<input type="number" id="input-auto-reset-vol" min="1" placeholder="خالی = بدون تمدید" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-mono text-center text-gray-800 dark:text-zinc-100 transition" dir="ltr" disabled>
 									</div>
 									<div>
-										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">دوره تمدید ریکوئست (روز)</label>
+										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">شارژ درخواست هر چند روز؟</label>
 										<input type="number" id="input-auto-reset-req" min="1" placeholder="خالی = بدون تمدید" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-mono text-center text-gray-800 dark:text-zinc-100 transition" dir="ltr" disabled>
 									</div>
 								</div>
@@ -6274,7 +6274,7 @@ const HTML_TEMPLATES = {
 									<div class="flex items-center justify-between p-3.5 bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-200/70 dark:border-amoled-border rounded-xl">
 										<div class="flex items-center gap-2">
 											<span class="text-base">🔞</span>
-											<span class="text-xs font-bold text-gray-700 dark:text-zinc-300">مسدودسازی سایت‌های غیراخلاقی</span>
+											<span class="text-xs font-bold text-gray-700 dark:text-zinc-300">فیلتر محتوای بزرگسال</span>
 										</div>
 										<label class="relative inline-flex items-center cursor-pointer select-none">
 											<input type="checkbox" id="input-block-porn" class="sr-only peer">
@@ -6284,7 +6284,7 @@ const HTML_TEMPLATES = {
 									<div class="flex items-center justify-between p-3.5 bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-200/70 dark:border-amoled-border rounded-xl">
 										<div class="flex items-center gap-2">
 											<span class="text-base">🚫</span>
-											<span class="text-xs font-bold text-gray-700 dark:text-zinc-300">مسدودسازی تبلیغات اینترنتی</span>
+											<span class="text-xs font-bold text-gray-700 dark:text-zinc-300">حذف تبلیغات</span>
 										</div>
 										<label class="relative inline-flex items-center cursor-pointer select-none">
 											<input type="checkbox" id="input-block-ads" class="sr-only peer">
@@ -6303,20 +6303,20 @@ const HTML_TEMPLATES = {
 							<div class="p-4 bg-gray-50/70 dark:bg-amoled-input/30 border border-gray-200/70 dark:border-amoled-border rounded-xl space-y-3">
 								<h4 class="text-xs font-black text-gray-700 dark:text-zinc-300 flex items-center gap-1.5">
 									<span class="w-2 h-2 rounded-full bg-blue-500"></span>
-									<span>پورت‌های اتصال VLESS</span>
+									<span>درگاه‌های VLESS</span>
 								</h4>
 								<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 									<div class="p-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg flex flex-col">
 										<div class="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-gray-100 dark:border-amoled-border">
 											<span class="w-2 h-2 rounded-full bg-blue-500"></span>
-											<span class="text-[11px] font-bold text-blue-600 dark:text-blue-400">TLS PORT (رمزنگاری شده)</span>
+											<span class="text-[11px] font-bold text-blue-600 dark:text-blue-400">درگاه‌های امن (TLS)</span>
 										</div>
 										<div class="grid grid-cols-3 gap-1.5 flex-1 content-start" id="tls-ports-list"></div>
 									</div>
 									<div class="p-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg flex flex-col">
 										<div class="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-gray-100 dark:border-amoled-border">
 											<span class="w-2 h-2 rounded-full bg-amber-500"></span>
-											<span class="text-[11px] font-bold text-amber-600 dark:text-amber-400">Non-TLS PORT (بدون رمزنگاری)</span>
+											<span class="text-[11px] font-bold text-amber-600 dark:text-amber-400">درگاه‌های ساده (بدون TLS)</span>
 										</div>
 										<div class="grid grid-cols-3 gap-1.5 flex-1 content-start" id="nontls-ports-list"></div>
 									</div>
@@ -6324,7 +6324,7 @@ const HTML_TEMPLATES = {
 								<div class="p-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg space-y-1.5">
 									<label class="block text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-										<span>پورت‌های دلخواه و سفارشی (با فاصله جدا کنید)</span>
+										<span>درگاه دلخواه (با فاصله)</span>
 									</label>
 									<input type="text" id="input-custom-ports" placeholder="مثال: 8080 2096 8443 5000" dir="ltr" class="w-full px-3 py-2 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-mono text-gray-800 dark:text-zinc-100 transition shadow-sm">
 								</div>
@@ -6334,12 +6334,12 @@ const HTML_TEMPLATES = {
 								<div class="flex items-center justify-between flex-wrap gap-2">
 									<h4 class="text-xs font-black text-gray-700 dark:text-zinc-300 flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-sky-500"></span>
-										<span>آی‌پی‌های تمیز کلودفلر (Clean IPs)</span>
+										<span>آی‌پی‌های سالم کلودفلر</span>
 									</h4>
 									<div class="flex items-center gap-1.5">
 										<button type="button" onclick="openIpSelectorModal()" class="px-2.5 py-1 bg-transparent border-2 border-amber-500 text-amber-600 dark:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-md text-[11px] font-bold transition flex items-center gap-1 shadow-sm">
 											<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-										<span>مخزن آی‌پی</span>
+										<span>انبار آی‌پی</span>
 										</button>
 									</div>
 								</div>
@@ -6368,7 +6368,7 @@ const HTML_TEMPLATES = {
 										</div>
 										<div>
 											<span class="text-xs font-black text-gray-900 dark:text-zinc-100 flex items-center gap-1.5">
-												<span>فرگمنت ضد فیلترینگ</span>
+												<span>شکستن بسته‌ها (فرگمنت)</span>
 											</span>
 											<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal mt-0.5">تجزیه پکت‌های اتصال برای عبور تضمینی</span>
 										</div>
@@ -6385,15 +6385,15 @@ const HTML_TEMPLATES = {
 									<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2.5 border-t border-blue-100 dark:border-amoled-border transition-all duration-200">
 										<div>
 											<label class="block text-[10px] font-bold text-gray-600 dark:text-zinc-300 mb-1 flex items-center justify-between">
-												<span>طول فرگمنت (Length)</span>
+												<span>اندازه تکه‌ها</span>
 												<span class="text-[9px] text-gray-400">بایت‌های تقسیم پکت</span>
 											</label>
 											<input type="text" id="input-frag-len" value="200-3000" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-mono text-center text-gray-800 dark:text-zinc-100 transition shadow-sm" dir="ltr" placeholder="مثال: 10-30 یا 200-3000">
 										</div>
 										<div>
 											<label class="block text-[10px] font-bold text-gray-600 dark:text-zinc-300 mb-1 flex items-center justify-between">
-												<span>بازه فرگمنت (Interval ms)</span>
-												<span class="text-[9px] text-gray-400">تاخیر میلی‌ثانیه</span>
+												<span>فاصله ارسال (ms)</span>
+												<span class="text-[9px] text-gray-400">تأخیر (ms)</span>
 											</label>
 											<input type="text" id="input-frag-int" value="1-2" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-amoled-border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-xs font-mono text-center text-gray-800 dark:text-zinc-100 transition shadow-sm" dir="ltr" placeholder="مثال: 1-2 یا 2-5">
 										</div>
@@ -6462,7 +6462,7 @@ const HTML_TEMPLATES = {
 								<div class="flex items-center justify-between p-3.5 bg-purple-50/60 dark:bg-amoled-input/30 cursor-pointer" onclick="document.getElementById('input-advanced-settings-toggle').click()">
 									<div class="flex items-center gap-2">
 										<svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-										<span class="text-xs font-black text-purple-900 dark:text-purple-300">تنظیمات پیشرفته بهینه سازی</span>
+										<span class="text-xs font-black text-purple-900 dark:text-purple-300">تنظیمات حرفه‌ای</span>
 										<span onclick="event.stopPropagation(); togglePattNgModal(true)" class="mr-2 px-1.5 py-0.5 bg-green-600/10 dark:bg-[#33FB1F]/10 text-green-700 dark:text-[#33FB1F] border border-green-600/30 dark:border-[#33FB1F]/30 rounded text-[10px] hover:bg-green-600/20 dark:hover:bg-[#33FB1F]/20 transition-colors shadow-sm dark:shadow-[0_0_8px_rgba(51,251,31,0.3)] animate-pulse cursor-pointer">مهم🚨</span>
 									</div>
 									<div class="flex items-center gap-2" onclick="event.stopPropagation()">
@@ -6475,15 +6475,15 @@ const HTML_TEMPLATES = {
 								</div>
 								<div id="advanced-settings-container" class="hidden opacity-50 pointer-events-none transition-opacity duration-300 p-4 border-t border-purple-100 dark:border-amoled-border space-y-3 bg-white dark:bg-slate-900">
 									<div>
-										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">Advanced Fragment (fm JSON)</label>
+										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">فرگمنت سفارشی (JSON)</label>
 										<input type="text" id="input-advanced-frag" placeholder="{&quot;tcp&quot;: [{&quot;type&quot;: &quot;fragment&quot;..." dir="ltr" class="w-full px-3 py-2 bg-gray-50 dark:bg-amoled-input border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-500 text-[10px] font-mono text-gray-800 dark:text-zinc-100 placeholder-gray-400">
 									</div>
 									<div>
-										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">Cipher Suites (cs)</label>
+										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">مجموعه رمزها</label>
 										<input type="text" id="input-cipher-suites" placeholder="TLS_AES_256_GCM_SHA384..." dir="ltr" class="w-full px-3 py-2 bg-gray-50 dark:bg-amoled-input border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-500 text-[10px] font-mono text-gray-800 dark:text-zinc-100 placeholder-gray-400">
 									</div>
 									<div>
-										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">TLS Mask (Custom SNI / Host)</label>
+										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">ماسک SNI</label>
 										<input type="text" id="input-tls-mask" placeholder="www.speedtest.net" dir="ltr" class="w-full px-3 py-2 bg-gray-50 dark:bg-amoled-input border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-500 text-[10px] font-mono text-gray-800 dark:text-zinc-100 placeholder-gray-400">
 									</div>
 									<button type="button" onclick="fillPatternihaValues()" class="w-full py-2 bg-transparent border-2 border-purple-500 text-purple-600 dark:text-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 mt-1 shadow-sm">
@@ -6529,7 +6529,7 @@ const HTML_TEMPLATES = {
 								<div class="flex items-center justify-between p-3 bg-blue-100/50 dark:bg-blue-900/40 border-b border-blue-200 dark:border-blue-800/50">
 									<div class="flex items-center gap-2">
 										<span class="text-lg drop-shadow-sm">🌐</span>
-										<span class="text-[11px] font-black text-blue-900 dark:text-blue-300">اتصال مستقیم (بدون پروکسی خروجی)</span>
+										<span class="text-[11px] font-black text-blue-900 dark:text-blue-300">خروج مستقیم بدون پروکسی</span>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer select-none">
 										<input type="checkbox" id="input-enable-direct" checked class="sr-only peer">
@@ -6564,23 +6564,23 @@ const HTML_TEMPLATES = {
 									<div id="proxies-fields-wrapper" class="flex flex-col gap-2 w-full"></div>
 									<button type="button" id="add-proxy-field-btn" onclick="addProxyFieldUI()" class="w-full py-2.5 bg-transparent border-2 border-emerald-500 text-emerald-600 dark:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg text-xs font-black transition flex items-center justify-center gap-1.5 shadow-sm">
 										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-										<span>افزودن کشور / پروکسی جدید</span>
+										<span>ثبت مسیر جدید</span>
 									</button>
 									<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 										<button type="button" onclick="testUserSocksProxy()" id="test-user-proxy-btn" class="w-full py-2.5 bg-transparent border-2 border-sky-500 text-sky-600 dark:text-sky-500 hover:bg-sky-50 dark:hover:bg-sky-900/20 rounded-lg text-xs font-bold transition shadow-sm flex items-center justify-center gap-1">
 											<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-											<span>تست پروکسی‌ها</span>
+											<span>بررسی سلامت مسیرها</span>
 										</button>
 										<button type="button" onclick="openProxySelectorModal()" class="w-full py-2.5 bg-transparent border-2 border-amber-500 text-amber-600 dark:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-lg text-xs font-bold transition shadow-sm flex items-center justify-center gap-1">
 											<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-											<span>مخزن پروکسی‌های VIP</span>
+											<span>انبار VIP</span>
 										</button>
 									</div>
 									<div class="flex items-center justify-between p-3.5 bg-emerald-50/80 dark:bg-amoled-input/30 border border-emerald-500/40 dark:border-amoled-border rounded-xl shadow-sm">
 										<div class="flex items-center gap-2">
 											<svg class="w-4 h-4 text-emerald-600 dark:text-emerald-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
 											<div>
-												<span class="text-xs font-black text-emerald-800 dark:text-emerald-400">تعویض خودکار پروکسی خروجی خراب</span>
+												<span class="text-xs font-black text-emerald-800 dark:text-emerald-400">جایگزینی خودکار مسیر خراب</span>
 												<span class="text-[10px] text-emerald-600 dark:text-emerald-500 block font-medium">جایگزینی هوشمند در صورت قطع شدن پروکسی</span>
 											</div>
 										</div>
@@ -6595,11 +6595,11 @@ const HTML_TEMPLATES = {
 							<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
 								<button type="button" onclick="toggleDonateModal(true)" class="py-2.5 px-3 bg-transparent border-2 border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
 									<svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 9.24 3 10.91 3.81 12 5.08 13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-									<span>اهدای پروکسی شخصی به مخزن</span>
+									<span>اهدای مسیر به انبار</span>
 								</button>
 								<button type="button" onclick="copyRelayManagerCommand(this)" class="py-2.5 px-3 bg-transparent border-2 border-blue-500 text-blue-600 dark:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
 									<svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-									<span>کپی دستور ساخت پروکسی ریلی</span>
+									<span>کپی کد ساخت مسیر</span>
 								</button>
 							</div>
 						</div>
@@ -6612,7 +6612,7 @@ const HTML_TEMPLATES = {
 					<div class="flex items-center gap-2">
 						<button type="submit" id="submit-btn" class="px-7 py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-xs sm:text-sm transition shadow-lg flex items-center gap-1.5 cursor-pointer">
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-							<span>ایجاد کاربر</span>
+							<span>ساخت حساب</span>
 						</button>
 					</div>
 				</div>
@@ -6628,7 +6628,7 @@ const HTML_TEMPLATES = {
 					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
 				</div>
 				<div>
-					<h3 class="font-black text-gray-900 dark:text-zinc-100 text-sm tracking-tight">مخزن آی‌پی تمیز</h3>
+					<h3 class="font-black text-gray-900 dark:text-zinc-100 text-sm tracking-tight">انبار آی‌پی تمیز</h3>
 				</div>
 			</div>
 			<button type="button" onclick="toggleIpSelectorModal(false)" class="p-2 rounded-lg bg-transparent border-2 border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 shadow-sm" title="بستن">
@@ -6658,7 +6658,7 @@ const HTML_TEMPLATES = {
 				</div>
 			</div>
 			<div class="pt-2 flex gap-3">
-				<button type="button" onclick="toggleIpSelectorModal(false)" class="flex-1 py-2.5 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs sm:text-sm transition shadow-sm">لغو</button>
+				<button type="button" onclick="toggleIpSelectorModal(false)" class="flex-1 py-2.5 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs sm:text-sm transition shadow-sm">انصراف</button>
 				<button type="button" onclick="applySelectedIps()" class="flex-1 py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-xs sm:text-sm transition shadow-lg">دریافت</button>
 			</div>
 		</div>
@@ -6749,7 +6749,7 @@ const HTML_TEMPLATES = {
 				</div>
 			</div>
 			<div class="pt-2 flex gap-3">
-				<button type="button" onclick="toggleDonateModal(false)" class="flex-1 py-2.5 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs sm:text-sm transition shadow-sm">لغو</button>
+				<button type="button" onclick="toggleDonateModal(false)" class="flex-1 py-2.5 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs sm:text-sm transition shadow-sm">انصراف</button>
 				<button type="button" id="donate-submit-btn" onclick="testAndDonateProxy()" class="flex-1 py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-xs sm:text-sm transition shadow-lg">تست و اهدا</button>
 			</div>
 		</div>
@@ -7423,7 +7423,7 @@ ${COMMON_TOAST_HTML}
 			if (!show) {
 				isEditMode = false;
 				editingUsername = '';
-				document.getElementById('modal-title').innerText = 'ایجاد کاربر جدید';
+				document.getElementById('modal-title').innerText = 'ساخت حساب جدید';
 				updateSubmitBtnState('ایجاد کاربر');
 				document.getElementById('input-name').disabled = false;
 				document.getElementById('create-user-form').reset();
@@ -7879,7 +7879,7 @@ async function executeRocketCreate() {
 		function openCreateModal() {
 			isEditMode = false;
 			editingUsername = '';
-			document.getElementById('modal-title').innerText = 'ایجاد کاربر جدید';
+			document.getElementById('modal-title').innerText = 'ساخت حساب جدید';
 			updateSubmitBtnState('ایجاد کاربر');
 			document.getElementById('input-name').disabled = false;
 			document.getElementById('create-user-form').reset();
