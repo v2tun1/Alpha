@@ -6898,6 +6898,29 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 			</form>
 		</div>
 	</div>
+<style id="alpha-reference-live-override">
+/* Final late cascade: loaded after the actual create-config card, so it cannot be masked by template styles. */
+#user-modal-card{background:linear-gradient(155deg,#07184e,#06113d 52%,#10063f)!important;border:1px solid #2858d9!important;color:#f5f8ff!important;border-radius:25px!important}
+#user-modal-card>div:first-child{background:linear-gradient(120deg,#071548,#102c82 58%,#42116e)!important;border-bottom:1px solid #2875ff!important}
+#user-modal-card>div:first-child h3{color:#fff!important}#user-modal-card>div:first-child p{color:#b5c8ff!important}
+#user-modal-card .user-modal-tab-btn{background:linear-gradient(180deg,#142e86,#071553)!important;border:1px solid #1f61e8!important;color:#d8e7ff!important;border-radius:19px!important;box-shadow:0 5px 0 #030a2d,0 0 18px #1d55ff26!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,#f214ff,#ff3eaa 46%,#ffcb38)!important;border-color:#ffc6ff!important;color:#fff!important;box-shadow:0 5px 0 #8b1c86,0 0 22px #f72bce88!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,#0d2675,#071850)!important;border:1px solid #1648bd!important;border-radius:22px!important;color:#f5f8ff!important;box-shadow:0 14px 30px #020a2d99,inset 0 1px 0 #ffffff10!important}
+#user-modal-card .user-tab-panel>div>div:first-child label,#user-modal-card .user-tab-panel>div>div:first-child span{color:#f5f8ff!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:linear-gradient(180deg,#08194d,#071337)!important;border:1px solid #3470e8!important;color:#dcecff!important;border-radius:15px!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:#7793c9!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:linear-gradient(145deg,#081537,#06112b)!important;border:1px solid #3c5fe7!important;color:#dcecff!important;border-radius:18px!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,#eef9ff,#c9e9ff)!important;border:2px solid #65d8ff!important;color:#10213e!important;box-shadow:0 0 0 2px #ff4bdf88,0 0 24px #55c8ff66!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#10213e!important}
+#user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:#91a9d2!important}
+#user-modal-card .user-tab-panel .bg-gray-50\/70{background:#07143e!important}
+#user-modal-card .user-tab-panel .bg-amber-50\/80{background:#38251a!important;border-color:#a66b21!important;color:#ffc55d!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(100deg,#ff0cff,#9f18ff 45%,#00d5ff)!important;color:#fff!important;border-radius:16px!important;box-shadow:0 5px 0 #69127d,0 0 24px #bd21ff66!important}
+#user-modal-card form>div:last-child{background:#050d2e!important;border-top:1px solid #2445a9!important}
+#user-modal-card form>div:last-child button[onclick*="toggleModal"]{border-color:#ff38a8!important;color:#ff7bc7!important;background:#160b37!important}
+@media(max-width:640px){#user-modal-card .user-modal-tab-btn{min-height:68px!important;padding:10px 6px!important}#user-modal-card .user-tab-panel>div{padding:14px!important}}
+</style>
 <div id="ip-selector-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-out">
 	<div class="w-full max-w-sm bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-all transform duration-300 opacity-0 scale-95 ease-out flex flex-col">
 		
