@@ -4438,8 +4438,8 @@ function alphaNotify(message,type){
  const raw=String(message??"").replace(/^[\s]*(✅|❌|⚠️|⚠|❗|ℹ️|🚀|⏳)\s*/,"");
  const kind=type||(/خطا|ناموفق|الزام|نیست|معتبر|منفی|یافت نشد|قطع|failed|error/i.test(raw)?"error":/موفق|انجام شد|ساخته شد|ذخیره شد|کپی شد|فعال شد|success/i.test(raw)?"success":"info");
  const n=document.createElement("div");n.className="alpha-notice";n.dataset.kind=kind;
- const mark=kind==="success"?"✓":kind==="error"?"!":"i";n.innerHTML="<span class=\"alpha-notice__mark\">"+mark+"</span><span>"+raw.replace(/[<>]/g,"")+"</span><button class=\"alpha-notice__close\" type=\"button\" aria-label=\"بستن\">×</button>";
- n.querySelector("button").onclick=()=>n.remove();rail.appendChild(n);while(rail.children.length>3)rail.firstElementChild.remove();setTimeout(()=>{n.style.opacity="0";n.style.transform="translateY(-6px)";setTimeout(()=>n.remove(),180)},4200);
+ const mark=kind==="success"?"✓":kind==="error"?"!":"i";const mk=document.createElement('span');mk.className='alpha-notice__mark';mk.textContent=mark;const tx=document.createElement('span');tx.textContent=raw.replace(/[<>]/g,'');const cb=document.createElement('button');cb.className='alpha-notice__close';cb.type='button';cb.setAttribute('aria-label','بستن');cb.textContent='×';n.append(mk,tx,cb);
+ cb.onclick=()=>n.remove();rail.appendChild(n);while(rail.children.length>3)rail.firstElementChild.remove();setTimeout(()=>{n.style.opacity="0";n.style.transform="translateY(-6px)";setTimeout(()=>n.remove(),180)},4200);
 }
 </script>`;
 function alphaNotify(message, type) {
@@ -12562,6 +12562,77 @@ html:not(.dark) #user-modal-card .user-tab-panel .bg-gray-50\/70,html:not(.dark)
 html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
 html:not(.dark) #user-modal-card #submit-btn,html:not(.dark) #user-modal-card #submit-btn-desktop{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand,#5146e5) 60%,#000)!important}
 </style>
+<style id="alpha-theme-mode-lock">
+/* Theme mode is explicit, so no legacy dark utility can leak blue/white styles into light mode. */
+html.alpha-light-mode{--am-bg:#f4f7fb;--am-surface:#fff;--am-card:#f8fbff;--am-ink:#17233b;--am-muted:#5d6d86;--am-line:#cbd8e8}
+html.alpha-dark-mode{--am-bg:#070b18;--am-surface:#0d1428;--am-card:#121d3a;--am-ink:#edf4ff;--am-muted:#a7b5d4;--am-line:#26365d}
+html.alpha-light-mode body.alpha-view-users,html.alpha-light-mode body.alpha-view-dash{background:var(--am-bg)!important;color:var(--am-ink)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-users-hero{background:linear-gradient(115deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper,html.alpha-light-mode body.alpha-view-users main>.mb-5.flex.flex-col,html.alpha-light-mode body.alpha-view-users #users-table-container{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper *,html.alpha-light-mode body.alpha-view-users #users-table-container *{color:var(--am-ink)!important}
+html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper .text-gray-400,html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper .text-gray-500,html.alpha-light-mode body.alpha-view-users #users-table-container .text-gray-400,html.alpha-light-mode body.alpha-view-users #users-table-container .text-gray-500{color:var(--am-muted)!important}
+html.alpha-light-mode body.alpha-view-users #search-input,html.alpha-light-mode body.alpha-view-users #filter-status,html.alpha-light-mode body.alpha-view-users #sort-users{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav{background:var(--am-surface)!important;border-color:var(--am-line)!important}html.alpha-light-mode body.alpha-view-users #alpha-bnav button{color:var(--am-muted)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav button.active{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode #user-modal-card{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card>div:first-child{background:linear-gradient(115deg,color-mix(in srgb,var(--alpha-brand,#5146e5) 12%,var(--am-surface)),var(--am-surface))!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card>div:first-child h3,html.alpha-light-mode #user-modal-card>div:first-child p{color:var(--am-ink)!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn{background:var(--am-card)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div{background:var(--am-card)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div *{color:var(--am-ink)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div .text-gray-400,html.alpha-light-mode #user-modal-card .user-tab-panel>div .text-gray-500{color:var(--am-muted)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel input:not([type=checkbox]),html.alpha-light-mode #user-modal-card .user-tab-panel select,html.alpha-light-mode #user-modal-card .user-tab-panel textarea{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked),html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#14233d!important}
+html.alpha-light-mode #user-modal-card form>div:last-child{background:var(--am-surface)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card #submit-btn,html.alpha-light-mode #user-modal-card #submit-btn-desktop{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+</style><style id="alpha-full-light-reset">
+html.alpha-light-mode #user-modal-card *:not(svg):not(svg *):not(path):not(.user-modal-tab-btn.active):not(.user-modal-tab-btn.active *):not(#submit-btn):not(#submit-btn-desktop):not([data-on="true"]):not([aria-pressed="true"]),
+html.alpha-light-mode body.alpha-view-users main *:not(svg):not(svg *):not(path):not(.users-add-primary):not(.users-add-primary *):not(.al-chip.on):not(.al-chip.on *):not(#alpha-bnav button.active):not(#alpha-bnav button.active *):not(#alpha-users-hero):not(#alpha-users-hero *):not(.hero-icon):not([data-on="true"]),
+html.alpha-light-mode body.alpha-view-dash main *:not(svg):not(svg *):not(path):not(.al-live):not(.al-live *):not(.al-status-pill):not(.al-status-pill *){background-color:transparent!important;background-image:none!important;color:var(--am-ink)!important;border-color:var(--am-line)!important;box-shadow:none!important}
+html.alpha-light-mode #user-modal-card>div:first-child,html.alpha-light-mode #user-modal-card form>div:last-child,html.alpha-light-mode #user-modal-card{background-color:var(--am-surface)!important;background-image:none!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div,html.alpha-light-mode #user-modal-card .user-tab-panel>div>div,html.alpha-light-mode #user-modal-card .user-tab-panel label{background-color:var(--am-card)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel input:not([type=checkbox]),html.alpha-light-mode #user-modal-card .user-tab-panel select,html.alpha-light-mode #user-modal-card .user-tab-panel textarea{background-color:var(--am-surface)!important;color:var(--am-ink)!important;border:1px solid var(--am-line)!important}
+html.alpha-light-mode #user-modal-card input::placeholder,html.alpha-light-mode #user-modal-card textarea::placeholder{color:var(--am-muted)!important;opacity:1!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background-color:#e6f6ff!important;border:2px solid var(--alpha-brand2,#0ea5e9)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#13233f!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn{background-color:var(--am-card)!important;color:var(--am-ink)!important;border:1px solid var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn.active{background-image:linear-gradient(135deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+html.alpha-light-mode #user-modal-card #submit-btn,html.alpha-light-mode #user-modal-card #submit-btn-desktop{background-image:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode body.alpha-view-users main input,html.alpha-light-mode body.alpha-view-users main select,html.alpha-light-mode body.alpha-view-users main textarea,html.alpha-light-mode #users-table-container,html.alpha-light-mode #users-table-container tbody td{background-color:var(--am-surface)!important;color:var(--am-ink)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav{background-color:var(--am-surface)!important;background-image:none!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav button:not(.active){color:var(--am-muted)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav button.active,html.alpha-light-mode body.alpha-view-users #alpha-bnav button.active *{color:#fff!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav button.active{background-image:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important}
+html.alpha-light-mode body.alpha-view-users #alpha-chips .al-chip{background-color:var(--am-surface)!important;color:var(--am-ink)!important;border:1px solid var(--am-line)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-chips .al-chip.on{background-image:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode body.alpha-view-users #alpha-users-hero,html.alpha-light-mode body.alpha-view-users #alpha-users-hero *{color:#fff!important}
+html.alpha-light-mode body.alpha-view-users #alpha-users-hero{background-image:linear-gradient(115deg,#5146e5,#0ea5e9)!important}
+html.alpha-light-mode #alpha-notify-rail .alpha-notice{background-color:var(--am-surface)!important;color:var(--am-ink)!important}
+</style>
+<style id="alpha-contrast-pass2">
+html.alpha-light-mode .alpha-brand b{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;-webkit-text-fill-color:#3b2fb8!important;color:#3b2fb8!important}
+html.alpha-light-mode #panel-version,html.alpha-light-mode .al-ver,html.alpha-light-mode [id*="version"]{color:var(--am-ink)!important;background:var(--am-card)!important;border:1px solid var(--am-line)!important}
+html.alpha-light-mode body.alpha-view-users .users-add-primary,html.alpha-light-mode #alpha-users-hero .users-add-primary,html.alpha-light-mode .users-add-primary{background-image:linear-gradient(110deg,#4338ca,#1d4ed8)!important;color:#fff!important}
+html.alpha-light-mode .users-add-primary *{color:#fff!important}
+html.alpha-light-mode #submit-btn,html.alpha-light-mode #submit-btn-desktop,html.alpha-light-mode #submit-btn *,html.alpha-light-mode #submit-btn-desktop *{color:#fff!important}
+html.alpha-light-mode #alpha-bnav button.active,html.alpha-light-mode #alpha-bnav button.active *{color:#fff!important}
+html.alpha-light-mode #alpha-bnav button:not(.active){background-image:none!important;background-color:var(--am-card)!important;color:var(--am-ink)!important}
+html.alpha-light-mode #alpha-bnav button:not(.active) *{color:var(--am-ink)!important}
+html.alpha-light-mode #alpha-bnav button.active{background-image:linear-gradient(110deg,#4338ca,#1d4ed8)!important}
+</style>
+<style id="alpha-contrast-pass3">
+#user-modal-card .user-modal-tab-btn.active,#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop,#alpha-bnav button.active,#alpha-bnav button:not(.active),.users-add-primary,#alpha-chips .al-chip.on{background-image:linear-gradient(110deg,#4338ca,#1d4ed8)!important;color:#fff!important;border-color:transparent!important}
+#user-modal-card .user-modal-tab-btn.active *,#user-modal-card #submit-btn *,#user-modal-card #submit-btn-desktop *,#alpha-bnav button *,.users-add-primary *,#alpha-chips .al-chip.on *{color:#fff!important}
+html:not(.dark) #alpha-bnav button:not(.active){background-color:var(--am-card,#f8fbff)!important;background-image:none!important;color:#17233b!important}
+html:not(.dark) #alpha-bnav button:not(.active) *{color:#17233b!important}
+</style>
+<script>
+(function(){function sync(){var r=document.documentElement,d=r.classList.contains('dark');r.classList.toggle('alpha-dark-mode',d);r.classList.toggle('alpha-light-mode',!d)}sync();new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
+</script>
 </body>
 </html>`,
 	status: `<!DOCTYPE html>
