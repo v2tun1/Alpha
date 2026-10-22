@@ -12562,6 +12562,35 @@ html:not(.dark) #user-modal-card .user-tab-panel .bg-gray-50\/70,html:not(.dark)
 html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
 html:not(.dark) #user-modal-card #submit-btn,html:not(.dark) #user-modal-card #submit-btn-desktop{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand,#5146e5) 60%,#000)!important}
 </style>
+<style id="alpha-theme-mode-lock">
+/* Theme mode is explicit, so no legacy dark utility can leak blue/white styles into light mode. */
+html.alpha-light-mode{--am-bg:#f4f7fb;--am-surface:#fff;--am-card:#f8fbff;--am-ink:#17233b;--am-muted:#5d6d86;--am-line:#cbd8e8}
+html.alpha-dark-mode{--am-bg:#070b18;--am-surface:#0d1428;--am-card:#121d3a;--am-ink:#edf4ff;--am-muted:#a7b5d4;--am-line:#26365d}
+html.alpha-light-mode body.alpha-view-users,html.alpha-light-mode body.alpha-view-dash{background:var(--am-bg)!important;color:var(--am-ink)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-users-hero{background:linear-gradient(115deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper,html.alpha-light-mode body.alpha-view-users main>.mb-5.flex.flex-col,html.alpha-light-mode body.alpha-view-users #users-table-container{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper *,html.alpha-light-mode body.alpha-view-users #users-table-container *{color:var(--am-ink)!important}
+html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper .text-gray-400,html.alpha-light-mode body.alpha-view-users #stats-accordion-wrapper .text-gray-500,html.alpha-light-mode body.alpha-view-users #users-table-container .text-gray-400,html.alpha-light-mode body.alpha-view-users #users-table-container .text-gray-500{color:var(--am-muted)!important}
+html.alpha-light-mode body.alpha-view-users #search-input,html.alpha-light-mode body.alpha-view-users #filter-status,html.alpha-light-mode body.alpha-view-users #sort-users{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav{background:var(--am-surface)!important;border-color:var(--am-line)!important}html.alpha-light-mode body.alpha-view-users #alpha-bnav button{color:var(--am-muted)!important}
+html.alpha-light-mode body.alpha-view-users #alpha-bnav button.active{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode #user-modal-card{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card>div:first-child{background:linear-gradient(115deg,color-mix(in srgb,var(--alpha-brand,#5146e5) 12%,var(--am-surface)),var(--am-surface))!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card>div:first-child h3,html.alpha-light-mode #user-modal-card>div:first-child p{color:var(--am-ink)!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn{background:var(--am-card)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html.alpha-light-mode #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div{background:var(--am-card)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div *{color:var(--am-ink)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel>div .text-gray-400,html.alpha-light-mode #user-modal-card .user-tab-panel>div .text-gray-500{color:var(--am-muted)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel input:not([type=checkbox]),html.alpha-light-mode #user-modal-card .user-tab-panel select,html.alpha-light-mode #user-modal-card .user-tab-panel textarea{background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:var(--am-surface)!important;color:var(--am-ink)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked),html.alpha-light-mode #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#14233d!important}
+html.alpha-light-mode #user-modal-card form>div:last-child{background:var(--am-surface)!important;border-color:var(--am-line)!important}
+html.alpha-light-mode #user-modal-card #submit-btn,html.alpha-light-mode #user-modal-card #submit-btn-desktop{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+</style><script>
+(function(){function sync(){var r=document.documentElement,d=r.classList.contains('dark');r.classList.toggle('alpha-dark-mode',d);r.classList.toggle('alpha-light-mode',!d)}sync();new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
+</script>
 </body>
 </html>`,
 	status: `<!DOCTYPE html>
