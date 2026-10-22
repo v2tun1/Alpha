@@ -6304,30 +6304,30 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">مشخصات کاربر</div>
-									<div class="text-[10px] opacity-75 font-normal">هویت، اعتبار و مسیر پیشرفته</div>
+									<div class="text-xs font-black">تنظیم پروتکل</div>
+									<div class="text-[10px] opacity-75 font-normal">انتخاب روش اتصال و احراز هویت</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">سریع و آسان</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پروتکل</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-ports-network')" id="tab-btn-ports-network" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">سفارشی</div>
-									<div class="text-[10px] opacity-75 font-normal">درگاه‌ها، IPهای تمیز و فرگمنت</div>
+									<div class="text-xs font-black">تنظیم پورت</div>
+									<div class="text-[10px] opacity-75 font-normal">انتخاب درگاه و تنظیمات شبکه</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">شبکه</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پورت</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-proxy-settings')" id="tab-btn-proxy-settings" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">پیشرفته</div>
-									<div class="text-[10px] opacity-75 font-normal">اتصال مستقیم یا پروکسی زنجیره‌ای</div>
+									<div class="text-xs font-black">تنظیم پروکسی</div>
+									<div class="text-[10px] opacity-75 font-normal">مدیریت مسیر جایگزین و آی‌پی</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">پیشرفته</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پروکسی</span>
 							</button>
 						</div>
 						
@@ -6949,6 +6949,33 @@ html:not(.dark) .al-glass,html:not(.dark) .glass,html:not(.dark) .al-card,html:n
 html:not(.dark) .al-glass *,html:not(.dark) .glass *,html:not(.dark) .al-card *{color:inherit}
 .dark .al-glass,.dark .glass,.dark .al-card,.dark #users-table-container{color:var(--alpha-text,#edf4ff)!important}
 </style>
+
+<style id="alpha-approved-config-ui">
+/* Approved configuration UI: every surface follows the active hue and light/dark mode. */
+#user-modal-card{--cfg-ac:hsl(var(--h,265) 92% 62%);--cfg-ac2:hsl(calc(var(--h,265) + 58) 92% 62%);--cfg-bg:hsl(var(--h,52%) 12%);--cfg-card:hsl(var(--h,48%) 16%);--cfg-input:hsl(var(--h,45%) 10%);--cfg-ink:#eef6ff;--cfg-muted:#a9b8d4;--cfg-line:hsla(var(--h),75%,72%,.28)}
+html:not(.dark) #user-modal-card{--cfg-bg:hsl(var(--h,42%) 97%);--cfg-card:hsl(var(--h,38%) 95%);--cfg-input:hsl(var(--h,30%) 99%);--cfg-ink:#18243a;--cfg-muted:#64748b;--cfg-line:hsla(var(--h),55%,45%,.24)}
+#user-modal-card,#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,var(--cfg-card),color-mix(in srgb,var(--cfg-bg) 78%,var(--cfg-card)))!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important}
+#user-modal-card .user-tab-panel>div{box-shadow:0 12px 28px hsla(var(--h),55%,18%,.18),inset 0 1px 0 hsla(var(--h),80%,90%,.08)!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 25px hsla(var(--h),45%,45%,.12)!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:var(--cfg-input)!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:var(--cfg-muted)!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:var(--cfg-input)!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,hsl(calc(var(--h) + 48) 78% 28%),hsl(var(--h) 65% 20%))!important;border-color:var(--cfg-ac2)!important;color:#fff!important;box-shadow:0 0 0 2px hsla(var(--h),95%,60%,.25),0 0 22px hsla(var(--h),95%,60%,.18)!important}
+html:not(.dark) #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,hsl(calc(var(--h) + 48) 92% 96%),hsl(var(--h) 76% 88%))!important;color:#13213a!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:inherit!important}
+#user-modal-card .user-tab-panel .text-gray-700,#user-modal-card .user-tab-panel .text-gray-800,#user-modal-card .user-tab-panel .text-gray-900{color:var(--cfg-ink)!important}
+#user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:var(--cfg-muted)!important}
+#user-modal-card .user-tab-panel .bg-gray-50\/70{background:color-mix(in srgb,var(--cfg-card) 75%,var(--cfg-bg))!important}
+#user-modal-card .user-tab-panel .bg-amber-50\/80{background:color-mix(in srgb,#f59e0b 18%,var(--cfg-card))!important;border-color:#f59e0b88!important;color:var(--cfg-ink)!important}
+#user-modal-card .user-tab-panel .bg-red-50\/80{background:color-mix(in srgb,#ef476f 18%,var(--cfg-card))!important;border-color:#ef476f88!important;color:var(--cfg-ink)!important}
+#user-modal-card .user-tab-panel .grid button{background:var(--cfg-input)!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important}
+#user-modal-card .user-tab-panel .grid button:hover,#user-modal-card .user-tab-panel .grid button.active{background:linear-gradient(135deg,var(--cfg-ac),var(--cfg-ac2))!important;color:#fff!important;border-color:transparent!important}
+/* Remove all decorative step numbers and stage labels. */
+#user-modal-card .user-tab-panel>div::after,#user-modal-card #tab-user-info>div:first-child::before,#user-modal-card #username-card::before{content:none!important;display:none!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(100deg,var(--cfg-ac),var(--cfg-ac2),hsl(calc(var(--h,265) + 35) 95% 58%))!important;color:#fff!important;box-shadow:0 5px 0 hsl(var(--h,265) 55% 30%),0 0 22px hsla(var(--h,265),95%,60%,.35)!important}
+#user-modal-card form>div:last-child{background:var(--cfg-bg)!important;border-color:var(--cfg-line)!important}
+</style>
+
 <div id="ip-selector-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-out">
 	<div class="w-full max-w-sm bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-all transform duration-300 opacity-0 scale-95 ease-out flex flex-col">
 		
