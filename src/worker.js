@@ -5996,6 +5996,37 @@ const HTML_TEMPLATES = {
 #user-modal input[type=text],#user-modal input[type=number],#user-modal input[type=password],#user-modal select,#user-modal textarea{background:rgba(255,255,255,.65)!important;border-color:rgba(148,163,184,.35)!important;border-radius:14px!important}
 .dark #user-modal input[type=text],.dark #user-modal input[type=number],.dark #user-modal input[type=password],.dark #user-modal select,.dark #user-modal textarea{background:rgba(15,23,42,.55)!important;border-color:rgba(148,163,184,.25)!important}
 </style>
+<style id="alpha-command-sheet">
+/* Alpha Variant B: scoped to the create-user sheet, preserving every existing id and handler */
+#user-modal{background:rgba(5,8,22,.86)!important;backdrop-filter:blur(18px) saturate(115%)!important}
+#user-modal-card{background:linear-gradient(145deg,#171d35,#0b1020)!important;border:1px solid rgba(190,210,245,.16)!important;border-radius:20px!important;box-shadow:0 32px 90px -28px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)!important;color:#e8eefc!important}
+#user-modal-card>div:first-child{background:linear-gradient(90deg,#202b52,#12182b)!important;border-bottom:1px solid rgba(190,210,245,.14)!important}
+#user-modal-card>div:first-child h3{color:#f5f7ff!important;font-size:1.05rem!important}
+#user-modal-card>div:first-child p{color:#9caaca!important}
+#user-modal-card>div:first-child button{border-color:#ff6b9d!important;color:#ff8eaf!important;border-radius:11px!important;background:#241326!important}
+#user-modal-card .user-modal-tab-btn{background:linear-gradient(180deg,#1b2745,#12192c)!important;border:1px solid rgba(190,210,245,.15)!important;border-radius:13px!important;color:#c5d0e8!important;box-shadow:0 4px 0 #080c16,0 10px 18px rgba(0,0,0,.22)!important;transition:transform .16s,background .2s,box-shadow .2s!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,#d9edff,#b9d8f4)!important;color:#0b1b31!important;border-color:#fff!important;box-shadow:0 4px 0 #718eac,0 10px 24px rgba(155,213,255,.2)!important;transform:translateY(-2px)}
+#user-modal-card .user-modal-tab-btn.active *{color:#0b1b31!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,#1c275b,#111936)!important;border:1px solid rgba(145,170,235,.18)!important;border-radius:19px!important;box-shadow:0 14px 28px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.05)!important}
+#user-modal-card #tab-user-info>div:first-child>div:nth-child(2){gap:12px!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){background:#0d1425!important;border:1px solid rgba(190,210,245,.15)!important;border-radius:17px!important;padding:15px!important;min-height:78px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;transition:transform .15s,border .15s,box-shadow .15s!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]):hover{transform:translateY(-2px);border-color:#9bd5ff!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,#eef8ff,#cfe7f8)!important;border-color:#b8e0ff!important;box-shadow:0 0 0 2px #9bd5ff66,0 12px 28px #9bd5ff24!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked) span{color:#152742!important}
+#user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{border-radius:11px!important;background:#162444!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked) label{color:#152742!important}
+#user-modal-card #tab-user-info>div:first-child>div:nth-last-child(1){background:#332321!important;border:1px solid #ffb85c66!important;border-radius:12px!important;color:#ffc879!important}
+#user-modal-card #username-card{background:linear-gradient(145deg,#1c275b,#111936)!important}
+#user-modal-card #username-card input{font-size:16px!important;letter-spacing:.03em!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:#0a1020!important;border:1px solid rgba(190,210,245,.17)!important;border-radius:12px!important;color:#edf3ff!important;box-shadow:inset 0 3px 8px rgba(0,0,0,.35)!important}
+#user-modal-card input:focus,#user-modal-card select:focus,#user-modal-card textarea:focus{border-color:#9bd5ff!important;box-shadow:0 0 0 3px #9bd5ff22,inset 0 3px 8px rgba(0,0,0,.35)!important}
+#user-modal-card label,#user-modal-card h4,#user-modal-card h5{color:#e8eefc!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:#9caaca!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#c7f36b,#aee52c)!important;color:#142000!important;border:0!important;border-radius:11px!important;box-shadow:0 5px 0 #71951f,0 12px 24px #b8f34a33!important}
+#user-modal-card #submit-btn:hover,#user-modal-card #submit-btn-desktop:hover{filter:brightness(1.05)!important}
+#user-modal-card form>div:last-child{background:#0a1020!important;border-top:1px solid rgba(190,210,245,.14)!important}
+#user-modal-card form>div:last-child button[onclick*="toggleModal"]{border-color:#ff6b9d!important;color:#ff9dbc!important;background:#241326!important;border-radius:11px!important}
+</style>
 <style>
 #tab-user-info{counter-reset:stp}
 #tab-user-info>div{counter-increment:stp;position:relative;margin-top:14px}
