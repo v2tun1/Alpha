@@ -6304,30 +6304,30 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">مشخصات کاربر</div>
-									<div class="text-[10px] opacity-75 font-normal">هویت، اعتبار و مسیر پیشرفته</div>
+									<div class="text-xs font-black">تنظیم پروتکل</div>
+									<div class="text-[10px] opacity-75 font-normal">انتخاب روش اتصال و احراز هویت</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">سریع و آسان</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پروتکل</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-ports-network')" id="tab-btn-ports-network" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">سفارشی</div>
-									<div class="text-[10px] opacity-75 font-normal">درگاه‌ها، IPهای تمیز و فرگمنت</div>
+									<div class="text-xs font-black">تنظیم پورت</div>
+									<div class="text-[10px] opacity-75 font-normal">انتخاب درگاه و تنظیمات شبکه</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">شبکه</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پورت</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-proxy-settings')" id="tab-btn-proxy-settings" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">پیشرفته</div>
-									<div class="text-[10px] opacity-75 font-normal">اتصال مستقیم یا پروکسی زنجیره‌ای</div>
+									<div class="text-xs font-black">تنظیم پروکسی</div>
+									<div class="text-[10px] opacity-75 font-normal">مدیریت مسیر جایگزین و آی‌پی</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">پیشرفته</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پروکسی</span>
 							</button>
 						</div>
 						
@@ -12736,35 +12736,47 @@ html:not(.dark) #user-modal-card .user-tab-panel label:has(input[type=checkbox])
 html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
 </style>
 
-<style id="alpha-final-config-override">
-/* Final override must remain the last modal stylesheet. */
-#user-modal-card{--cfg-a:hsl(var(--h,265) 92% 62%);--cfg-b:hsl(calc(var(--h,265) + 58) 92% 62%);--cfg-bg:hsl(var(--h,48%) 10%);--cfg-panel:hsl(var(--h,45%) 15%);--cfg-soft:hsl(var(--h,40%) 19%);--cfg-ink:#edf5ff;--cfg-muted:#a8b8d4;--cfg-line:hsla(var(--h),72%,72%,.25);background:linear-gradient(150deg,var(--cfg-panel),var(--cfg-bg))!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important;border-radius:28px!important}
-html:not(.dark) #user-modal-card{--cfg-bg:hsl(var(--h,42%) 97%);--cfg-panel:hsl(var(--h,36%) 95%);--cfg-soft:hsl(var(--h,32%) 92%);--cfg-ink:#17243b;--cfg-muted:#65758e;--cfg-line:hsla(var(--h),52%,44%,.23)}
-#user-modal-card>div:first-child{background:linear-gradient(120deg,color-mix(in srgb,var(--cfg-a) 18%,var(--cfg-panel)),var(--cfg-panel))!important;border-color:var(--cfg-line)!important}
-#user-modal-card .user-modal-tab-btn{background:var(--cfg-soft)!important;color:var(--cfg-muted)!important;border:1px solid var(--cfg-line)!important;border-radius:16px!important;box-shadow:0 5px 0 color-mix(in srgb,var(--cfg-bg) 65%,#000)!important}
-#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--cfg-a),var(--cfg-b))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 5px 0 color-mix(in srgb,var(--cfg-a) 52%,#000),0 0 24px color-mix(in srgb,var(--cfg-a) 33%,transparent)!important}
+<style id="alpha-split-console-final">
+/* Split Console final layer: visual redesign only, all existing IDs and handlers preserved. */
+#user-modal{background:rgba(2,8,24,.78)!important;backdrop-filter:blur(14px)!important}
+#user-modal-card{--sc-a:hsl(var(--h,265) 92% 62%);--sc-b:hsl(calc(var(--h,265) + 58) 92% 62%);--sc-bg:hsl(var(--h,48%) 10%);--sc-panel:hsl(var(--h,45%) 15%);--sc-soft:hsl(var(--h,40%) 19%);--sc-ink:#edf5ff;--sc-muted:#9eafd0;--sc-line:hsla(var(--h),72%,72%,.22);background:linear-gradient(145deg,var(--sc-panel),var(--sc-bg))!important;color:var(--sc-ink)!important;border:1px solid var(--sc-line)!important;border-radius:26px!important;box-shadow:0 30px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)!important}
+html:not(.dark) #user-modal-card{--sc-bg:hsl(var(--h,42%) 97%);--sc-panel:hsl(var(--h,36%) 95%);--sc-soft:hsl(var(--h,32%) 92%);--sc-ink:#17243b;--sc-muted:#65758e;--sc-line:hsla(var(--h),52%,44%,.23);box-shadow:0 25px 65px rgba(30,50,90,.22)!important}
+#user-modal-card>div:first-child{background:linear-gradient(120deg,color-mix(in srgb,var(--sc-a) 18%,var(--sc-panel)),var(--sc-panel))!important;border-color:var(--sc-line)!important;padding:20px 24px!important}
+#user-modal-card>div:first-child h3{font-size:1.2rem!important;color:var(--sc-ink)!important}#user-modal-card>div:first-child p{color:var(--sc-muted)!important}#user-modal-card>div:first-child button{border-color:var(--sc-a)!important;color:var(--sc-a)!important;background:var(--sc-soft)!important;border-radius:13px!important}
+#user-modal-card form>div.flex.flex-col.md\:flex-row{background:transparent!important}
+#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:220px!important;background:linear-gradient(180deg,color-mix(in srgb,var(--sc-panel) 92%,transparent),color-mix(in srgb,var(--sc-bg) 95%,transparent))!important;border-color:var(--sc-line)!important;padding:16px!important}
+#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child>div:first-child{gap:10px!important}
+#user-modal-card .user-modal-tab-btn{min-height:76px!important;display:grid!important;grid-template-columns:34px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;text-align:right!important;gap:1px 9px!important;padding:12px!important;background:var(--sc-soft)!important;color:var(--sc-muted)!important;border:1px solid var(--sc-line)!important;border-radius:15px!important;box-shadow:0 5px 0 color-mix(in srgb,var(--sc-bg) 70%,#000)!important;transition:.18s!important}
+#user-modal-card .user-modal-tab-btn>div:first-child{grid-row:1 / span 2!important;width:34px!important;height:34px!important;border-radius:11px!important;background:color-mix(in srgb,var(--sc-a) 18%,var(--sc-bg))!important;color:var(--sc-a)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border-color:transparent!important;transform:translateX(-3px)!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000),0 0 24px color-mix(in srgb,var(--sc-a) 30%,transparent)!important}
 #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
-#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,var(--cfg-panel),var(--cfg-soft))!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important;border-radius:20px!important;box-shadow:0 12px 28px color-mix(in srgb,var(--cfg-bg) 65%,#000 18%),inset 0 1px 0 rgba(255,255,255,.07)!important}
-html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 25px color-mix(in srgb,var(--cfg-a) 12%,transparent)!important}
-#user-modal-card #tab-user-info>div:first-child>div:nth-child(2){display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
-#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){min-height:74px!important;padding:14px 16px!important;border-radius:17px!important;background:var(--cfg-soft)!important;border-color:var(--cfg-line)!important;box-shadow:none!important}
-#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]):hover{border-color:var(--cfg-a)!important;transform:translateX(-2px)}
-#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(100deg,color-mix(in srgb,var(--cfg-a) 22%,var(--cfg-soft)),var(--cfg-soft))!important;border-color:var(--cfg-a)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--cfg-a) 16%,transparent),0 0 22px color-mix(in srgb,var(--cfg-a) 14%,transparent)!important}
-#user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{width:44px!important;height:44px!important;border-radius:14px!important;background:color-mix(in srgb,var(--cfg-a) 17%,var(--cfg-bg))!important;color:var(--cfg-a)!important}
-#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:var(--cfg-bg)!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important;border-radius:14px!important;min-height:46px!important}
-#user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:var(--cfg-muted)!important}
-#user-modal-card .user-tab-panel label,#user-modal-card .user-tab-panel h4,#user-modal-card .user-tab-panel h5,#user-modal-card .user-tab-panel .text-gray-700,#user-modal-card .user-tab-panel .text-gray-800,#user-modal-card .user-tab-panel .text-gray-900{color:var(--cfg-ink)!important}
-#user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:var(--cfg-muted)!important}
-#user-modal-card .user-tab-panel .bg-gray-50\/70{background:linear-gradient(145deg,var(--cfg-panel),var(--cfg-soft))!important;border-color:var(--cfg-line)!important}
-#user-modal-card .user-tab-panel .bg-amber-50\/80{background:color-mix(in srgb,#f59e0b 16%,var(--cfg-panel))!important;border-color:#f59e0b88!important;color:var(--cfg-ink)!important}
-#user-modal-card .user-tab-panel .bg-red-50\/80{background:color-mix(in srgb,#ef476f 16%,var(--cfg-panel))!important;border-color:#ef476f88!important;color:var(--cfg-ink)!important}
-#user-modal-card .user-tab-panel .grid button{background:var(--cfg-bg)!important;color:var(--cfg-ink)!important;border-color:var(--cfg-line)!important;border-radius:12px!important}
-#user-modal-card .user-tab-panel .grid button:hover,#user-modal-card .user-tab-panel .grid button.active{background:linear-gradient(135deg,var(--cfg-a),var(--cfg-b))!important;color:#fff!important;border-color:transparent!important}
-#user-modal-card #username-card{background:linear-gradient(145deg,var(--cfg-panel),var(--cfg-soft))!important;border-color:var(--cfg-line)!important;border-radius:20px!important}
-#user-modal-card #username-card button{border-color:var(--cfg-a)!important;color:var(--cfg-a)!important;background:transparent!important;border-radius:12px!important}
-#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(100deg,var(--cfg-a),var(--cfg-b))!important;color:#fff!important;border:0!important;box-shadow:0 5px 0 color-mix(in srgb,var(--cfg-a) 52%,#000),0 0 22px color-mix(in srgb,var(--cfg-a) 30%,transparent)!important;border-radius:16px!important}
-#user-modal-card form>div:last-child{background:var(--cfg-bg)!important;border-color:var(--cfg-line)!important}
-#user-modal-card .user-tab-panel>div::after,#user-modal-card #tab-user-info>div:first-child::before,#user-modal-card #username-card::before{content:none!important;display:none!important}
+#user-modal-card .user-modal-tab-btn>div:nth-child(2){display:block!important}.user-modal-tab-btn .text-xs{font-size:12px!important}.user-modal-tab-btn .text-\[10px\]{font-size:9px!important;opacity:.72}
+#user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{background:color-mix(in srgb,var(--sc-bg) 60%,transparent)!important;padding:20px 22px!important}
+#user-modal-card .user-tab-panel{gap:13px!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:19px!important;box-shadow:0 12px 26px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06)!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 24px color-mix(in srgb,var(--sc-a) 12%,transparent)!important}
+#user-modal-card #tab-user-info>div:first-child>div:nth-child(2){display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){min-height:68px!important;padding:12px 14px!important;border-radius:15px!important;background:var(--sc-soft)!important;border-color:var(--sc-line)!important;box-shadow:none!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]):hover{border-color:var(--sc-a)!important;transform:translateX(-2px)}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(100deg,color-mix(in srgb,var(--sc-a) 20%,var(--sc-soft)),var(--sc-soft))!important;border-color:var(--sc-a)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--sc-a) 13%,transparent)!important}
+#user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{width:39px!important;height:39px!important;border-radius:12px!important;background:color-mix(in srgb,var(--sc-a) 17%,var(--sc-bg))!important;color:var(--sc-a)!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:var(--sc-bg)!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:13px!important;min-height:44px!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:var(--sc-muted)!important}
+#user-modal-card .user-tab-panel label,#user-modal-card .user-tab-panel h4,#user-modal-card .user-tab-panel h5,#user-modal-card .user-tab-panel .text-gray-700,#user-modal-card .user-tab-panel .text-gray-800,#user-modal-card .user-tab-panel .text-gray-900{color:var(--sc-ink)!important}
+#user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:var(--sc-muted)!important}
+#user-modal-card .user-tab-panel .bg-gray-50\/70,#user-modal-card .user-tab-panel .bg-gray-50\/80{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;border-color:var(--sc-line)!important}
+#user-modal-card .user-tab-panel .bg-amber-50\/80{background:color-mix(in srgb,#f59e0b 15%,var(--sc-panel))!important;border-color:#f59e0b88!important;color:var(--sc-ink)!important}
+#user-modal-card .user-tab-panel .bg-red-50\/80{background:color-mix(in srgb,#ef476f 15%,var(--sc-panel))!important;border-color:#ef476f88!important;color:var(--sc-ink)!important}
+#user-modal-card .user-tab-panel .grid button{background:var(--sc-bg)!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:11px!important}
+#user-modal-card .user-tab-panel .grid button:hover,#user-modal-card .user-tab-panel .grid button.active{background:linear-gradient(135deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border-color:transparent!important}
+#user-modal-card #username-card{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;border-color:var(--sc-line)!important;border-radius:19px!important}
+#user-modal-card #username-card button{border-color:var(--sc-a)!important;color:var(--sc-a)!important;background:transparent!important;border-radius:11px!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(105deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border:0!important;border-radius:14px!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000),0 0 22px color-mix(in srgb,var(--sc-a) 28%,transparent)!important}
+#user-modal-card form>div:last-child{background:var(--sc-bg)!important;border-color:var(--sc-line)!important}
+/* Remove every visible stage number/badge, including the original rules earlier in the file. */
+#user-modal-card .user-tab-panel>div::after,#user-modal-card .user-tab-panel>div::before,#user-modal-card #tab-user-info>div:first-child::before,#user-modal-card #username-card::before{content:none!important;display:none!important}
+#user-modal-card #tab-user-info{counter-reset:none!important}#user-modal-card #tab-user-info>div{counter-increment:none!important}
+@media(max-width:768px){#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:100%!important;padding:11px!important;border-bottom:1px solid var(--sc-line)!important}#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child>div:first-child{flex-direction:row!important}#user-modal-card .user-modal-tab-btn{min-height:63px!important;display:flex!important;flex-direction:column!important;gap:4px!important;padding:8px 5px!important;text-align:center!important;transform:none!important}.user-modal-tab-btn>div:first-child{width:27px!important;height:27px!important}.user-modal-tab-btn .hidden{display:none!important}#user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{padding:14px!important}}
 </style>
 
 </head>
