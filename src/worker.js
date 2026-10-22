@@ -6007,6 +6007,23 @@ const HTML_TEMPLATES = {
 #user-modal #submit-btn,#user-modal #submit-btn-desktop{background:linear-gradient(90deg,#3b82f6,#7c3aed,#06b6d4)!important;color:#fff!important;border:0!important;box-shadow:0 14px 26px -12px rgba(124,58,237,.9)!important}
 #user-modal #submit-btn:hover,#user-modal #submit-btn-desktop:hover{filter:brightness(1.08)}
 </style>
+<style id="alpha-config-system">
+#user-modal{background:rgba(3,7,30,.82)!important;backdrop-filter:blur(18px) saturate(125%)!important}
+#user-modal-card{background:linear-gradient(145deg,#111b58 0%,#0a1038 100%)!important;border:1px solid rgba(110,140,255,.28)!important;border-radius:24px!important;box-shadow:0 32px 90px -25px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.08)!important;color:#e9ecff!important}
+#user-modal-card>div:first-child{background:linear-gradient(90deg,rgba(30,47,130,.8),rgba(8,14,52,.25))!important;border-bottom:1px solid rgba(160,175,255,.14)!important}
+#user-modal-card .user-modal-tab-btn{background:linear-gradient(180deg,#1d2b77,#121a50)!important;border:1px solid rgba(160,175,255,.18)!important;border-radius:15px!important;color:#bac4f0!important;box-shadow:0 5px 0 #070b2b,0 10px 18px rgba(0,0,0,.25)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,#ffe066,#ffb703)!important;color:#291800!important;border-color:#fff0a6!important;box-shadow:0 5px 0 #9b6200,0 12px 28px rgba(255,183,3,.4)!important;transform:translateY(-2px)}
+#user-modal-card .user-modal-tab-btn.active *{color:#291800!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,rgba(26,39,115,.92),rgba(12,19,66,.92))!important;border:1px solid rgba(160,175,255,.16)!important;border-radius:20px!important;box-shadow:0 12px 28px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.06)!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:#070d36!important;border:1px solid rgba(160,175,255,.2)!important;border-radius:13px!important;color:#e9ecff!important;box-shadow:inset 0 3px 8px rgba(0,0,0,.4)!important}
+#user-modal-card input:focus,#user-modal-card select:focus,#user-modal-card textarea:focus{border-color:#ffd23f!important;box-shadow:0 0 0 3px rgba(255,210,63,.16),inset 0 3px 8px rgba(0,0,0,.4)!important}
+#user-modal-card label,#user-modal-card h3,#user-modal-card h4,#user-modal-card h5{color:#e9ecff!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:#9aa3cf!important}
+#user-modal-card button[onclick^="setQuickVol"],#user-modal-card button[onclick^="setQuickExp"]{background:rgba(61,139,255,.1)!important;border:1px solid rgba(61,139,255,.45)!important;color:#a8c8ff!important;border-radius:10px!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#ffe066,#ffb703)!important;color:#291800!important;border:0!important;border-radius:15px!important;box-shadow:0 6px 0 #9b6200,0 14px 30px rgba(255,183,3,.4)!important}
+#user-modal-card input[type=checkbox]{accent-color:#ffd23f!important}
+#user-modal-card .border-red-500,#user-modal-card .border-red-600{border-color:#ff2d7a!important}
+</style>
 
 <style>
 body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
@@ -6030,8 +6047,8 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 					</div>
 					<div>
-						<h3 id="modal-title" class="font-black text-gray-900 dark:text-zinc-100 text-sm sm:text-base tracking-tight">ساخت حساب جدید</h3>
-						<p class="text-[11px] text-gray-500 dark:text-zinc-400 font-medium">تنظیم هویت، سقف مصرف و مسیرهای این حساب</p>
+						<h3 id="modal-title" class="font-black text-gray-900 dark:text-zinc-100 text-sm sm:text-base tracking-tight">ایجاد کاربر جدید</h3>
+						<p class="text-[11px] text-gray-500 dark:text-zinc-400 font-medium">هویت، اعتبار، امنیت و خروجی</p>
 					</div>
 				</div>
 				<button type="button" onclick="toggleModal(false)" class="p-2 rounded-lg bg-transparent border-2 border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 shadow-sm" title="بستن">
@@ -6054,34 +6071,34 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<div class="text-xs font-black">نام کاربری و مشخصات</div>
 									<div class="text-[10px] opacity-75 font-normal">حجم، زمان، محدودیت و تمدید</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">هویت و دسترسی</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">هویت و پروتکل</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-ports-network')" id="tab-btn-ports-network" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">پورت‌های اتصال و شبکه</div>
-									<div class="text-[10px] opacity-75 font-normal">پورت‌ها، آی‌پی تمیز و فرگمنت</div>
+									<div class="text-xs font-black">پورت و آدرس ورودی</div>
+									<div class="text-[10px] opacity-75 font-normal">درگاه‌ها، IPهای تمیز و فرگمنت</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">درگاه و آدرس</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">شبکه</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-proxy-settings')" id="tab-btn-proxy-settings" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">تنظیم پروکسی و کشور</div>
-									<div class="text-[10px] opacity-75 font-normal">آی‌پی ثابت و زنجیره اتصال</div>
+									<div class="text-xs font-black">خروجی</div>
+									<div class="text-[10px] opacity-75 font-normal">اتصال مستقیم یا پروکسی زنجیره‌ای</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">مسیر خروجی</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">خروجی</span>
 							</button>
 						</div>
 						
 						<div class="hidden md:flex flex-col gap-2 mt-auto pt-4 border-t border-gray-200 dark:border-amoled-border w-full">
 							<button type="submit" id="submit-btn-desktop" class="w-full py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-sm transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer">
 								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-								<span>ساخت حساب</span>
+								<span>ایجاد کاربر</span>
 							</button>
 							<button type="button" onclick="toggleModal(false)" class="w-full py-2 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs transition shadow-sm">
 								انصراف
@@ -6095,7 +6112,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 								<div class="flex items-center justify-between">
 									<label class="block text-xs font-black text-gray-700 dark:text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-										<span>کدام پروتکل‌ها روشن باشن؟ حداقل یکی</span>
+										<span>پروتکل‌های اتصال · حداقل یک مورد</span>
 									</label>
 								</div>
 								<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -6106,7 +6123,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 											</div>
 											<div>
 												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل VLESS</span>
-												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">سبک و خیلی سریع </span>
+												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">کارایی بالا، سربار کم</span>
 											</div>
 										</div>
 										<input type="checkbox" id="input-proto-vless" checked onchange="handleProtocolChange(this)" class="w-4 h-4 rounded focus:ring-green-500/50 bg-white dark:bg-amoled-input border-gray-300 dark:border-amoled-border cursor-pointer text-green-600" style="filter: none !important; accent-color: #16a34a !important;">
@@ -6638,7 +6655,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 					<div class="flex items-center gap-2">
 						<button type="submit" id="submit-btn" class="px-7 py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-xs sm:text-sm transition shadow-lg flex items-center gap-1.5 cursor-pointer">
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-							<span>ساخت حساب</span>
+							<span>ایجاد کاربر</span>
 						</button>
 					</div>
 				</div>
