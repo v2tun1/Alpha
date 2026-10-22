@@ -6239,9 +6239,6 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 </style>
 <style id="alpha-three-sections-reference">
 /* Shared reference system for all three create-config sections. Existing ids/events are untouched. */
-#user-modal-card .user-tab-panel{counter-reset:alphaSection}
-#user-modal-card .user-tab-panel>div{counter-increment:alphaSection;position:relative;overflow:visible!important}
-#user-modal-card .user-tab-panel>div:after{content:counter(alphaSection);position:absolute;right:-9px;top:-13px;z-index:4;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#b217ff,#247dff);border:1px solid #8ea8ff;color:#fff;font-size:17px;font-weight:1000;box-shadow:0 0 18px #5d4fff66}
 #user-modal-card .user-tab-panel>div:nth-child(2):after{background:linear-gradient(135deg,#08d8e8,#1672ff)}
 #user-modal-card .user-tab-panel>div:nth-child(3):after{background:linear-gradient(135deg,#8b2cff,#f126d2)}
 #user-modal-card .user-tab-panel>div:nth-child(4):after{background:linear-gradient(135deg,#ff2aa8,#ff8b2e)}
@@ -12734,38 +12731,32 @@ html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surf
 <style id="alpha-split-console-final">
 #user-modal{background:rgba(2,8,24,.82)!important;backdrop-filter:blur(14px)!important}
 #user-modal-card{--sc-a:hsl(var(--h,265) 92% 62%);--sc-b:hsl(calc(var(--h,265) + 58) 92% 62%);--sc-bg:hsl(var(--h,48%) 10%);--sc-panel:hsl(var(--h,45%) 15%);--sc-soft:hsl(var(--h,40%) 19%);--sc-ink:#edf5ff;--sc-muted:#9eafd0;--sc-line:hsla(var(--h),72%,72%,.22);background:linear-gradient(145deg,var(--sc-panel),var(--sc-bg))!important;color:var(--sc-ink)!important;border:1px solid var(--sc-line)!important;border-radius:26px!important;box-shadow:0 30px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)!important}
-html:not(.dark) #user-modal-card{--sc-bg:hsl(var(--h,42%) 97%);--sc-panel:hsl(var(--h,36%) 95%);--sc-soft:hsl(var(--h,32%) 92%);--sc-ink:#17243b;--sc-muted:#65758e;--sc-line:hsla(var(--h),52%,44%,.23);box-shadow:0 25px 65px rgba(30,50,90,.22)!important}
-#user-modal-card>div:first-child{background:linear-gradient(120deg,color-mix(in srgb,var(--sc-a) 18%,var(--sc-panel)),var(--sc-panel))!important;border-color:var(--sc-line)!important;padding:20px 24px!important}
-#user-modal-card>div:first-child h3{color:var(--sc-ink)!important}#user-modal-card>div:first-child p{color:var(--sc-muted)!important}
+html:not(.dark) #user-modal-card{--sc-bg:hsl(var(--h,42%) 97%);--sc-panel:hsl(var(--h,36%) 95%);--sc-soft:hsl(var(--h,32%) 92%);--sc-ink:#17243b;--sc-muted:#65758e;--sc-line:hsla(var(--h),52%,44%,.23)}
+#user-modal-card>div:first-child{background:linear-gradient(120deg,color-mix(in srgb,var(--sc-a) 18%,var(--sc-panel)),var(--sc-panel))!important;border-color:var(--sc-line)!important}
 #user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:220px!important;background:linear-gradient(180deg,var(--sc-panel),var(--sc-bg))!important;border-color:var(--sc-line)!important;padding:16px!important}
 #user-modal-card .user-modal-tab-btn{min-height:76px!important;display:grid!important;grid-template-columns:34px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;text-align:right!important;gap:1px 9px!important;padding:12px!important;background:var(--sc-soft)!important;color:var(--sc-muted)!important;border:1px solid var(--sc-line)!important;border-radius:15px!important;box-shadow:0 5px 0 color-mix(in srgb,var(--sc-bg) 70%,#000)!important}
 #user-modal-card .user-modal-tab-btn>div:first-child{grid-row:1 / span 2!important;width:34px!important;height:34px!important;border-radius:11px!important;background:color-mix(in srgb,var(--sc-a) 18%,var(--sc-bg))!important;color:var(--sc-a)!important}
 #user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border-color:transparent!important;transform:translateX(-3px)!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000),0 0 24px color-mix(in srgb,var(--sc-a) 30%,transparent)!important}
 #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
 #user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{background:color-mix(in srgb,var(--sc-bg) 60%,transparent)!important;padding:20px 22px!important}
-#user-modal-card .user-tab-panel{gap:13px!important}
 #user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:19px!important;box-shadow:0 12px 26px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06)!important}
 html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 24px color-mix(in srgb,var(--sc-a) 12%,transparent)!important}
 #user-modal-card #tab-user-info>div:first-child>div:nth-child(2){display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
 #user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){min-height:68px!important;padding:12px 14px!important;border-radius:15px!important;background:var(--sc-soft)!important;border-color:var(--sc-line)!important;box-shadow:none!important}
-#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(100deg,color-mix(in srgb,var(--sc-a) 20%,var(--sc-soft)),var(--sc-soft))!important;border-color:var(--sc-a)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--sc-a) 13%,transparent)!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(100deg,color-mix(in srgb,var(--sc-a) 20%,var(--sc-soft)),var(--sc-soft))!important;border-color:var(--sc-a)!important}
 #user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{width:39px!important;height:39px!important;border-radius:12px!important;background:color-mix(in srgb,var(--sc-a) 17%,var(--sc-bg))!important;color:var(--sc-a)!important}
 #user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:var(--sc-bg)!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:13px!important;min-height:44px!important}
 #user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:var(--sc-muted)!important}
 #user-modal-card .user-tab-panel label,#user-modal-card .user-tab-panel h4,#user-modal-card .user-tab-panel h5,#user-modal-card .user-tab-panel .text-gray-700,#user-modal-card .user-tab-panel .text-gray-800,#user-modal-card .user-tab-panel .text-gray-900{color:var(--sc-ink)!important}
 #user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:var(--sc-muted)!important}
 #user-modal-card .user-tab-panel .bg-gray-50\/70,#user-modal-card .user-tab-panel .bg-gray-50\/80{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;border-color:var(--sc-line)!important}
-#user-modal-card .user-tab-panel .bg-amber-50\/80{background:color-mix(in srgb,#f59e0b 15%,var(--sc-panel))!important;border-color:#f59e0b88!important;color:var(--sc-ink)!important}
-#user-modal-card .user-tab-panel .bg-red-50\/80{background:color-mix(in srgb,#ef476f 15%,var(--sc-panel))!important;border-color:#ef476f88!important;color:var(--sc-ink)!important}
 #user-modal-card .user-tab-panel .grid button{background:var(--sc-bg)!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:11px!important}
 #user-modal-card .user-tab-panel .grid button:hover,#user-modal-card .user-tab-panel .grid button.active{background:linear-gradient(135deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border-color:transparent!important}
 #user-modal-card #username-card{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;border-color:var(--sc-line)!important;border-radius:19px!important}
-#user-modal-card #username-card button{border-color:var(--sc-a)!important;color:var(--sc-a)!important;background:transparent!important;border-radius:11px!important}
-#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(105deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border:0!important;border-radius:14px!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000),0 0 22px color-mix(in srgb,var(--sc-a) 28%,transparent)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(105deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border:0!important;border-radius:14px!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000)!important}
 #user-modal-card form>div:last-child{background:var(--sc-bg)!important;border-color:var(--sc-line)!important}
-/* Hard-disable all numeric/stage badges in the create-config modal. */
-#user-modal-card .user-tab-panel>div::after,#user-modal-card .user-tab-panel>div::before,#user-modal-card #tab-user-info>div:first-child::before,#user-modal-card #username-card::before{content:none!important;display:none!important}
-#user-modal-card #tab-user-info{counter-reset:none!important}#user-modal-card #tab-user-info>div{counter-increment:none!important}
+#user-modal-card #tab-user-info>div::before,#user-modal-card #tab-user-info>div::after,#user-modal-card .user-tab-panel>div::before,#user-modal-card .user-tab-panel>div::after,#user-modal-card #username-card::before{content:none!important;display:none!important}
+#user-modal-card #tab-user-info,#user-modal-card #tab-user-info>div{counter-reset:none!important;counter-increment:none!important}
 @media(max-width:768px){#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:100%!important;padding:11px!important;border-bottom:1px solid var(--sc-line)!important}#user-modal-card .user-modal-tab-btn{min-height:63px!important;display:flex!important;flex-direction:column!important;gap:4px!important;padding:8px 5px!important;text-align:center!important;transform:none!important}#user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{padding:14px!important}}
 </style>
 
