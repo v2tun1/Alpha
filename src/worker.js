@@ -5982,7 +5982,7 @@ const HTML_TEMPLATES = {
 	</div>
 </div>
 	<div id="user-modal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200 ease-out"><style>
-#user-modal{z-index:200!important;background:rgba(15,23,42,.45)!important;backdrop-filter:blur(10px) saturate(120%);-webkit-backdrop-filter:blur(10px) saturate(120%)}
+#user-modal{z-index:55!important;background:rgba(15,23,42,.45)!important;backdrop-filter:blur(10px) saturate(120%);-webkit-backdrop-filter:blur(10px) saturate(120%)}
 #user-modal-card{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(237,233,254,.66))!important;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.7)!important;border-radius:26px!important;box-shadow:0 34px 70px -24px rgba(91,33,182,.5),inset 0 1px 0 rgba(255,255,255,.8)!important}
 .dark #user-modal-card{background:linear-gradient(150deg,rgba(15,23,42,.84),rgba(30,27,75,.66))!important;border-color:rgba(148,163,184,.25)!important;box-shadow:0 34px 70px -24px rgba(59,130,246,.45),inset 0 1px 0 rgba(255,255,255,.08)!important}
 #user-modal-card>div:first-child{background:transparent!important;border-bottom:1px solid rgba(148,163,184,.25)!important}
@@ -5996,6 +5996,32 @@ const HTML_TEMPLATES = {
 #user-modal input[type=text],#user-modal input[type=number],#user-modal input[type=password],#user-modal select,#user-modal textarea{background:rgba(255,255,255,.65)!important;border-color:rgba(148,163,184,.35)!important;border-radius:14px!important}
 .dark #user-modal input[type=text],.dark #user-modal input[type=number],.dark #user-modal input[type=password],.dark #user-modal select,.dark #user-modal textarea{background:rgba(15,23,42,.55)!important;border-color:rgba(148,163,184,.25)!important}
 </style>
+<style>
+#tab-user-info{counter-reset:stp}
+#tab-user-info>div{counter-increment:stp;position:relative;margin-top:14px}
+#tab-user-info>div::before{content:"مرحله " counter(stp);position:absolute;top:-11px;right:16px;z-index:2;font-size:10px;font-weight:900;color:#fff;padding:3px 10px;border-radius:999px;background:linear-gradient(90deg,#3b82f6,#7c3aed);box-shadow:0 8px 16px -8px rgba(124,58,237,.9)}
+#user-modal label:has(input[type=checkbox]:checked){border-color:#7c3aed!important;box-shadow:0 0 0 2px rgba(124,58,237,.22),0 16px 30px -18px rgba(124,58,237,.7)!important;transform:translateY(-2px)}
+#user-modal button[onclick^="setQuickVol"],#user-modal button[onclick^="setQuickExp"]{border-radius:999px!important;background:rgba(255,255,255,.7)!important;border:1px solid rgba(124,58,237,.35)!important;color:#5b21b6!important;padding:5px 13px!important;font-weight:800!important;transition:transform .15s,box-shadow .15s}
+#user-modal button[onclick^="setQuickVol"]:hover,#user-modal button[onclick^="setQuickExp"]:hover{transform:translateY(-1px);box-shadow:0 8px 16px -8px rgba(124,58,237,.6)}
+.dark #user-modal button[onclick^="setQuickVol"],.dark #user-modal button[onclick^="setQuickExp"]{background:rgba(15,23,42,.6)!important;color:#c4b5fd!important}
+#user-modal #submit-btn,#user-modal #submit-btn-desktop{background:linear-gradient(90deg,#3b82f6,#7c3aed,#06b6d4)!important;color:#fff!important;border:0!important;box-shadow:0 14px 26px -12px rgba(124,58,237,.9)!important}
+#user-modal #submit-btn:hover,#user-modal #submit-btn-desktop:hover{filter:brightness(1.08)}
+</style>
+
+<style>
+body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
+#user-modal input[type=checkbox]{-webkit-appearance:auto;appearance:auto;accent-color:#7c3aed;width:20px;height:20px;background-color:#ffffff!important;border:2px solid #64748b!important;border-radius:6px!important;opacity:1!important}
+#user-modal input[type=checkbox]:checked{background-color:#7c3aed!important}
+#user-modal select option{background:#ffffff;color:#0f172a}
+.dark #user-modal select option{background:#0f172a;color:#f1f5f9}
+#user-modal label,#user-modal h4,#user-modal h5{color:#0f172a}
+#user-modal .text-gray-400,#user-modal .text-gray-500{color:#64748b!important}
+.dark #user-modal label,.dark #user-modal h4,.dark #user-modal h5{color:#e2e8f0}
+.dark #user-modal .text-gray-400,.dark #user-modal .text-gray-500{color:#94a3b8!important}
+.dark #user-modal input[type=checkbox]{background-color:#0f172a!important;border-color:#94a3b8!important}
+.dark #user-modal input[type=checkbox]:checked{background-color:#7c3aed!important}
+</style>
+
 
 		<div id="user-modal-card" class="w-full max-w-5xl bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-[opacity,transform] duration-200 opacity-0 scale-95 ease-out flex flex-col max-h-[92vh] transform-gpu">
 			<div class="px-5 py-4 border-b border-gray-150 dark:border-amoled-border flex justify-between items-center bg-gray-50/70 dark:bg-amoled-bg/60">
