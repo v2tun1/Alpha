@@ -12592,7 +12592,39 @@ body,main,#app,.main-content{transition:background-color .18s linear,color .18s 
 /* remove GPU-heavy decorative filters and motion from panel chrome */
 #user-modal-card,#user-modal-card *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-</style></head>
+</style><style id="alpha-theme-final-hard-override">
+/* Highest-priority theme bridge: replaces legacy hard-coded blue surfaces on every panel view. */
+html:not(.dark) body.alpha-view-users{--users-bg:var(--alpha-bg);--users-card:var(--alpha-surface);--users-card2:var(--alpha-card);--users-text:var(--alpha-ink);--users-muted:var(--alpha-muted);--users-line:var(--alpha-line);background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-users #alpha-users-hero{background:linear-gradient(115deg,var(--alpha-brand),var(--alpha-brand2))!important;border-color:var(--alpha-brand)!important;color:#fff!important}
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper,html:not(.dark) body.alpha-view-users main > .mb-5.flex.flex-col{background:var(--alpha-card)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper>div>div,html:not(.dark) body.alpha-view-users #users-table-container,html:not(.dark) body.alpha-view-users #users-table-container tbody td{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important;color:var(--alpha-ink)!important;box-shadow:none!important}
+html:not(.dark) body.alpha-view-users #users-table-container thead th{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) body.alpha-view-users #search-input,html:not(.dark) body.alpha-view-users #filter-status,html:not(.dark) body.alpha-view-users #sort-users{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) body.alpha-view-users #search-input::placeholder{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-users #alpha-bnav{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+html:not(.dark) body.alpha-view-users #alpha-bnav button{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-users #alpha-bnav button.active{background:linear-gradient(120deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important}
+html:not(.dark) body.alpha-view-dash{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-dash .al-glass,html:not(.dark) body.alpha-view-dash .al-quick-card,html:not(.dark) body.alpha-view-dash .al-chart-card,html:not(.dark) body.alpha-view-dash .al-recent-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+html:not(.dark) body.alpha-view-dash .al-panel-title,html:not(.dark) body.alpha-view-dash .al-stat-label,html:not(.dark) body.alpha-view-dash .al-system-row,html:not(.dark) body.alpha-view-dash .al-chart-note{color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-dash .al-stat-foot,html:not(.dark) body.alpha-view-dash .al-recent-table th{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-dash .al-q{background:var(--alpha-card)!important;border-color:var(--alpha-line)!important;color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-dash #alpha-bnav{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+/* modal follows accent hue and switches entirely to readable light surfaces */
+html:not(.dark) #user-modal{background:rgba(24,35,58,.28)!important}
+html:not(.dark) #user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 24px 70px rgba(42,61,100,.22)!important}
+html:not(.dark) #user-modal-card>div:first-child{background:linear-gradient(115deg,color-mix(in srgb,var(--alpha-brand) 14%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+html:not(.dark) #user-modal-card>div:first-child h3,html:not(.dark) #user-modal-card>div:first-child p{color:var(--alpha-ink)!important}
+html:not(.dark) #user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 color-mix(in srgb,var(--alpha-ink) 18%,transparent)!important}
+html:not(.dark) #user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div>div:first-child label,html:not(.dark) #user-modal-card .user-tab-panel>div>div:first-child span{color:var(--alpha-ink)!important}
+html:not(.dark) #user-modal-card .user-tab-panel input:not([type=checkbox]),html:not(.dark) #user-modal-card .user-tab-panel select,html:not(.dark) #user-modal-card .user-tab-panel textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) #user-modal-card .user-tab-panel input::placeholder,html:not(.dark) #user-modal-card .user-tab-panel textarea::placeholder{color:var(--alpha-muted)!important}
+html:not(.dark) #user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+</style>
+</head>
 <body class="bg-gray-50 text-gray-900 dark:bg-amoled-bg dark:text-zinc-100 min-h-screen flex flex-col items-center py-12 px-4 overflow-x-hidden">
 	<div class="w-full max-w-xl glass rounded-md shadow-2xl p-6 md:p-8 relative overflow-hidden z-10">
 		<div class="absolute -left-12 -top-12 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
