@@ -6940,6 +6940,43 @@ html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 25px hsla
 html:not(.dark) .al-glass,html:not(.dark) .glass,html:not(.dark) .al-card,html:not(.dark) #users-table-container{color:var(--alpha-text,#17233b)!important}
 html:not(.dark) .al-glass *,html:not(.dark) .glass *,html:not(.dark) .al-card *{color:inherit}
 .dark .al-glass,.dark .glass,.dark .al-card,.dark #users-table-container{color:var(--alpha-text,#edf4ff)!important}
+
+/* Alpha glass 3D config builder: visual layer only, all existing IDs and handlers remain intact. */
+#user-modal{background:rgba(4,12,24,.72)!important;backdrop-filter:blur(18px)!important}
+#user-modal-card{background:linear-gradient(145deg,rgba(235,248,255,.94),rgba(255,255,255,.86))!important;border:1px solid rgba(255,255,255,.95)!important;border-radius:30px!important;box-shadow:0 34px 90px rgba(0,13,35,.48),inset 0 1px rgba(255,255,255,.95)!important;overflow:hidden!important}
+html.dark #user-modal-card{background:linear-gradient(145deg,rgba(19,42,61,.97),rgba(8,21,34,.97))!important;border-color:rgba(157,235,255,.34)!important;box-shadow:0 34px 90px rgba(0,0,0,.62),inset 0 1px rgba(255,255,255,.13)!important}
+#user-modal-card>div:first-child{background:linear-gradient(120deg,#e7fbff,#ffffff 48%,#f4eaff)!important;border-bottom:1px solid #c7dbe8!important;padding:21px 26px!important;position:relative!important;overflow:hidden!important}
+html.dark #user-modal-card>div:first-child{background:linear-gradient(120deg,#123b50,#14283c 48%,#33214e)!important;border-bottom-color:#3e9bc1!important}
+#user-modal-card>div:first-child:after{content:"";position:absolute;left:8%;bottom:-42px;width:55%;height:96px;background:linear-gradient(90deg,#61dff055,#d87cf955);filter:blur(16px);transform:skewX(-25deg);pointer-events:none}
+#user-modal-card>div:first-child h3{font-size:1.25rem!important;color:#14243b!important;position:relative;z-index:1}
+html.dark #user-modal-card>div:first-child h3{color:#edfbff!important}
+#user-modal-card>div:first-child p{color:#718296!important;position:relative;z-index:1}
+html.dark #user-modal-card>div:first-child p{color:#a8c9d8!important}
+#user-modal-card>div:first-child button{border:2px solid #8bc4d4!important;background:#ffffff99!important;color:#26708a!important;border-radius:15px!important;box-shadow:0 7px 18px #3b879d22!important;position:relative;z-index:2}
+#user-modal-card .user-modal-tab-btn{background:linear-gradient(145deg,#ffffffc9,#eaf4fbcc)!important;border:1px solid #bed1df!important;border-radius:19px!important;color:#304861!important;box-shadow:0 6px 0 #c5d4df,0 12px 25px #2d678018!important;padding:14px 10px!important;min-height:74px!important}
+html.dark #user-modal-card .user-modal-tab-btn{background:linear-gradient(145deg,#16384d,#102338)!important;border-color:#37677b!important;color:#d5f0f5!important;box-shadow:0 6px 0 #07131f,0 12px 25px #0003!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,#5b43e9,#08b9e6)!important;border-color:#bffbff!important;color:#fff!important;box-shadow:0 6px 0 #3730a0,0 0 28px #35bce866!important;transform:translateY(-3px)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,#ffffffd9,#edf7fcbd)!important;border:1px solid #c7dbe7!important;border-radius:23px!important;box-shadow:0 16px 30px #35678218,inset 0 1px #fff!important;padding:19px!important;position:relative!important;overflow:hidden!important}
+html.dark #user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,#173a50e8,#0e2438e8)!important;border-color:#3a7085!important;box-shadow:0 16px 30px #0004,inset 0 1px #ffffff12!important}
+#user-modal-card .user-tab-panel>div:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(#5a45ed,#10c7e7);border-radius:8px;opacity:.9}
+#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:#ffffffb8!important;border:1px solid #bed2e0!important;border-radius:16px!important;color:#172a42!important;min-height:47px!important;box-shadow:inset 0 1px #fff,0 5px 14px #315e7610!important}
+html.dark #user-modal-card .user-tab-panel input:not([type=checkbox]),html.dark #user-modal-card .user-tab-panel select,html.dark #user-modal-card .user-tab-panel textarea{background:#081b2bb8!important;border-color:#3f7b92!important;color:#e5f7fb!important;box-shadow:inset 0 1px #ffffff12!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox]):focus,#user-modal-card .user-tab-panel select:focus,#user-modal-card .user-tab-panel textarea:focus{border-color:#19aee2!important;box-shadow:0 0 0 3px #27c7e833,0 8px 20px #1c93bd22!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]),#user-modal-card .user-tab-panel .group\/toggle label{background:#ffffffa8!important;border:1px solid #c4d8e5!important;border-radius:17px!important;min-height:52px!important;color:#233950!important;box-shadow:0 8px 18px #325b7210!important}
+html.dark #user-modal-card .user-tab-panel label:has(input[type=checkbox]),html.dark #user-modal-card .user-tab-panel .group\/toggle label{background:#092235aa!important;border-color:#3a7185!important;color:#dcf2f6!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,#effcff,#d4f3ff)!important;border-color:#55cfe6!important;color:#10253c!important;box-shadow:0 0 0 2px #8b5cf655,0 0 24px #28c9e833!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#10253c!important}
+#user-modal-card .user-tab-panel .grid button{background:#ffffffa8!important;border:1px solid #c4d8e5!important;color:#28445d!important;border-radius:15px!important;min-height:43px!important;box-shadow:0 5px 12px #315e7610!important}
+html.dark #user-modal-card .user-tab-panel .grid button{background:#0a2539aa!important;border-color:#3a7185!important;color:#d6eff4!important}
+#user-modal-card .user-tab-panel .grid button:has(input:checked),#user-modal-card .user-tab-panel button.active{background:linear-gradient(135deg,#5845e9,#10b9e5)!important;border-color:#bdfcff!important;color:#fff!important;box-shadow:0 0 20px #2eaae855!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(105deg,#5543eb,#0baee8)!important;color:#fff!important;border:0!important;border-radius:17px!important;box-shadow:0 6px 0 #3027a8,0 0 24px #349fe855!important}
+#user-modal-card form>div:last-child{background:#ffffffbb!important;border-top:1px solid #c8dce8!important;padding:17px 24px!important}
+html.dark #user-modal-card form>div:last-child{background:#071a2abb!important;border-top-color:#3b7489!important}
+#user-modal-card form>div:last-child button[onclick*="toggleModal"]{border:2px solid #b9ccda!important;color:#43586b!important;background:#ffffff88!important;border-radius:17px!important}
+html.dark #user-modal-card form>div:last-child button[onclick*="toggleModal"]{border-color:#52788a!important;color:#c7e5eb!important;background:#0c2739aa!important}
+@media(max-width:640px){#user-modal-card{border-radius:24px!important}#user-modal-card>div:first-child{padding:16px!important}#user-modal-card .user-modal-tab-btn{min-height:68px!important;font-size:.75rem!important}#user-modal-card .user-tab-panel>div{padding:15px!important}}
+
 </style>
 <div id="ip-selector-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-out">
 	<div class="w-full max-w-sm bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-all transform duration-300 opacity-0 scale-95 ease-out flex flex-col">
