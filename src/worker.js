@@ -6921,6 +6921,34 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 #user-modal-card form>div:last-child button[onclick*="toggleModal"]{border-color:#ff38a8!important;color:#ff7bc7!important;background:#160b37!important}
 @media(max-width:640px){#user-modal-card .user-modal-tab-btn{min-height:68px!important;padding:10px 6px!important}#user-modal-card .user-tab-panel>div{padding:14px!important}}
 </style>
+<style id="alpha-adaptive-theme-final">
+/* Final adaptive contract: follows html.dark and the user's --h accent in every section. */
+#user-modal-card{--ac:hsl(var(--h,265) 92% 62%);--ac2:hsl(calc(var(--h,265) + 58) 92% 62%);--ac3:hsl(calc(var(--h,265) - 72) 92% 62%);--u-bg:#07194d;--u-card:#0b225f;--u-input:#061337;--u-ink:#eef6ff;--u-muted:#9db4df;--u-line:hsla(var(--h,265),85%,70%,.42);--u-warn:#ffd27a;--u-good:#6bf2b4}
+html:not(.dark) #user-modal-card{--u-bg:#f8fbff;--u-card:#ffffff;--u-input:#f1f6fd;--u-ink:#15233b;--u-muted:#5d6d86;--u-line:hsla(var(--h,265),55%,45%,.28);--u-warn:#965d00;--u-good:#087c54;background:var(--u-bg)!important;color:var(--u-ink)!important;box-shadow:0 22px 58px rgba(38,58,100,.2)!important}
+#user-modal-card,#user-modal-card .user-tab-panel>div{color:var(--u-ink)!important}
+#user-modal-card>div:first-child{background:linear-gradient(115deg,hsl(var(--h,265) 45% 18%),hsl(calc(var(--h,265) + 45) 52% 27%),hsl(calc(var(--h,265) - 55) 48% 22%))!important;border-color:var(--ac)!important}
+html:not(.dark) #user-modal-card>div:first-child{background:linear-gradient(115deg,hsl(var(--h,265) 70% 95%),hsl(calc(var(--h,265) + 45) 75% 91%),#fff)!important}
+#user-modal-card .user-modal-tab-btn{background:linear-gradient(180deg,hsl(var(--h,265) 70% 29%),hsl(var(--h,265) 70% 18%))!important;border-color:var(--u-line)!important;color:var(--u-ink)!important}
+html:not(.dark) #user-modal-card .user-modal-tab-btn{background:var(--u-card)!important;color:var(--u-ink)!important;box-shadow:0 4px 0 hsla(var(--h,265),40%,30%,.22)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--ac3),var(--ac2),hsl(calc(var(--h,265) + 25) 95% 57%))!important;border-color:hsl(calc(var(--h,265) + 20) 100% 82%)!important;color:#fff!important;box-shadow:0 5px 0 hsl(var(--h,265) 55% 30%),0 0 22px hsla(var(--h,265),95%,60%,.42)!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,var(--u-card),color-mix(in srgb,var(--u-card) 72%,var(--u-bg)))!important;border-color:var(--u-line)!important;box-shadow:0 12px 28px rgba(0,0,0,.18)!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 25px hsla(var(--h,265),35%,45%,.1)!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:var(--u-input)!important;color:var(--u-ink)!important;border-color:var(--u-line)!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:var(--u-muted)!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:var(--u-input)!important;border-color:var(--u-line)!important;color:var(--u-ink)!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,hsl(calc(var(--h,265) + 48) 92% 96%),hsl(var(--h,265) 76% 88%))!important;border-color:var(--ac2)!important;color:#13213a!important;box-shadow:0 0 0 2px hsla(var(--h,265),95%,60%,.3),0 0 22px hsla(var(--h,265),95%,60%,.2)!important}
+#user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#13213a!important}
+#user-modal-card .user-tab-panel .text-gray-700,#user-modal-card .user-tab-panel .text-gray-800,#user-modal-card .user-tab-panel .text-gray-900{color:var(--u-ink)!important}
+#user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:var(--u-muted)!important}
+#user-modal-card .user-tab-panel .bg-gray-50\/70{background:color-mix(in srgb,var(--u-card) 75%,var(--u-bg))!important}
+#user-modal-card .user-tab-panel .bg-amber-50\/80{background:color-mix(in srgb,#f59e0b 18%,var(--u-card))!important;border-color:#f59e0b88!important;color:var(--u-warn)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(100deg,var(--ac3),var(--ac2),hsl(calc(var(--h,265) + 35) 95% 58%))!important;color:#fff!important;box-shadow:0 5px 0 hsl(var(--h,265) 55% 30%),0 0 22px hsla(var(--h,265),95%,60%,.35)!important}
+#user-modal-card form>div:last-child{background:var(--u-bg)!important;border-color:var(--u-line)!important}
+/* Shared panel chrome and cards */
+html:not(.dark) .al-glass,html:not(.dark) .glass,html:not(.dark) .al-card,html:not(.dark) #users-table-container{color:var(--alpha-text,#17233b)!important}
+html:not(.dark) .al-glass *,html:not(.dark) .glass *,html:not(.dark) .al-card *{color:inherit}
+.dark .al-glass,.dark .glass,.dark .al-card,.dark #users-table-container{color:var(--alpha-text,#edf4ff)!important}
+</style>
 <div id="ip-selector-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-out">
 	<div class="w-full max-w-sm bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-all transform duration-300 opacity-0 scale-95 ease-out flex flex-col">
 		
