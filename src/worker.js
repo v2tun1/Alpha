@@ -4609,7 +4609,7 @@ const ALPHA_AUTH_CSS = `
 		#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 		html:not(.dark) #stars { opacity: .25; }
 		.wrap { position: relative; z-index: 3; max-width: 1240px; margin: 0 auto; padding: 18px 18px 28px; }
-		.glass { background: linear-gradient(160deg, rgba(30,34,80,.55), rgba(10,12,35,.70)); border: 1px solid rgba(140,150,255,.22); border-radius: 18px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
+		.glass { background: linear-gradient(160deg, rgba(30,34,80,.55), rgba(10,12,35,.70)); border: 1px solid rgba(140,150,255,.22); border-radius: 18px; backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow: 0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
 		html:not(.dark) .glass { background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(240,242,255,.75)); border-color: rgba(90,100,200,.18); box-shadow: 0 10px 30px rgba(60,70,160,.12); }
 		.neon { position: relative; }
 		.neon::before { content: ""; position: absolute; inset: -1.5px; border-radius: inherit; padding: 1.5px; background: linear-gradient(135deg, var(--a3), var(--a1), var(--a2)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
@@ -4685,7 +4685,7 @@ const ALPHA_AUTH_CSS = `
 		.rainbow button { opacity: .7; color: inherit; } .rainbow button:hover { opacity: 1; }
 		.x-credits { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; font-size: 12px; }
 		.x-credits a { padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(140,150,255,.2); opacity: .75; } .credits a:hover { opacity: 1; }
-		.modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,10,.65); backdrop-filter: blur(4px); }
+		.modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,10,.65); backdrop-filter:none; }
 		.modal.show { display: flex; }
 		.ghost { padding: 11px; border-radius: 14px; font-weight: 700; border: 1px solid rgba(255,90,90,.6); color: #ff7b7b; }
 		@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
@@ -4730,6 +4730,37 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 #alpha-notify-rail{font-family:inherit}.alpha-notice{background:var(--alpha-surface)!important;color:var(--alpha-text)!important;border-color:var(--alpha-border)!important;box-shadow:0 8px 24px rgba(20,35,70,.18)!important}
 .alpha-notice[data-kind="success"] .alpha-notice__mark{background:var(--alpha-success);color:#fff}.alpha-notice[data-kind="error"] .alpha-notice__mark{background:var(--alpha-danger);color:#fff}.alpha-notice[data-kind="info"] .alpha-notice__mark{background:var(--alpha-accent);color:#fff}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style><style id="alpha-final-theme-contract">
+:root{--alpha-bg:#f5f7fc;--alpha-surface:#ffffff;--alpha-card:#f7f9ff;--alpha-ink:#16213b;--alpha-muted:#63718b;--alpha-line:#d8e2f1;--alpha-brand:#5146e5;--alpha-brand2:#0ea5e9;--alpha-good:#15966a;--alpha-bad:#d63c72;--alpha-warn:#b36b00;--alpha-shadow:0 12px 28px rgba(45,70,120,.12)}
+html.dark{--alpha-bg:#070b18;--alpha-surface:#0d1428;--alpha-card:#121d3a;--alpha-ink:#edf4ff;--alpha-muted:#a5b3d1;--alpha-line:#26365d;--alpha-brand:#89aaff;--alpha-brand2:#2dd4bf;--alpha-good:#65e5b1;--alpha-bad:#ff83ad;--alpha-warn:#ffd27a;--alpha-shadow:0 14px 34px rgba(0,0,0,.32)}
+html,body{background:var(--alpha-bg)!important;color:var(--alpha-ink)}
+body,main,#app,.main-content{transition:background-color .18s linear,color .18s linear}
+/* dashboard and shared surfaces */
+.al-glass,.glass,.al-card,.card,.panel-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+.al-glass *, .glass *, .al-card *, .card *, .panel-card *{border-color:var(--alpha-line)}
+.alpha-view-dash,.alpha-view-users{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+.alpha-view-dash .al-hero,.alpha-view-users #alpha-users-hero{background:linear-gradient(135deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 16px 32px color-mix(in srgb,var(--alpha-brand) 25%,transparent)!important}
+.alpha-view-dash input,.alpha-view-users input,#users-table-container input{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+.alpha-view-dash button,.alpha-view-users button{transition:background-color .16s,color .16s,border-color .16s,transform .16s!important}
+/* create-user sheet: matches the approved Alpha first-screen direction, but keeps all original ids and handlers */
+#user-modal{background:color-mix(in srgb,var(--alpha-bg) 78%,transparent)!important}
+#user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border:1px solid var(--alpha-line)!important;box-shadow:0 24px 70px rgba(0,0,0,.28)!important}
+#user-modal-card>div:first-child{background:linear-gradient(135deg,color-mix(in srgb,var(--alpha-brand) 18%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+#user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-muted)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 color-mix(in srgb,var(--alpha-ink) 18%,transparent)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,var(--alpha-brand2),var(--alpha-brand))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand) 55%,#000)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+#user-modal-card input::placeholder,#user-modal-card textarea::placeholder{color:var(--alpha-muted)!important}
+#user-modal-card label,#user-modal-card h3,#user-modal-card h4,#user-modal-card h5{color:var(--alpha-ink)!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:var(--alpha-muted)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#d9ff67,#9fdb24)!important;color:#172000!important;border:0!important;box-shadow:0 5px 0 #668e15!important}
+#user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+/* low-cost control feedback */
+#alpha-notify-rail{z-index:100000!important}.alpha-notice{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+/* remove GPU-heavy decorative filters and motion from panel chrome */
+#user-modal-card,#user-modal-card *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style></head>
 <body class="alpha">
 	<div class="sky"></div>
@@ -4778,7 +4809,38 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 	<title>Alpha | تنظیم رمز پنل</title>
 	${COMMON_HEAD}
 	${ALPHA_AUTH_CSS}
-</head>
+<style id="alpha-final-theme-contract">
+:root{--alpha-bg:#f5f7fc;--alpha-surface:#ffffff;--alpha-card:#f7f9ff;--alpha-ink:#16213b;--alpha-muted:#63718b;--alpha-line:#d8e2f1;--alpha-brand:#5146e5;--alpha-brand2:#0ea5e9;--alpha-good:#15966a;--alpha-bad:#d63c72;--alpha-warn:#b36b00;--alpha-shadow:0 12px 28px rgba(45,70,120,.12)}
+html.dark{--alpha-bg:#070b18;--alpha-surface:#0d1428;--alpha-card:#121d3a;--alpha-ink:#edf4ff;--alpha-muted:#a5b3d1;--alpha-line:#26365d;--alpha-brand:#89aaff;--alpha-brand2:#2dd4bf;--alpha-good:#65e5b1;--alpha-bad:#ff83ad;--alpha-warn:#ffd27a;--alpha-shadow:0 14px 34px rgba(0,0,0,.32)}
+html,body{background:var(--alpha-bg)!important;color:var(--alpha-ink)}
+body,main,#app,.main-content{transition:background-color .18s linear,color .18s linear}
+/* dashboard and shared surfaces */
+.al-glass,.glass,.al-card,.card,.panel-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+.al-glass *, .glass *, .al-card *, .card *, .panel-card *{border-color:var(--alpha-line)}
+.alpha-view-dash,.alpha-view-users{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+.alpha-view-dash .al-hero,.alpha-view-users #alpha-users-hero{background:linear-gradient(135deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 16px 32px color-mix(in srgb,var(--alpha-brand) 25%,transparent)!important}
+.alpha-view-dash input,.alpha-view-users input,#users-table-container input{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+.alpha-view-dash button,.alpha-view-users button{transition:background-color .16s,color .16s,border-color .16s,transform .16s!important}
+/* create-user sheet: matches the approved Alpha first-screen direction, but keeps all original ids and handlers */
+#user-modal{background:color-mix(in srgb,var(--alpha-bg) 78%,transparent)!important}
+#user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border:1px solid var(--alpha-line)!important;box-shadow:0 24px 70px rgba(0,0,0,.28)!important}
+#user-modal-card>div:first-child{background:linear-gradient(135deg,color-mix(in srgb,var(--alpha-brand) 18%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+#user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-muted)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 color-mix(in srgb,var(--alpha-ink) 18%,transparent)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,var(--alpha-brand2),var(--alpha-brand))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand) 55%,#000)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+#user-modal-card input::placeholder,#user-modal-card textarea::placeholder{color:var(--alpha-muted)!important}
+#user-modal-card label,#user-modal-card h3,#user-modal-card h4,#user-modal-card h5{color:var(--alpha-ink)!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:var(--alpha-muted)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#d9ff67,#9fdb24)!important;color:#172000!important;border:0!important;box-shadow:0 5px 0 #668e15!important}
+#user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+/* low-cost control feedback */
+#alpha-notify-rail{z-index:100000!important}.alpha-notice{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+/* remove GPU-heavy decorative filters and motion from panel chrome */
+#user-modal-card,#user-modal-card *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head>
 <body class="alpha">
 	<div class="sky"></div>
 	<canvas id="stars"></canvas>
@@ -4858,7 +4920,38 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 	<title>Alpha | ورود به پنل مدیریت</title>
 	${COMMON_HEAD}
 	${ALPHA_AUTH_CSS}
-</head>
+<style id="alpha-final-theme-contract">
+:root{--alpha-bg:#f5f7fc;--alpha-surface:#ffffff;--alpha-card:#f7f9ff;--alpha-ink:#16213b;--alpha-muted:#63718b;--alpha-line:#d8e2f1;--alpha-brand:#5146e5;--alpha-brand2:#0ea5e9;--alpha-good:#15966a;--alpha-bad:#d63c72;--alpha-warn:#b36b00;--alpha-shadow:0 12px 28px rgba(45,70,120,.12)}
+html.dark{--alpha-bg:#070b18;--alpha-surface:#0d1428;--alpha-card:#121d3a;--alpha-ink:#edf4ff;--alpha-muted:#a5b3d1;--alpha-line:#26365d;--alpha-brand:#89aaff;--alpha-brand2:#2dd4bf;--alpha-good:#65e5b1;--alpha-bad:#ff83ad;--alpha-warn:#ffd27a;--alpha-shadow:0 14px 34px rgba(0,0,0,.32)}
+html,body{background:var(--alpha-bg)!important;color:var(--alpha-ink)}
+body,main,#app,.main-content{transition:background-color .18s linear,color .18s linear}
+/* dashboard and shared surfaces */
+.al-glass,.glass,.al-card,.card,.panel-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+.al-glass *, .glass *, .al-card *, .card *, .panel-card *{border-color:var(--alpha-line)}
+.alpha-view-dash,.alpha-view-users{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+.alpha-view-dash .al-hero,.alpha-view-users #alpha-users-hero{background:linear-gradient(135deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 16px 32px color-mix(in srgb,var(--alpha-brand) 25%,transparent)!important}
+.alpha-view-dash input,.alpha-view-users input,#users-table-container input{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+.alpha-view-dash button,.alpha-view-users button{transition:background-color .16s,color .16s,border-color .16s,transform .16s!important}
+/* create-user sheet: matches the approved Alpha first-screen direction, but keeps all original ids and handlers */
+#user-modal{background:color-mix(in srgb,var(--alpha-bg) 78%,transparent)!important}
+#user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border:1px solid var(--alpha-line)!important;box-shadow:0 24px 70px rgba(0,0,0,.28)!important}
+#user-modal-card>div:first-child{background:linear-gradient(135deg,color-mix(in srgb,var(--alpha-brand) 18%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+#user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-muted)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 color-mix(in srgb,var(--alpha-ink) 18%,transparent)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,var(--alpha-brand2),var(--alpha-brand))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand) 55%,#000)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+#user-modal-card input::placeholder,#user-modal-card textarea::placeholder{color:var(--alpha-muted)!important}
+#user-modal-card label,#user-modal-card h3,#user-modal-card h4,#user-modal-card h5{color:var(--alpha-ink)!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:var(--alpha-muted)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#d9ff67,#9fdb24)!important;color:#172000!important;border:0!important;box-shadow:0 5px 0 #668e15!important}
+#user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+/* low-cost control feedback */
+#alpha-notify-rail{z-index:100000!important}.alpha-notice{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+/* remove GPU-heavy decorative filters and motion from panel chrome */
+#user-modal-card,#user-modal-card *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head>
 <body class="alpha">
 	<div class="sky"></div>
 	<canvas id="stars"></canvas>
@@ -5347,7 +5440,38 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 			animation: symBounce 2s ease-in-out infinite;
 		}
 	</style>
-</head>
+<style id="alpha-final-theme-contract">
+:root{--alpha-bg:#f5f7fc;--alpha-surface:#ffffff;--alpha-card:#f7f9ff;--alpha-ink:#16213b;--alpha-muted:#63718b;--alpha-line:#d8e2f1;--alpha-brand:#5146e5;--alpha-brand2:#0ea5e9;--alpha-good:#15966a;--alpha-bad:#d63c72;--alpha-warn:#b36b00;--alpha-shadow:0 12px 28px rgba(45,70,120,.12)}
+html.dark{--alpha-bg:#070b18;--alpha-surface:#0d1428;--alpha-card:#121d3a;--alpha-ink:#edf4ff;--alpha-muted:#a5b3d1;--alpha-line:#26365d;--alpha-brand:#89aaff;--alpha-brand2:#2dd4bf;--alpha-good:#65e5b1;--alpha-bad:#ff83ad;--alpha-warn:#ffd27a;--alpha-shadow:0 14px 34px rgba(0,0,0,.32)}
+html,body{background:var(--alpha-bg)!important;color:var(--alpha-ink)}
+body,main,#app,.main-content{transition:background-color .18s linear,color .18s linear}
+/* dashboard and shared surfaces */
+.al-glass,.glass,.al-card,.card,.panel-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+.al-glass *, .glass *, .al-card *, .card *, .panel-card *{border-color:var(--alpha-line)}
+.alpha-view-dash,.alpha-view-users{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+.alpha-view-dash .al-hero,.alpha-view-users #alpha-users-hero{background:linear-gradient(135deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 16px 32px color-mix(in srgb,var(--alpha-brand) 25%,transparent)!important}
+.alpha-view-dash input,.alpha-view-users input,#users-table-container input{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+.alpha-view-dash button,.alpha-view-users button{transition:background-color .16s,color .16s,border-color .16s,transform .16s!important}
+/* create-user sheet: matches the approved Alpha first-screen direction, but keeps all original ids and handlers */
+#user-modal{background:color-mix(in srgb,var(--alpha-bg) 78%,transparent)!important}
+#user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border:1px solid var(--alpha-line)!important;box-shadow:0 24px 70px rgba(0,0,0,.28)!important}
+#user-modal-card>div:first-child{background:linear-gradient(135deg,color-mix(in srgb,var(--alpha-brand) 18%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+#user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-muted)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 color-mix(in srgb,var(--alpha-ink) 18%,transparent)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,var(--alpha-brand2),var(--alpha-brand))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand) 55%,#000)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+#user-modal-card input::placeholder,#user-modal-card textarea::placeholder{color:var(--alpha-muted)!important}
+#user-modal-card label,#user-modal-card h3,#user-modal-card h4,#user-modal-card h5{color:var(--alpha-ink)!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:var(--alpha-muted)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#d9ff67,#9fdb24)!important;color:#172000!important;border:0!important;box-shadow:0 5px 0 #668e15!important}
+#user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+/* low-cost control feedback */
+#alpha-notify-rail{z-index:100000!important}.alpha-notice{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+/* remove GPU-heavy decorative filters and motion from panel chrome */
+#user-modal-card,#user-modal-card *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head>
 <body class="bg-gray-100 dark:bg-amoled-bg text-gray-900 dark:text-zinc-100 min-h-screen transition-colors duration-200">
 	<canvas id="waves" class="bg-canvas"></canvas>
 	<header class="border-b border-gray-200 dark:border-amoled-border bg-gray-50/95 dark:bg-amoled-card/95 px-4 py-3 md:py-4 relative z-10 md:sticky md:top-0 md:z-40 backdrop-blur-md">
@@ -5356,7 +5480,7 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 			<div class="flex flex-row justify-between items-center w-full md:w-auto gap-2">
 				<h1 class="text-lg font-bold flex items-center gap-2 flex-shrink-0" dir="ltr">
 					ALPHA
-					<span id="panel-version" class="text-xs px-2 py-0.5 font-semibold bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400 rounded-full"></span>
+					<span id="panel-version" class="text-xs px-2 py-0.5 font-semibold rounded-full">v1.1.1</span>
 				</h1>
 				
 				<div class="flex items-center gap-2">
@@ -5407,7 +5531,7 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 <style>
 .al3-wrap{--fg:#0f172a;--mut:#64748b;--gl:rgba(255,255,255,.62);--gl2:rgba(255,255,255,.8);--bd:rgba(148,163,184,.35);--acc1:#7c3aed;--acc2:#3b82f6;--ok:#059669;--bad:#dc2626;--warn:#d97706;margin:0 0 20px;font-family:inherit;color:var(--fg)}
 .dark .al3-wrap,.al3-wrap.dark{--fg:#f1f5f9;--mut:#94a3b8;--gl:rgba(15,23,42,.55);--gl2:rgba(30,41,59,.7);--bd:rgba(148,163,184,.22);--ok:#34d399;--bad:#f87171;--warn:#fbbf24}
-.al3-glass{background:linear-gradient(135deg,var(--gl2),var(--gl));backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid var(--bd);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 36px -18px rgba(37,99,235,.35);border-radius:20px}
+.al3-glass{background:linear-gradient(135deg,var(--gl2),var(--gl));backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid var(--bd);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 36px -18px rgba(37,99,235,.35);border-radius:20px}
 .al3-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;margin-bottom:14px;overflow:hidden;transform:perspective(900px) rotateX(3deg);transition:transform .5s}
 .al3-bar:hover{transform:perspective(900px) rotateX(0)}
 .al3-bar::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(closest-side,rgba(124,58,237,.35),transparent);pointer-events:none}
@@ -5427,10 +5551,9 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 .al3-track{height:6px;border-radius:9px;background:rgba(148,163,184,.22);margin-top:8px;overflow:hidden}
 .al3-track>i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#06b6d4,#8b5cf6);transition:width .5s}
 .al3-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin-bottom:10px;scrollbar-width:none}
-.al3-chip{flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1px solid var(--bd);background:var(--gl);color:var(--mut);font-size:11px;font-weight:800;cursor:pointer;backdrop-filter:blur(10px)}
-.al3-chip.on{background:linear-gradient(90deg,var(--acc2),var(--acc1));color:#fff;border-color:transparent;box-shadow:0 8px 18px -8px rgba(124,58,237,.9)}
+.al3-chip{flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1px solid var(--bd);background:var(--gl);color:var(--mut);font-size:11px;font-weight:800;cursor:pointer;backdrop-filter:none;color:#fff;border-color:transparent;box-shadow:0 8px 18px -8px rgba(124,58,237,.9)}
 .al3-search{display:flex;gap:8px;margin-bottom:14px}
-.al3-input{flex:1;padding:11px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);font-size:12px;backdrop-filter:blur(10px);box-sizing:border-box;min-width:0}
+.al3-input{flex:1;padding:11px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--gl);color:var(--fg);font-size:12px;backdrop-filter:none;box-sizing:border-box;min-width:0}
 .al3-input::placeholder{color:var(--mut)}
 .al3-listhead{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 8px}
 .al3-listhead h3{margin:0;font-size:15px;font-weight:900}
@@ -6002,8 +6125,8 @@ body{background:var(--alpha-page)!important;color:var(--alpha-text)}
 	</div>
 </div>
 	<div id="user-modal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200 ease-out"><style>
-#user-modal{z-index:55!important;background:rgba(15,23,42,.45)!important;backdrop-filter:blur(10px) saturate(120%);-webkit-backdrop-filter:blur(10px) saturate(120%)}
-#user-modal-card{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(237,233,254,.66))!important;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.7)!important;border-radius:26px!important;box-shadow:0 34px 70px -24px rgba(91,33,182,.5),inset 0 1px 0 rgba(255,255,255,.8)!important}
+#user-modal{z-index:55!important;background:rgba(15,23,42,.45)!important;backdrop-filter:none;-webkit-backdrop-filter:blur(10px) saturate(120%)}
+#user-modal-card{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(237,233,254,.66))!important;backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid rgba(255,255,255,.7)!important;border-radius:26px!important;box-shadow:0 34px 70px -24px rgba(91,33,182,.5),inset 0 1px 0 rgba(255,255,255,.8)!important}
 .dark #user-modal-card{background:linear-gradient(150deg,rgba(15,23,42,.84),rgba(30,27,75,.66))!important;border-color:rgba(148,163,184,.25)!important;box-shadow:0 34px 70px -24px rgba(59,130,246,.45),inset 0 1px 0 rgba(255,255,255,.08)!important}
 #user-modal-card>div:first-child{background:transparent!important;border-bottom:1px solid rgba(148,163,184,.25)!important}
 .user-modal-tab-btn{border-radius:16px!important;background:rgba(255,255,255,.4)!important;border:1px solid rgba(148,163,184,.3)!important;transition:transform .2s,box-shadow .2s}
@@ -6089,6 +6212,68 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 .dark #user-modal input[type=checkbox]{background-color:#0f172a!important;border-color:#94a3b8!important}
 .dark #user-modal input[type=checkbox]:checked{background-color:#7c3aed!important}
 </style>
+<style id="alpha-identity-reference">
+/* Reference identity/protocol screen: scoped, lightweight, original controls remain intact. */
+#user-modal{background:rgba(2,8,34,.9)!important}
+#user-modal-card{background:linear-gradient(155deg,#07184e 0%,#06113d 48%,#10063f 100%)!important;border:1px solid #2858d9!important;border-radius:25px!important;box-shadow:0 25px 70px rgba(0,0,0,.55),inset 0 1px 0 #ffffff18!important}
+#user-modal-card>div:first-child{position:relative;overflow:hidden;background:linear-gradient(120deg,#071548,#102c82 58%,#42116e)!important;border-bottom:1px solid #2875ff!important;padding:20px 24px!important}
+#user-modal-card>div:first-child:after{content:"";position:absolute;left:8%;bottom:-28px;width:48%;height:70px;background:#2049a855;filter:blur(10px);transform:skewX(-28deg);pointer-events:none}
+#user-modal-card>div:first-child h3{font-size:1.2rem!important;color:#fff!important;letter-spacing:.01em}
+#user-modal-card>div:first-child p{font-size:.82rem!important;color:#b5c8ff!important}
+#user-modal-card>div:first-child button{border:2px solid #ff4bb3!important;background:#180d43!important;color:#ff65c4!important;border-radius:15px!important;box-shadow:0 0 16px #ff34b355!important}
+#user-modal-card .user-modal-tab-btn{background:linear-gradient(180deg,#142e86,#071553)!important;border:1px solid #1f61e8!important;border-radius:19px!important;color:#d8e7ff!important;box-shadow:0 5px 0 #030a2d,0 0 18px #1d55ff26!important;padding:14px 10px!important;min-height:74px!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,#f214ff,#ff3eaa 46%,#ffcb38)!important;border-color:#ffc6ff!important;color:#fff!important;box-shadow:0 5px 0 #8b1c86,0 0 22px #f72bce88!important;transform:translateY(-2px)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,#0d2675,#071850)!important;border:1px solid #1648bd!important;border-radius:22px!important;box-shadow:0 14px 30px #020a2d99,inset 0 1px 0 #ffffff10!important;padding:18px!important}
+#user-modal-card #tab-user-info>div:first-child{position:relative}
+#user-modal-card #tab-user-info>div:first-child:before{content:"۱";position:absolute;right:-8px;top:-14px;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#8b2cff,#3e74ff);color:#fff;font-size:18px;font-weight:1000;box-shadow:0 0 16px #6e4dff88}
+#user-modal-card #tab-user-info>div:first-child>div:first-child label{font-size:1rem!important;color:#fff!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){background:linear-gradient(145deg,#081537,#06112b)!important;border:1px solid #3c5fe7!important;border-radius:20px!important;min-height:88px!important;padding:16px!important;box-shadow:inset 0 1px 0 #ffffff12,0 8px 18px #01061c66!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,#eef9ff,#c9e9ff)!important;border:2px solid #65d8ff!important;box-shadow:0 0 0 2px #ff4bdf88,0 0 24px #55c8ff66!important}
+#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked) span{color:#10213e!important}
+#user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{width:42px!important;height:42px!important;border-radius:13px!important;background:#112b69!important;color:#64dcff!important}
+#user-modal-card #username-card{background:linear-gradient(145deg,#0d2675,#071850)!important;border:1px solid #1648bd!important;border-radius:22px!important;position:relative}
+#user-modal-card #username-card:before{content:"۲";position:absolute;right:-8px;top:-14px;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#3e74ff,#09d8d0);color:#fff;font-size:18px;font-weight:1000;box-shadow:0 0 16px #1ed7ff66}
+#user-modal-card #username-card input{height:52px!important;border:1px solid #436eff!important;background:#050d32!important;border-radius:17px!important;color:#eef6ff!important;font-size:16px!important}
+#user-modal-card #username-card button{border:2px solid #3b93ff!important;color:#91c6ff!important;background:#07184b!important;border-radius:12px!important}
+#user-modal-card .text-amber-700,#user-modal-card .dark\:text-amber-400{color:#ffc45e!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(100deg,#ff0cff,#9f18ff 45%,#00d5ff)!important;color:#fff!important;border-radius:16px!important;box-shadow:0 5px 0 #69127d,0 0 24px #bd21ff66!important}
+#user-modal-card form>div:last-child{background:#050d2e!important;border-top:1px solid #2445a9!important}
+#user-modal-card form>div:last-child button[onclick*="toggleModal"]{border:2px solid #ff38a8!important;color:#ff7bc7!important;background:#160b37!important;border-radius:16px!important}
+@media(max-width:640px){#user-modal-card>div:first-child{padding:16px!important}#user-modal-card .user-modal-tab-btn{min-height:68px!important;font-size:.75rem!important}#user-modal-card .user-modal-tab-btn svg{width:22px!important;height:22px!important}#user-modal-card .user-tab-panel>div{padding:14px!important}}
+</style>
+<style id="alpha-three-sections-reference">
+/* Shared reference system for all three create-config sections. Existing ids/events are untouched. */
+#user-modal-card .user-tab-panel{counter-reset:alphaSection}
+#user-modal-card .user-tab-panel>div{counter-increment:alphaSection;position:relative;overflow:visible!important}
+#user-modal-card .user-tab-panel>div:after{content:counter(alphaSection);position:absolute;right:-9px;top:-13px;z-index:4;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#b217ff,#247dff);border:1px solid #8ea8ff;color:#fff;font-size:17px;font-weight:1000;box-shadow:0 0 18px #5d4fff66}
+#user-modal-card .user-tab-panel>div:nth-child(2):after{background:linear-gradient(135deg,#08d8e8,#1672ff)}
+#user-modal-card .user-tab-panel>div:nth-child(3):after{background:linear-gradient(135deg,#8b2cff,#f126d2)}
+#user-modal-card .user-tab-panel>div:nth-child(4):after{background:linear-gradient(135deg,#ff2aa8,#ff8b2e)}
+#user-modal-card .user-tab-panel>div:nth-child(5):after{background:linear-gradient(135deg,#20d8be,#237fff)}
+#user-modal-card .user-tab-panel>div:nth-child(6):after{background:linear-gradient(135deg,#fa2b9a,#7b2cff)}
+#user-modal-card .user-tab-panel>div>div:first-child label{font-size:15px!important;font-weight:900!important;color:#f5f8ff!important}
+#user-modal-card .user-tab-panel>div>div:first-child label span:first-child{box-shadow:0 0 12px currentColor}
+#user-modal-card .user-tab-panel .group\/toggle label,#user-modal-card .user-tab-panel label:has(input[type=checkbox]){min-height:50px}
+#user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{min-height:46px!important;border:1px solid #3470e8!important;background:linear-gradient(180deg,#08194d,#071337)!important;border-radius:15px!important;color:#dcecff!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox]):focus,#user-modal-card .user-tab-panel select:focus,#user-modal-card .user-tab-panel textarea:focus{border-color:#13d9ff!important;box-shadow:0 0 0 2px #13d9ff33,0 0 16px #168bff33!important}
+#user-modal-card .user-tab-panel input:not([type=checkbox])::placeholder,#user-modal-card .user-tab-panel textarea::placeholder{color:#7793c9!important}
+#user-modal-card .user-tab-panel .peer-checked\:bg-green-500{background:#18d9c8!important;box-shadow:0 0 16px #18d9c888!important}
+#user-modal-card .user-tab-panel .peer-checked\:bg-purple-500{background:#c42cff!important;box-shadow:0 0 16px #c42cff88!important}
+#user-modal-card .user-tab-panel .bg-amber-50\/80{background:#38251a!important;border-color:#a66b21!important;color:#ffc55d!important}
+#user-modal-card .user-tab-panel .bg-red-50\/80{background:#3d182b!important;border-color:#df4e88!important;color:#ff9bc2!important}
+#user-modal-card .user-tab-panel .bg-gray-50\/70{background:#07143e!important}
+#user-modal-card .user-tab-panel .grid button{border-color:#245ce0!important;background:linear-gradient(180deg,#0b225f,#07143d)!important;color:#9bc3ff!important;border-radius:14px!important;min-height:42px!important}
+#user-modal-card .user-tab-panel .grid button:hover{border-color:#28d9ff!important;color:#d9f8ff!important}
+#user-modal-card .user-tab-panel .grid button:has(input:checked),#user-modal-card .user-tab-panel button.active{background:linear-gradient(135deg,#d517ff,#1abfff)!important;color:#fff!important;border-color:#ffb6ff!important;box-shadow:0 0 18px #ae25ff66!important}
+#user-modal-card .user-tab-panel .border-t{border-color:#1d4aa8!important}
+#user-modal-card .user-tab-panel .text-gray-700,#user-modal-card .user-tab-panel .text-gray-800,#user-modal-card .user-tab-panel .text-gray-900{color:#eaf3ff!important}
+#user-modal-card .user-tab-panel .text-gray-500,#user-modal-card .user-tab-panel .text-gray-400{color:#91a9d2!important}
+#user-modal-card .user-tab-panel .rounded-xl{border-radius:16px!important}
+#user-modal-card .user-tab-panel .rounded-lg{border-radius:13px!important}
+#user-modal-card .user-tab-panel>div:first-child:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;border-radius:6px;background:linear-gradient(#f526ff,#15ceff);opacity:.8}
+@media(max-width:640px){#user-modal-card .user-tab-panel>div:after{right:-5px;width:31px;height:31px;font-size:15px}#user-modal-card .user-tab-panel>div{padding:15px!important}}
+</style>
 
 
 		<div id="user-modal-card" class="w-full max-w-5xl bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-[opacity,transform] duration-200 opacity-0 scale-95 ease-out flex flex-col max-h-[92vh] transform-gpu">
@@ -6098,8 +6283,8 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 					</div>
 					<div>
-						<h3 id="modal-title" class="font-black text-gray-900 dark:text-zinc-100 text-sm sm:text-base tracking-tight">ایجاد کاربر جدید</h3>
-						<p class="text-[11px] text-gray-500 dark:text-zinc-400 font-medium">هویت، اعتبار، امنیت و خروجی</p>
+						<h3 id="modal-title" class="font-black text-gray-900 dark:text-zinc-100 text-sm sm:text-base tracking-tight">ساخت کانفیگ جدید</h3>
+						<p class="text-[11px] text-gray-500 dark:text-zinc-400 font-medium">با انتخاب تنظیمات دلخواه، کانفیگ خود را بسازید</p>
 					</div>
 				</div>
 				<button type="button" onclick="toggleModal(false)" class="p-2 rounded-lg bg-transparent border-2 border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 shadow-sm" title="بستن">
@@ -6119,17 +6304,17 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">نام کاربری و مشخصات</div>
-									<div class="text-[10px] opacity-75 font-normal">حجم، زمان، محدودیت و تمدید</div>
+									<div class="text-xs font-black">مشخصات کاربر</div>
+									<div class="text-[10px] opacity-75 font-normal">هویت، اعتبار و مسیر پیشرفته</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">هویت و پروتکل</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">سریع و آسان</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-ports-network')" id="tab-btn-ports-network" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">پورت و آدرس ورودی</div>
+									<div class="text-xs font-black">سفارشی</div>
 									<div class="text-[10px] opacity-75 font-normal">درگاه‌ها، IPهای تمیز و فرگمنت</div>
 								</div>
 								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">شبکه</span>
@@ -6139,17 +6324,17 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">خروجی</div>
+									<div class="text-xs font-black">پیشرفته</div>
 									<div class="text-[10px] opacity-75 font-normal">اتصال مستقیم یا پروکسی زنجیره‌ای</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">خروجی</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">پیشرفته</span>
 							</button>
 						</div>
 						
 						<div class="hidden md:flex flex-col gap-2 mt-auto pt-4 border-t border-gray-200 dark:border-amoled-border w-full">
 							<button type="submit" id="submit-btn-desktop" class="w-full py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-sm transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer">
 								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-								<span>ایجاد کاربر</span>
+								<span>ساخت کانفیگ</span>
 							</button>
 							<button type="button" onclick="toggleModal(false)" class="w-full py-2 bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-bold rounded-xl text-xs transition shadow-sm">
 								انصراف
@@ -6163,7 +6348,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 								<div class="flex items-center justify-between">
 									<label class="block text-xs font-black text-gray-700 dark:text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
 										<span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-										<span>پروتکل‌های اتصال · حداقل یک مورد</span>
+										<span>انتخاب پروتکل و نوع اتصال</span>
 									</label>
 								</div>
 								<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -6173,8 +6358,8 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 												<svg class="w-5 h-5 -ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
 											</div>
 											<div>
-												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل VLESS</span>
-												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">کارایی بالا، سربار کم</span>
+												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">VLESS + Reality</span>
+												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">سرعت بالا، سربار کم</span>
 											</div>
 										</div>
 										<input type="checkbox" id="input-proto-vless" checked onchange="handleProtocolChange(this)" class="w-4 h-4 rounded focus:ring-green-500/50 bg-white dark:bg-amoled-input border-gray-300 dark:border-amoled-border cursor-pointer text-green-600" style="filter: none !important; accent-color: #16a34a !important;">
@@ -6185,8 +6370,8 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 												<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 11a2 2 0 100-4 2 2 0 000 4z"></path><path d="M12 11v3"></path></svg>
 											</div>
 											<div>
-												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل Trojan</span>
-												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">لایه امنیتی قوی </span>
+												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">Trojan Secure</span>
+												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">لایه امنیتی قوی</span>
 											</div>
 										</div>
 										<input type="checkbox" id="input-proto-trojan" onchange="handleProtocolChange(this)" class="w-4 h-4 rounded focus:ring-green-500/50 bg-white dark:bg-amoled-input border-gray-300 dark:border-amoled-border cursor-pointer text-green-600" style="filter: none !important; accent-color: #16a34a !important;">
@@ -6197,7 +6382,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 												<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
 											</div>
 											<div>
-												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">پروتکل Shadowsocks</span>
+												<span class="text-xs font-black text-gray-800 dark:text-zinc-200 block">Shadowsocks</span>
 												<span class="text-[10px] text-gray-500 dark:text-zinc-400 block font-normal">ساده و کم‌مصرف</span>
 											</div>
 										</div>
@@ -6206,7 +6391,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 								</div>
 								<div class="mt-2.5 p-2 bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg flex items-start gap-2 shadow-sm">
 									<svg class="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-									<span class="text-[10px] font-bold text-amber-700 dark:text-amber-400 leading-relaxed text-justify">هشدار: شدوساکس در موبایل فقط روی برنامه <a href="https://www.happ.su/main" target="_blank" class="text-blue-600 dark:text-blue-400 underline hover:opacity-80 transition-opacity">happ</a> عمل میکند. </span>
+									<span class="text-[10px] font-bold text-amber-700 dark:text-amber-400 leading-relaxed text-justify">توجه: Shadowsocks در موبایل فقط روی برنامه <a href="https://www.happ.su/main" target="_blank" class="text-blue-600 dark:text-blue-400 underline hover:opacity-80 transition-opacity">happ</a> عمل میکند. </span>
 								</div>
 							</div>
 							
@@ -6646,7 +6831,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 										<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 										<div>
 											<span class="text-xs font-black text-gray-800 dark:text-zinc-200">تنظیم کشور و ثابت کردن آی‌پی (SOCKS5/HTTP)</span>
-											<span class="text-[10px] text-gray-400 block font-normal">زنجیره اتصال خروجی جهت عبور از تحریم‌ها و تغییر لوکیشن</span>
+											<span class="text-[10px] text-gray-400 block font-normal">زنجیره اتصال پیشرفته جهت عبور از تحریم‌ها و تغییر لوکیشن</span>
 										</div>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer select-none">
@@ -6706,7 +6891,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 					<div class="flex items-center gap-2">
 						<button type="submit" id="submit-btn" class="px-7 py-2.5 bg-transparent border-2 border-green-600 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 font-black rounded-xl text-xs sm:text-sm transition shadow-lg flex items-center gap-1.5 cursor-pointer">
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-							<span>ایجاد کاربر</span>
+							<span>ساخت کانفیگ</span>
 						</button>
 					</div>
 				</div>
@@ -11691,8 +11876,8 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
             border: 1px solid var(--dash-edge) !important;
             box-shadow: 0 8px 24px rgba(40,55,95,.09), inset 0 1px 0 rgba(255,255,255,.35) !important;
             color: var(--dash-text) !important;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter:none;
+            -webkit-backdrop-filter:none;
         }
         html.dark .al-glass {
             box-shadow: 0 8px 26px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.035) !important;
@@ -11850,7 +12035,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
         body.alpha-view-users #users-table-container .bg-green-50, body.alpha-view-users #users-table-container .bg-blue-50, body.alpha-view-users #users-table-container .bg-red-50, body.alpha-view-users #users-table-container .bg-yellow-50 { border-radius:99px !important; }
         body.alpha-view-users #users-table-container input[type=checkbox] { accent-color:#12cfff !important; }
         body.alpha-view-users #loading-state { color:#93b9e6 !important; }
-        body.alpha-view-users #alpha-bnav { background:linear-gradient(110deg,rgba(2,22,54,.94),rgba(22,22,91,.94),rgba(49,14,88,.95)) !important; border:1px solid rgba(29,161,255,.62) !important; box-shadow:0 0 24px rgba(0,110,255,.18),0 12px 34px rgba(0,0,0,.34) !important; backdrop-filter:blur(22px); }
+        body.alpha-view-users #alpha-bnav { background:linear-gradient(110deg,rgba(2,22,54,.94),rgba(22,22,91,.94),rgba(49,14,88,.95)) !important; border:1px solid rgba(29,161,255,.62) !important; box-shadow:0 0 24px rgba(0,110,255,.18),0 12px 34px rgba(0,0,0,.34) !important; backdrop-filter:none; }
         body.alpha-view-users #alpha-bnav button { color:#9bbce8; }
         body.alpha-view-users #alpha-bnav button.active { color:#fff !important; background:linear-gradient(130deg,#087cf4,#6034f5 65%,#c21cf0) !important; box-shadow:0 0 18px rgba(75,87,255,.35); }
         body.alpha-view-users #alpha-bnav button.mid { color:#fff !important; }
@@ -12300,8 +12485,8 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 		.glass {
 			background: rgba(255, 255, 255, 0.65);
 			border: 1px solid rgba(255, 255, 255, 0.5);
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
+			backdrop-filter:none;
+			-webkit-backdrop-filter:none;
 			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
 		}
 		.dark .glass {
@@ -12325,7 +12510,38 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 			vertical-align: -0.05em;
 		}
 	</style>
-</head>
+<style id="alpha-final-theme-contract">
+:root{--alpha-bg:#f5f7fc;--alpha-surface:#ffffff;--alpha-card:#f7f9ff;--alpha-ink:#16213b;--alpha-muted:#63718b;--alpha-line:#d8e2f1;--alpha-brand:#5146e5;--alpha-brand2:#0ea5e9;--alpha-good:#15966a;--alpha-bad:#d63c72;--alpha-warn:#b36b00;--alpha-shadow:0 12px 28px rgba(45,70,120,.12)}
+html.dark{--alpha-bg:#070b18;--alpha-surface:#0d1428;--alpha-card:#121d3a;--alpha-ink:#edf4ff;--alpha-muted:#a5b3d1;--alpha-line:#26365d;--alpha-brand:#89aaff;--alpha-brand2:#2dd4bf;--alpha-good:#65e5b1;--alpha-bad:#ff83ad;--alpha-warn:#ffd27a;--alpha-shadow:0 14px 34px rgba(0,0,0,.32)}
+html,body{background:var(--alpha-bg)!important;color:var(--alpha-ink)}
+body,main,#app,.main-content{transition:background-color .18s linear,color .18s linear}
+/* dashboard and shared surfaces */
+.al-glass,.glass,.al-card,.card,.panel-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+.al-glass *, .glass *, .al-card *, .card *, .panel-card *{border-color:var(--alpha-line)}
+.alpha-view-dash,.alpha-view-users{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+.alpha-view-dash .al-hero,.alpha-view-users #alpha-users-hero{background:linear-gradient(135deg,var(--alpha-brand),var(--alpha-brand2))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 16px 32px color-mix(in srgb,var(--alpha-brand) 25%,transparent)!important}
+.alpha-view-dash input,.alpha-view-users input,#users-table-container input{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+.alpha-view-dash button,.alpha-view-users button{transition:background-color .16s,color .16s,border-color .16s,transform .16s!important}
+/* create-user sheet: matches the approved Alpha first-screen direction, but keeps all original ids and handlers */
+#user-modal{background:color-mix(in srgb,var(--alpha-bg) 78%,transparent)!important}
+#user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border:1px solid var(--alpha-line)!important;box-shadow:0 24px 70px rgba(0,0,0,.28)!important}
+#user-modal-card>div:first-child{background:linear-gradient(135deg,color-mix(in srgb,var(--alpha-brand) 18%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+#user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-muted)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 color-mix(in srgb,var(--alpha-ink) 18%,transparent)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(180deg,var(--alpha-brand2),var(--alpha-brand))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand) 55%,#000)!important}
+#user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+#user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+#user-modal-card input,#user-modal-card select,#user-modal-card textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+#user-modal-card input::placeholder,#user-modal-card textarea::placeholder{color:var(--alpha-muted)!important}
+#user-modal-card label,#user-modal-card h3,#user-modal-card h4,#user-modal-card h5{color:var(--alpha-ink)!important}
+#user-modal-card .text-gray-400,#user-modal-card .text-gray-500{color:var(--alpha-muted)!important}
+#user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(180deg,#d9ff67,#9fdb24)!important;color:#172000!important;border:0!important;box-shadow:0 5px 0 #668e15!important}
+#user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+/* low-cost control feedback */
+#alpha-notify-rail{z-index:100000!important}.alpha-notice{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:var(--alpha-shadow)!important}
+/* remove GPU-heavy decorative filters and motion from panel chrome */
+#user-modal-card,#user-modal-card *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head>
 <body class="bg-gray-50 text-gray-900 dark:bg-amoled-bg dark:text-zinc-100 min-h-screen flex flex-col items-center py-12 px-4 overflow-x-hidden">
 	<div class="w-full max-w-xl glass rounded-md shadow-2xl p-6 md:p-8 relative overflow-hidden z-10">
 		<div class="absolute -left-12 -top-12 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
