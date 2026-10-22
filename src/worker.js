@@ -12522,6 +12522,46 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 
 	})();
 	</script>
+<style id="alpha-light-readability-final">
+/* Last-in-document light-mode pass. It intentionally beats legacy Tailwind color utilities. */
+html:not(.dark){--alpha-bg:#f4f7fb;--alpha-surface:#ffffff;--alpha-card:#f8fbff;--alpha-ink:#17233b;--alpha-muted:#5e6d84;--alpha-line:#cbd8e8}
+html:not(.dark) body.alpha-view-users,html:not(.dark) body.alpha-view-dash{background:var(--alpha-bg)!important;color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-users #alpha-users-hero{background:linear-gradient(115deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html:not(.dark) body.alpha-view-users #alpha-users-hero *{color:#fff!important}
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper,html:not(.dark) body.alpha-view-users main>.mb-5.flex.flex-col,html:not(.dark) body.alpha-view-users #users-table-container{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 8px 24px rgba(38,63,104,.1)!important}
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper *,html:not(.dark) body.alpha-view-users #users-table-container *{color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper .text-gray-400,html:not(.dark) body.alpha-view-users #stats-accordion-wrapper .text-gray-500,html:not(.dark) body.alpha-view-users #users-table-container .text-gray-400,html:not(.dark) body.alpha-view-users #users-table-container .text-gray-500{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-users #search-input,html:not(.dark) body.alpha-view-users #filter-status,html:not(.dark) body.alpha-view-users #sort-users{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border:1px solid var(--alpha-line)!important;box-shadow:none!important}
+html:not(.dark) body.alpha-view-users #search-input::placeholder{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-users #alpha-chips .al-chip{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) body.alpha-view-users #alpha-chips .al-chip.on{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important;border-color:transparent!important}
+html:not(.dark) body.alpha-view-users #alpha-bnav{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 8px 24px rgba(38,63,104,.16)!important}
+html:not(.dark) body.alpha-view-users #alpha-bnav *{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-users #alpha-bnav button.active{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important}
+html:not(.dark) body.alpha-view-dash .al-glass,html:not(.dark) body.alpha-view-dash .al-quick-card,html:not(.dark) body.alpha-view-dash .al-chart-card,html:not(.dark) body.alpha-view-dash .al-recent-card,html:not(.dark) body.alpha-view-dash .al-system-card,html:not(.dark) body.alpha-view-dash .al-server-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 8px 24px rgba(38,63,104,.1)!important}
+html:not(.dark) body.alpha-view-dash .al-glass *{color:var(--alpha-ink)!important}
+html:not(.dark) body.alpha-view-dash .al-glass .al-stat-foot,html:not(.dark) body.alpha-view-dash .al-glass .al-chart-note,html:not(.dark) body.alpha-view-dash .al-glass .al-mu{color:var(--alpha-muted)!important}
+html:not(.dark) body.alpha-view-dash .al-q{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+/* create-config modal */
+html:not(.dark) #user-modal{background:rgba(18,31,54,.34)!important}
+html:not(.dark) #user-modal-card{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 24px 60px rgba(30,54,90,.22)!important}
+html:not(.dark) #user-modal-card>div:first-child{background:linear-gradient(120deg,color-mix(in srgb,var(--alpha-brand,#5146e5) 13%,var(--alpha-surface)),var(--alpha-surface))!important;border-color:var(--alpha-line)!important}
+html:not(.dark) #user-modal-card>div:first-child h3,html:not(.dark) #user-modal-card>div:first-child p,html:not(.dark) #user-modal-card>div:first-child svg{color:var(--alpha-ink)!important}
+html:not(.dark) #user-modal-card .user-modal-tab-btn{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 4px 0 rgba(42,64,96,.18)!important}
+html:not(.dark) #user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important;border-color:transparent!important}
+html:not(.dark) #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div{background:var(--alpha-card)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:0 8px 20px rgba(42,64,96,.1)!important}
+html:not(.dark) #user-modal-card .user-tab-panel>div *{color:var(--alpha-ink)}
+html:not(.dark) #user-modal-card .user-tab-panel>div .text-gray-400,html:not(.dark) #user-modal-card .user-tab-panel>div .text-gray-500{color:var(--alpha-muted)!important}
+html:not(.dark) #user-modal-card .user-tab-panel input:not([type=checkbox]),html:not(.dark) #user-modal-card .user-tab-panel select,html:not(.dark) #user-modal-card .user-tab-panel textarea{background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important;box-shadow:inset 0 1px 3px rgba(30,54,90,.08)!important}
+html:not(.dark) #user-modal-card .user-tab-panel input::placeholder,html:not(.dark) #user-modal-card .user-tab-panel textarea::placeholder{color:var(--alpha-muted)!important}
+html:not(.dark) #user-modal-card .user-tab-panel label:has(input[type=checkbox]){background:var(--alpha-surface)!important;color:var(--alpha-ink)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,#eef8ff,#d9f1ff)!important;color:#14233d!important;border-color:var(--alpha-brand2,#0ea5e9)!important}
+html:not(.dark) #user-modal-card .user-tab-panel label:has(input[type=checkbox]:checked) *{color:#14233d!important}
+html:not(.dark) #user-modal-card .user-tab-panel .bg-gray-50\/70,html:not(.dark) #user-modal-card .user-tab-panel .bg-gray-50\/80{background:var(--alpha-card)!important}
+html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surface)!important;border-color:var(--alpha-line)!important}
+html:not(.dark) #user-modal-card #submit-btn,html:not(.dark) #user-modal-card #submit-btn-desktop{background:linear-gradient(110deg,var(--alpha-brand,#5146e5),var(--alpha-brand2,#0ea5e9))!important;color:#fff!important;box-shadow:0 5px 0 color-mix(in srgb,var(--alpha-brand,#5146e5) 60%,#000)!important}
+</style>
 </body>
 </html>`,
 	status: `<!DOCTYPE html>
