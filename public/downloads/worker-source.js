@@ -587,7 +587,7 @@ const ZEUS_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 
 const PWA_MANIFEST = JSON.stringify({
 	name: "Alpha",
 	short_name: "Alpha",
-	description: "پنل مدیریت پیشرفته کانفیگ و کاربران آلفا",
+	description: "پنل مدیریت تنظیم پروکسی کانفیگ و کاربران آلفا",
 	start_url: "/panel",
 	scope: "/",
 	display: "standalone",
@@ -5995,7 +5995,7 @@ body,main,#app,.main-content{transition:background-color .18s linear,color .18s 
 			</div>
 			<div>
 				<h4 class="text-xs font-black text-gray-900 dark:text-white">پنل آلفا</h4>
-				<span class="text-[10px] text-gray-500 dark:text-zinc-400 block">اپلیکیشن پیشرفته و مستقل وب (PWA)</span>
+				<span class="text-[10px] text-gray-500 dark:text-zinc-400 block">اپلیکیشن تنظیم پروکسی و مستقل وب (PWA)</span>
 			</div>
 		</div>
 		
@@ -6171,9 +6171,6 @@ body,main,#app,.main-content{transition:background-color .18s linear,color .18s 
 #user-modal-card form>div:last-child button[onclick*="toggleModal"]{border-color:#ff6b9d!important;color:#ff9dbc!important;background:#241326!important;border-radius:11px!important}
 </style>
 <style>
-#tab-user-info{counter-reset:stp}
-#tab-user-info>div{counter-increment:stp;position:relative;margin-top:14px}
-#tab-user-info>div::before{content:"مرحله " counter(stp);position:absolute;top:-11px;right:16px;z-index:2;font-size:10px;font-weight:900;color:#fff;padding:3px 10px;border-radius:999px;background:linear-gradient(90deg,#3b82f6,#7c3aed);box-shadow:0 8px 16px -8px rgba(124,58,237,.9)}
 #user-modal label:has(input[type=checkbox]:checked){border-color:#7c3aed!important;box-shadow:0 0 0 2px rgba(124,58,237,.22),0 16px 30px -18px rgba(124,58,237,.7)!important;transform:translateY(-2px)}
 #user-modal button[onclick^="setQuickVol"],#user-modal button[onclick^="setQuickExp"]{border-radius:999px!important;background:rgba(255,255,255,.7)!important;border:1px solid rgba(124,58,237,.35)!important;color:#5b21b6!important;padding:5px 13px!important;font-weight:800!important;transition:transform .15s,box-shadow .15s}
 #user-modal button[onclick^="setQuickVol"]:hover,#user-modal button[onclick^="setQuickExp"]:hover{transform:translateY(-1px);box-shadow:0 8px 16px -8px rgba(124,58,237,.6)}
@@ -6226,14 +6223,12 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
 #user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,#0d2675,#071850)!important;border:1px solid #1648bd!important;border-radius:22px!important;box-shadow:0 14px 30px #020a2d99,inset 0 1px 0 #ffffff10!important;padding:18px!important}
 #user-modal-card #tab-user-info>div:first-child{position:relative}
-#user-modal-card #tab-user-info>div:first-child:before{content:"۱";position:absolute;right:-8px;top:-14px;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#8b2cff,#3e74ff);color:#fff;font-size:18px;font-weight:1000;box-shadow:0 0 16px #6e4dff88}
 #user-modal-card #tab-user-info>div:first-child>div:first-child label{font-size:1rem!important;color:#fff!important}
 #user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){background:linear-gradient(145deg,#081537,#06112b)!important;border:1px solid #3c5fe7!important;border-radius:20px!important;min-height:88px!important;padding:16px!important;box-shadow:inset 0 1px 0 #ffffff12,0 8px 18px #01061c66!important}
 #user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(145deg,#eef9ff,#c9e9ff)!important;border:2px solid #65d8ff!important;box-shadow:0 0 0 2px #ff4bdf88,0 0 24px #55c8ff66!important}
 #user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked) span{color:#10213e!important}
 #user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{width:42px!important;height:42px!important;border-radius:13px!important;background:#112b69!important;color:#64dcff!important}
 #user-modal-card #username-card{background:linear-gradient(145deg,#0d2675,#071850)!important;border:1px solid #1648bd!important;border-radius:22px!important;position:relative}
-#user-modal-card #username-card:before{content:"۲";position:absolute;right:-8px;top:-14px;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#3e74ff,#09d8d0);color:#fff;font-size:18px;font-weight:1000;box-shadow:0 0 16px #1ed7ff66}
 #user-modal-card #username-card input{height:52px!important;border:1px solid #436eff!important;background:#050d32!important;border-radius:17px!important;color:#eef6ff!important;font-size:16px!important}
 #user-modal-card #username-card button{border:2px solid #3b93ff!important;color:#91c6ff!important;background:#07184b!important;border-radius:12px!important}
 #user-modal-card .text-amber-700,#user-modal-card .dark\:text-amber-400{color:#ffc45e!important}
@@ -6317,7 +6312,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<div class="text-xs font-black">تنظیم پورت</div>
 									<div class="text-[10px] opacity-75 font-normal">انتخاب درگاه و تنظیمات شبکه</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پورت</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">شبکه</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-proxy-settings')" id="tab-btn-proxy-settings" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
@@ -6754,7 +6749,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 								</div>
 								<div id="advanced-settings-container" class="hidden opacity-50 pointer-events-none transition-opacity duration-300 p-4 border-t border-purple-100 dark:border-amoled-border space-y-3 bg-white dark:bg-slate-900">
 									<div>
-										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">فرگمنت سفارشی (JSON)</label>
+										<label class="block text-[10px] font-bold text-gray-500 dark:text-zinc-400 mb-1">فرگمنت تنظیم پورت (JSON)</label>
 										<input type="text" id="input-advanced-frag" placeholder="{&quot;tcp&quot;: [{&quot;type&quot;: &quot;fragment&quot;..." dir="ltr" class="w-full px-3 py-2 bg-gray-50 dark:bg-amoled-input border border-gray-200 dark:border-amoled-border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-500 text-[10px] font-mono text-gray-800 dark:text-zinc-100 placeholder-gray-400">
 									</div>
 									<div>
@@ -6831,7 +6826,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 										<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 										<div>
 											<span class="text-xs font-black text-gray-800 dark:text-zinc-200">تنظیم کشور و ثابت کردن آی‌پی (SOCKS5/HTTP)</span>
-											<span class="text-[10px] text-gray-400 block font-normal">زنجیره اتصال پیشرفته جهت عبور از تحریم‌ها و تغییر لوکیشن</span>
+											<span class="text-[10px] text-gray-400 block font-normal">زنجیره اتصال تنظیم پروکسی جهت عبور از تحریم‌ها و تغییر لوکیشن</span>
 										</div>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer select-none">
@@ -12737,27 +12732,22 @@ html:not(.dark) #user-modal-card form>div:last-child{background:var(--alpha-surf
 </style>
 
 <style id="alpha-split-console-final">
-/* Split Console final layer: visual redesign only, all existing IDs and handlers preserved. */
-#user-modal{background:rgba(2,8,24,.78)!important;backdrop-filter:blur(14px)!important}
+#user-modal{background:rgba(2,8,24,.82)!important;backdrop-filter:blur(14px)!important}
 #user-modal-card{--sc-a:hsl(var(--h,265) 92% 62%);--sc-b:hsl(calc(var(--h,265) + 58) 92% 62%);--sc-bg:hsl(var(--h,48%) 10%);--sc-panel:hsl(var(--h,45%) 15%);--sc-soft:hsl(var(--h,40%) 19%);--sc-ink:#edf5ff;--sc-muted:#9eafd0;--sc-line:hsla(var(--h),72%,72%,.22);background:linear-gradient(145deg,var(--sc-panel),var(--sc-bg))!important;color:var(--sc-ink)!important;border:1px solid var(--sc-line)!important;border-radius:26px!important;box-shadow:0 30px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)!important}
 html:not(.dark) #user-modal-card{--sc-bg:hsl(var(--h,42%) 97%);--sc-panel:hsl(var(--h,36%) 95%);--sc-soft:hsl(var(--h,32%) 92%);--sc-ink:#17243b;--sc-muted:#65758e;--sc-line:hsla(var(--h),52%,44%,.23);box-shadow:0 25px 65px rgba(30,50,90,.22)!important}
 #user-modal-card>div:first-child{background:linear-gradient(120deg,color-mix(in srgb,var(--sc-a) 18%,var(--sc-panel)),var(--sc-panel))!important;border-color:var(--sc-line)!important;padding:20px 24px!important}
-#user-modal-card>div:first-child h3{font-size:1.2rem!important;color:var(--sc-ink)!important}#user-modal-card>div:first-child p{color:var(--sc-muted)!important}#user-modal-card>div:first-child button{border-color:var(--sc-a)!important;color:var(--sc-a)!important;background:var(--sc-soft)!important;border-radius:13px!important}
-#user-modal-card form>div.flex.flex-col.md\:flex-row{background:transparent!important}
-#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:220px!important;background:linear-gradient(180deg,color-mix(in srgb,var(--sc-panel) 92%,transparent),color-mix(in srgb,var(--sc-bg) 95%,transparent))!important;border-color:var(--sc-line)!important;padding:16px!important}
-#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child>div:first-child{gap:10px!important}
-#user-modal-card .user-modal-tab-btn{min-height:76px!important;display:grid!important;grid-template-columns:34px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;text-align:right!important;gap:1px 9px!important;padding:12px!important;background:var(--sc-soft)!important;color:var(--sc-muted)!important;border:1px solid var(--sc-line)!important;border-radius:15px!important;box-shadow:0 5px 0 color-mix(in srgb,var(--sc-bg) 70%,#000)!important;transition:.18s!important}
+#user-modal-card>div:first-child h3{color:var(--sc-ink)!important}#user-modal-card>div:first-child p{color:var(--sc-muted)!important}
+#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:220px!important;background:linear-gradient(180deg,var(--sc-panel),var(--sc-bg))!important;border-color:var(--sc-line)!important;padding:16px!important}
+#user-modal-card .user-modal-tab-btn{min-height:76px!important;display:grid!important;grid-template-columns:34px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;text-align:right!important;gap:1px 9px!important;padding:12px!important;background:var(--sc-soft)!important;color:var(--sc-muted)!important;border:1px solid var(--sc-line)!important;border-radius:15px!important;box-shadow:0 5px 0 color-mix(in srgb,var(--sc-bg) 70%,#000)!important}
 #user-modal-card .user-modal-tab-btn>div:first-child{grid-row:1 / span 2!important;width:34px!important;height:34px!important;border-radius:11px!important;background:color-mix(in srgb,var(--sc-a) 18%,var(--sc-bg))!important;color:var(--sc-a)!important}
 #user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border-color:transparent!important;transform:translateX(-3px)!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000),0 0 24px color-mix(in srgb,var(--sc-a) 30%,transparent)!important}
 #user-modal-card .user-modal-tab-btn.active *{color:#fff!important}
-#user-modal-card .user-modal-tab-btn>div:nth-child(2){display:block!important}.user-modal-tab-btn .text-xs{font-size:12px!important}.user-modal-tab-btn .text-\[10px\]{font-size:9px!important;opacity:.72}
 #user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{background:color-mix(in srgb,var(--sc-bg) 60%,transparent)!important;padding:20px 22px!important}
 #user-modal-card .user-tab-panel{gap:13px!important}
 #user-modal-card .user-tab-panel>div{background:linear-gradient(145deg,var(--sc-panel),var(--sc-soft))!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:19px!important;box-shadow:0 12px 26px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06)!important}
 html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 24px color-mix(in srgb,var(--sc-a) 12%,transparent)!important}
 #user-modal-card #tab-user-info>div:first-child>div:nth-child(2){display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
 #user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]){min-height:68px!important;padding:12px 14px!important;border-radius:15px!important;background:var(--sc-soft)!important;border-color:var(--sc-line)!important;box-shadow:none!important}
-#user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]):hover{border-color:var(--sc-a)!important;transform:translateX(-2px)}
 #user-modal-card #tab-user-info>div:first-child label:has(input[type=checkbox]:checked){background:linear-gradient(100deg,color-mix(in srgb,var(--sc-a) 20%,var(--sc-soft)),var(--sc-soft))!important;border-color:var(--sc-a)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--sc-a) 13%,transparent)!important}
 #user-modal-card #tab-user-info>div:first-child label>div:first-child>div:first-child{width:39px!important;height:39px!important;border-radius:12px!important;background:color-mix(in srgb,var(--sc-a) 17%,var(--sc-bg))!important;color:var(--sc-a)!important}
 #user-modal-card .user-tab-panel input:not([type=checkbox]),#user-modal-card .user-tab-panel select,#user-modal-card .user-tab-panel textarea{background:var(--sc-bg)!important;color:var(--sc-ink)!important;border-color:var(--sc-line)!important;border-radius:13px!important;min-height:44px!important}
@@ -12773,10 +12763,10 @@ html:not(.dark) #user-modal-card .user-tab-panel>div{box-shadow:0 10px 24px colo
 #user-modal-card #username-card button{border-color:var(--sc-a)!important;color:var(--sc-a)!important;background:transparent!important;border-radius:11px!important}
 #user-modal-card #submit-btn,#user-modal-card #submit-btn-desktop{background:linear-gradient(105deg,var(--sc-a),var(--sc-b))!important;color:#fff!important;border:0!important;border-radius:14px!important;box-shadow:0 6px 0 color-mix(in srgb,var(--sc-a) 48%,#000),0 0 22px color-mix(in srgb,var(--sc-a) 28%,transparent)!important}
 #user-modal-card form>div:last-child{background:var(--sc-bg)!important;border-color:var(--sc-line)!important}
-/* Remove every visible stage number/badge, including the original rules earlier in the file. */
+/* Hard-disable all numeric/stage badges in the create-config modal. */
 #user-modal-card .user-tab-panel>div::after,#user-modal-card .user-tab-panel>div::before,#user-modal-card #tab-user-info>div:first-child::before,#user-modal-card #username-card::before{content:none!important;display:none!important}
 #user-modal-card #tab-user-info{counter-reset:none!important}#user-modal-card #tab-user-info>div{counter-increment:none!important}
-@media(max-width:768px){#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:100%!important;padding:11px!important;border-bottom:1px solid var(--sc-line)!important}#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child>div:first-child{flex-direction:row!important}#user-modal-card .user-modal-tab-btn{min-height:63px!important;display:flex!important;flex-direction:column!important;gap:4px!important;padding:8px 5px!important;text-align:center!important;transform:none!important}.user-modal-tab-btn>div:first-child{width:27px!important;height:27px!important}.user-modal-tab-btn .hidden{display:none!important}#user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{padding:14px!important}}
+@media(max-width:768px){#user-modal-card form>div.flex.flex-col.md\:flex-row>div:first-child{width:100%!important;padding:11px!important;border-bottom:1px solid var(--sc-line)!important}#user-modal-card .user-modal-tab-btn{min-height:63px!important;display:flex!important;flex-direction:column!important;gap:4px!important;padding:8px 5px!important;text-align:center!important;transform:none!important}#user-modal-card form>div.flex.flex-col.md\:flex-row>div:last-child{padding:14px!important}}
 </style>
 
 </head>
