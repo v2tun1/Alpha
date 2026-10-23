@@ -12249,7 +12249,7 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 			var top=document.getElementById('al-top');if(top){var topUsers=users.slice().sort(function(a,b){return(Number(b.used_gb)||0)-(Number(a.used_gb)||0);}).slice(0,6);top.innerHTML=topUsers.length?topUsers.map(function(u){var used=Number(u.used_gb)||0,lim=Number(u.limit_gb)||0,w=lim?Math.min(100,used/lim*100):0;return '<div class="al-urow"><span class="n">'+escHtml(u.username||'بدون نام')+'</span><div class="al-bar"><b style="width:'+w+'%"></b></div><span class="v">'+used.toFixed(1)+' / '+(lim?lim+' GB':'∞')+'</span></div>';}).join(''):'<div class="al-empty">هنوز مصرفی ثبت نشده</div>';}
 		}
 		var legacyLegend = document.getElementById('al-legend'); if (legacyLegend) legacyLegend.addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
-		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
+		render(); setInterval(function () { if (!document.hidden && document.visibilityState === 'visible') render(); }, 2500);
 		var h = new Date().getHours(); var hello=document.getElementById('al-hello'); if(hello) hello.textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
 		go('users');
 
@@ -12895,6 +12895,121 @@ const flagContainer = document.getElementById('display-flag');
 
 
 
+
+<style id="alpha-safe-theme-fix">
+/* Safe visual pass: no layout/display/overflow changes to the real form. */
+:root {
+  --safe-surface: rgba(255,255,255,.72);
+  --safe-surface-2: rgba(255,255,255,.88);
+  --safe-text: #18213b;
+  --safe-muted: #5b6785;
+  --safe-line: hsla(var(--h),62%,52%,.24);
+}
+html.dark {
+  --safe-surface: rgba(12,19,45,.66);
+  --safe-surface-2: rgba(14,23,53,.84);
+  --safe-text: #edf3ff;
+  --safe-muted: #a9b7d3;
+  --safe-line: hsla(var(--h),72%,68%,.28);
+}
+/* Users view: remove the hard-coded blue skin, keep existing geometry. */
+body.alpha-view-users #alpha-bnav,
+body.alpha-view-users #alpha-users-hero,
+body.alpha-view-users #stats-accordion-wrapper,
+body.alpha-view-users #alpha-chips,
+body.alpha-view-users main > .mb-5.flex,
+body.alpha-view-users #users-table-container {
+  color:var(--safe-text) !important;
+  background:linear-gradient(145deg,var(--safe-surface-2),var(--safe-surface)) !important;
+  border-color:var(--safe-line) !important;
+  box-shadow:0 12px 30px rgba(47,63,120,.12),inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+html.dark body.alpha-view-users #alpha-bnav,
+html.dark body.alpha-view-users #alpha-users-hero,
+html.dark body.alpha-view-users #stats-accordion-wrapper,
+html.dark body.alpha-view-users #alpha-chips,
+html.dark body.alpha-view-users main > .mb-5.flex,
+html.dark body.alpha-view-users #users-table-container {
+  background:linear-gradient(145deg,var(--safe-surface-2),var(--safe-surface)) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+body.alpha-view-users #alpha-users-hero h1,
+body.alpha-view-users #alpha-users-hero p,
+body.alpha-view-users #users-table-container th,
+body.alpha-view-users #users-table-container td,
+body.alpha-view-users #stats-accordion-wrapper span,
+body.alpha-view-users #stats-accordion-wrapper .text-xs,
+body.alpha-view-users #alpha-bnav button { color:var(--safe-text) !important; }
+body.alpha-view-users #alpha-users-hero p,
+body.alpha-view-users #search-input::placeholder { color:var(--safe-muted) !important; }
+body.alpha-view-users #alpha-bnav button.active,
+body.alpha-view-users #alpha-bnav button.mid,
+body.alpha-view-users #alpha-chips .al-chip.on,
+body.alpha-view-users .users-add-primary {
+  color:#fff !important;
+  background:linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  border-color:transparent !important;
+}
+body.alpha-view-users #alpha-chips .al-chip,
+body.alpha-view-users #search-input,
+body.alpha-view-users #filter-status,
+body.alpha-view-users #sort-users,
+body.alpha-view-users #users-table-container thead th,
+body.alpha-view-users #users-table-container tbody td {
+  color:var(--safe-text) !important;
+  background:var(--safe-surface) !important;
+  border-color:var(--safe-line) !important;
+}
+/* Config builder: theme-only overrides. No flex, display, width, height, or overflow rules. */
+#user-modal-card {
+  background:linear-gradient(145deg,var(--safe-surface-2),var(--safe-surface)) !important;
+  border-color:var(--safe-line) !important;
+  color:var(--safe-text) !important;
+}
+html.dark #user-modal-card { background:linear-gradient(145deg,var(--safe-surface-2),var(--safe-surface)) !important; }
+#user-modal-card > div:first-child,
+#user-modal-card .user-modal-tab-btn,
+#user-modal-card .user-tab-panel > div {
+  background:var(--safe-surface) !important;
+  border-color:var(--safe-line) !important;
+  color:var(--safe-text) !important;
+}
+#user-modal-card .user-modal-tab-btn.active,
+#user-modal-card #submit-btn,
+#user-modal-card #submit-btn-desktop {
+  background:linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  border-color:transparent !important;
+  color:#fff !important;
+}
+#user-modal-card label,
+#user-modal-card h3,
+#user-modal-card h4,
+#user-modal-card h5,
+#user-modal-card .text-gray-900,
+#user-modal-card .text-gray-800,
+#user-modal-card .text-gray-700 { color:var(--safe-text) !important; }
+#user-modal-card .text-gray-400,
+#user-modal-card .text-gray-500 { color:var(--safe-muted) !important; }
+#user-modal-card input,
+#user-modal-card select,
+#user-modal-card textarea {
+  background:var(--safe-surface) !important;
+  border-color:var(--safe-line) !important;
+  color:var(--safe-text) !important;
+}
+/* Remove stage labels only, without hiding their content containers. */
+#tab-user-info > div::before { content:none !important; display:none !important; }
+#tab-user-info { counter-reset:none !important; }
+/* Keep visual effects cheap on small screens, without changing functionality. */
+@media(max-width:760px) {
+  body.alpha-view-users #alpha-bnav,
+  body.alpha-view-users #alpha-users-hero,
+  body.alpha-view-users #stats-accordion-wrapper,
+  body.alpha-view-users #alpha-chips,
+  body.alpha-view-users #users-table-container,
+  #user-modal-card { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+}
+</style>
 </body>
 </html>`,
 };
