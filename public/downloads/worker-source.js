@@ -6153,6 +6153,34 @@ body,main,#app,.main-content{transition:background-color .18s linear,color .18s 
 @media(max-width:700px){#user-modal{align-items:center!important;padding:7px!important}#user-modal-card.alpha-builder-v2{width:100%!important;max-width:560px!important;min-height:0;max-height:calc(100dvh - 14px)!important;border-radius:22px!important}.builder-head{padding:13px 14px;gap:10px}.builder-mark{width:39px;height:39px;flex-basis:39px;border-radius:13px;font-size:25px}.builder-brand{gap:10px}.builder-head h3{font-size:17px}.builder-head p{font-size:10px;margin-top:3px}.builder-close{width:36px;height:36px;flex-basis:36px;border-radius:12px}.builder-form{display:flex;flex-direction:column;min-height:0;overflow:hidden}.builder-tabs{order:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:10px 10px 11px;border-left:0;border-bottom:1px solid rgba(71,176,255,.32);background:rgba(1,10,39,.45)}.user-modal-tab-btn{display:flex!important;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:4px;padding:8px 3px!important;min-height:64px;border-radius:13px!important}.tab-icon{font-size:21px;line-height:1}.user-modal-tab-btn strong{font-size:11px;line-height:1.3}.user-modal-tab-btn small{display:none}.builder-scroll{order:1;flex:1;min-height:0;max-height:none!important;padding:11px 10px 14px;overflow-y:auto;-webkit-overflow-scrolling:touch}.user-tab-panel{gap:10px}.builder-card{padding:14px!important;border-radius:17px!important}.builder-card h4{font-size:13px;margin-bottom:10px}.builder-card label:not(.builder-toggle){font-size:11px;margin:9px 0 5px}.builder-card input:not([type=checkbox]),.builder-card select,.builder-input{min-height:42px;padding:9px 10px;font-size:13px}.builder-card textarea{height:88px}.builder-hint{font-size:10px}.proto-grid{grid-template-columns:1fr;gap:8px}.proto-grid label{min-height:64px;padding:10px 40px 10px 10px!important;border-radius:14px}.proto-grid label b{font-size:20px}.proto-grid span{font-size:12px}.proto-grid small{font-size:10px}.port-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.port-grid span{padding:10px 2px;font-size:12px}.two-col{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.two-col label{min-width:0}.builder-toggle{padding:10px!important;font-size:11px!important;line-height:1.7}.builder-footer{order:2;position:relative;display:flex;gap:8px;padding:10px 10px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 22px rgba(0,0,0,.22)}.builder-submit,.builder-cancel{min-height:45px;padding:10px 8px;font-size:12px;border-radius:13px!important}.builder-submit:not(.mobile-submit){display:none!important}.mobile-submit{display:block!important}}
 @media(max-width:360px){.builder-head{padding:10px}.builder-head h3{font-size:15px}.builder-head p{font-size:9px}.builder-tabs{padding:8px;gap:5px}.user-modal-tab-btn{min-height:58px}.user-modal-tab-btn strong{font-size:10px}.builder-scroll{padding:8px}.builder-card{padding:11px!important}.two-col{grid-template-columns:1fr}.builder-footer{padding:8px 8px calc(8px + env(safe-area-inset-bottom))}}
 @media(min-width:701px) and (max-height:760px){#user-modal-card.alpha-builder-v2{max-height:96dvh!important}.builder-head{padding:12px 20px}.builder-mark{width:40px;height:40px;flex-basis:40px}.builder-tabs{padding:12px}.builder-scroll{padding:12px}.builder-card{padding:14px!important}.builder-card h4{margin-bottom:9px}.builder-footer{padding:10px 16px}}
+/* Reference-matched first panel: protocol tiles first, compact 3-column cards on phones */
+#user-modal-card #tab-user-info>.builder-card:nth-child(1){order:2}
+#user-modal-card #tab-user-info>.builder-card:nth-child(2){order:1}
+#user-modal-card #tab-user-info>.builder-card:nth-child(3){order:3}
+#user-modal-card #tab-user-info .proto-grid label:has(input:checked){background:linear-gradient(135deg,rgba(112,27,255,.94),rgba(0,126,255,.96) 58%,rgba(0,220,245,.9))!important;border:1px solid rgba(145,250,255,.98)!important;box-shadow:0 0 20px rgba(0,194,255,.34),inset 0 1px rgba(255,255,255,.34)!important}
+#user-modal-card .user-modal-tab-btn.active{background:linear-gradient(135deg,#4d35ff,#087fff 65%,#00cce9)!important;border-color:#80f5ff!important;box-shadow:0 0 18px rgba(0,167,255,.35),inset 0 1px rgba(255,255,255,.3)!important}
+@media(max-width:700px){
+ #user-modal-card #tab-user-info .proto-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+ #user-modal-card #tab-user-info .proto-grid label{display:flex;flex-direction:column!important;justify-content:center!important;align-items:center!important;text-align:center!important;gap:5px!important;min-width:0;min-height:104px!important;padding:13px 5px 10px!important;border-radius:17px!important}
+ #user-modal-card #tab-user-info .proto-grid label input{right:7px!important;top:7px!important;transform:none!important;width:14px!important;height:14px!important}
+ #user-modal-card #tab-user-info .proto-grid label b{flex:0 0 auto!important;font-size:24px!important;line-height:1.1}
+ #user-modal-card #tab-user-info .proto-grid label span{flex:0 1 auto!important;text-align:center!important;font-size:11px!important;line-height:1.45;overflow-wrap:anywhere}
+ #user-modal-card #tab-user-info .proto-grid small{font-size:9px!important;line-height:1.45}
+ #user-modal-card #tab-user-info .builder-card{padding:14px 12px!important}
+ #user-modal-card #tab-user-info .builder-card h4{font-size:14px!important}
+ #user-modal-card #tab-user-info .two-col{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ #user-modal-card #tab-user-info .two-col label{font-size:10px!important;min-width:0}
+ #user-modal-card #tab-user-info .two-col input{min-width:0;font-size:12px!important;padding:9px 7px!important}
+ #user-modal-card #tab-user-info .builder-toggle{font-size:11px!important;padding:10px 9px!important}
+ #user-modal-card #tab-user-info .builder-hint{font-size:10px!important}
+}
+@media(max-width:380px){
+ #user-modal-card #tab-user-info .proto-grid{gap:5px!important}
+ #user-modal-card #tab-user-info .proto-grid label{min-height:96px!important;padding:12px 3px 8px!important}
+ #user-modal-card #tab-user-info .proto-grid label span{font-size:10px!important}
+ #user-modal-card #tab-user-info .proto-grid small{font-size:8px!important}
+ #user-modal-card #tab-user-info .two-col{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
 </style>
 <div id="ip-selector-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-out">
 	<div class="w-full max-w-sm bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-all transform duration-300 opacity-0 scale-95 ease-out flex flex-col">
