@@ -4777,6 +4777,96 @@ const HTML_TEMPLATES = {
 @media(max-width:360px){.user-modal-tab-btn>div:first-child{display:none!important}.user-modal-tab-btn{font-size:9px!important}}
 </style>
 
+
+<style id="alpha-bugfix-round2">
+/* FIX 1: Bottom nav in users view must follow the theme accent, not hardcoded blue */
+body.alpha-view-users #alpha-bnav,
+html:not(.dark) body.alpha-view-users #alpha-bnav {
+  background: linear-gradient(160deg,var(--ui-surface-strong,rgba(255,255,255,.92)),var(--ui-surface,rgba(248,250,255,.88))) !important;
+  border: 1px solid var(--ui-border,hsla(var(--h),62%,52%,.24)) !important;
+  box-shadow: var(--ui-shadow,0 12px 30px rgba(47,63,120,.12)) !important;
+}
+html.dark body.alpha-view-users #alpha-bnav {
+  background: linear-gradient(160deg,var(--ui-surface-strong,rgba(14,23,53,.84)),var(--ui-surface-soft,rgba(9,15,36,.48))) !important;
+  border-color: var(--ui-border,hsla(var(--h),72%,68%,.28)) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+body.alpha-view-users #alpha-bnav button.active {
+  background: linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+body.alpha-view-users #alpha-bnav button {
+  color: var(--ui-text,#18213b) !important;
+}
+html.dark body.alpha-view-users #alpha-bnav button {
+  color: var(--ui-muted,#a9b7d3) !important;
+}
+body.alpha-view-users #alpha-bnav button.mid {
+  background: linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  color: #fff !important;
+}
+
+/* FIX 2: Light theme colors: users hero, cards, chips, search must use unified palette */
+html:not(.dark) body.alpha-view-users {
+  --users-bg: var(--page,#f4f6ff) !important;
+  color: var(--ui-text,#18213b) !important;
+  background:
+    radial-gradient(900px 520px at 50% -10%, hsla(var(--h),90%,72%,.22), transparent 64%),
+    radial-gradient(700px 520px at 0% 85%, hsla(calc(var(--h) + 60),90%,78%,.16), transparent 60%),
+    radial-gradient(700px 520px at 100% 70%, hsla(calc(var(--h) - 75),90%,78%,.12), transparent 60%),
+    linear-gradient(180deg, #f6f7ff 0%, #eceefe 100%) !important;
+}
+html:not(.dark) body.alpha-view-users #alpha-users-hero {
+  background: linear-gradient(110deg, hsla(var(--h),72%,82%,.7), rgba(255,255,255,.86) 54%, hsla(calc(var(--h) + 55),62%,82%,.55)) !important;
+  border-color: hsla(var(--h),62%,52%,.24) !important;
+  color: var(--ui-text,#18213b) !important;
+}
+html:not(.dark) body.alpha-view-users #alpha-users-hero h1 { color: var(--ui-text,#18213b) !important; }
+html:not(.dark) body.alpha-view-users #alpha-users-hero p { color: var(--ui-muted,#5b6785) !important; }
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper,
+html:not(.dark) body.alpha-view-users #alpha-chips,
+html:not(.dark) body.alpha-view-users main > .mb-5.flex.flex-col,
+html:not(.dark) body.alpha-view-users #users-table-container {
+  background: linear-gradient(145deg,rgba(255,255,255,.88),rgba(248,250,255,.78)) !important;
+  border-color: hsla(var(--h),62%,52%,.2) !important;
+  box-shadow: 0 12px 30px rgba(47,63,120,.10) !important;
+  color: var(--ui-text,#18213b) !important;
+}
+html:not(.dark) body.alpha-view-users #alpha-chips .al-chip {
+  background: rgba(255,255,255,.6) !important;
+  border-color: hsla(var(--h),60%,55%,.22) !important;
+  color: var(--ui-text,#18213b) !important;
+}
+html:not(.dark) body.alpha-view-users #alpha-chips .al-chip.on {
+  background: linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+html:not(.dark) body.alpha-view-users #search-input {
+  background: rgba(255,255,255,.85) !important;
+  color: var(--ui-text,#18213b) !important;
+  border-color: hsla(var(--h),60%,55%,.22) !important;
+}
+html:not(.dark) body.alpha-view-users #users-table-container thead th {
+  background: rgba(248,250,255,.9) !important;
+  color: var(--ui-muted,#5b6785) !important;
+}
+html:not(.dark) body.alpha-view-users #users-table-container tbody td {
+  background: rgba(255,255,255,.7) !important;
+  color: var(--ui-text,#18213b) !important;
+}
+html:not(.dark) body.alpha-view-users #stats-accordion-wrapper > div > div {
+  background: linear-gradient(145deg,rgba(255,255,255,.82),rgba(248,250,255,.72)) !important;
+  border-color: hsla(var(--h),60%,60%,.18) !important;
+}
+
+/* FIX 3: Remove step badges (مرحله ۱, مرحله ۲, etc.) from config form */
+#tab-user-info { counter-reset: none !important; }
+#tab-user-info > div { counter-increment: none !important; }
+#tab-user-info > div::before { display: none !important; content: none !important; }
+</style>
+
 </body>
 </html>`,
 	setup: `<!DOCTYPE html>
