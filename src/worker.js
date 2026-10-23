@@ -11901,7 +11901,7 @@ html.dark #user-modal-card form>div:last-child button[onclick*="toggleModal"]{bo
 #user-modal-card.alpha-builder-v2 .user-modal-tab-btn.active{background:linear-gradient(135deg,#f214ff,#ff3eaa 46%,#ffcb38)!important;border-color:#ffc6ff!important;color:#fff!important;box-shadow:0 5px 0 #8b1c86,0 0 22px #f72bce88!important;transform:translateY(-2px)!important}
 #user-modal-card.alpha-builder-v2 .builder-scroll{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:start!important;gap:14px!important;padding:18px!important;max-height:calc(96vh - 220px)!important;background:linear-gradient(180deg,#06123d,#10083a)!important;overflow-y:auto!important}
 #user-modal-card.alpha-builder-v2 .user-tab-panel{display:flex!important;flex-direction:column!important;gap:12px!important;min-width:0!important}
-#user-modal-card.alpha-builder-v2 .user-tab-panel.hidden{display:flex!important}
+#user-modal-card.alpha-builder-v2 .user-tab-panel.hidden{display:none!important}
 #user-modal-card.alpha-builder-v2 .builder-card{background:linear-gradient(145deg,#0d2675,#071850)!important;border:1px solid #1648bd!important;color:#f5f8ff!important;border-radius:22px!important;box-shadow:0 14px 30px #020a2d99,inset 0 1px #ffffff10!important;padding:16px!important}
 #user-modal-card.alpha-builder-v2 .builder-card:before{background:linear-gradient(#f526ff,#15ceff)!important}
 #user-modal-card.alpha-builder-v2 .builder-card h4{color:#fff!important;font-size:15px!important}
@@ -11917,6 +11917,10 @@ html.dark #user-modal-card form>div:last-child button[onclick*="toggleModal"]{bo
 #user-modal-card.alpha-builder-v2 .builder-cancel{background:#160b37!important;border-color:#ff38a8!important;color:#ff7bc7!important}
 @media(max-width:900px){#user-modal-card.alpha-builder-v2{width:calc(100vw - 18px)!important}.builder-scroll{grid-template-columns:repeat(2,minmax(0,1fr))!important}.builder-scroll .user-tab-panel:nth-child(3){grid-column:1/-1!important}.builder-scroll .user-tab-panel:nth-child(3) .builder-card{display:grid;grid-template-columns:1fr 1fr;gap:10px}.builder-scroll .user-tab-panel:nth-child(3) .builder-card h4{grid-column:1/-1}}
 @media(max-width:640px){#user-modal-card.alpha-builder-v2{width:calc(100vw - 10px)!important;border-radius:22px!important}.builder-scroll{grid-template-columns:1fr!important;padding:10px!important;max-height:calc(100vh - 225px)!important}.builder-scroll .user-tab-panel:nth-child(3){grid-column:auto!important}.builder-scroll .user-tab-panel:nth-child(3) .builder-card{display:block}.builder-tabs{padding:10px!important;gap:6px!important}.user-modal-tab-btn{min-height:65px!important;font-size:11px!important}.user-modal-tab-btn small{display:none!important}.builder-head{padding:14px!important}.builder-head h3{font-size:18px!important}.builder-footer{position:sticky;bottom:0;z-index:10}}
+</style>
+<style id="alpha-builder-visibility-final">
+#user-modal-card.alpha-builder-v2 .user-tab-panel.hidden{display:none!important}
+#user-modal-card.alpha-builder-v2 .user-tab-panel:not(.hidden){display:flex!important}
 </style>
 </style>
 </body>
