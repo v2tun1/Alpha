@@ -12410,7 +12410,7 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 			var top=document.getElementById('al-top');if(top){var topUsers=users.slice().sort(function(a,b){return(Number(b.used_gb)||0)-(Number(a.used_gb)||0);}).slice(0,6);top.innerHTML=topUsers.length?topUsers.map(function(u){var used=Number(u.used_gb)||0,lim=Number(u.limit_gb)||0,w=lim?Math.min(100,used/lim*100):0;return '<div class="al-urow"><span class="n">'+escHtml(u.username||'بدون نام')+'</span><div class="al-bar"><b style="width:'+w+'%"></b></div><span class="v">'+used.toFixed(1)+' / '+(lim?lim+' GB':'∞')+'</span></div>';}).join(''):'<div class="al-empty">هنوز مصرفی ثبت نشده</div>';}
 		}
 		var legacyLegend = document.getElementById('al-legend'); if (legacyLegend) legacyLegend.addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
-		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
+		render(); setInterval(function () { if (!document.hidden && document.visibilityState === 'visible') render(); }, 8000);
 		var h = new Date().getHours(); var hello=document.getElementById('al-hello'); if(hello) hello.textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
 		go('users');
 
@@ -13054,6 +13054,122 @@ const flagContainer = document.getElementById('display-flag');
 	</script>
 	${COMMON_WAVES_SCRIPT}
 
+
+<style id="alpha-final-theme-performance-fix">
+/* FINAL: appended after legacy overrides so the active users view follows the selected theme. */
+body.alpha-view-users {
+  --users-bg: var(--page-bg, #f4f6ff) !important;
+  --users-card: var(--ui-surface-strong, rgba(255,255,255,.88)) !important;
+  --users-card2: var(--ui-surface, rgba(255,255,255,.72)) !important;
+  --users-text: var(--ui-text, #18213b) !important;
+  --users-muted: var(--ui-muted, #5b6785) !important;
+  --users-line: var(--ui-border, hsla(var(--h),62%,52%,.24)) !important;
+  --users-shadow: var(--ui-shadow, 0 12px 30px rgba(47,63,120,.12)) !important;
+  color: var(--users-text) !important;
+  background: radial-gradient(900px 520px at 50% -10%, hsla(var(--h),90%,72%,.18), transparent 64%), var(--users-bg) !important;
+}
+html.dark body.alpha-view-users {
+  --users-bg: #05091a !important;
+  --users-card: rgba(14,23,53,.84) !important;
+  --users-card2: rgba(9,15,36,.48) !important;
+  --users-text: #edf3ff !important;
+  --users-muted: #a9b7d3 !important;
+  --users-line: hsla(var(--h),72%,68%,.28) !important;
+  --users-shadow: 0 14px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.07) !important;
+  background: radial-gradient(900px 520px at 50% -10%, hsla(var(--h),90%,45%,.2), transparent 64%), var(--users-bg) !important;
+}
+body.alpha-view-users #alpha-bnav,
+html:not(.dark) body.alpha-view-users #alpha-bnav {
+  background: linear-gradient(145deg,var(--users-card),var(--users-card2)) !important;
+  border: 1px solid var(--users-line) !important;
+  box-shadow: var(--users-shadow) !important;
+  color: var(--users-text) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+html.dark body.alpha-view-users #alpha-bnav {
+  background: linear-gradient(145deg,var(--users-card),var(--users-card2)) !important;
+}
+body.alpha-view-users #alpha-bnav button { color: var(--users-text) !important; }
+html.dark body.alpha-view-users #alpha-bnav button { color: var(--users-muted) !important; }
+body.alpha-view-users #alpha-bnav button.active,
+body.alpha-view-users #alpha-bnav button.mid {
+  color:#fff !important;
+  background:linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  border-color:transparent !important;
+  box-shadow:0 0 18px var(--glow) !important;
+}
+body.alpha-view-users #alpha-users-hero,
+body.alpha-view-users #stats-accordion-wrapper,
+body.alpha-view-users #alpha-chips,
+body.alpha-view-users main > .mb-5.flex,
+body.alpha-view-users #users-table-container {
+  color:var(--users-text) !important;
+  background:linear-gradient(145deg,var(--users-card),var(--users-card2)) !important;
+  border-color:var(--users-line) !important;
+  box-shadow:var(--users-shadow) !important;
+}
+body.alpha-view-users #alpha-users-hero {
+  background:linear-gradient(110deg,hsla(var(--h),72%,82%,.72),var(--users-card) 54%,hsla(calc(var(--h) + 55),62%,82%,.56)) !important;
+}
+html.dark body.alpha-view-users #alpha-users-hero {
+  background:linear-gradient(110deg,hsla(var(--h),72%,28%,.82),var(--users-card) 54%,hsla(calc(var(--h) + 55),62%,28%,.70)) !important;
+}
+body.alpha-view-users #alpha-users-hero h1 { color:var(--users-text) !important; }
+body.alpha-view-users #alpha-users-hero p { color:var(--users-muted) !important; }
+body.alpha-view-users #alpha-chips .al-chip {
+  background:var(--users-card2) !important;
+  border-color:var(--users-line) !important;
+  color:var(--users-text) !important;
+}
+body.alpha-view-users #alpha-chips .al-chip.on {
+  background:linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important;
+  color:#fff !important;
+  border-color:transparent !important;
+}
+body.alpha-view-users #search-input,
+body.alpha-view-users #filter-status,
+body.alpha-view-users #sort-users {
+  background:var(--users-card2) !important;
+  color:var(--users-text) !important;
+  border-color:var(--users-line) !important;
+}
+body.alpha-view-users #search-input::placeholder { color:var(--users-muted) !important; }
+body.alpha-view-users #users-table-container thead th,
+body.alpha-view-users #users-tbody td,
+body.alpha-view-users #users-table-container tbody td {
+  background:var(--users-card2) !important;
+  color:var(--users-text) !important;
+  border-color:var(--users-line) !important;
+}
+body.alpha-view-users #stats-accordion-wrapper > div > div {
+  background:linear-gradient(145deg,var(--users-card),var(--users-card2)) !important;
+  border-color:var(--users-line) !important;
+}
+body.alpha-view-users #stats-accordion-wrapper .text-lg,
+body.alpha-view-users #stats-accordion-wrapper .text-2xl { color:var(--a1) !important; }
+/* Remove every visual stage badge in the real form, including the later legacy rule. */
+#tab-user-info > div::before,
+#tab-user-info > div::after { display:none !important; content:none !important; }
+#tab-user-info { counter-reset:none !important; }
+/* Reduce compositor work and repeated paint cost. */
+body.alpha-view-users #alpha-bnav,
+body.alpha-view-users #alpha-users-hero,
+body.alpha-view-users #stats-accordion-wrapper,
+body.alpha-view-users #alpha-chips,
+body.alpha-view-users #users-table-container { contain: paint layout; }
+body.alpha-view-users *, body.alpha-view-users *::before, body.alpha-view-users *::after {
+  animation-duration:.01ms !important;
+  transition-duration:.12s !important;
+}
+@media (max-width:760px) {
+  body.alpha-view-users #alpha-bnav,
+  body.alpha-view-users #alpha-users-hero,
+  body.alpha-view-users #stats-accordion-wrapper,
+  body.alpha-view-users #alpha-chips,
+  body.alpha-view-users #users-table-container { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+}
+</style>
 </body>
 </html>`,
 };
