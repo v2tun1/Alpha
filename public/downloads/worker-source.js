@@ -11975,6 +11975,25 @@ html.dark #user-modal-card form>div:last-child button[onclick*="toggleModal"]{bo
 @media(max-width:900px){#user-modal-card.alpha-builder-v2{width:calc(100vw - 12px)!important;max-height:calc(100vh - 12px)!important;margin:6px!important}.builder-scroll{display:block!important;max-height:calc(100vh - 215px)!important;padding:10px!important}.builder-scroll>.user-tab-panel{display:none!important}.builder-scroll>.user-tab-panel:not(.hidden){display:flex!important}.builder-tabs{padding:10px!important;gap:7px!important}.user-modal-tab-btn{min-height:60px!important;padding:7px 3px!important;white-space:normal!important}.user-modal-tab-btn strong{font-size:11px!important}.user-modal-tab-btn small{display:none!important}.builder-head{height:78px!important;padding:11px 14px!important}.builder-head h3{font-size:19px!important}.builder-card{padding:14px!important}.builder-footer{position:sticky;bottom:0;z-index:10}.builder-submit:not(.mobile-submit){display:none!important}.mobile-submit{display:block!important}}
 @media(max-width:480px){#user-modal-card.alpha-builder-v2 .builder-scroll{padding:8px!important}.builder-card{border-radius:17px!important}.proto-grid label{min-height:62px!important}}
 </style>
+<style id="alpha-reference-implementation-final">
+/* Ported reference visual system. The live Alpha IDs and handlers remain the source of truth. */
+#user-modal-card.alpha-builder-v2{--alpha-ref-bg:#071644;--alpha-ref-panel:#0b2677;--alpha-ref-card:#102d82;--alpha-ref-cyan:#1be5f2;--alpha-ref-violet:#9d24ff;--alpha-ref-pink:#ef27df;--alpha-ref-text:#f4f8ff;background:radial-gradient(circle at 50% 0,#254fd966,transparent 42%),linear-gradient(145deg,#061038,#12033d)!important;color:var(--alpha-ref-text)!important;border:1px solid #287cff!important;box-shadow:0 30px 90px #000d,0 0 34px #3c37ff66!important}
+#user-modal-card.alpha-builder-v2 .builder-head{background:linear-gradient(120deg,#07184c,#142d86 55%,#430b73)!important;border-bottom:1px solid #2c83ff!important}
+#user-modal-card.alpha-builder-v2 .builder-tabs{background:linear-gradient(180deg,#06184c,#06123a)!important;border-bottom:1px solid #285ee8!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn{background:linear-gradient(180deg,#102f88,#071849)!important;border-color:#2773f2!important;color:#ddecff!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn.active{background:linear-gradient(135deg,#6f1cff,#e525dc 58%,#ff3d9b)!important;border-color:#ffbbff!important;box-shadow:0 5px 0 #7b178d,0 0 25px #ed2cdd88!important}
+#user-modal-card.alpha-builder-v2 .builder-scroll{background:linear-gradient(180deg,#06133e,#10043a)!important}
+#user-modal-card.alpha-builder-v2 .builder-card{background:linear-gradient(145deg,#0d2b80,#07194f)!important;border-color:#1f62e8!important;box-shadow:0 14px 30px #01072caa,inset 0 1px #ffffff14!important}
+#user-modal-card.alpha-builder-v2 .builder-card:before{background:linear-gradient(#f22ce8,#15dfff)!important}
+#user-modal-card.alpha-builder-v2 .builder-card input:not([type=checkbox]),#user-modal-card.alpha-builder-v2 .builder-card select,#user-modal-card.alpha-builder-v2 .builder-card textarea,#user-modal-card.alpha-builder-v2 .builder-input{background:linear-gradient(180deg,#0d327f,#071642)!important;border-color:#3178ee!important;color:#f0f7ff!important}
+#user-modal-card.alpha-builder-v2 .proto-grid label,#user-modal-card.alpha-builder-v2 .port-grid label,#user-modal-card.alpha-builder-v2 .builder-toggle{background:linear-gradient(180deg,#0d2b74,#071642)!important;border-color:#2b6dea!important;color:#edf6ff!important}
+#user-modal-card.alpha-builder-v2 .proto-grid label:has(input:checked),#user-modal-card.alpha-builder-v2 .port-grid label:has(input:checked){background:linear-gradient(135deg,#0d73ec,#0bd1e7)!important;border-color:#7df7ff!important;box-shadow:0 0 21px #16c6f066!important}
+#user-modal-card.alpha-builder-v2 .builder-footer{background:#040c2d!important;border-top-color:#275bd4!important}
+#user-modal-card.alpha-builder-v2 .builder-submit{background:linear-gradient(100deg,#f10de7,#9d18ff 46%,#08d9f2)!important;box-shadow:0 5px 0 #69127d,0 0 24px #c82aff77!important}
+#user-modal-card.alpha-builder-v2 .builder-cancel{background:#160b3d!important;border-color:#ff3bb1!important;color:#ff9dd9!important}
+#user-modal-card.alpha-builder-v2 .builder-head h3{color:#fff!important}#user-modal-card.alpha-builder-v2 .builder-head p{color:#bcd0ff!important}
+@media(max-width:900px){#user-modal-card.alpha-builder-v2{width:calc(100vw - 12px)!important;max-width:none!important}#user-modal-card.alpha-builder-v2 .builder-scroll{display:block!important;overflow-x:hidden!important}#user-modal-card.alpha-builder-v2 .builder-scroll>.user-tab-panel{display:none!important}#user-modal-card.alpha-builder-v2 .builder-scroll>.user-tab-panel:not(.hidden){display:flex!important;width:100%!important}#user-modal-card.alpha-builder-v2 .builder-card{width:100%!important;max-width:none!important}}
+</style>
 </style>
 </body>
 </html>`,
