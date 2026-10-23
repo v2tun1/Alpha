@@ -11923,6 +11923,57 @@ html.dark #user-modal-card form>div:last-child button[onclick*="toggleModal"]{bo
 #user-modal-card.alpha-builder-v2 .user-tab-panel:not(.hidden){display:flex!important}
 </style>
 </style>
+<style id="alpha-builder-responsive-final">
+/* Responsive 3D builder: desktop sidebar + content; mobile stacked tabs + full-width fields. */
+#user-modal{padding:10px!important;align-items:center!important;justify-content:center!important}
+#user-modal-card.alpha-builder-v2{width:min(1180px,calc(100vw - 20px))!important;max-width:1180px!important;max-height:94dvh!important;height:auto!important;display:flex!important;flex-direction:column!important;overflow:hidden!important;border-radius:28px!important}
+#user-modal-card.alpha-builder-v2 .builder-head{flex:0 0 auto!important;min-width:0!important}
+#user-modal-card.alpha-builder-v2 #create-user-form{display:grid!important;grid-template-columns:minmax(0,1fr) 225px!important;grid-template-rows:minmax(0,1fr) auto!important;grid-template-areas:"content tabs" "footer footer";flex:1 1 auto!important;min-height:0!important;overflow:hidden!important;gap:0!important}
+#user-modal-card.alpha-builder-v2 .builder-tabs{grid-area:tabs!important;display:flex!important;flex-direction:column!important;gap:10px!important;padding:18px 14px!important;overflow-y:auto!important;border-bottom:0!important;border-left:1px solid #2858d9!important;align-items:stretch!important;min-width:0!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn{width:100%!important;min-width:0!important;min-height:70px!important;display:grid!important;grid-template-columns:30px minmax(0,1fr)!important;grid-template-rows:auto auto!important;text-align:right!important;justify-items:stretch!important;align-items:center!important;gap:3px 8px!important;padding:12px!important;white-space:normal!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn .tab-icon{grid-row:1/span 2!important}
+#user-modal-card.alpha-builder-v2 .builder-scroll{grid-area:content!important;display:block!important;min-width:0!important;min-height:0!important;max-height:none!important;height:100%!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:18px!important}
+#user-modal-card.alpha-builder-v2 .user-tab-panel{width:100%!important;min-width:0!important;display:flex!important;flex-direction:column!important;gap:13px!important}
+#user-modal-card.alpha-builder-v2 .user-tab-panel.hidden{display:none!important}
+#user-modal-card.alpha-builder-v2 .builder-card{min-width:0!important;max-width:100%!important;overflow-wrap:anywhere!important}
+#user-modal-card.alpha-builder-v2 .builder-card input:not([type=checkbox]),#user-modal-card.alpha-builder-v2 .builder-card select,#user-modal-card.alpha-builder-v2 .builder-card textarea,#user-modal-card.alpha-builder-v2 .builder-input{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+#user-modal-card.alpha-builder-v2 .builder-footer{grid-area:footer!important;display:flex!important;justify-content:space-between!important;gap:10px!important;min-width:0!important;padding:12px 18px!important}
+#user-modal-card.alpha-builder-v2 .builder-submit,#user-modal-card.alpha-builder-v2 .builder-cancel{min-height:44px!important;touch-action:manipulation!important}
+@media(max-width:760px){
+ #user-modal{padding:5px!important;align-items:center!important}
+ #user-modal-card.alpha-builder-v2{width:calc(100vw - 10px)!important;max-height:calc(100dvh - 10px)!important;border-radius:22px!important}
+ #user-modal-card.alpha-builder-v2 .builder-head{padding:12px 14px!important;gap:8px!important}
+ #user-modal-card.alpha-builder-v2 .builder-head h3{font-size:17px!important;line-height:1.4!important}
+ #user-modal-card.alpha-builder-v2 .builder-head p{font-size:10px!important;line-height:1.6!important}
+ #user-modal-card.alpha-builder-v2 .builder-mark{width:36px!important;height:36px!important;font-size:21px!important;flex:0 0 36px!important}
+ #user-modal-card.alpha-builder-v2 .builder-close{width:36px!important;height:36px!important;flex:0 0 36px!important;font-size:22px!important;border-radius:12px!important}
+ #user-modal-card.alpha-builder-v2 #create-user-form{display:flex!important;flex-direction:column!important;min-height:0!important;overflow:hidden!important;gap:0!important}
+ #user-modal-card.alpha-builder-v2 .builder-tabs{order:0!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;flex:0 0 auto!important;gap:6px!important;padding:9px 8px!important;border-left:0!important;border-bottom:1px solid #2858d9!important;overflow:visible!important}
+ #user-modal-card.alpha-builder-v2 .user-modal-tab-btn{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;text-align:center!important;gap:4px!important;min-height:62px!important;padding:7px 3px!important;border-radius:13px!important;font-size:11px!important;line-height:1.3!important}
+ #user-modal-card.alpha-builder-v2 .user-modal-tab-btn .tab-icon{font-size:19px!important;line-height:1!important}
+ #user-modal-card.alpha-builder-v2 .user-modal-tab-btn small{display:none!important}
+ #user-modal-card.alpha-builder-v2 .user-modal-tab-btn:after{display:none!important}
+ #user-modal-card.alpha-builder-v2 .builder-scroll{order:1!important;display:block!important;flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important;padding:10px!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important}
+ #user-modal-card.alpha-builder-v2 .user-tab-panel{display:flex!important;gap:10px!important}
+ #user-modal-card.alpha-builder-v2 .user-tab-panel.hidden{display:none!important}
+ #user-modal-card.alpha-builder-v2 .builder-card{padding:14px!important;border-radius:17px!important}
+ #user-modal-card.alpha-builder-v2 .builder-card h4{font-size:14px!important;margin-bottom:10px!important}
+ #user-modal-card.alpha-builder-v2 .builder-card label:not(.builder-toggle){font-size:12px!important;line-height:1.7!important}
+ #user-modal-card.alpha-builder-v2 .builder-card input:not([type=checkbox]),#user-modal-card.alpha-builder-v2 .builder-card select,#user-modal-card.alpha-builder-v2 .builder-input{min-height:43px!important;font-size:14px!important}
+ #user-modal-card.alpha-builder-v2 .builder-card textarea{min-height:90px!important;font-size:13px!important}
+ #user-modal-card.alpha-builder-v2 .proto-grid{grid-template-columns:1fr!important;gap:8px!important}
+ #user-modal-card.alpha-builder-v2 .proto-grid label{min-height:68px!important;padding:12px 42px 12px 12px!important}
+ #user-modal-card.alpha-builder-v2 .proto-grid label input{left:auto!important;right:12px!important}
+ #user-modal-card.alpha-builder-v2 .port-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+ #user-modal-card.alpha-builder-v2 .port-grid span{padding:10px 4px!important;font-size:12px!important}
+ #user-modal-card.alpha-builder-v2 .two-col{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ #user-modal-card.alpha-builder-v2 .builder-footer{order:2!important;flex:0 0 auto!important;position:relative!important;bottom:auto!important;padding:9px 10px calc(9px + env(safe-area-inset-bottom))!important;gap:8px!important}
+ #user-modal-card.alpha-builder-v2 .builder-cancel,#user-modal-card.alpha-builder-v2 .builder-submit{flex:1 1 0!important;width:100%!important;min-width:0!important;padding:11px 8px!important;font-size:12px!important;border-radius:13px!important;white-space:normal!important}
+ #user-modal-card.alpha-builder-v2 .builder-submit:not(.mobile-submit){display:none!important}
+ #user-modal-card.alpha-builder-v2 .builder-submit.mobile-submit{display:block!important}
+}
+@media(max-width:360px){#user-modal-card.alpha-builder-v2 .builder-head p{display:none!important}#user-modal-card.alpha-builder-v2 .user-modal-tab-btn{font-size:10px!important}#user-modal-card.alpha-builder-v2 .builder-card{padding:11px!important}#user-modal-card.alpha-builder-v2 .builder-footer{gap:6px!important}}
+</style>
 </body>
 </html>`,
 	status: `<!DOCTYPE html>
