@@ -12045,6 +12045,71 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
  body.alpha-view-users #alpha-bnav { width:calc(100% - 20px) !important; bottom:8px !important; }
 }
 
+
+        /* ALPHA CONSISTENCY PATCH v2.4: one glass system for every view and theme */
+        :root {
+          --ui-surface: rgba(255,255,255,.72);
+          --ui-surface-strong: rgba(255,255,255,.88);
+          --ui-surface-soft: rgba(255,255,255,.48);
+          --ui-text: #18213b;
+          --ui-muted: #5b6785;
+          --ui-border: hsla(var(--h),62%,52%,.24);
+          --ui-shadow: 0 12px 30px rgba(47,63,120,.12), inset 0 1px 0 rgba(255,255,255,.62);
+        }
+        html.dark {
+          --ui-surface: rgba(12,19,45,.66);
+          --ui-surface-strong: rgba(14,23,53,.84);
+          --ui-surface-soft: rgba(9,15,36,.48);
+          --ui-text: #edf3ff;
+          --ui-muted: #a9b7d3;
+          --ui-border: hsla(var(--h),72%,68%,.28);
+          --ui-shadow: 0 14px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.07);
+        }
+        body, body.alpha-view-users, body.alpha-view-dash { color:var(--ui-text) !important; }
+        body.alpha-view-users, body.alpha-view-dash { background:
+          radial-gradient(900px 520px at 50% -10%, hsla(var(--h),90%,60%,.18), transparent 64%),
+          radial-gradient(700px 520px at 0% 85%, hsla(calc(var(--h) + 60),90%,65%,.12), transparent 60%),
+          radial-gradient(700px 520px at 100% 70%, hsla(calc(var(--h) - 75),90%,65%,.10), transparent 60%),
+          var(--page-bg, #f4f6ff) !important; }
+        html.dark body.alpha-view-users, html.dark body.alpha-view-dash { background:
+          radial-gradient(900px 520px at 50% -10%, hsla(var(--h),90%,45%,.24), transparent 64%),
+          radial-gradient(700px 520px at 0% 85%, hsla(calc(var(--h) + 60),90%,45%,.14), transparent 60%),
+          radial-gradient(700px 520px at 100% 70%, hsla(calc(var(--h) - 75),90%,45%,.12), transparent 60%),
+          #05091a !important; }
+        .al-glass, .al-card, .al-q, .al-chip, #alpha-side, #alpha-bnav,
+        body.alpha-view-users #alpha-users-hero, body.alpha-view-users #stats-accordion-wrapper,
+        body.alpha-view-users main > .mb-5.flex.flex-col, body.alpha-view-users #users-table-container {
+          color:var(--ui-text) !important;
+          background:linear-gradient(145deg,var(--ui-surface-strong),var(--ui-surface)) !important;
+          border-color:var(--ui-border) !important;
+          box-shadow:var(--ui-shadow) !important;
+          backdrop-filter:blur(18px) saturate(125%);
+          -webkit-backdrop-filter:blur(18px) saturate(125%);
+        }
+        html.dark .al-glass, html.dark .al-card, html.dark .al-q, html.dark .al-chip,
+        html.dark #alpha-side, html.dark #alpha-bnav { background:linear-gradient(145deg,var(--ui-surface-strong),var(--ui-surface-soft)) !important; }
+        .al-mu, .al-brand-sub, .al-stat-foot, .al-chart-note, .al-sub,
+        body.alpha-view-users .text-gray-500, body.alpha-view-users .text-gray-400 { color:var(--ui-muted) !important; }
+        .al-nav:hover, .al-chip:hover, .al-q:hover { border-color:var(--a1) !important; }
+        .al-nav.on, .al-chip.on, #alpha-bnav button.active { background:linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important; color:#fff !important; border-color:transparent !important; }
+        body.alpha-view-users #alpha-users-hero { background:linear-gradient(110deg,hsla(var(--h),75%,32%,.82),var(--ui-surface-strong) 54%,hsla(calc(var(--h) + 55),65%,32%,.70)) !important; color:#fff !important; }
+        body.alpha-view-users #alpha-users-hero h1 { color:#fff !important; }
+        body.alpha-view-users #alpha-users-hero p { color:rgba(255,255,255,.76) !important; }
+        body.alpha-view-users #search-input, body.alpha-view-users #filter-status, body.alpha-view-users #sort-users,
+        body.alpha-view-users #users-table-container tbody td, body.alpha-view-users #users-table-container thead th {
+          color:var(--ui-text) !important; background:var(--ui-surface-soft) !important; border-color:var(--ui-border) !important;
+        }
+        html:not(.dark) body.alpha-view-users #search-input::placeholder { color:#687492 !important; }
+        html.dark body.alpha-view-users #search-input::placeholder { color:#9aaccb !important; }
+        .al-stat-icon, .al-progress b, .al-bar b { background-image:linear-gradient(90deg,var(--a3),var(--a1),var(--a2)) !important; }
+        .al-stat-icon { background-color:hsla(var(--h),80%,50%,.16) !important; }
+        #alpha-bnav button.mid, .users-add-primary, .al-cta { background:linear-gradient(110deg,var(--a3),var(--a1),var(--a2)) !important; }
+        .modal.show, [id$="-modal"].show { z-index:100 !important; }
+        body.alpha-view-users main > :not(#alpha-users-hero):not(#alpha-chips):not(#stats-accordion-wrapper):not(#users-table-container):not(.mb-5):not(.flex.items-center.justify-between) { }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+        }
+
 </style>
 	<script>
 	(function () {
@@ -12072,8 +12137,19 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 		function call(fn) { return function () { try { if (typeof window[fn] === 'function') window[fn].apply(null, [].slice.call(arguments, 1)); } catch (e) {} }; }
 		var main = document.querySelector('body > main');
 		var usersAnchor = (function () { var hs = document.querySelectorAll('main h2, main h3'); for (var i = 0; i < hs.length; i++) if (hs[i].textContent.indexOf('لیست کاربران') > -1) return hs[i]; return null; })();
+		function closeTransientOverlays() {
+			// Navigation must never leave the previous modal/accordion layered over the new page.
+			document.querySelectorAll('[id$="-modal"], .modal, [role="dialog"]').forEach(function (el) {
+				if (el.id === 'alpha-theme-pop') return;
+				el.classList.remove('show');
+				el.classList.add('hidden');
+				el.style.display = 'none';
+			});
+			document.body.classList.remove('overflow-hidden');
+		}
 		function go(where) {
 			closeDrawer();
+			closeTransientOverlays();
 			if (where === 'users' && typeof loadUsers === 'function' && !window.allUsers) loadUsers();
 			var isUsers = where === 'users';
 			document.body.classList.toggle('alpha-view-users', isUsers);
@@ -12243,7 +12319,7 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 			var top=document.getElementById('al-top');if(top){var topUsers=users.slice().sort(function(a,b){return(Number(b.used_gb)||0)-(Number(a.used_gb)||0);}).slice(0,6);top.innerHTML=topUsers.length?topUsers.map(function(u){var used=Number(u.used_gb)||0,lim=Number(u.limit_gb)||0,w=lim?Math.min(100,used/lim*100):0;return '<div class="al-urow"><span class="n">'+escHtml(u.username||'بدون نام')+'</span><div class="al-bar"><b style="width:'+w+'%"></b></div><span class="v">'+used.toFixed(1)+' / '+(lim?lim+' GB':'∞')+'</span></div>';}).join(''):'<div class="al-empty">هنوز مصرفی ثبت نشده</div>';}
 		}
 		var legacyLegend = document.getElementById('al-legend'); if (legacyLegend) legacyLegend.addEventListener('click', function (e) { var d = e.target.closest('[data-lf]'); if (d) { setFilter(d.getAttribute('data-lf')); go('users'); } });
-		render(); setInterval(function () { if (!document.hidden) render(); }, 2500);
+		render(); setInterval(function () { if (!document.hidden && document.visibilityState === 'visible') render(); }, 8000);
 		var h = new Date().getHours(); var hello=document.getElementById('al-hello'); if(hello) hello.textContent = (h < 12 ? 'صبح بخیر' : h < 18 ? 'روز بخیر' : 'عصر بخیر') + ' ادمین 👋';
 		go('users');
 
