@@ -5041,7 +5041,7 @@ const HTML_TEMPLATES = {
 				h = ((parseInt(h, 10) || 0) % 360 + 360) % 360;
 				root.style.setProperty('--h', h);
 				hueInput.value = h;
-				localStorage.setItem('alpha-hue', h); document.documentElement.style.setProperty('--panel-hue', h); window.dispatchEvent(new Event('alpha-hue-change'));
+				localStorage.setItem('alpha-hue', h);
 				sw.querySelectorAll('.sw').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-h') === h); });
 			}
 			hueInput.addEventListener('input', function () { applyHue(hueInput.value); });
@@ -11474,7 +11474,7 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 		function applyHue(h) {
 			h = ((parseInt(h, 10) || 0) % 360 + 360) % 360;
 			root.style.setProperty('--h', h); hue.value = h;
-			try { localStorage.setItem('alpha-hue', h); document.documentElement.style.setProperty('--panel-hue', h); window.dispatchEvent(new Event('alpha-hue-change')); } catch (e) {}
+			try { localStorage.setItem('alpha-hue', h); } catch (e) {}
 			sws.querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-h') === h); });
 			var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', root.classList.contains('dark') ? '#05051a' : '#f6f7ff');
 		}
@@ -12288,107 +12288,6 @@ body.alpha-view-users #alpha-bnav button.active { background:linear-gradient(120
 			vertical-align: -0.05em;
 		}
 	</style>
-
-<!-- ALPHA_THEME_FIX_V2 -->
-<style id="alpha-theme-fix-v2">
-/* One theme contract for the whole panel. Keep light readable, dark intentional. */
-:root {
-  color-scheme: light;
-  --panel-hue: 265;
-  --panel-accent: hsl(var(--panel-hue) 78% 48%);
-  --panel-accent-strong: hsl(var(--panel-hue) 82% 40%);
-  --panel-accent-soft: hsl(var(--panel-hue) 90% 96%);
-  --panel-accent-border: hsl(var(--panel-hue) 55% 78%);
-  --panel-fg: #172033;
-  --panel-muted: #5b6680;
-  --panel-surface: rgba(255,255,255,.94);
-  --panel-surface-2: rgba(248,250,255,.96);
-  --panel-border: rgba(100,116,139,.28);
-  --panel-shadow: 0 8px 24px rgba(30,41,90,.10);
-}
-html.dark {
-  color-scheme: dark;
-  --panel-accent: hsl(var(--panel-hue) 88% 68%);
-  --panel-accent-strong: hsl(var(--panel-hue) 82% 58%);
-  --panel-accent-soft: hsl(var(--panel-hue) 45% 18%);
-  --panel-accent-border: hsl(var(--panel-hue) 48% 38%);
-  --panel-fg: #eaf2ff;
-  --panel-muted: #9aabd0;
-  --panel-surface: rgba(11,18,34,.94);
-  --panel-surface-2: rgba(18,28,53,.96);
-  --panel-border: rgba(110,140,210,.30);
-  --panel-shadow: 0 10px 28px rgba(0,0,0,.28);
-}
-/* Override the old always-dark users-area skin only at the final cascade layer. */
-html:not(.dark), html:not(.dark) body { color-scheme: light !important; }
-html:not(.dark) body { background: #f4f7fb !important; color: var(--panel-fg) !important; }
-html:not(.dark) body::before { opacity: .08 !important; }
-html:not(.dark) body > *, html:not(.dark) main, html:not(.dark) header, html:not(.dark) section { color: var(--panel-fg); }
-html:not(.dark) .dark\:bg-amoled-card,
-html:not(.dark) .dark\:bg-amoled-input { background: var(--panel-surface-2) !important; }
-html:not(.dark) .dark\:border-amoled-border { border-color: var(--panel-border) !important; }
-html:not(.dark) #search-input,
-html:not(.dark) #filter-status,
-html:not(.dark) #sort-users,
-html:not(.dark) input,
-html:not(.dark) select,
-html:not(.dark) textarea {
-  background: #fff !important; color: var(--panel-fg) !important;
-  border-color: var(--panel-border) !important;
-}
-html:not(.dark) #search-input::placeholder,
-html:not(.dark) input::placeholder,
-html:not(.dark) textarea::placeholder { color: #77839b !important; }
-html:not(.dark) #users-table-container {
-  background: var(--panel-surface) !important; border-color: var(--panel-border) !important;
-  box-shadow: var(--panel-shadow) !important;
-}
-html:not(.dark) #users-tbody td {
-  background: #fff !important; color: var(--panel-fg) !important;
-  border-color: rgba(148,163,184,.25) !important;
-}
-html:not(.dark) #users-tbody .text-gray-500,
-html:not(.dark) #users-tbody .dark\:text-zinc-400 { color: var(--panel-muted) !important; }
-html:not(.dark) #users-tbody .bg-green-50,
-html:not(.dark) #users-tbody .dark\:bg-green-950\/30 { background: #ecfdf5 !important; }
-html:not(.dark) #users-tbody .bg-red-50,
-html:not(.dark) #users-tbody .dark\:bg-red-900\/20 { background: #fff1f2 !important; }
-html:not(.dark) .al3-wrap { --fg: var(--panel-fg); --mut: var(--panel-muted); --gl: rgba(255,255,255,.72); --gl2: rgba(255,255,255,.96); --bd: var(--panel-border); --acc1: var(--panel-accent); --acc2: var(--panel-accent-strong); }
-html.dark .al3-wrap { --fg: var(--panel-fg); --mut: var(--panel-muted); --gl: rgba(15,23,42,.55); --gl2: rgba(30,41,59,.72); --bd: var(--panel-border); --acc1: var(--panel-accent); --acc2: var(--panel-accent-strong); }
-/* Make the hue picker drive panel controls, not just the landing/login screen. */
-#users-table-container button:not(.text-red-600):not(.text-red-500),
-.al3-add, .al3-chip.on, .al3-ico { border-color: var(--panel-accent-border); }
-html:not(.dark) .al3-add, html:not(.dark) .al3-chip.on { color: #fff !important; }
-html:not(.dark) .al3-stat-val, html:not(.dark) .al3-count { color: var(--panel-accent-strong); }
-html:not(.dark) .al3-input { background: rgba(255,255,255,.94); color: var(--panel-fg); }
-/* Dynamic color for utility buttons and their SVGs. Explicit semantic red buttons stay red. */
-#mobile-menu-collapse button:not([onclick="logoutAdmin()"]),
-#mobile-menu-collapse button:not([onclick="logoutAdmin()"]) svg,
-#users-table-container .al3-btn:not(.al3-del) svg { color: var(--panel-accent); stroke: currentColor; }
-/* Performance: avoid expensive blur/paint loops on large lists and moving backgrounds. */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-}
-@media (max-width: 900px), (prefers-reduced-data: reduce) {
-  .backdrop-blur-md, .al3-glass, #users-table-container { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-}
-@media (min-width: 901px) {
-  #users-tbody tr { contain: layout paint; }
-}
-</style>
-<script>
-(function () {
-  var root = document.documentElement;
-  var hue = localStorage.getItem('alpha-hue');
-  if (hue !== null && /^\d{1,3}$/.test(hue)) root.style.setProperty('--panel-hue', Math.max(0, Math.min(359, Number(hue))));
-  var sync = function () {
-    var h = localStorage.getItem('alpha-hue');
-    if (h !== null && /^\d{1,3}$/.test(h)) root.style.setProperty('--panel-hue', Math.max(0, Math.min(359, Number(h))));
-  };
-  window.addEventListener('storage', sync);
-  window.addEventListener('alpha-hue-change', sync);
-})();
-</script>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-amoled-bg dark:text-zinc-100 min-h-screen flex flex-col items-center py-12 px-4 overflow-x-hidden">
 	<div class="w-full max-w-xl glass rounded-md shadow-2xl p-6 md:p-8 relative overflow-hidden z-10">
