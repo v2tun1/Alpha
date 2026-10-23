@@ -6268,7 +6268,7 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 </style>
 
 
-		<div id="user-modal-card" class="w-full max-w-5xl bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-[opacity,transform] duration-200 opacity-0 scale-95 ease-out flex flex-col max-h-[92vh] transform-gpu">
+		<div id="user-modal-card" class="alpha-builder-v2 w-full max-w-5xl bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-2xl shadow-2xl overflow-hidden transition-[opacity,transform] duration-200 opacity-0 scale-95 ease-out flex flex-col max-h-[92vh] transform-gpu">
 			<div class="px-5 py-4 border-b border-gray-150 dark:border-amoled-border flex justify-between items-center bg-gray-50/70 dark:bg-amoled-bg/60">
 				<div class="flex items-center gap-3">
 					<div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
@@ -6296,18 +6296,18 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">تنظیم پروتکل</div>
-									<div class="text-[10px] opacity-75 font-normal">انتخاب روش اتصال و احراز هویت</div>
+									<div class="text-xs font-black">سریع و آسان</div>
+									<div class="text-[10px] opacity-75 font-normal">ساخت کاربر و انتخاب پروتکل</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پروتکل</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">سریع و آسان</span>
 							</button>
 							<button type="button" onclick="switchUserTab('tab-ports-network')" id="tab-btn-ports-network" class="user-modal-tab-btn flex-1 md:flex-initial flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-3 p-1.5 sm:p-3 rounded-xl transition text-center sm:text-right cursor-pointer select-none bg-transparent hover:bg-gray-100 dark:hover:bg-amoled-input/50 border border-transparent text-gray-600 dark:text-zinc-400 font-medium">
 								<div class="flex-shrink-0 w-4 h-4 sm:w-8 sm:h-8 rounded sm:rounded-lg flex items-center justify-center bg-gray-200/60 dark:bg-slate-900 text-gray-500 dark:text-zinc-400">
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">تنظیم پورت</div>
-									<div class="text-[10px] opacity-75 font-normal">انتخاب درگاه و تنظیمات شبکه</div>
+									<div class="text-xs font-black">شبکه</div>
+									<div class="text-[10px] opacity-75 font-normal">پورت، TLS و مسیر اتصال</div>
 								</div>
 								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">شبکه</span>
 							</button>
@@ -6316,10 +6316,10 @@ body:has(#user-modal:not(.pointer-events-none)) #alpha-bnav{z-index:1!important}
 									<svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
 								</div>
 								<div class="hidden sm:block text-right">
-									<div class="text-xs font-black">تنظیم پروکسی</div>
-									<div class="text-[10px] opacity-75 font-normal">مدیریت مسیر جایگزین و آی‌پی</div>
+									<div class="text-xs font-black">پیشرفته</div>
+									<div class="text-[10px] opacity-75 font-normal">محدودیت، فیلتر و پروکسی</div>
 								</div>
-								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">تنظیم پروکسی</span>
+								<span class="sm:hidden text-[10px] sm:text-xs font-bold whitespace-nowrap">پیشرفته</span>
 							</button>
 						</div>
 						
@@ -12665,6 +12665,25 @@ html.dark #user-modal-card form>div:last-child button[onclick*="toggleModal"]{bo
 @media(max-width:640px){#user-modal-card{border-radius:24px!important}#user-modal-card>div:first-child{padding:16px!important}#user-modal-card .user-modal-tab-btn{min-height:68px!important;font-size:.75rem!important}#user-modal-card .user-tab-panel>div{padding:15px!important}}
 
 
+</style>
+
+<style id="alpha-builder-v2-final">
+/* Structural v2: the new builder is the actual modal surface; legacy IDs and handlers stay unchanged. */
+#user-modal-card.alpha-builder-v2{max-width:980px!important;border-radius:32px!important}
+#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row{display:flex!important;flex-direction:column!important;background:transparent!important}
+#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:first-child{width:100%!important;order:0!important;padding:18px 24px!important;border:0!important;border-bottom:1px solid rgba(145,190,210,.34)!important;background:transparent!important;overflow:visible!important}
+#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:first-child>div:first-child{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:13px!important;flex-direction:row!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn{width:100%!important;min-height:78px!important;display:grid!important;grid-template-columns:34px 1fr!important;grid-template-rows:auto auto!important;align-items:center!important;gap:2px 10px!important;text-align:right!important;padding:12px 14px!important;border-radius:20px!important;transform:none!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn.active{transform:translateY(-3px)!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn>div:first-child{grid-row:1/span 2!important;width:34px!important;height:34px!important;border-radius:12px!important}
+#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:first-child>div:last-child{display:none!important}
+#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:last-child{order:1!important;width:100%!important;max-height:calc(92vh - 255px)!important;padding:20px 24px!important;overflow-y:auto!important;background:transparent!important}
+#user-modal-card.alpha-builder-v2 .user-tab-panel{gap:16px!important}
+#user-modal-card.alpha-builder-v2 .user-tab-panel>div{border-radius:24px!important;padding:22px!important}
+#user-modal-card.alpha-builder-v2 form>div:last-child{order:2!important}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn:after{content:"";grid-column:2;display:block;height:3px;width:38px;border-radius:9px;background:linear-gradient(90deg,#5544eb,#10b9e5);opacity:.35}
+#user-modal-card.alpha-builder-v2 .user-modal-tab-btn.active:after{opacity:1;background:#fff}
+@media(max-width:768px){#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:first-child{padding:14px 16px!important}#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:first-child>div:first-child{grid-template-columns:repeat(3,1fr)!important;gap:9px!important}#user-modal-card.alpha-builder-v2 .user-modal-tab-btn{min-height:82px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;gap:4px!important;text-align:center!important;padding:8px 5px!important}#user-modal-card.alpha-builder-v2 .user-modal-tab-btn>div:first-child{width:34px!important;height:34px!important;display:flex!important}#user-modal-card.alpha-builder-v2 .user-modal-tab-btn>div:nth-child(2){display:block!important;text-align:center!important}#user-modal-card.alpha-builder-v2 .user-modal-tab-btn>div:nth-child(2)>div:nth-child(2){display:none!important}#user-modal-card.alpha-builder-v2 .user-modal-tab-btn:after{display:none!important}#user-modal-card.alpha-builder-v2 form>div.flex.flex-col.md\:flex-row>div:last-child{padding:16px!important;max-height:calc(92vh - 275px)!important}#user-modal-card.alpha-builder-v2 .user-tab-panel>div{padding:17px!important}}
 </style>
 </body>
 </html>`,
